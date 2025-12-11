@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaiaLab - AI-Powered Biological Intelligence Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .demo-box {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .demo-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .demo-box .description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .input-group .hint {
+            font-size: 13px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .analyze-btn:active {
+            transform: translateY(0);
+        }
+
+        .analyze-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .results-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px 15px 0 0;
+            margin: -40px -40px 0 -40px;
+        }
+
+        .results-header h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .results-header .meta {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .results-body {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 28px;
+        }
+
+        .gene-card,
+        .pathway-card,
+        .insight-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .gene-card:hover,
+        .pathway-card:hover,
+        .insight-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gene-card h4,
+        .pathway-card h4,
+        .insight-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .gene-card .gene-name {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .gene-card p,
+        .pathway-card p,
+        .insight-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+
+        .badge-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #16a34a;
+        }
+
+        .badge-medium {
+            background: rgba(250, 204, 21, 0.2);
+            color: #ca8a04;
+        }
+
+        .badge-low {
+            background: rgba(156, 163, 175, 0.2);
+            color: #6b7280;
+        }
+
+        .badge-significant {
+            background: rgba(239, 68, 68, 0.2);
+            color: #dc2626;
+        }
+
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #2563eb;
+        }
+
+        .citations {
+            margin-top: 12px;
+        }
+
+        .citation-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 13px;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .citation-link:hover {
+            text-decoration: underline;
+        }
+
+        .pvalue {
+            font-family: 'Courier New', monospace;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #dc2626;
+        }
+
+        .importance-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .importance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .examples {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .examples h3 {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .example-btn {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .example-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero .tagline {
+                font-size: 18px;
+            }
+            .stats {
+                gap: 30px;
+            }
+            .demo-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🧬 GaiaLab</h1>
+        <div class="tagline">AI-Powered Biological Intelligence Platform</div>
+        <div class="subtitle">Transform gene lists into publication-quality insights in 60 seconds</div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">600×</div>
+                <div class="stat-label">Faster than manual research</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">30M+</div>
+                <div class="stat-label">PubMed papers analyzed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3 AI</div>
+                <div class="stat-label">Models with failover</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">60s</div>
+                <div class="stat-label">Average analysis time</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <div class="icon">🔬</div>
+                <h3>Real Data Integration</h3>
+                <p>Live data from UniProt (proteins), KEGG (pathways), and PubMed (30M+ papers)</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🤖</div>
+                <h3>Multi-Model AI</h3>
+                <p>Claude 3.5 Sonnet, GPT-4 Turbo, Gemini 1.5 Pro with automatic failover</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📊</div>
+                <h3>Statistical Rigor</h3>
+                <p>Hypergeometric tests for pathway enrichment with p-values and confidence scores</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📚</div>
+                <h3>Citation-Backed</h3>
+                <p>Every insight linked to real PubMed papers from 2024-2025</p>
+            </div>
+        </div>
+
+        <div class="examples">
+            <h3>🎯 Try Example Queries</h3>
+            <button class="example-btn" onclick="loadExample('breast-cancer')">🎀 Breast Cancer (TP53, BRCA1, EGFR)</button>
+            <button class="example-btn" onclick="loadExample('alzheimers')">🧠 Alzheimer's (APP, PSEN1, APOE)</button>
+            <button class="example-btn" onclick="loadExample('colorectal')">🔴 Colorectal Cancer (KRAS, NRAS, BRAF)</button>
+            <button class="example-btn" onclick="loadExample('parkinsons')">⚡ Parkinson's (SNCA, LRRK2, PARK7)</button>
+        </div>
+
+        <div class="demo-box">
+            <h2>🚀 Analyze Your Genes</h2>
+            <div class="description">
+                Enter 2-5 gene symbols and a disease context to get instant biological insights with pathway enrichment,
+                therapeutic strategies, and recent literature synthesis.
+            </div>
+
+            <form id="analysisForm" onsubmit="analyzeGenes(event)">
+                <div class="input-group">
+                    <label for="genes">Gene Symbols</label>
+                    <input
+                        type="text"
+                        id="genes"
+                        placeholder="e.g., TP53, BRCA1, EGFR"
+                        required
+                    />
+                    <div class="hint">Enter 2-5 gene symbols separated by commas (UPPERCASE recommended)</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="disease">Disease Context</label>
+                    <input
+                        type="text"
+                        id="disease"
+                        placeholder="e.g., triple-negative breast cancer"
+                        required
+                    />
+                    <div class="hint">Be specific! "breast cancer" not just "cancer"</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="audience">Audience</label>
+                    <select id="audience">
+                        <option value="researcher">Researcher (Technical)</option>
+                        <option value="clinician">Clinician (Medical)</option>
+                        <option value="executive">Executive (Strategic)</option>
+                        <option value="student">Student (Educational)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="analyze-btn" id="analyzeBtn">
+                    ✨ Analyze with GaiaLab AI
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <h3>🧬 Analyzing Your Genes...</h3>
+                <p>Fetching data from UniProt, KEGG, and PubMed...</p>
+                <p>AI synthesis in progress (60-90 seconds)...</p>
+            </div>
+
+            <div class="results" id="results">
+                <!-- Results will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🌟 <strong>Developed by Oluwafemi Idiakhoa</strong> | Built with <a href="https://claude.ai/claude-code" target="_blank">Claude Code</a></p>
+        <p style="margin-top: 8px;">Powered by UniProt, KEGG, PubMed & AI | <strong>600x faster than manual research</strong></p>
+        <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+            ⚠️ For research purposes only. Not for clinical decision-making.
+        </p>
+    </footer>
+
+    <script>
+        const examples = {
+            'breast-cancer': {
+                genes: 'TP53, BRCA1, EGFR',
+                disease: 'triple-negative breast cancer',
+                audience: 'researcher'
+            },
+            'alzheimers': {
+                genes: 'APP, PSEN1, APOE',
+                disease: "Alzheimer's disease",
+                audience: 'researcher'
+            },
+            'colorectal': {
+                genes: 'KRAS, NRAS, BRAF',
+                disease: 'colorectal cancer',
+                audience: 'researcher'
+            },
+            'parkinsons': {
+                genes: 'SNCA, LRRK2, PARK7',
+                disease: "Parkinson's disease",
+                audience: 'researcher'
+            }
+        };
+
+        function loadExample(exampleKey) {
+            const example = examples[exampleKey];
+            document.getElementById('genes').value = example.genes;
+            document.getElementById('disease').value = example.disease;
+            document.getElementById('audience').value = example.audience;
+            document.getElementById('genes').focus();
+        }
+
+        async function analyzeGenes(event) {
+            event.preventDefault();
+
+            const genesInput = document.getElementById('genes').value;
+            const disease = document.getElementById('disease').value;
+            const audience = document.getElementById('audience').value;
+
+            // Parse genes
+            const genes = genesInput.split(',').map(g => g.trim().toUpperCase()).filter(g => g);
+
+            if (genes.length < 2) {
+                alert('Please enter at least 2 genes for meaningful pathway enrichment analysis.');
+                return;
+            }
+
+            if (genes.length > 10) {
+                alert('Please limit to 10 genes maximum for optimal performance (2-5 recommended).');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('analyzeBtn').disabled = true;
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+
+            try {
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ genes, diseaseContext: disease, audience })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                displayResults(data);
+
+            } catch (error) {
+                alert('Analysis failed: ' + error.message + '\n\nPlease check that the MCP server is running on port 8787.');
+                console.error('Error:', error);
+            } finally {
+                document.getElementById('analyzeBtn').disabled = false;
+                document.getElementById('loading').classList.remove('active');
+            }
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+
+            let html = `
+                <div class="results-header">
+                    <h3>📊 Analysis Complete!</h3>
+                    <div class="meta">
+                        ${data.genes?.length || 0} genes analyzed |
+                        ${data.pathways?.length || 0} pathways found |
+                        ${data.citations?.length || 0} papers reviewed |
+                        ${data.analysisTime || 'N/A'} |
+                        AI Model: ${data.dataSource?.ai || 'Unknown'}
+                    </div>
+                </div>
+                <div class="results-body">
+            `;
+
+            // Genes Section
+            if (data.genes && data.genes.length > 0) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">🧬</span>
+                            <span>Gene Signals</span>
+                        </div>
+                `;
+
+                data.genes.forEach(gene => {
+                    const importance = Math.round((gene.importanceScore || 0) * 100);
+                    html += `
+                        <div class="gene-card">
+                            <div class="gene-name">${gene.symbol}</div>
+                            <h4>${gene.name || 'N/A'}</h4>
+                            <p>${gene.function || 'Function not available'}</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 13px; color: #666;">Importance: ${importance}%</span>
+                                ${gene.uniprotId ? `<span class="badge badge-info">UniProt: ${gene.uniprotId}</span>` : ''}
+                            </div>
+                            <div class="importance-bar">
+                                <div class="importance-fill" style="width: ${importance}%"></div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            }
+
+            // Pathways Section
+            if (data.pathways && data.pathways.length > 0) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">🔬</span>
+                            <span>Enriched Pathways</span>
+                        </div>
+                `;
+
+                data.pathways.slice(0, 10).forEach(pathway => {
+                    const confidenceBadge = pathway.confidence ?
+                        `badge-${pathway.confidence.toLowerCase()}` : 'badge-info';
+                    const significanceBadge = pathway.significance === 'significant' ?
+                        'badge-significant' : 'badge-info';
+
+                    html += `
+                        <div class="pathway-card">
+                            <h4>${pathway.name || pathway.label}</h4>
+                            <p>${pathway.rationale || 'Pathway analysis in progress...'}</p>
+                            <div>
+                                ${pathway.pvalue ? `<span class="pvalue">p = ${pathway.pvalue.toExponential(2)}</span>` : ''}
+                                ${pathway.confidence ? `<span class="badge ${confidenceBadge}">${pathway.confidence} confidence</span>` : ''}
+                                ${pathway.significance ? `<span class="badge ${significanceBadge}">${pathway.significance}</span>` : ''}
+                                ${pathway.genesInPathway ? `<span class="badge badge-info">${pathway.genesInPathway.length} genes</span>` : ''}
+                            </div>
+                            ${pathway.citations && pathway.citations.length > 0 ? `
+                                <div class="citations">
+                                    ${pathway.citations.map(pmid =>
+                                        `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid.replace('PMID:', '')}/"
+                                           target="_blank" class="citation-link">${pmid}</a>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            }
+
+            // Therapeutic Strategies
+            if (data.strategies && data.strategies.length > 0) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">💊</span>
+                            <span>Therapeutic Insights</span>
+                        </div>
+                `;
+
+                data.strategies.forEach(strategy => {
+                    const riskBadge = strategy.riskLevel ?
+                        `badge-${strategy.riskLevel.toLowerCase()}` : 'badge-info';
+                    const confidenceBadge = strategy.confidence ?
+                        `badge-${strategy.confidence.toLowerCase()}` : 'badge-info';
+
+                    html += `
+                        <div class="insight-card">
+                            <h4>${strategy.label}</h4>
+                            <p>${strategy.rationale || strategy.description || 'Strategy analysis in progress...'}</p>
+                            <div>
+                                ${strategy.riskLevel ? `<span class="badge ${riskBadge}">${strategy.riskLevel} risk</span>` : ''}
+                                ${strategy.confidence ? `<span class="badge ${confidenceBadge}">${strategy.confidence} confidence</span>` : ''}
+                            </div>
+                            ${strategy.citations && strategy.citations.length > 0 ? `
+                                <div class="citations">
+                                    ${strategy.citations.map(pmid =>
+                                        `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid.replace('PMID:', '')}/"
+                                           target="_blank" class="citation-link">${pmid}</a>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            }
+
+            // Literature Themes
+            if (data.topics && data.topics.length > 0) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">📚</span>
+                            <span>Literature Themes</span>
+                        </div>
+                `;
+
+                data.topics.forEach(topic => {
+                    html += `
+                        <div class="insight-card">
+                            <h4>${topic.theme || topic.label}</h4>
+                            <p>${topic.summary || topic.description || 'Theme analysis in progress...'}</p>
+                            ${topic.citations && topic.citations.length > 0 ? `
+                                <div class="citations">
+                                    ${topic.citations.map(pmid =>
+                                        `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid.replace('PMID:', '')}/"
+                                           target="_blank" class="citation-link">${pmid}</a>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            }
+
+            html += `
+                    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                        <p style="color: #666; margin-bottom: 10px;">
+                            ⚠️ <strong>Research Use Only:</strong> AI-generated insights require expert validation before clinical application.
+                        </p>
+                        <p style="color: #999; font-size: 13px;">
+                            Data sources: ${data.dataSource?.genes || 'UniProt'},
+                            ${data.dataSource?.pathways || 'KEGG'},
+                            ${data.dataSource?.literature || 'PubMed'} |
+                            AI: ${data.dataSource?.ai || 'Multi-model synthesis'}
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+            resultsDiv.classList.add('active');
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

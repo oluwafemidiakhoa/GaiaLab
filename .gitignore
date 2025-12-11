@@ -1,0 +1,59 @@
+# 🔒 IMPORTANT: This file protects your secrets from being stolen!
+# Never commit .env file or node_modules to GitHub
+
+# Windows system files (ignore nul device file)
+nul
+
+# Environment variables (API keys, tokens, secrets)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Data files (may contain sensitive research data)
+data/learning/*.jsonl
+data/learning/*.json
+data/cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Testing
+coverage/
+.nyc_output/
+
+# Optional: Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Optional: Python cache (if using Jupyter extension)
+__pycache__/
+*.pyc
+*.pyo

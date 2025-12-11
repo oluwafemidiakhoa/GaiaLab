@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GaiaLab Insight Board</title>
+    <style>
+      :root {
+        color: #050816;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #050816;
+      }
+
+      main {
+        width: 100%;
+        max-width: 920px;
+        min-height: 260px;
+        margin: 0 auto;
+        padding: 16px;
+        box-sizing: border-box;
+        background: radial-gradient(circle at top left, #111827, #020617 52%);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
+        color: #e5e7eb;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .title h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        letter-spacing: 0.04em;
+      }
+
+      .title span {
+        font-size: 0.8rem;
+        color: #9ca3af;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.18);
+        font-size: 0.75rem;
+        color: #bfdbfe;
+        border: 1px solid rgba(59, 130, 246, 0.5);
+      }
+
+      .pill-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #22c55e;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .controls label {
+        font-size: 0.75rem;
+        color: #9ca3af;
+      }
+
+      .controls select {
+        font-size: 0.8rem;
+        border-radius: 999px;
+        border: 1px solid #374151;
+        background: #020617;
+        color: #e5e7eb;
+        padding: 4px 10px;
+        outline: none;
+      }
+
+      .summary {
+        margin-top: 4px;
+        margin-bottom: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid #111827;
+        font-size: 0.78rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .summary-block {
+        min-width: 0;
+      }
+
+      .summary-label {
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: #6b7280;
+        margin-bottom: 2px;
+      }
+
+      .summary-value {
+        font-size: 0.8rem;
+        color: #e5e7eb;
+        word-break: break-word;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: radial-gradient(circle at top left, #020617, #020617);
+        border-radius: 14px;
+        padding: 10px 12px;
+        border: 1px solid #111827;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.5);
+      }
+
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        padding: 3px 8px;
+        background: #0b1220;
+        border: 1px solid #1f2937;
+        font-size: 0.72rem;
+        color: #e5e7eb;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .tag-score {
+        opacity: 0.7;
+        margin-left: 4px;
+      }
+
+      .list {
+        list-style: none;
+        margin: 0;
+        margin-top: 4px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .list-item-title {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #e5e7eb;
+      }
+
+      .list-item-body {
+        font-size: 0.75rem;
+        color: #9ca3af;
+      }
+
+      .confidence-badge {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+
+      .confidence-high {
+        background: rgba(34, 197, 94, 0.2);
+        color: #4ade80;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+      }
+
+      .confidence-medium {
+        background: rgba(250, 204, 21, 0.2);
+        color: #facc15;
+        border: 1px solid rgba(250, 204, 21, 0.4);
+      }
+
+      .confidence-low {
+        background: rgba(156, 163, 175, 0.2);
+        color: #9ca3af;
+        border: 1px solid rgba(156, 163, 175, 0.4);
+      }
+
+      .citation-link {
+        color: #60a5fa;
+        text-decoration: none;
+        font-size: 0.7rem;
+        margin-right: 6px;
+      }
+
+      .citation-link:hover {
+        text-decoration: underline;
+      }
+
+      .citations-section {
+        margin-top: 8px;
+        padding-top: 6px;
+        border-top: 1px solid #1f2937;
+      }
+
+      .data-source-badge {
+        display: inline-block;
+        padding: 2px 6px;
+        margin: 2px;
+        border-radius: 3px;
+        background: rgba(59, 130, 246, 0.15);
+        color: #93c5fd;
+        font-size: 0.65rem;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+      }
+
+      .risk-low {
+        color: #4ade80;
+      }
+      .risk-medium {
+        color: #facc15;
+      }
+      .risk-high {
+        color: #f97316;
+      }
+
+      .empty-state {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        padding: 10px;
+      }
+
+      footer {
+        margin-top: 8px;
+        font-size: 0.7rem;
+        color: #6b7280;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      footer a {
+        color: #93c5fd;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="title">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            GaiaLab · Conceptual Insight Board
+          </div>
+          <h2>Living Systems Design Canvas</h2>
+          <span>High-level exploratory view over genes, pathways, and therapeutic directions.</span>
+        </div>
+        <div class="controls">
+          <label for="audience-select">Audience</label>
+          <select id="audience-select">
+            <option value="researcher">Researcher</option>
+            <option value="clinician">Clinician</option>
+            <option value="executive">Executive</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="summary" id="summary">
+        <!-- Filled by JS -->
+      </section>
+
+      <section class="grid">
+        <section class="card" id="genes-card">
+          <h3>Gene Signals</h3>
+          <div class="tag-row" id="genes-tags"></div>
+        </section>
+
+        <section class="card" id="topics-card">
+          <h3>Literature Themes</h3>
+          <ul class="list" id="topics-list"></ul>
+        </section>
+
+        <section class="card" id="pathways-card">
+          <h3>Pathway Constellations</h3>
+          <ul class="list" id="pathways-list"></ul>
+        </section>
+
+        <section class="card" id="strategies-card">
+          <h3>Conceptual Directions</h3>
+          <ul class="list" id="strategies-list"></ul>
+        </section>
+      </section>
+
+      <footer id="footer">
+        <div class="footer-row">
+          <span id="disclaimer"
+            >AI-generated insights for research. Requires expert validation.</span
+          >
+          <span id="timestamp"></span>
+        </div>
+        <div class="footer-row" id="data-sources">
+          <span style="color: #6b7280;">Data sources:</span>
+          <div id="source-badges"></div>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module">
+      const summaryEl = document.querySelector("#summary");
+      const genesTagsEl = document.querySelector("#genes-tags");
+      const topicsListEl = document.querySelector("#topics-list");
+      const pathwaysListEl = document.querySelector("#pathways-list");
+      const strategiesListEl = document.querySelector("#strategies-list");
+      const audienceSelectEl = document.querySelector("#audience-select");
+      const timestampEl = document.querySelector("#timestamp");
+
+      let board = window.openai?.toolOutput ?? null;
+
+      const renderSummary = () => {
+        summaryEl.innerHTML = "";
+        if (!board) {
+          const div = document.createElement("div");
+          div.className = "empty-state";
+          div.textContent =
+            "No insights yet. Ask ChatGPT to call GaiaLab with a gene list and disease context to generate a board.";
+          summaryEl.appendChild(div);
+          return;
+        }
+
+        const ctxBlock = document.createElement("div");
+        ctxBlock.className = "summary-block";
+        ctxBlock.innerHTML = `
+          <span class="summary-label">Context</span>
+          <span class="summary-value">${board.diseaseContext || "—"}</span>
+        `;
+
+        const geneBlock = document.createElement("div");
+        geneBlock.className = "summary-block";
+        const topGenes = (board.genes || [])
+          .slice(0, 6)
+          .map((g) => g.symbol)
+          .join(", ");
+        geneBlock.innerHTML = `
+          <span class="summary-label">Genes</span>
+          <span class="summary-value">${
+            topGenes || "No genes detected in tool output"
+          }</span>
+        `;
+
+        const audienceBlock = document.createElement("div");
+        audienceBlock.className = "summary-block";
+        audienceBlock.innerHTML = `
+          <span class="summary-label">View</span>
+          <span class="summary-value">${board.audienceLabel || "—"}</span>
+        `;
+
+        summaryEl.appendChild(ctxBlock);
+        summaryEl.appendChild(geneBlock);
+        summaryEl.appendChild(audienceBlock);
+      };
+
+      const renderTags = () => {
+        genesTagsEl.innerHTML = "";
+        if (!board || !board.genes || board.genes.length === 0) {
+          const div = document.createElement("div");
+          div.className = "empty-state";
+          div.textContent = "Waiting for gene context.";
+          genesTagsEl.appendChild(div);
+          return;
+        }
+
+        board.genes.forEach((gene) => {
+          const span = document.createElement("span");
+          span.className = "tag";
+          const score =
+            gene.importanceScore != null
+              ? `<span class="tag-score">· ${Math.round(
+                  gene.importanceScore * 100
+                )}% signal</span>`
+              : "";
+          span.innerHTML = `${gene.symbol}${score}`;
+          genesTagsEl.appendChild(span);
+        });
+      };
+
+      const renderList = (items, container, emptyMessage, options = {}) => {
+        container.innerHTML = "";
+        if (!items || items.length === 0) {
+          const li = document.createElement("li");
+          li.className = "empty-state";
+          li.textContent = emptyMessage;
+          container.appendChild(li);
+          return;
+        }
+
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "list-item-title";
+
+          if (options.showRisk && item.riskLevel) {
+            const badge = document.createElement("span");
+            const level = String(item.riskLevel).toLowerCase();
+            badge.textContent = level.toUpperCase();
+            badge.className = `risk-${level}`;
+            titleDiv.appendChild(badge);
+            titleDiv.appendChild(document.createTextNode(" · "));
+          }
+
+          titleDiv.appendChild(document.createTextNode(item.name || item.label));
+
+          // Add confidence badge if present
+          if (item.confidence) {
+            const confBadge = document.createElement("span");
+            confBadge.className = `confidence-badge confidence-${item.confidence}`;
+            confBadge.textContent = item.confidence;
+            titleDiv.appendChild(confBadge);
+          }
+
+          const bodyDiv = document.createElement("div");
+          bodyDiv.className = "list-item-body";
+          bodyDiv.textContent = item.summary || item.rationale || "";
+
+          li.appendChild(titleDiv);
+          li.appendChild(bodyDiv);
+
+          // Add citations if present
+          if (item.citations && item.citations.length > 0) {
+            const citationsDiv = document.createElement("div");
+            citationsDiv.className = "citations-section";
+
+            item.citations.forEach((citation) => {
+              const pmid = citation.replace("PMID:", "");
+              const link = document.createElement("a");
+              link.href = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+              link.target = "_blank";
+              link.className = "citation-link";
+              link.textContent = citation;
+              citationsDiv.appendChild(link);
+            });
+
+            li.appendChild(citationsDiv);
+          }
+
+          container.appendChild(li);
+        });
+      };
+
+      const renderTimestamp = () => {
+        if (!board || !board.generatedAtIso) {
+          timestampEl.textContent = "";
+          return;
+        }
+        const date = new Date(board.generatedAtIso);
+        if (Number.isNaN(date.getTime())) {
+          timestampEl.textContent = "";
+          return;
+        }
+        const timeStr = board.analysisTime ? ` (${board.analysisTime})` : "";
+        timestampEl.textContent = `Generated ${date.toLocaleString()}${timeStr}`;
+      };
+
+      const renderDataSources = () => {
+        const sourceBadges = document.querySelector("#source-badges");
+        const disclaimerEl = document.querySelector("#disclaimer");
+
+        if (!sourceBadges) return;
+
+        sourceBadges.innerHTML = "";
+
+        if (board?.dataSource) {
+          const sources = [
+            { name: "Genes", value: board.dataSource.genes },
+            { name: "Pathways", value: board.dataSource.pathways },
+            { name: "Literature", value: board.dataSource.literature },
+            { name: "AI", value: board.dataSource.ai }
+          ];
+
+          sources.forEach((source) => {
+            const badge = document.createElement("span");
+            badge.className = "data-source-badge";
+            badge.textContent = `${source.name}: ${source.value}`;
+            sourceBadges.appendChild(badge);
+          });
+        }
+
+        if (disclaimerEl && board?.disclaimer) {
+          disclaimerEl.textContent = board.disclaimer;
+        }
+      };
+
+      const renderAll = () => {
+        // Keep select in sync
+        if (board && board.audience && audienceSelectEl) {
+          audienceSelectEl.value = board.audience;
+        }
+
+        renderSummary();
+        renderTags();
+        renderList(
+          board?.topics,
+          topicsListEl,
+          "Themes will appear here once GaiaLab has seen some context."
+        );
+        renderList(
+          board?.pathways,
+          pathwaysListEl,
+          "Pathway-level patterns will populate here.",
+          { showRisk: false }
+        );
+        renderList(
+          board?.strategies,
+          strategiesListEl,
+          "High-level, non-procedural directions will show here.",
+          { showRisk: true }
+        );
+        renderTimestamp();
+        renderDataSources();
+      };
+
+      const updateFromResponse = (response) => {
+        if (response?.structuredContent) {
+          board = response.structuredContent;
+          renderAll();
+        }
+      };
+
+      const handleSetGlobals = (event) => {
+        const globals = event.detail?.globals;
+        if (!globals?.toolOutput) return;
+        board = globals.toolOutput;
+        renderAll();
+      };
+
+      window.addEventListener("openai:set_globals", handleSetGlobals, {
+        passive: true
+      });
+
+      if (audienceSelectEl) {
+        audienceSelectEl.addEventListener("change", async (event) => {
+          const nextAudience = event.target.value;
+          if (!board) {
+            return;
+          }
+
+          if (window.openai?.callTool) {
+            const payload = {
+              genes: (board.genes || []).map((g) => g.symbol),
+              diseaseContext: board.diseaseContext,
+              audience: nextAudience
+            };
+
+            try {
+              const response = await window.openai.callTool(
+                "gaialab_generate_insights",
+                payload
+              );
+              updateFromResponse(response);
+            } catch (err) {
+              console.error("Tool call failed", err);
+            }
+          } else {
+            // Fallback for local/manual testing
+            board.audience = nextAudience;
+            renderAll();
+          }
+        });
+      }
+
+      renderAll();
+    </script>
+  </body>
+</html>
