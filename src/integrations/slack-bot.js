@@ -11,113 +11,117 @@ import { pathwayAggregator } from '../data/aggregators/pathway-aggregator.js';
 import { literatureAggregator } from '../data/aggregators/literature-aggregator.js';
 import { insightGenerator } from '../ai/models/insight-generator.js';
 
-// Initialize Slack app
-const slackApp = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  socketMode: true,
-  appToken: process.env.SLACK_APP_TOKEN
-});
+// Initialize Slack app (only if tokens are configured)
+let slackApp = null;
 
-/**
- * Slash command: /gaialab
- * Examples:
- * /gaialab TP53, BRCA1 in breast cancer
- * /gaialab KRAS, NRAS, BRAF for colorectal cancer
- */
-slackApp.command('/gaialab', async ({ command, ack, say, client }) => {
-  await ack();
-
-  const channelId = command.channel_id;
-  const text = command.text.trim();
-
-  // Parse input
-  const parsed = parseSlackQuery(text);
-
-  if (!parsed) {
-    await say({
-      text: `⚠️ Invalid format! Use: \`/gaialab TP53, BRCA1 in breast cancer\``,
-      response_type: 'ephemeral'
-    });
-    return;
-  }
-
-  const { genes, diseaseContext } = parsed;
-
-  // Send "analyzing" message
-  const loadingMsg = await say({
-    text: `🧬 Analyzing ${genes.join(', ')} in *${diseaseContext}*...\n_This will take 60-90 seconds. Fetching data from UniProt, KEGG, PubMed + AI synthesis..._`
+if (process.env.SLACK_BOT_TOKEN && process.env.SLACK_APP_TOKEN && process.env.SLACK_SIGNING_SECRET) {
+  slackApp = new App({
+    token: process.env.SLACK_BOT_TOKEN,
+    signingSecret: process.env.SLACK_SIGNING_SECRET,
+    socketMode: true,
+    appToken: process.env.SLACK_APP_TOKEN
   });
 
-  try {
-    // Perform analysis
-    const startTime = Date.now();
+  /**
+   * Slash command: /gaialab
+   * Examples:
+   * /gaialab TP53, BRCA1 in breast cancer
+   * /gaialab KRAS, NRAS, BRAF for colorectal cancer
+   */
+  slackApp.command('/gaialab', async ({ command, ack, say, client }) => {
+    await ack();
 
-    const [geneData, enrichedPathways, literature] = await Promise.all([
-      geneAggregator.fetchGeneData(genes),
-      pathwayAggregator.enrichPathways(genes),
-      literatureAggregator.searchRelevantPapers(genes, diseaseContext, { maxResults: 30 })
-    ]);
+    const channelId = command.channel_id;
+    const text = command.text.trim();
 
-    const insights = await insightGenerator.synthesize({
-      genes: geneData,
-      pathways: enrichedPathways,
-      literature,
-      diseaseContext,
-      audience: 'researcher'
-    });
-
-    const analysisTime = ((Date.now() - startTime) / 1000).toFixed(1);
-
-    // Format results for Slack
-    const blocks = formatSlackResults({
-      genes: geneData,
-      pathways: enrichedPathways,
-      insights,
-      diseaseContext,
-      analysisTime
-    });
-
-    // Update message with results
-    await client.chat.update({
-      channel: channelId,
-      ts: loadingMsg.ts,
-      text: `✅ Analysis complete for ${genes.join(', ')} in ${diseaseContext}`,
-      blocks
-    });
-
-  } catch (error) {
-    console.error('[Slack Bot] Analysis error:', error);
-    await say({
-      text: `❌ Analysis failed: ${error.message}`,
-      response_type: 'ephemeral'
-    });
-  }
-});
-
-/**
- * App mention: @gaialab
- */
-slackApp.event('app_mention', async ({ event, say }) => {
-  try {
-    const text = event.text.replace(/<@[A-Z0-9]+>/g, '').trim();
-
+    // Parse input
     const parsed = parseSlackQuery(text);
 
     if (!parsed) {
       await say({
-        text: `Hi! I'm GaiaLab 🧬\n\nAnalyze genes with:\n\`/gaialab TP53, BRCA1 in breast cancer\`\n\nOr mention me:\n\`@gaialab analyze KRAS in colorectal cancer\``
+        text: `⚠️ Invalid format! Use: \`/gaialab TP53, BRCA1 in breast cancer\``,
+        response_type: 'ephemeral'
       });
       return;
     }
 
-    // Trigger analysis (same as slash command)
-    await say(`🧬 Analyzing ${parsed.genes.join(', ')} in *${parsed.diseaseContext}*...`);
-  } catch (error) {
-    console.error('[Slack Bot] App mention error:', error);
-    await say(`❌ Error: ${error.message}`);
-  }
-});
+    const { genes, diseaseContext } = parsed;
+
+    // Send "analyzing" message
+    const loadingMsg = await say({
+      text: `🧬 Analyzing ${genes.join(', ')} in *${diseaseContext}*...\n_This will take 60-90 seconds. Fetching data from UniProt, KEGG, PubMed + AI synthesis..._`
+    });
+
+    try {
+      // Perform analysis
+      const startTime = Date.now();
+
+      const [geneData, enrichedPathways, literature] = await Promise.all([
+        geneAggregator.fetchGeneData(genes),
+        pathwayAggregator.enrichPathways(genes),
+        literatureAggregator.searchRelevantPapers(genes, diseaseContext, { maxResults: 30 })
+      ]);
+
+      const insights = await insightGenerator.synthesize({
+        genes: geneData,
+        pathways: enrichedPathways,
+        literature,
+        diseaseContext,
+        audience: 'researcher'
+      });
+
+      const analysisTime = ((Date.now() - startTime) / 1000).toFixed(1);
+
+      // Format results for Slack
+      const blocks = formatSlackResults({
+        genes: geneData,
+        pathways: enrichedPathways,
+        insights,
+        diseaseContext,
+        analysisTime
+      });
+
+      // Update message with results
+      await client.chat.update({
+        channel: channelId,
+        ts: loadingMsg.ts,
+        text: `✅ Analysis complete for ${genes.join(', ')} in ${diseaseContext}`,
+        blocks
+      });
+
+    } catch (error) {
+      console.error('[Slack Bot] Analysis error:', error);
+      await say({
+        text: `❌ Analysis failed: ${error.message}`,
+        response_type: 'ephemeral'
+      });
+    }
+  });
+
+  /**
+   * App mention: @gaialab
+   */
+  slackApp.event('app_mention', async ({ event, say }) => {
+    try {
+      const text = event.text.replace(/<@[A-Z0-9]+>/g, '').trim();
+
+      const parsed = parseSlackQuery(text);
+
+      if (!parsed) {
+        await say({
+          text: `Hi! I'm GaiaLab 🧬\n\nAnalyze genes with:\n\`/gaialab TP53, BRCA1 in breast cancer\`\n\nOr mention me:\n\`@gaialab analyze KRAS in colorectal cancer\``
+        });
+        return;
+      }
+
+      // Trigger analysis (same as slash command)
+      await say(`🧬 Analyzing ${parsed.genes.join(', ')} in *${parsed.diseaseContext}*...`);
+    } catch (error) {
+      console.error('[Slack Bot] App mention error:', error);
+      await say(`❌ Error: ${error.message}`);
+    }
+  });
+}
 
 /**
  * Parse Slack query text
@@ -252,17 +256,24 @@ function formatSlackResults({ genes, pathways, insights, diseaseContext, analysi
  * Start Slack bot
  */
 export async function startSlackBot() {
-  if (!process.env.SLACK_BOT_TOKEN) {
-    console.log('[Slack Bot] Disabled (no SLACK_BOT_TOKEN)');
+  if (!process.env.SLACK_BOT_TOKEN || !process.env.SLACK_APP_TOKEN || !process.env.SLACK_SIGNING_SECRET) {
+    console.log('\n[Slack Bot] ⚠️  Not configured (optional)');
+    console.log('   To enable: Add SLACK_BOT_TOKEN, SLACK_APP_TOKEN, SLACK_SIGNING_SECRET to .env');
+    console.log('   See: SLACK-BOT-SETUP.md\n');
+    return;
+  }
+
+  if (!slackApp) {
+    console.log('[Slack Bot] ⚠️  Failed to initialize');
     return;
   }
 
   try {
     await slackApp.start();
-    console.log('⚡ GaiaLab Slack Bot is running!');
-    console.log('   Use: /gaialab TP53, BRCA1 in breast cancer');
+    console.log('\n⚡ GaiaLab Slack Bot is running!');
+    console.log('   Use: /gaialab TP53, BRCA1 in breast cancer\n');
   } catch (error) {
-    console.error('[Slack Bot] Failed to start:', error);
+    console.error('[Slack Bot] ❌ Failed to start:', error.message);
   }
 }
 

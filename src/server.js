@@ -90,7 +90,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
 
     const formattedTopics = (insights.literatureThemes || []).map((t, i) => ({
       id: `topic-${i}`,
-      name: t.theme,
+      theme: t.theme,
       summary: t.summary,
       keyFindings: t.keyFindings || [],
       citations: t.citations || []
