@@ -43,7 +43,7 @@ export class InsightGenerator {
       this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
       this.models.push({
         name: 'Gemini 1.5 Pro',
-        id: 'gemini-1.5-pro',
+        id: 'gemini-pro',
         provider: 'google'
       });
     }
