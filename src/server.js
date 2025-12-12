@@ -99,7 +99,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
     const formattedStrategies = (insights.therapeuticInsights || []).map((s, i) => ({
       id: `strategy-${i}`,
       label: s.strategy,
-      summary: s.rationale,
+      rationale: s.rationale,
       riskLevel: s.riskLevel || 'medium',
       citations: s.citations || [],
       confidence: s.confidence
