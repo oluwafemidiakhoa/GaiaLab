@@ -42,8 +42,8 @@ export class InsightGenerator {
     if (process.env.GOOGLE_API_KEY) {
       this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
       this.models.push({
-        name: 'Gemini 1.5 Pro',
-        id: 'gemini-pro',
+        name: 'Gemini 1.5 Flash',
+        id: 'gemini-1.5-flash',
         provider: 'google'
       });
     }
@@ -146,7 +146,7 @@ export class InsightGenerator {
    */
   async synthesizeWithGemini(prompt) {
     const model = this.gemini.getGenerativeModel({
-      model: 'gemini-pro',
+      model: 'gemini-1.5-flash',
       generationConfig: {
         temperature: 0.3,
         maxOutputTokens: 8000,
