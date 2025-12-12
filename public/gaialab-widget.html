@@ -470,7 +470,7 @@
             titleDiv.appendChild(document.createTextNode(" · "));
           }
 
-          titleDiv.appendChild(document.createTextNode(item.name || item.label));
+          titleDiv.appendChild(document.createTextNode(item.name || item.label || item.theme));
 
           // Add confidence badge if present
           if (item.confidence) {
