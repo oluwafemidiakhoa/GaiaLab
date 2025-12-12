@@ -146,7 +146,7 @@ export class InsightGenerator {
    */
   async synthesizeWithGemini(prompt) {
     const model = this.gemini.getGenerativeModel({
-      model: 'gemini-1.5-pro',
+      model: 'gemini-pro',
       generationConfig: {
         temperature: 0.3,
         maxOutputTokens: 8000,

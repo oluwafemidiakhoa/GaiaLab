@@ -236,10 +236,12 @@ export class PubMedClient {
       // Tag each paper with which genes it mentions
       return papers.map(paper => ({
         ...paper,
-        mentionedGenes: genes.filter(gene =>
-          paper.title.toUpperCase().includes(gene.toUpperCase()) ||
-          paper.abstract.toUpperCase().includes(gene.toUpperCase())
-        )
+        mentionedGenes: genes.filter(gene => {
+          const title = String(paper.title || '').toUpperCase();
+          const abstract = String(paper.abstract || '').toUpperCase();
+          const geneUpper = gene.toUpperCase();
+          return title.includes(geneUpper) || abstract.includes(geneUpper);
+        })
       }));
     } catch (error) {
       console.error('Multi-gene paper search error:', error.message);
