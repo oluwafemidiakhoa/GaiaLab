@@ -10,6 +10,7 @@ import { z } from "zod";
 import { geneAggregator } from "./data/aggregators/gene-aggregator.js";
 import { pathwayAggregator } from "./data/aggregators/pathway-aggregator.js";
 import { literatureAggregator } from "./data/aggregators/literature-aggregator.js";
+import { interactionAggregator } from "./data/aggregators/interaction-aggregator.js"; // NEW: Protein networks
 import { insightGenerator } from "./ai/models/insight-generator.js";
 import { startSlackBot } from "./integrations/slack-bot.js";
 
@@ -43,17 +44,22 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
   console.log(`[GaiaLab] Analyzing ${normalizedGenes.length} genes for: ${diseaseContext}`);
 
   try {
-    // PHASE 1: Fetch real data in parallel (massive speed optimization)
+    // PHASE 1: Fetch real data in parallel (MAXIMUM INTELLIGENCE SYNTHESIS)
     const startTime = Date.now();
 
-    const [geneData, enrichedPathways, literature] = await Promise.all([
+    const [geneData, enrichedPathways, literature, interactions] = await Promise.all([
       geneAggregator.fetchGeneData(normalizedGenes),
       pathwayAggregator.enrichPathways(normalizedGenes),
-      literatureAggregator.searchRelevantPapers(normalizedGenes, diseaseContext, { maxResults: 30 })
+      literatureAggregator.searchRelevantPapers(normalizedGenes, diseaseContext, { maxResults: 30 }),
+      interactionAggregator.fetchNetworks(normalizedGenes, { // NEW: Protein interaction networks
+        minConfidence: 0.7,
+        maxInteractors: 10,
+        includeEnrichment: true
+      })
     ]);
 
     const fetchTime = Date.now() - startTime;
-    console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms`);
+    console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms (${interactions.stats.totalInteractions} interactions found)`);
 
     // PHASE 2: AI synthesis using Claude
     const aiStartTime = Date.now();
@@ -62,6 +68,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
       genes: geneData,
       pathways: enrichedPathways,
       literature,
+      interactions, // NEW: Include protein interaction networks in AI synthesis
       diseaseContext,
       audience
     });
@@ -133,6 +140,17 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
       pathways: formattedPathways.slice(0, 5), // Top 5 pathways
       topics: formattedTopics.slice(0, 3),
       strategies: [...formattedStrategies, ...formattedHypotheses].slice(0, 5),
+      interactions: { // NEW: Protein interaction network data
+        totalInteractions: interactions.stats?.totalInteractions || 0,
+        avgConfidence: interactions.stats?.avgConfidence || 0,
+        topInteractors: interactions.interactions?.slice(0, 10) || [],
+        networkHubs: interactions.centrality?.centrality ?
+          Object.entries(interactions.centrality.centrality)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .map(([gene, score]) => ({ gene, centrality: score })) : [],
+        networkImageUrl: interactions.network?.imageUrl || null
+      },
       citations: literatureAggregator.formatCitations(literature.slice(0, 20)),
       audience,
       audienceLabel: audienceLabels[audience] || "Contextual view",
@@ -142,6 +160,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
         genes: 'UniProt',
         pathways: 'KEGG',
         literature: 'PubMed',
+        interactions: 'STRING', // NEW: Protein interaction database
         ai: insights.aiModel || 'Unknown AI'
       },
       disclaimer:
