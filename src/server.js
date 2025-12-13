@@ -12,6 +12,7 @@ import { pathwayAggregator } from "./data/aggregators/pathway-aggregator.js";
 import { literatureAggregator } from "./data/aggregators/literature-aggregator.js";
 import { interactionAggregator } from "./data/aggregators/interaction-aggregator.js"; // NEW: Protein networks
 import { clinicalAggregator } from "./data/aggregators/clinical-aggregator.js"; // NEW: Disease associations
+import { drugAggregator } from "./data/aggregators/drug-aggregator.js"; // NEW: Bioactive compounds
 import { insightGenerator } from "./ai/models/insight-generator.js";
 import { startSlackBot } from "./integrations/slack-bot.js";
 
@@ -48,7 +49,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
     // PHASE 1: Fetch real data in parallel (MAXIMUM INTELLIGENCE SYNTHESIS)
     const startTime = Date.now();
 
-    const [geneData, enrichedPathways, literature, interactions, clinical] = await Promise.all([
+    const [geneData, enrichedPathways, literature, interactions, clinical, drugs] = await Promise.all([
       geneAggregator.fetchGeneData(normalizedGenes),
       pathwayAggregator.enrichPathways(normalizedGenes),
       literatureAggregator.searchRelevantPapers(normalizedGenes, diseaseContext, { maxResults: 30 }),
@@ -62,11 +63,18 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
         maxPerGene: 5,
         includeEvidence: true,
         includeDrugs: false
+      }),
+      drugAggregator.fetchDrugTargets(normalizedGenes, { // NEW: Bioactive compounds
+        maxPotency: 10000, // 10μM
+        minPhase: 0,
+        includeCompounds: true,
+        includeApproved: true,
+        maxPerGene: 10
       })
     ]);
 
     const fetchTime = Date.now() - startTime;
-    console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms (${interactions.stats.totalInteractions} interactions, ${clinical.stats.totalAssociations} diseases)`);
+    console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms (${interactions.stats.totalInteractions} interactions, ${clinical.stats.totalAssociations} diseases, ${drugs.stats.totalCompounds} compounds)`);
 
     // PHASE 2: AI synthesis using Claude
     const aiStartTime = Date.now();
@@ -77,6 +85,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
       literature,
       interactions, // NEW: Include protein interaction networks in AI synthesis
       clinical, // NEW: Include disease associations in AI synthesis
+      drugs, // NEW: Include bioactive compounds in AI synthesis
       diseaseContext,
       audience
     });
@@ -168,6 +177,17 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
           ? clinicalAggregator.findSharedDiseases(clinical).slice(0, 5)
           : []
       },
+      drugs: { // NEW: Bioactive compound data
+        totalCompounds: drugs.stats?.totalCompounds || 0,
+        totalApproved: drugs.stats?.totalApproved || 0,
+        avgPotency: drugs.stats?.avgPotency || 0,
+        phaseDistribution: drugs.stats?.phaseDistribution || {},
+        topCompounds: drugs.compounds?.slice(0, 10) || [],
+        approvedDrugs: drugs.approvedDrugs?.slice(0, 5) || [],
+        multiTargetCompounds: drugs.compounds
+          ? drugAggregator.findMultiTargetCompounds(drugs).slice(0, 5)
+          : []
+      },
       citations: literatureAggregator.formatCitations(literature.slice(0, 20)),
       audience,
       audienceLabel: audienceLabels[audience] || "Contextual view",
@@ -179,6 +199,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
         literature: 'PubMed',
         interactions: 'STRING', // NEW: Protein interaction database
         clinical: 'Open Targets', // NEW: Disease association database
+        drugs: 'ChEMBL', // NEW: Bioactive compounds database
         ai: insights.aiModel || 'Unknown AI'
       },
       disclaimer:
