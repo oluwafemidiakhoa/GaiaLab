@@ -15,6 +15,7 @@
  */
 
 import { stringClient } from '../integrations/string-client.js';
+import { biogridClient } from '../integrations/biogrid-client.js';
 
 /**
  * Interaction Network Aggregator
@@ -22,7 +23,7 @@ import { stringClient } from '../integrations/string-client.js';
  */
 export class InteractionAggregator {
   constructor() {
-    this.sources = ['STRING']; // Will add BioGRID, IntAct, BioGRID
+    this.sources = ['STRING', 'BioGRID']; // Multi-source validation
     this.confidenceThresholds = {
       high: 0.7,    // 70%+ confidence or multi-source validation
       medium: 0.4,  // 40-70% confidence
@@ -49,13 +50,14 @@ export class InteractionAggregator {
 
     try {
       // PHASE 1: Fetch interactions from all sources in parallel
-      const [stringInteractions, stringNetwork] = await Promise.all([
+      const [stringInteractions, stringNetwork, biogridInteractions] = await Promise.all([
         this.fetchStringInteractions(geneSymbols, minConfidence, maxInteractors),
-        this.fetchStringNetwork(geneSymbols, minConfidence)
+        this.fetchStringNetwork(geneSymbols, minConfidence),
+        this.fetchBioGridInteractions(geneSymbols, maxInteractors)
       ]);
 
-      // PHASE 2: Merge and validate interactions
-      const mergedInteractions = this.mergeInteractions([stringInteractions]);
+      // PHASE 2: Merge and validate interactions (CROSS-VALIDATION!)
+      const mergedInteractions = this.mergeInteractions([stringInteractions, biogridInteractions]);
 
       // PHASE 3: Calculate network topology metrics
       const topology = this.calculateNetworkTopology(stringNetwork);
@@ -73,7 +75,8 @@ export class InteractionAggregator {
       }
 
       const fetchTime = Date.now() - startTime;
-      console.log(`[Interaction Aggregator] Fetched networks in ${fetchTime}ms`);
+      const validatedCount = mergedInteractions.filter(i => i.validated).length;
+      console.log(`[Interaction Aggregator] Fetched networks in ${fetchTime}ms (${validatedCount}/${mergedInteractions.length} cross-validated)`);
 
       return {
         genes: geneSymbols,
@@ -143,6 +146,42 @@ export class InteractionAggregator {
     return await stringClient.getNetwork(geneSymbols, {
       requiredScore,
       addNodes: 5 // Add 5 high-confidence external nodes
+    });
+  }
+
+  /**
+   * Fetch interactions from BioGRID database
+   * @private
+   */
+  async fetchBioGridInteractions(geneSymbols, maxInteractors) {
+    const interactions = await Promise.all(
+      geneSymbols.map(gene =>
+        biogridClient.getProteinInteractions(gene, {
+          limit: maxInteractors,
+          evidenceType: 'all', // Physical and genetic
+          throughputType: 'any'
+        })
+      )
+    );
+
+    return interactions.flatMap(result => {
+      if (result.error) {
+        console.warn(`[BioGRID] ${result.error} for ${result.gene}`);
+        return [];
+      }
+
+      return result.interactions.map(int => ({
+        gene: result.gene,
+        partner: int.partner,
+        partnerName: int.partnerName,
+        confidence: biogridClient.calculateConfidence(int),
+        evidenceType: int.evidenceType,
+        experimentalSystem: int.experimentalSystem,
+        throughput: int.throughput,
+        pubmedId: int.pubmedId,
+        source: 'BioGRID',
+        validated: true // BioGRID = experimentally validated
+      }));
     });
   }
 

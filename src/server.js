@@ -197,7 +197,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
         genes: 'UniProt',
         pathways: 'KEGG',
         literature: 'PubMed',
-        interactions: 'STRING', // NEW: Protein interaction database
+        interactions: 'STRING + BioGRID', // NEW: Cross-validated protein interactions
         clinical: 'Open Targets', // NEW: Disease association database
         drugs: 'ChEMBL', // NEW: Bioactive compounds database
         ai: insights.aiModel || 'Unknown AI'
