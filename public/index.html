@@ -465,20 +465,20 @@
 
         <div class="stats">
             <div class="stat">
-                <div class="stat-number">600×</div>
-                <div class="stat-label">Faster than manual research</div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Data Sources Integrated</div>
             </div>
             <div class="stat">
-                <div class="stat-number">30M+</div>
-                <div class="stat-label">PubMed papers analyzed</div>
+                <div class="stat-number">3</div>
+                <div class="stat-label">Cross-Validation Domains</div>
             </div>
             <div class="stat">
-                <div class="stat-number">3 AI</div>
-                <div class="stat-label">Models with failover</div>
+                <div class="stat-number">2.4M+</div>
+                <div class="stat-label">Bioactive Compounds</div>
             </div>
             <div class="stat">
                 <div class="stat-number">60s</div>
-                <div class="stat-label">Average analysis time</div>
+                <div class="stat-label">Average Analysis Time</div>
             </div>
         </div>
     </div>
@@ -487,23 +487,23 @@
         <div class="features">
             <div class="feature">
                 <div class="icon">🔬</div>
-                <h3>Real Data Integration</h3>
-                <p>Live data from UniProt (proteins), KEGG (pathways), and PubMed (30M+ papers)</p>
+                <h3>12 Data Sources</h3>
+                <p>Ensembl, ClinVar, UniProt, GO, KEGG, PubMed, STRING, BioGRID, Open Targets, DisGeNET, ChEMBL, DrugBank</p>
             </div>
             <div class="feature">
-                <div class="icon">🤖</div>
-                <h3>Multi-Model AI</h3>
-                <p>Claude 3.5 Sonnet, GPT-4 Turbo, Gemini 1.5 Pro with automatic failover</p>
+                <div class="icon">✅</div>
+                <h3>Cross-Validation</h3>
+                <p>When independent sources agree → +15% confidence boost. Truth emerges through consensus.</p>
             </div>
             <div class="feature">
                 <div class="icon">📊</div>
                 <h3>Statistical Rigor</h3>
-                <p>Hypergeometric tests for pathway enrichment with p-values and confidence scores</p>
+                <p>Fisher's exact test for pathway enrichment with p-values and multi-source validation</p>
             </div>
             <div class="feature">
-                <div class="icon">📚</div>
-                <h3>Citation-Backed</h3>
-                <p>Every insight linked to real PubMed papers from 2024-2025</p>
+                <div class="icon">🤖</div>
+                <h3>AI Synthesis</h3>
+                <p>Claude 3.5 Sonnet generates insights with citations and confidence scores</p>
             </div>
         </div>
 
@@ -563,7 +563,8 @@
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <h3>🧬 Analyzing Your Genes...</h3>
-                <p>Fetching data from UniProt, KEGG, and PubMed...</p>
+                <p>Fetching data from 12 biological databases in parallel...</p>
+                <p>Cross-validating protein interactions, disease associations, and drug targets...</p>
                 <p>AI synthesis in progress (60-90 seconds)...</p>
             </div>
 
@@ -575,7 +576,7 @@
 
     <footer>
         <p>🌟 <strong>Developed by Oluwafemi Idiakhoa</strong> | Built with <a href="https://claude.ai/claude-code" target="_blank">Claude Code</a></p>
-        <p style="margin-top: 8px;">Powered by UniProt, KEGG, PubMed & AI | <strong>600x faster than manual research</strong></p>
+        <p style="margin-top: 8px;">Powered by 12 biological databases + AI | <strong>Demonstrating emergent intelligence through multi-source validation</strong></p>
         <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
             ⚠️ For research purposes only. Not for clinical decision-making.
         </p>
@@ -827,10 +828,15 @@
                             ⚠️ <strong>Research Use Only:</strong> AI-generated insights require expert validation before clinical application.
                         </p>
                         <p style="color: #999; font-size: 13px;">
-                            Data sources: ${data.dataSource?.genes || 'UniProt'},
-                            ${data.dataSource?.pathways || 'KEGG'},
-                            ${data.dataSource?.literature || 'PubMed'} |
-                            AI: ${data.dataSource?.ai || 'Multi-model synthesis'}
+                            <strong>Data Sources:</strong> ${data.dataSource?.genes || 'Ensembl + ClinVar + UniProt + GO'} (genes) •
+                            ${data.dataSource?.pathways || 'KEGG'} (pathways) •
+                            ${data.dataSource?.interactions || 'STRING + BioGRID'} (cross-validated) •
+                            ${data.dataSource?.clinical || 'Open Targets + DisGeNET'} (cross-validated) •
+                            ${data.dataSource?.drugs || 'ChEMBL + DrugBank'} (cross-validated) •
+                            ${data.dataSource?.literature || 'PubMed'} (literature)
+                        </p>
+                        <p style="color: #999; font-size: 13px; margin-top: 5px;">
+                            <strong>AI Model:</strong> ${data.dataSource?.ai || 'Claude 3.5 Sonnet'} • <strong>12 Sources • 3 Cross-Validation Domains</strong>
                         </p>
                     </div>
                 </div>
