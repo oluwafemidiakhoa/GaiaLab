@@ -15,6 +15,7 @@ import { clinicalAggregator } from "./data/aggregators/clinical-aggregator.js"; 
 import { drugAggregator } from "./data/aggregators/drug-aggregator.js"; // NEW: Bioactive compounds
 import { insightGenerator } from "./ai/models/insight-generator.js";
 import { startSlackBot } from "./integrations/slack-bot.js";
+import { resultCache } from "./utils/result-cache.js"; // NEW: In-memory result cache
 
 const GAIALAB_HTML = readFileSync("public/gaialab-widget.html", "utf8");
 const INDEX_HTML = readFileSync("public/index.html", "utf8");
@@ -48,6 +49,21 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
   const normalizedGenes = genes.map((g) => String(g || "").toUpperCase());
 
   console.log(`[GaiaLab] Analyzing ${normalizedGenes.length} genes for: ${diseaseContext} (includeDrugs: ${includeDrugs})`);
+
+  // CACHE CHECK: Return cached result if available (instant results for repeat queries)
+  const cacheParams = { genes: normalizedGenes, diseaseContext, audience, includeDrugs };
+  const cached = resultCache.get(cacheParams);
+  if (cached) {
+    console.log(`[GaiaLab] ⚡ Returning cached result (${cached.cacheStats.age}ms old)`);
+    return {
+      ...cached,
+      cacheStats: {
+        cached: true,
+        age: Date.now() - cached.cacheStats.timestamp,
+        hitRate: resultCache.getStats().hitRate
+      }
+    };
+  }
 
   try {
     // PHASE 1: Fetch real data in parallel (MAXIMUM INTELLIGENCE SYNTHESIS)
@@ -158,7 +174,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
     const totalTime = Date.now() - startTime;
     console.log(`[GaiaLab] Total analysis time: ${totalTime}ms`);
 
-    return {
+    const result = {
       diseaseContext,
       genes: geneData.map(g => ({
         symbol: g.symbol,
@@ -218,8 +234,18 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
         ai: insights.aiModel || 'Unknown AI'
       },
       disclaimer:
-        "AI-generated insights for research purposes. Requires expert validation. Not medical advice."
+        "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",
+      cacheStats: {
+        cached: false,
+        timestamp: Date.now(),
+        hitRate: resultCache.getStats().hitRate
+      }
     };
+
+    // CACHE STORAGE: Store result for future queries (instant results next time)
+    resultCache.set(cacheParams, result);
+
+    return result;
   } catch (error) {
     console.error('[GaiaLab] Error in buildRealGaiaBoard:', error);
 
