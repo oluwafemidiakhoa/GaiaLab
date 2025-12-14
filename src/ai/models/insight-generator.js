@@ -4,9 +4,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 /**
  * AI Insight Generator with Multi-Model Failover
- * PRIMARY: OpenAI GPT-4o (Best: Fast, Reliable, Native JSON)
- * Fallback 1: Claude 3.5 Sonnet (Premium quality)
- * Fallback 2: Google Gemini Pro (Cost-effective)
+ * PRIMARY: DeepSeek V3 (Fastest, cheapest, excellent quality)
+ * Fallback 1: GPT-4o-mini (Fast, cost-effective OpenAI)
+ * Fallback 2: Gemini 2.0 Flash (Latest Google model)
+ * Fallback 3: Claude 3.5 Sonnet (Premium quality, slower)
  * Synthesizes biological data into actionable insights with citations
  */
 export class InsightGenerator {
@@ -14,19 +15,42 @@ export class InsightGenerator {
     // Initialize all available AI models
     this.models = [];
 
-    // OpenAI GPT-4o (PRIMARY - Best overall choice)
+    // DeepSeek V3 (PRIMARY - Fastest & cheapest, excellent quality)
+    if (process.env.DEEPSEEK_API_KEY) {
+      this.deepseek = new OpenAI({
+        apiKey: process.env.DEEPSEEK_API_KEY,
+        baseURL: 'https://api.deepseek.com/v1'
+      });
+      this.models.push({
+        name: 'DeepSeek V3',
+        id: 'deepseek-chat',
+        provider: 'deepseek'
+      });
+    }
+
+    // GPT-4o-mini (Fallback 1 - Fast & cost-effective)
     if (process.env.OPENAI_API_KEY) {
       this.openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY
       });
       this.models.push({
-        name: 'GPT-4o',
-        id: 'gpt-4o',
+        name: 'GPT-4o-mini',
+        id: 'gpt-4o-mini',
         provider: 'openai'
       });
     }
 
-    // Claude 3.5 Sonnet (Fallback 1 - Premium quality)
+    // Google Gemini 2.0 Flash (Fallback 2 - Latest Google model)
+    if (process.env.GOOGLE_API_KEY) {
+      this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+      this.models.push({
+        name: 'Gemini 2.0 Flash',
+        id: 'gemini-2.0-flash-exp',
+        provider: 'google'
+      });
+    }
+
+    // Claude 3.5 Sonnet (Fallback 3 - Premium quality, but slower)
     if (process.env.ANTHROPIC_API_KEY) {
       this.anthropic = new Anthropic({
         apiKey: process.env.ANTHROPIC_API_KEY
@@ -38,24 +62,14 @@ export class InsightGenerator {
       });
     }
 
-    // Google Gemini Pro (Fallback 2 - Cost-effective)
-    if (process.env.GOOGLE_API_KEY) {
-      this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-      this.models.push({
-        name: 'Gemini 1.5 Flash',
-        id: 'gemini-1.5-flash',
-        provider: 'google'
-      });
-    }
-
     if (this.models.length === 0) {
-      console.warn('[GaiaLab] WARNING: No AI API keys configured! Set ANTHROPIC_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY');
+      console.warn('[GaiaLab] WARNING: No AI API keys configured! Set DEEPSEEK_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY, or ANTHROPIC_API_KEY');
     }
   }
 
   /**
    * Synthesize biological insights with automatic multi-model failover
-   * Tries: GPT-4o → Claude 3.5 → Gemini 1.5 → Fallback
+   * Tries: DeepSeek V3 → GPT-4o-mini → Gemini 2.0 Flash → Claude 3.5 Sonnet → Fallback
    * @param {Object} context - Analysis context
    * @returns {Promise<Object>} Structured insights with citations
    */
@@ -77,14 +91,17 @@ export class InsightGenerator {
 
         let insights;
         switch (model.provider) {
-          case 'anthropic':
-            insights = await this.synthesizeWithClaude(prompt);
+          case 'deepseek':
+            insights = await this.synthesizeWithDeepSeek(prompt, model.id);
             break;
           case 'openai':
-            insights = await this.synthesizeWithOpenAI(prompt);
+            insights = await this.synthesizeWithOpenAI(prompt, model.id);
             break;
           case 'google':
-            insights = await this.synthesizeWithGemini(prompt);
+            insights = await this.synthesizeWithGemini(prompt, model.id);
+            break;
+          case 'anthropic':
+            insights = await this.synthesizeWithClaude(prompt);
             break;
           default:
             continue;
@@ -110,6 +127,22 @@ export class InsightGenerator {
   }
 
   /**
+   * Synthesize using DeepSeek V3 (OpenAI-compatible API)
+   * @private
+   */
+  async synthesizeWithDeepSeek(prompt, modelId) {
+    const response = await this.deepseek.chat.completions.create({
+      model: modelId,
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 4096,
+      temperature: 0.3,
+      response_format: { type: 'json_object' }
+    });
+
+    return JSON.parse(response.choices[0].message.content);
+  }
+
+  /**
    * Synthesize using Claude 3.5 Sonnet
    * @private
    */
@@ -125,12 +158,12 @@ export class InsightGenerator {
   }
 
   /**
-   * Synthesize using OpenAI GPT-4 Turbo
+   * Synthesize using OpenAI GPT-4o-mini (fast & cost-effective)
    * @private
    */
-  async synthesizeWithOpenAI(prompt) {
+  async synthesizeWithOpenAI(prompt, modelId) {
     const response = await this.openai.chat.completions.create({
-      model: 'gpt-4o',  // Latest GPT-4o (most capable model, replaces gpt-4-turbo)
+      model: modelId,  // gpt-4o-mini for speed & cost
       messages: [{ role: 'user', content: prompt }],
       max_tokens: 4096,
       temperature: 0.3,
@@ -141,22 +174,24 @@ export class InsightGenerator {
   }
 
   /**
-   * Synthesize using Google Gemini Pro
+   * Synthesize using Google Gemini 2.0 Flash (latest, fastest)
    * @private
    */
-  async synthesizeWithGemini(prompt) {
+  async synthesizeWithGemini(prompt, modelId) {
     const model = this.gemini.getGenerativeModel({
-      model: 'gemini-1.5-flash',
+      model: modelId,  // gemini-2.0-flash-exp for latest speed
       generationConfig: {
         temperature: 0.3,
         maxOutputTokens: 8000,
+        responseMimeType: 'application/json'  // Native JSON support in Gemini 2.0
       }
     });
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
 
-    // Gemini may wrap JSON in markdown code blocks
+    // Gemini 2.0 with responseMimeType should return pure JSON,
+    // but keep fallback for wrapped JSON
     const jsonMatch = responseText.match(/```json\n([\s\S]+?)\n```/) ||
                       responseText.match(/```\n([\s\S]+?)\n```/);
 
