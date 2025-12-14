@@ -22,6 +22,8 @@
  * Get API key at: https://www.drugbank.com/api
  */
 
+import { fetchWithTimeout } from '../../utils/fetch-with-timeout.js';
+
 export class DrugbankClient {
   constructor() {
     this.apiKey = process.env.DRUGBANK_API_KEY || '';
@@ -149,7 +151,7 @@ export class DrugbankClient {
     try {
       const url = `${this.baseUrl}/drugs?target=${geneSymbol}`;
 
-      const response = await fetch(url, {
+      const response = await fetchWithTimeout(url, {
         headers: {
           'Authorization': this.apiKey,
           'Accept': 'application/json'

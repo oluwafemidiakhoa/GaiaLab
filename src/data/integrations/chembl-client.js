@@ -18,6 +18,8 @@
  * @author Oluwafemi Idiakhoa
  */
 
+import { fetchWithTimeout } from '../../utils/fetch-with-timeout.js';
+
 const CHEMBL_API_BASE = 'https://www.ebi.ac.uk/chembl/api/data';
 
 /**
@@ -104,7 +106,7 @@ export class ChemblClient {
   async getTargetId(geneSymbol) {
     try {
       const url = `${this.baseUrl}/target/search.json?q=${encodeURIComponent(geneSymbol)}&target_organism=${encodeURIComponent(this.species)}`;
-      const response = await fetch(url);
+      const response = await fetchWithTimeout(url);
 
       if (!response.ok) {
         throw new Error(`ChEMBL target search error: ${response.status}`);
@@ -142,7 +144,7 @@ export class ChemblClient {
     try {
       // Query for activities with good potency (pChEMBL >= minActivity)
       const url = `${this.baseUrl}/activity.json?target_chembl_id=${targetId}&pchembl_value__gte=${minActivity / 10}&limit=100&offset=0`;
-      const response = await fetch(url);
+      const response = await fetchWithTimeout(url);
 
       if (!response.ok) {
         throw new Error(`ChEMBL activity search error: ${response.status}`);
@@ -188,7 +190,7 @@ export class ChemblClient {
       try {
         const moleculeId = activity.molecule_chembl_id;
         const url = `${this.baseUrl}/molecule/${moleculeId}.json`;
-        const response = await fetch(url);
+        const response = await fetchWithTimeout(url);
 
         if (!response.ok) {
           // If molecule fetch fails, use activity data only
@@ -304,7 +306,7 @@ export class ChemblClient {
   async searchCompounds(query) {
     try {
       const url = `${this.baseUrl}/molecule/search.json?q=${encodeURIComponent(query)}&limit=10`;
-      const response = await fetch(url);
+      const response = await fetchWithTimeout(url);
 
       if (!response.ok) {
         throw new Error(`ChEMBL compound search error: ${response.status}`);
