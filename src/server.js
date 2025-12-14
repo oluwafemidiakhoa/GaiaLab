@@ -194,12 +194,12 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
       generatedAtIso: nowIso,
       analysisTime: `${totalTime}ms`,
       dataSource: {
-        genes: 'UniProt',
+        genes: 'Ensembl + ClinVar + UniProt + GO', // Four-layer gene synthesis
         pathways: 'KEGG',
         literature: 'PubMed',
-        interactions: 'STRING + BioGRID', // NEW: Cross-validated protein interactions
-        clinical: 'Open Targets', // NEW: Disease association database
-        drugs: 'ChEMBL', // NEW: Bioactive compounds database
+        interactions: 'STRING + BioGRID', // Cross-validated protein interactions
+        clinical: 'Open Targets + DisGeNET', // Cross-validated disease associations
+        drugs: 'ChEMBL + DrugBank', // Cross-validated drug targets
         ai: insights.aiModel || 'Unknown AI'
       },
       disclaimer:

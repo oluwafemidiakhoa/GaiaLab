@@ -15,14 +15,17 @@
  */
 
 import { openTargetsClient } from '../integrations/opentargets-client.js';
+import { disgenetClient } from '../integrations/disgenet-client.js';
 
 /**
  * Clinical Association Aggregator
  * Synthesizes disease-gene associations from multiple clinical databases
+ *
+ * CROSS-VALIDATION: Open Targets + DisGeNET
  */
 export class ClinicalAggregator {
   constructor() {
-    this.sources = ['Open Targets']; // Will add DisGeNET, ClinVar later
+    this.sources = ['Open Targets', 'DisGeNET']; // Multi-source validation
     this.confidenceThresholds = {
       high: 0.7,    // 70%+ association score or multi-source validation
       medium: 0.4,  // 40-70% association score
@@ -49,9 +52,13 @@ export class ClinicalAggregator {
     const startTime = Date.now();
 
     try {
-      // PHASE 1: Fetch disease associations from all sources in parallel
-      const associationPromises = geneSymbols.map(gene =>
+      // PHASE 1: Fetch disease associations from ALL sources in parallel
+      const openTargetsPromises = geneSymbols.map(gene =>
         this.fetchOpenTargetsAssociations(gene, diseaseContext, minScore, maxPerGene)
+      );
+
+      const disgenetPromises = geneSymbols.map(gene =>
+        this.fetchDisGeNETAssociations(gene, diseaseContext, minScore, maxPerGene)
       );
 
       // Optionally fetch drug data in parallel
@@ -62,13 +69,17 @@ export class ClinicalAggregator {
         );
       }
 
-      const [associations, drugs] = await Promise.all([
-        Promise.all(associationPromises),
+      const [openTargetsData, disgenetData, drugs] = await Promise.all([
+        Promise.all(openTargetsPromises),
+        Promise.all(disgenetPromises),
         includeDrugs ? Promise.all(drugPromises) : Promise.resolve([])
       ]);
 
-      // PHASE 2: Merge and validate associations
-      const mergedAssociations = this.mergeAssociations(associations);
+      // Combine associations from both sources
+      const allAssociations = [...openTargetsData, ...disgenetData];
+
+      // PHASE 2: Merge and cross-validate associations
+      const mergedAssociations = this.mergeAssociations(allAssociations);
 
       // PHASE 3: Calculate aggregate statistics
       const stats = this.calculateStatistics(mergedAssociations);
@@ -115,6 +126,39 @@ export class ClinicalAggregator {
       source: 'Open Targets',
       associations: result.associations || [],
       totalDiseases: result.totalDiseases || 0,
+      error: result.error
+    };
+  }
+
+  /**
+   * Fetch associations from DisGeNET
+   * @private
+   */
+  async fetchDisGeNETAssociations(gene, diseaseContext, minScore, maxPerGene) {
+    const result = await disgenetClient.getDiseaseAssociations(gene, {
+      minScore,
+      maxResults: maxPerGene
+    });
+
+    // Convert DisGeNET format to match Open Targets format
+    const formattedAssociations = (result.associations || []).map(assoc => ({
+      disease: assoc.diseaseName,
+      diseaseId: assoc.diseaseId,
+      score: assoc.score,
+      evidenceTypes: assoc.sources?.join(', ') || 'GWAS, Literature',
+      evidenceBreakdown: [
+        {
+          type: assoc.diseaseType || 'disease',
+          score: assoc.score
+        }
+      ]
+    }));
+
+    return {
+      gene,
+      source: 'DisGeNET',
+      associations: formattedAssociations,
+      totalDiseases: result.totalAssociations || 0,
       error: result.error
     };
   }

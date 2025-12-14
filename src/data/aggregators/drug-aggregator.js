@@ -15,14 +15,17 @@
  */
 
 import { chemblClient } from '../integrations/chembl-client.js';
+import { drugbankClient } from '../integrations/drugbank-client.js';
 
 /**
  * Drug & Compound Aggregator
  * Synthesizes bioactive molecules and drug-target data from multiple sources
+ *
+ * CROSS-VALIDATION: ChEMBL + DrugBank
  */
 export class DrugAggregator {
   constructor() {
-    this.sources = ['ChEMBL']; // Will add DrugBank, PubChem later
+    this.sources = ['ChEMBL', 'DrugBank']; // Multi-source validation
     this.phaseThresholds = {
       approved: 4,       // FDA approved
       lateStage: 3,      // Phase 3 clinical trial
@@ -50,9 +53,13 @@ export class DrugAggregator {
     const startTime = Date.now();
 
     try {
-      // PHASE 1: Fetch compounds from all sources in parallel
-      const compoundPromises = geneSymbols.map(gene =>
+      // PHASE 1: Fetch compounds from ALL sources in parallel
+      const chemblPromises = geneSymbols.map(gene =>
         this.fetchChemblCompounds(gene, maxPotency, maxPerGene)
+      );
+
+      const drugbankPromises = geneSymbols.map(gene =>
+        this.fetchDrugBankTargets(gene, minPhase, maxPerGene)
       );
 
       // Optionally fetch approved drugs separately (higher confidence)
@@ -63,13 +70,17 @@ export class DrugAggregator {
         );
       }
 
-      const [compounds, approvedDrugs] = await Promise.all([
-        Promise.all(compoundPromises),
+      const [chemblData, drugbankData, approvedDrugs] = await Promise.all([
+        Promise.all(chemblPromises),
+        Promise.all(drugbankPromises),
         includeApproved ? Promise.all(approvedPromises) : Promise.resolve([])
       ]);
 
-      // PHASE 2: Merge and validate compounds
-      const mergedCompounds = this.mergeCompounds(compounds, minPhase);
+      // Combine compounds from both sources
+      const allCompounds = [...chemblData, ...drugbankData];
+
+      // PHASE 2: Merge and cross-validate compounds
+      const mergedCompounds = this.mergeCompounds(allCompounds, minPhase);
       const mergedApproved = this.mergeApprovedDrugs(approvedDrugs);
 
       // PHASE 3: Calculate aggregate statistics
@@ -119,6 +130,37 @@ export class DrugAggregator {
       source: 'ChEMBL',
       compounds: result.compounds || [],
       targetId: result.targetId,
+      error: result.error
+    };
+  }
+
+  /**
+   * Fetch drugs from DrugBank
+   * @private
+   */
+  async fetchDrugBankTargets(gene, minPhase, maxPerGene) {
+    const result = await drugbankClient.getDrugTargets(gene, {
+      minPhase,
+      includeExperimental: true,
+      approvedOnly: false
+    });
+
+    // Convert DrugBank format to match ChEMBL format
+    const formattedDrugs = (result.drugs || []).map(drug => ({
+      name: drug.drug,
+      chemblId: drug.chemblId || null,
+      drugId: drug.drugId,
+      maxPhase: drug.phase,
+      type: drug.type,
+      mechanism: drug.mechanism,
+      pChEMBL: null, // DrugBank doesn't provide pChEMBL
+      potency: drug.bindingAffinity || 'Not available'
+    }));
+
+    return {
+      gene,
+      source: 'DrugBank',
+      compounds: formattedDrugs,
       error: result.error
     };
   }
