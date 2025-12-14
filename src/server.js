@@ -32,24 +32,29 @@ const gaiaInputSchema = {
   audience: z
     .enum(["researcher", "clinician", "executive", "student"])
     .default("researcher")
-    .describe("Target audience for the explanation.")
+    .describe("Target audience for the explanation."),
+  includeDrugs: z
+    .boolean()
+    .default(true)
+    .describe("Include drug/compound data (ChEMBL + DrugBank). Set to false for faster analysis.")
 };
 
 /**
  * REVOLUTIONARY: Build real GaiaLab board using live biological data + AI synthesis
  * Replaces synthetic data with real PubMed, UniProt, KEGG integration + Claude AI
  */
-async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
+async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrugs = true }) {
   const nowIso = new Date().toISOString();
   const normalizedGenes = genes.map((g) => String(g || "").toUpperCase());
 
-  console.log(`[GaiaLab] Analyzing ${normalizedGenes.length} genes for: ${diseaseContext}`);
+  console.log(`[GaiaLab] Analyzing ${normalizedGenes.length} genes for: ${diseaseContext} (includeDrugs: ${includeDrugs})`);
 
   try {
     // PHASE 1: Fetch real data in parallel (MAXIMUM INTELLIGENCE SYNTHESIS)
     const startTime = Date.now();
 
-    const [geneData, enrichedPathways, literature, interactions, clinical, drugs] = await Promise.all([
+    // Build promises array - conditionally include drugs based on user preference
+    const dataPromises = [
       geneAggregator.fetchGeneData(normalizedGenes),
       pathwayAggregator.enrichPathways(normalizedGenes),
       literatureAggregator.searchRelevantPapers(normalizedGenes, diseaseContext, { maxResults: 30 }),
@@ -63,15 +68,25 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience }) {
         maxPerGene: 5,
         includeEvidence: true,
         includeDrugs: false
-      }),
-      drugAggregator.fetchDrugTargets(normalizedGenes, { // NEW: Bioactive compounds
-        maxPotency: 10000, // 10μM
-        minPhase: 0,
-        includeCompounds: true,
-        includeApproved: true,
-        maxPerGene: 10
       })
-    ]);
+    ];
+
+    // Conditionally add drug fetching (can be slow - let user skip for faster results)
+    if (includeDrugs) {
+      dataPromises.push(
+        drugAggregator.fetchDrugTargets(normalizedGenes, { // NEW: Bioactive compounds
+          maxPotency: 10000, // 10μM
+          minPhase: 0,
+          includeCompounds: true,
+          includeApproved: true,
+          maxPerGene: 10
+        })
+      );
+    }
+
+    const results = await Promise.all(dataPromises);
+    const [geneData, enrichedPathways, literature, interactions, clinical] = results;
+    const drugs = includeDrugs ? results[5] : { stats: { totalCompounds: 0, totalApproved: 0 }, drugTargets: [] };
 
     const fetchTime = Date.now() - startTime;
     console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms (${interactions.stats.totalInteractions} interactions, ${clinical.stats.totalAssociations} diseases, ${drugs.stats.totalCompounds} compounds)`);
