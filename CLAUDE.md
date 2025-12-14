@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### What Makes This Revolutionary
 
 - **Real Data Integration**: Live data from UniProt (proteins), KEGG (pathways), PubMed (literature)
-- **AI Synthesis**: Claude 3.5 Sonnet generates insights with citations and confidence scores
+- **AI Synthesis**: 4 AI models (DeepSeek V3, GPT-4o-mini, Gemini 2.0 Flash, Claude 3.5 Sonnet) with automatic failover generate insights with citations and confidence scores
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **60-Second Analysis**: 200x faster than manual literature review
@@ -32,14 +32,21 @@ npm run dev           # Run with nodemon (watches src/ and public/ for changes)
 
 1. **Create `.env` file** (copy from `.env.example`):
 ```bash
-ANTHROPIC_API_KEY=sk-ant-api03-...  # REQUIRED for AI synthesis
-NCBI_API_KEY=...                     # OPTIONAL for faster PubMed access
+# At least one AI API key required (DeepSeek recommended for speed)
+DEEPSEEK_API_KEY=sk-...             # RECOMMENDED - Fastest & cheapest
+OPENAI_API_KEY=sk-proj-...          # Fallback 1
+GOOGLE_API_KEY=AIzaSy...            # Fallback 2
+ANTHROPIC_API_KEY=sk-ant-api03-...  # Fallback 3
+NCBI_API_KEY=...                    # OPTIONAL for faster PubMed access
 PORT=8787
 ```
 
 2. **Get API Keys**:
-   - Anthropic: https://console.anthropic.com/ (required, ~$0.50/analysis)
-   - NCBI: https://www.ncbi.nlm.nih.gov/account/ (optional, increases rate limit)
+   - DeepSeek: https://platform.deepseek.com/ (recommended, ~$0.27/M tokens, 70% faster)
+   - OpenAI: https://platform.openai.com/ (GPT-4o-mini, ~$0.15/M input)
+   - Google: https://makersuite.google.com/ (Gemini 2.0 Flash, free tier available)
+   - Anthropic: https://console.anthropic.com/ (Claude 3.5 Sonnet, ~$3/M input)
+   - NCBI: https://www.ncbi.nlm.nih.gov/account/ (optional, increases rate limit 3→10/sec)
 
 The server listens on port 8787 by default.
 
@@ -50,7 +57,7 @@ The server listens on port 8787 by default.
 GaiaLab performs 3-phase analysis in ~15-20 seconds:
 
 1. **Parallel Data Fetch** (~5s): UniProt + KEGG + PubMed in parallel using `Promise.all()`
-2. **AI Synthesis** (~10s): Claude 3.5 Sonnet generates insights with citations
+2. **AI Synthesis** (~10s): 4 AI models (DeepSeek V3 → GPT-4o-mini → Gemini 2.0 Flash → Claude 3.5 Sonnet) with automatic failover generate insights with citations
 3. **Widget Rendering**: Display genes, pathways, citations with confidence scores
 
 ### MCP Server Design

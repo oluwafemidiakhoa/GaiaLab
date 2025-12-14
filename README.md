@@ -12,7 +12,7 @@ GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates *
 - **3 Cross-Validation Domains**: Protein interactions, disease associations, and drug targets
 - **Multi-Source Intelligence**: When independent databases agree → truth emerges with high confidence
 - **60-Second Analysis**: What takes researchers 2 weeks, GaiaLab delivers instantly
-- **AI Synthesis**: Claude 3.5 Sonnet generates insights with citations and confidence scores
+- **AI Synthesis**: 4 AI models (DeepSeek V3, GPT-4o-mini, Gemini 2.0 Flash, Claude 3.5 Sonnet) with automatic failover generate insights with citations and confidence scores
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
 
