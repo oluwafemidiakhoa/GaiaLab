@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### What Makes This Revolutionary
 
 - **Real Data Integration**: Live data from UniProt (proteins), KEGG (pathways), PubMed (literature)
-- **AI Synthesis**: 4 AI models (DeepSeek V3, GPT-4o-mini, Gemini 2.0 Flash, Claude 3.5 Sonnet) with automatic failover generate insights with citations and confidence scores
+- **AI Synthesis**: Multi-model AI architecture with automatic failover generates insights with citations and confidence scores
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **60-Second Analysis**: 200x faster than manual literature review
@@ -57,7 +57,7 @@ The server listens on port 8787 by default.
 GaiaLab performs 3-phase analysis in ~15-20 seconds:
 
 1. **Parallel Data Fetch** (~5s): UniProt + KEGG + PubMed in parallel using `Promise.all()`
-2. **AI Synthesis** (~10s): 4 AI models (DeepSeek V3 → GPT-4o-mini → Gemini 2.0 Flash → Claude 3.5 Sonnet) with automatic failover generate insights with citations
+2. **AI Synthesis** (~10s): Multi-model AI with automatic failover generates insights with citations
 3. **Widget Rendering**: Display genes, pathways, citations with confidence scores
 
 ### MCP Server Design

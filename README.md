@@ -12,7 +12,7 @@ GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates *
 - **3 Cross-Validation Domains**: Protein interactions, disease associations, and drug targets
 - **Multi-Source Intelligence**: When independent databases agree → truth emerges with high confidence
 - **60-Second Analysis**: What takes researchers 2 weeks, GaiaLab delivers instantly
-- **AI Synthesis**: 4 AI models (DeepSeek V3, GPT-4o-mini, Gemini 2.0 Flash, Claude 3.5 Sonnet) with automatic failover generate insights with citations and confidence scores
+- **AI Synthesis**: Multi-model AI architecture with automatic failover generates insights with citations and confidence scores
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
 
@@ -101,26 +101,15 @@ Server starts on **http://localhost:8787**
 
 ## 🔑 API Keys
 
-### AI Models (At Least One Required)
-GaiaLab uses automatic failover across 4 AI models:
+### AI Configuration (At Least One Required)
+GaiaLab supports multiple AI providers with automatic failover:
 
-- **DEEPSEEK_API_KEY** (Recommended): Fastest & cheapest AI model
-  - Get: https://platform.deepseek.com/
-  - Cost: ~$0.27 per 1M tokens (70% faster than Claude)
+- **DEEPSEEK_API_KEY**: Get at https://platform.deepseek.com/
+- **OPENAI_API_KEY**: Get at https://platform.openai.com/
+- **GOOGLE_API_KEY**: Get at https://makersuite.google.com/
+- **ANTHROPIC_API_KEY**: Get at https://console.anthropic.com/
 
-- **OPENAI_API_KEY**: Fast & cost-effective fallback
-  - Get: https://platform.openai.com/
-  - Cost: ~$0.15 per 1M input tokens (GPT-4o-mini)
-
-- **GOOGLE_API_KEY**: Latest Google model with free tier
-  - Get: https://makersuite.google.com/
-  - Cost: Free tier available (Gemini 2.0 Flash)
-
-- **ANTHROPIC_API_KEY**: Premium quality (slower)
-  - Get: https://console.anthropic.com/
-  - Cost: ~$3 per 1M input tokens (Claude 3.5 Sonnet)
-
-**Failover Chain**: DeepSeek V3 → GPT-4o-mini → Gemini 2.0 Flash → Claude 3.5 Sonnet
+Configure at least one API key for AI-powered synthesis.
 
 ### Data Sources (Optional - Enhance Performance)
 - **NCBI_API_KEY**: PubMed rate limit 3→10 req/sec (free)
@@ -182,14 +171,10 @@ See [.env.example](.env.example) for all configuration options.
 | Phase | Duration | Parallelization |
 |-------|----------|-----------------|
 | Data Fetch | 5-15s | 12 sources in parallel |
-| AI Synthesis | 5-20s | 4 AI models with automatic failover |
+| AI Synthesis | 5-20s | Multi-model with automatic failover |
 | **Total** | **10-35s** | 200x faster than manual |
 
-**AI Model Performance:**
-- DeepSeek V3: ~5-8s (fastest)
-- GPT-4o-mini: ~8-12s
-- Gemini 2.0 Flash: ~10-15s
-- Claude 3.5 Sonnet: ~15-20s (highest quality)
+**AI Synthesis:** 5-20s depending on model availability and data complexity
 
 ## 🧪 Usage with ChatGPT/Claude
 
@@ -214,7 +199,7 @@ See [.env.example](.env.example) for all configuration options.
 
 - **Runtime**: Node.js 22+ (ES modules)
 - **MCP SDK**: @modelcontextprotocol/sdk v1.24.3
-- **AI Models**: DeepSeek V3, GPT-4o-mini, Gemini 2.0 Flash, Claude 3.5 Sonnet (automatic failover)
+- **AI**: Multi-model architecture with automatic failover (DeepSeek, OpenAI, Google, Anthropic)
 - **Data APIs**: REST, GraphQL, E-utilities
 - **Statistics**: Fisher's exact test, hypergeometric distribution
 - **Caching**: In-memory LRU cache with 1-hour TTL (Redis in Phase 2)
@@ -259,7 +244,7 @@ gaialab-app/
 ### ✅ Phase 1: MVP (Complete - 12/12 Sources)
 - ✅ 12 biological data sources integrated
 - ✅ 3 cross-validation domains
-- ✅ Multi-model AI synthesis (DeepSeek, GPT-4o-mini, Gemini, Claude) with automatic failover
+- ✅ Multi-model AI synthesis with automatic failover across 4 providers
 - ✅ Citation validation & confidence scoring
 - ✅ Performance optimizations: Timeouts, optional drug aggregation, in-memory caching
 - ✅ Analysis time: 10-35s (200x faster than manual)
@@ -311,10 +296,10 @@ Proprietary - All Rights Reserved
 - ChEMBL / EMBL-EBI, DrugBank
 
 **AI Partners:**
-- DeepSeek (DeepSeek V3)
-- OpenAI (GPT-4o-mini)
-- Google (Gemini 2.0 Flash)
-- Anthropic (Claude 3.5 Sonnet)
+- DeepSeek
+- OpenAI
+- Google AI
+- Anthropic
 
 ---
 
@@ -322,7 +307,7 @@ Proprietary - All Rights Reserved
 
 - **12 Data Sources** integrated with cross-validation
 - **3 Validation Domains** for multi-source consensus
-- **4 AI Models** with automatic failover (DeepSeek, GPT-4o-mini, Gemini, Claude)
+- **Multi-Model AI** with automatic failover across 4 providers
 - **2.4M+ Compounds** from ChEMBL database
 - **30M+ Papers** from PubMed literature
 - **10-35 Second** average analysis time (with performance optimizations)
@@ -331,4 +316,4 @@ Proprietary - All Rights Reserved
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** • Built with Claude Code • Powered by 12 biological databases + AI • Designed to demonstrate emergent intelligence 🌍
+**🌟 Developed by Oluwafemi Idiakhoa** • Powered by 12 biological databases + multi-model AI • Designed to demonstrate emergent intelligence 🌍
