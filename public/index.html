@@ -639,6 +639,15 @@
             document.getElementById('loading').classList.add('active');
             document.getElementById('results').classList.remove('active');
 
+            // Track analysis start
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'analysis_started', {
+                    'gene_count': genes.length,
+                    'disease_context': disease,
+                    'audience': audience
+                });
+            }
+
             try {
                 const response = await fetch('/analyze', {
                     method: 'POST',
@@ -653,6 +662,17 @@
                 }
 
                 const data = await response.json();
+
+                // Track successful analysis
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'analysis_completed', {
+                        'gene_count': genes.length,
+                        'pathways_found': data.pathways?.length || 0,
+                        'citations_found': data.citations?.length || 0,
+                        'analysis_time': data.analysisTime
+                    });
+                }
+
                 displayResults(data);
 
             } catch (error) {
@@ -840,11 +860,103 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Email Signup Form -->
+                <div style="margin: 30px 0; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 20px;">📧 Want Pro Features?</h3>
+                    <p style="margin: 0 0 15px 0; opacity: 0.9; font-size: 14px;">Get PDF exports, unlimited analyses, team workspaces, and priority support. Join the waitlist!</p>
+
+                    <form id="emailSignupForm" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            placeholder="researcher@university.edu"
+                            required
+                            style="flex: 1; min-width: 250px; padding: 12px 16px; border: none; border-radius: 8px; font-size: 14px; outline: none;"
+                        >
+                        <button
+                            type="submit"
+                            id="signupBtn"
+                            style="padding: 12px 24px; background: white; color: #667eea; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; font-size: 14px; transition: all 0.3s;"
+                            onmouseover="this.style.transform='scale(1.05)'"
+                            onmouseout="this.style.transform='scale(1)'"
+                        >
+                            Join Waitlist
+                        </button>
+                    </form>
+
+                    <p id="signupMessage" style="margin: 12px 0 0 0; font-size: 13px; opacity: 0.9; display: none;"></p>
+                </div>
             `;
 
             resultsDiv.innerHTML = html;
             resultsDiv.classList.add('active');
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Track results viewed
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'results_viewed', {
+                    'gene_count': data.genes?.length || 0,
+                    'pathways_count': data.pathways?.length || 0
+                });
+            }
+
+            // Setup email signup form handler
+            setTimeout(() => {
+                const form = document.getElementById('emailSignupForm');
+                if (form) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const emailInput = document.getElementById('signupEmail');
+                        const messageEl = document.getElementById('signupMessage');
+                        const submitBtn = document.getElementById('signupBtn');
+                        const userEmail = emailInput.value;
+
+                        // Track signup attempt
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'signup_initiated', {
+                                'source': 'results_page'
+                            });
+                        }
+
+                        // Disable button during submission
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending...';
+
+                        try {
+                            // Send email via mailto (opens user's email client)
+                            const subject = encodeURIComponent('GaiaLab Pro Waitlist Signup');
+                            const body = encodeURIComponent(`New waitlist signup!\n\nEmail: ${userEmail}\n\nInterested in: Pro features (PDF exports, unlimited analyses, team workspaces, priority support)\n\nSent from: GaiaLab Results Page`);
+
+                            // Open mailto link
+                            window.location.href = `mailto:oluwafemidiakhoa@gmail.com?subject=${subject}&body=${body}`;
+
+                            // Show success message
+                            messageEl.textContent = '✅ Thanks! Opening your email client to confirm...';
+                            messageEl.style.display = 'block';
+                            emailInput.value = '';
+
+                            // Track successful signup
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'signup_completed', {
+                                    'source': 'results_page',
+                                    'email': userEmail
+                                });
+                            }
+
+                        } catch (error) {
+                            messageEl.textContent = '❌ Error. Please email oluwafemidiakhoa@gmail.com directly.';
+                            messageEl.style.display = 'block';
+                            console.error('Signup error:', error);
+                        } finally {
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Join Waitlist';
+                        }
+                    });
+                }
+            }, 100);
         }
     </script>
 </body>
