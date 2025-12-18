@@ -752,7 +752,36 @@
                         <div class="pathway-card">
                             <h4>${pathway.name || pathway.label}</h4>
                             <p>${pathway.rationale || 'Pathway analysis in progress...'}</p>
-                            <div>
+
+                            ${pathway.molecularMechanism ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(102, 126, 234, 0.05); border-left: 3px solid #667eea; border-radius: 4px;">
+                                    <strong style="color: #667eea;">⚙️ Molecular Mechanism:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${pathway.molecularMechanism}</p>
+                                </div>
+                            ` : ''}
+
+                            ${pathway.regulation ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(76, 175, 80, 0.05); border-left: 3px solid #4CAF50; border-radius: 4px;">
+                                    <strong style="color: #4CAF50;">🔄 Regulation:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${pathway.regulation}</p>
+                                </div>
+                            ` : ''}
+
+                            ${pathway.experimentalEvidence ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(156, 39, 176, 0.05); border-left: 3px solid #9C27B0; border-radius: 4px;">
+                                    <strong style="color: #9C27B0;">🔬 Experimental Evidence:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${pathway.experimentalEvidence}</p>
+                                </div>
+                            ` : ''}
+
+                            ${pathway.controversies ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(255, 152, 0, 0.05); border-left: 3px solid #FF9800; border-radius: 4px;">
+                                    <strong style="color: #FF9800;">💭 Controversies:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${pathway.controversies}</p>
+                                </div>
+                            ` : ''}
+
+                            <div style="margin-top: 12px;">
                                 ${pathway.pvalue ? `<span class="pvalue">p = ${pathway.pvalue.toExponential(2)}</span>` : ''}
                                 ${pathway.confidence ? `<span class="badge ${confidenceBadge}">${pathway.confidence} confidence</span>` : ''}
                                 ${pathway.significance ? `<span class="badge ${significanceBadge}">${pathway.significance}</span>` : ''}
@@ -793,7 +822,36 @@
                         <div class="insight-card">
                             <h4>${strategy.label}</h4>
                             <p>${strategy.rationale || strategy.description || 'Strategy analysis in progress...'}</p>
-                            <div>
+
+                            ${strategy.molecularTarget ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(102, 126, 234, 0.05); border-left: 3px solid #667eea; border-radius: 4px;">
+                                    <strong style="color: #667eea;">🎯 Molecular Target:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.molecularTarget}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.clinicalEvidence ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(76, 175, 80, 0.05); border-left: 3px solid #4CAF50; border-radius: 4px;">
+                                    <strong style="color: #4CAF50;">🏥 Clinical Evidence:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.clinicalEvidence}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.experimentalSupport ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(156, 39, 176, 0.05); border-left: 3px solid #9C27B0; border-radius: 4px;">
+                                    <strong style="color: #9C27B0;">🔬 Experimental Support:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.experimentalSupport}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.limitations ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(255, 152, 0, 0.05); border-left: 3px solid #FF9800; border-radius: 4px;">
+                                    <strong style="color: #FF9800;">⚠️ Limitations:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.limitations}</p>
+                                </div>
+                            ` : ''}
+
+                            <div style="margin-top: 12px;">
                                 ${strategy.riskLevel ? `<span class="badge ${riskBadge}">${strategy.riskLevel} risk</span>` : ''}
                                 ${strategy.confidence ? `<span class="badge ${confidenceBadge}">${strategy.confidence} confidence</span>` : ''}
                             </div>
