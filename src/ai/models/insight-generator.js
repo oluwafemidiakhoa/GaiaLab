@@ -205,7 +205,13 @@ export class InsightGenerator {
    */
   buildSynthesisPrompt({ genes, pathways, literature, diseaseContext, audience }) {
     const audienceGuidance = {
-      researcher: 'Use technical terminology and emphasize mechanistic details, molecular pathways, and experimental approaches.',
+      researcher: `Use technical terminology with MECHANISTIC DEPTH:
+        - Specific enzymes, substrates, and cofactors (e.g., "BACE1 cleavage of APP at Asp672")
+        - Post-translational modifications (phosphorylation sites, ubiquitination targets)
+        - Upstream regulators and downstream effectors
+        - Experimental evidence basis (knockout models, patient cohort data, cell line studies)
+        - Tissue-specific expression patterns when relevant
+        - Contradictory findings or debates in the literature`,
       clinician: 'Focus on clinical relevance, therapeutic implications, and patient outcomes. Use medical terminology.',
       executive: 'Emphasize strategic implications, market opportunities, and high-level scientific significance.',
       student: 'Explain concepts clearly with educational context. Balance technical accuracy with accessibility.'
@@ -247,71 +253,94 @@ ${JSON.stringify(literatureInfo, null, 2)}
 
 **AUDIENCE:** ${audience} - ${audienceGuidance[audience] || audienceGuidance.researcher}
 
-**TASK:** Synthesize this data into actionable insights. Return ONLY valid JSON (no markdown, no explanations) with this exact structure:
+**TASK:** Synthesize this data into PhD-level mechanistic insights. Return ONLY valid JSON (no markdown, no explanations) with this exact structure:
 
 {
   "pathwayInsights": [
     {
       "pathway": "pathway name",
-      "significance": "why this pathway is important in this context",
-      "mechanisticRole": "brief description of how these genes affect this pathway",
+      "significance": "why this pathway is critically important in this disease context",
+      "molecularMechanism": "SPECIFIC molecular details: enzyme names, substrates, post-translational modifications, binding sites (e.g., 'BACE1 cleaves APP at Asp672 to generate C99 fragment, which γ-secretase processes to Aβ40/42')",
+      "regulation": "upstream activators and downstream effectors with specific genes/proteins",
+      "experimentalEvidence": "what experimental models support this (knockout mice, patient cohorts, specific cell lines, assays used)",
+      "controversies": "any contradictory findings or ongoing debates in the literature (or 'Well-established' if consensus)",
       "citations": ["PMID:12345", "PMID:67890"],
       "confidence": "high|medium|low"
     }
   ],
   "therapeuticInsights": [
     {
-      "strategy": "therapeutic approach or target",
-      "rationale": "why this is promising based on the data",
-      "supportingEvidence": "specific genes/pathways/papers that support this",
-      "citations": ["PMID:12345"],
+      "strategy": "specific therapeutic approach with molecular target",
+      "molecularTarget": "exact protein/enzyme being targeted and mechanism (e.g., 'BACE1 inhibition to reduce Aβ production')",
+      "rationale": "mechanistic explanation for why this should work, citing specific genes/pathways",
+      "clinicalEvidence": "current clinical stage, trial results if mentioned in literature, or preclinical status",
+      "experimentalSupport": "which papers describe validation (models used, efficacy data)",
+      "limitations": "known challenges or why similar approaches failed (e.g., 'Previous BACE1 inhibitors showed cognitive side effects')",
+      "citations": ["PMID:12345", "PMID:67890"],
       "confidence": "high|medium|low",
       "riskLevel": "low|medium|high"
     }
   ],
   "novelHypotheses": [
     {
-      "hypothesis": "novel connection or unexplored angle",
-      "reasoning": "why this is worth investigating",
-      "testableApproach": "how this could be validated",
+      "hypothesis": "novel mechanistic connection or unexplored therapeutic angle based on the data",
+      "mechanisticBasis": "specific molecular reasoning from pathway crosstalk or gene interactions",
+      "testableApproach": "concrete experimental design to validate (specific assays, models, readouts)",
       "citations": ["PMID:12345"],
       "confidence": "low|medium"
     }
   ],
   "literatureThemes": [
     {
-      "theme": "major research theme from literature",
-      "summary": "what the literature says about this theme",
-      "keyFindings": ["finding 1", "finding 2"],
+      "theme": "major research theme from recent literature",
+      "summary": "what the literature consensus is on this theme",
+      "keyMechanisticFindings": ["specific molecular finding 1 with genes/proteins", "specific finding 2"],
+      "experimentalApproaches": ["common models/assays used to study this"],
       "citations": ["PMID:12345", "PMID:67890"]
     }
   ]
 }
 
-**REQUIREMENTS:**
-1. EVERY insight MUST cite at least 2 PubMed IDs from the provided literature (format: "PMID:12345")
-2. Confidence = "high" if 6+ papers support it, "medium" if 2-5 papers, "low" if only conceptual
-3. Be specific - mention gene symbols and pathway names
-4. For therapeuticInsights, riskLevel = "low" for validated targets, "medium" for emerging targets, "high" for speculative
-5. Return 3-5 items per category
-6. Use ONLY information from the provided data - do not invent citations
+**CRITICAL REQUIREMENTS FOR PHD-LEVEL ANALYSIS:**
+1. MECHANISTIC DEPTH IS MANDATORY:
+   - Name specific enzymes, substrates, binding sites, phosphorylation sites
+   - Describe molecular interactions in detail (e.g., "PKA phosphorylates CREB at Ser133")
+   - Include experimental evidence basis (what models/assays were used)
+
+2. CITATION QUALITY OVER QUANTITY:
+   - Prioritize review papers from Nature Reviews, Annual Reviews, Cell Reviews
+   - Cite seminal discovery papers (highly cited foundational studies)
+   - Every insight needs at least 2 citations, preferably including 1 review paper
+
+3. ACKNOWLEDGE UNCERTAINTY:
+   - If findings are contradictory, say so in "controversies" field
+   - If therapeutic approach has failed before, mention it in "limitations"
+   - Don't oversell - be scientifically honest
+
+4. SPECIFICITY REQUIRED:
+   - BAD: "This pathway is involved in disease progression"
+   - GOOD: "Aβ oligomers activate microglia via TREM2, triggering inflammatory cytokine release (IL-1β, TNF-α)"
+
+5. Return 3-4 items per category (quality over quantity)
+6. Use ONLY information extractable from the provided literature - cite PMID numbers accurately
 
 Return ONLY the JSON object, nothing else.`;
   }
 
   /**
-   * Validate insights and add confidence scores
+   * Validate insights and add confidence scores based on paper quality
    * @private
    */
   validateAndEnhanceInsights(insights, literature) {
     const validPmids = new Set(literature.map(p => p.pmid));
+    const literatureMap = new Map(literature.map(p => [p.pmid, p]));
 
     // Validate pathway insights
     if (insights.pathwayInsights) {
       insights.pathwayInsights = insights.pathwayInsights.map(insight => ({
         ...insight,
         citations: this.validateCitations(insight.citations || [], validPmids),
-        confidence: this.calculateConfidence(insight.citations || [])
+        confidence: this.calculateConfidenceByQuality(insight.citations || [], literatureMap)
       }));
     }
 
@@ -320,7 +349,7 @@ Return ONLY the JSON object, nothing else.`;
       insights.therapeuticInsights = insights.therapeuticInsights.map(insight => ({
         ...insight,
         citations: this.validateCitations(insight.citations || [], validPmids),
-        confidence: this.calculateConfidence(insight.citations || [])
+        confidence: this.calculateConfidenceByQuality(insight.citations || [], literatureMap)
       }));
     }
 
@@ -329,7 +358,7 @@ Return ONLY the JSON object, nothing else.`;
       insights.novelHypotheses = insights.novelHypotheses.map(insight => ({
         ...insight,
         citations: this.validateCitations(insight.citations || [], validPmids),
-        confidence: 'low' // Hypotheses are always low confidence
+        confidence: 'low' // Hypotheses are always low confidence by nature
       }));
     }
 
@@ -356,13 +385,54 @@ Return ONLY the JSON object, nothing else.`;
   }
 
   /**
-   * Calculate confidence score based on number of citations
+   * Calculate confidence based on PAPER QUALITY, not just quantity
+   * High = Multiple review papers from top journals (Nature Reviews, Annual Reviews)
+   * Medium = Mix of review + research papers from high-impact journals
+   * Low = Only research papers or low-impact journals
    * @private
    */
-  calculateConfidence(citations) {
-    const count = citations.length;
-    if (count >= 6) return 'high';
-    if (count >= 2) return 'medium';
+  calculateConfidenceByQuality(citations, literatureMap) {
+    if (citations.length === 0) return 'low';
+
+    const papers = citations.map(citation => {
+      const pmid = citation.replace('PMID:', '');
+      return literatureMap.get(pmid);
+    }).filter(p => p);
+
+    if (papers.length === 0) return 'low';
+
+    // Count high-quality review papers (Nature Reviews, Annual Reviews, Cell Reviews)
+    const reviewJournals = ['nat rev', 'nature reviews', 'annu rev', 'annual review', 'cell rev', 'trends'];
+    const highQualityReviews = papers.filter(p => {
+      const journalLower = (p.journal || '').toLowerCase();
+      const isReviewJournal = reviewJournals.some(j => journalLower.includes(j));
+      const isReview = p.isReview || p.publicationTypes?.includes('Review');
+      return isReviewJournal || isReview;
+    });
+
+    // Count top-tier research papers (Nature, Science, Cell, high citations)
+    const topJournals = ['nature', 'science', 'cell', 'nejm', 'lancet'];
+    const topTierPapers = papers.filter(p => {
+      const journalLower = (p.journal || '').toLowerCase();
+      const isTopJournal = topJournals.some(j => journalLower.includes(j));
+      const highCitations = (p.citationCount || 0) > 100;
+      return isTopJournal || highCitations;
+    });
+
+    // HIGH: 2+ review papers OR 1+ review + 2+ top-tier papers
+    if (highQualityReviews.length >= 2) {
+      return 'high';
+    }
+    if (highQualityReviews.length >= 1 && topTierPapers.length >= 2) {
+      return 'high';
+    }
+
+    // MEDIUM: 1 review paper OR 2+ top-tier papers
+    if (highQualityReviews.length >= 1 || topTierPapers.length >= 2) {
+      return 'medium';
+    }
+
+    // LOW: Only regular research papers or low-impact journals
     return 'low';
   }
 

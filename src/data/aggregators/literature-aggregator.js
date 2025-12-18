@@ -38,33 +38,73 @@ export class LiteratureAggregator {
 
   /**
    * Rank papers by relevance to the gene list
+   * Prioritizes: review papers, high-impact journals, seminal studies
    * @private
    */
   rankPapersByRelevance(papers, genes) {
     return papers.map(paper => {
       let relevanceScore = paper.relevanceScore || 1.0;
 
+      // PRIORITY 1: Review papers (2x weight for authoritative overviews)
+      const isReview = paper.publicationTypes?.includes('Review') ||
+                       paper.publicationTypes?.includes('Journal Article Review') ||
+                       paper.title.toLowerCase().includes('review:') ||
+                       paper.abstract.toLowerCase().includes('this review');
+      if (isReview) {
+        relevanceScore *= 2.0;
+      }
+
+      // PRIORITY 2: High-impact review journals (definitive sources)
+      const reviewJournals = [
+        'nat rev', 'nature reviews', 'annu rev', 'annual review',
+        'cell rev', 'trends', 'curr opin', 'crit rev'
+      ];
+      const journalLower = paper.journal.toLowerCase();
+      if (reviewJournals.some(j => journalLower.includes(j))) {
+        relevanceScore *= 1.8;
+      }
+
+      // PRIORITY 3: Top-tier research journals
+      const topJournals = [
+        'nature', 'science', 'cell', 'nejm', 'lancet',
+        'nat genet', 'nat biotechnol', 'nat neurosci', 'nat med',
+        'cell stem cell', 'neuron', 'immunity', 'cancer cell'
+      ];
+      if (topJournals.some(j => journalLower.includes(j)) && !reviewJournals.some(j => journalLower.includes(j))) {
+        relevanceScore *= 1.5;
+      }
+
+      // PRIORITY 4: Seminal papers (highly cited older papers = foundational)
+      const citationCount = paper.citationCount || 0;
+      if (citationCount > 500) {
+        relevanceScore *= 1.6; // Seminal discovery papers
+      } else if (citationCount > 100) {
+        relevanceScore *= 1.3; // Highly influential
+      }
+
       // Boost score based on number of mentioned genes
       const mentionedCount = paper.mentionedGenes?.length || 0;
       relevanceScore *= (1 + mentionedCount * 0.2);
 
-      // Boost recent papers (exponential decay from current year)
+      // Balance recency vs. established findings
       const currentYear = new Date().getFullYear();
       const paperYear = parseInt(paper.year) || currentYear - 10;
       const yearDiff = currentYear - paperYear;
-      const recencyBoost = Math.exp(-yearDiff / 3); // Decay over ~3 years
-      relevanceScore *= (0.5 + 0.5 * recencyBoost);
 
-      // Boost high-impact journals (simplified - could use impact factors)
-      const highImpactJournals = ['nature', 'science', 'cell', 'pnas', 'jama'];
-      const journalLower = paper.journal.toLowerCase();
-      if (highImpactJournals.some(j => journalLower.includes(j))) {
-        relevanceScore *= 1.3;
+      // Prefer papers from last 2-5 years (validated but current)
+      if (yearDiff >= 2 && yearDiff <= 5) {
+        relevanceScore *= 1.2;
+      } else if (yearDiff < 2) {
+        relevanceScore *= 0.9; // Too recent = not yet validated
+      } else if (yearDiff > 10 && citationCount < 100) {
+        relevanceScore *= 0.7; // Old + low citations = less relevant
       }
 
       return {
         ...paper,
-        relevanceScore
+        relevanceScore,
+        isReview, // Flag for display purposes
+        citationCount
       };
     }).sort((a, b) => b.relevanceScore - a.relevanceScore);
   }
