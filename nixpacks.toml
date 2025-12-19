@@ -6,7 +6,7 @@
 nixPkgs = ["nodejs-22_x"]
 
 [phases.install]
-cmds = ["npm ci --only=production"]
+cmds = ["npm install --omit=dev"]
 
 [start]
 cmd = "npm start"
