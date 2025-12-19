@@ -257,6 +257,160 @@ export class LiteratureAggregator {
       url: `https://pubmed.ncbi.nlm.nih.gov/${paper.pmid}/`
     }));
   }
+
+  /**
+   * Extract leading researchers from literature corpus
+   * Identifies prolific authors with high-impact contributions
+   * @param {Array<Object>} papers - Papers with Semantic Scholar author data
+   * @returns {Array} Top researchers with metrics
+   */
+  extractLeadingResearchers(papers) {
+    if (!papers || papers.length === 0) {
+      return [];
+    }
+
+    // Map to track author contributions
+    const authorMap = new Map();
+
+    for (const paper of papers) {
+      // Use Semantic Scholar author data if available, fallback to PubMed authors string
+      const authors = paper.semanticAuthors || [];
+      const citationCount = paper.citationCount || 0;
+
+      if (authors.length === 0) continue;
+
+      // Process each author (prioritize first/last authors = typically PI/senior author)
+      authors.forEach((author, index) => {
+        const authorId = author.authorId || author.name;
+        const name = author.name;
+
+        if (!name || !authorId) return;
+
+        if (!authorMap.has(authorId)) {
+          authorMap.set(authorId, {
+            authorId,
+            name,
+            paperCount: 0,
+            totalCitations: 0,
+            papers: [],
+            isFirstAuthor: 0,
+            isLastAuthor: 0
+          });
+        }
+
+        const authorData = authorMap.get(authorId);
+        authorData.paperCount++;
+        authorData.totalCitations += citationCount;
+        authorData.papers.push({
+          pmid: paper.pmid,
+          title: paper.title,
+          year: paper.year,
+          citationCount
+        });
+
+        // Track authorship position (first = early career/did work, last = PI/senior)
+        if (index === 0) authorData.isFirstAuthor++;
+        if (index === authors.length - 1) authorData.isLastAuthor++;
+      });
+    }
+
+    // Convert to array and calculate impact score
+    const researchers = Array.from(authorMap.values()).map(author => {
+      // Impact score: weighted by papers, citations, and senior authorship
+      const avgCitations = author.totalCitations / author.paperCount;
+      const seniorAuthorBonus = author.isLastAuthor * 1.5; // Last author = PI
+      const impactScore = (author.paperCount * 10) + (avgCitations * 2) + seniorAuthorBonus;
+
+      return {
+        ...author,
+        avgCitations: Math.round(avgCitations),
+        impactScore: Math.round(impactScore),
+        topPaper: author.papers.sort((a, b) => b.citationCount - a.citationCount)[0]
+      };
+    });
+
+    // Sort by impact score and return top 10
+    return researchers
+      .sort((a, b) => b.impactScore - a.impactScore)
+      .slice(0, 10)
+      .map(r => ({
+        name: r.name,
+        paperCount: r.paperCount,
+        totalCitations: r.totalCitations,
+        avgCitations: r.avgCitations,
+        topPaper: r.topPaper,
+        role: r.isLastAuthor > r.isFirstAuthor ? 'Senior Researcher' : 'Active Contributor'
+      }));
+  }
+
+  /**
+   * Get recommended papers based on current literature set
+   * Uses Semantic Scholar recommendations for the most relevant papers
+   * @param {Array<Object>} papers - Base papers to get recommendations from
+   * @param {number} limit - Number of recommendations to return
+   * @returns {Promise<Array>} Recommended papers
+   */
+  async getRecommendedPapers(papers, limit = 5) {
+    if (!papers || papers.length === 0) {
+      return [];
+    }
+
+    // Check if Semantic Scholar is configured
+    if (!this.semanticScholar.isConfigured()) {
+      console.log('[Recommendations] Semantic Scholar not configured - skipping');
+      return [];
+    }
+
+    try {
+      // Get recommendations from top 3 most cited papers
+      const topPapers = papers
+        .filter(p => p.citationCount > 0)
+        .sort((a, b) => b.citationCount - a.citationCount)
+        .slice(0, 3);
+
+      if (topPapers.length === 0) return [];
+
+      console.log(`[Recommendations] Fetching recommendations from ${topPapers.length} top papers...`);
+
+      // Fetch recommendations in parallel
+      const recommendationPromises = topPapers.map(paper =>
+        this.semanticScholar.getRecommendations(paper.pmid, 3)
+      );
+
+      const allRecommendations = await Promise.all(recommendationPromises);
+
+      // Flatten and deduplicate recommendations
+      const seenPapers = new Set(papers.map(p => p.pmid));
+      const uniqueRecs = [];
+
+      for (const recs of allRecommendations) {
+        for (const rec of recs) {
+          const pmid = rec.externalIds?.PubMed;
+          if (!pmid || seenPapers.has(pmid)) continue;
+
+          seenPapers.add(pmid);
+          uniqueRecs.push({
+            pmid,
+            title: rec.title,
+            year: rec.year,
+            citationCount: rec.citationCount,
+            authors: rec.authors?.slice(0, 3).map(a => a.name).join(', ') || 'Unknown',
+            openAccessUrl: rec.openAccessPdf?.url || null
+          });
+        }
+      }
+
+      console.log(`[Recommendations] Found ${uniqueRecs.length} unique recommendations`);
+
+      // Sort by citation count and return top N
+      return uniqueRecs
+        .sort((a, b) => b.citationCount - a.citationCount)
+        .slice(0, limit);
+    } catch (error) {
+      console.error('[Recommendations] Error fetching recommendations:', error.message);
+      return [];
+    }
+  }
 }
 
 // Export singleton instance

@@ -107,6 +107,23 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
     const fetchTime = Date.now() - startTime;
     console.log(`[GaiaLab] Fetched real data in ${fetchTime}ms (${interactions.stats.totalInteractions} interactions, ${clinical.stats.totalAssociations} diseases, ${drugs.stats.totalCompounds} compounds)`);
 
+    // PHASE 1.5: Extract literature insights (authors, recommendations)
+    const literatureInsightsStart = Date.now();
+
+    const leadingResearchers = literatureAggregator.extractLeadingResearchers(literature);
+    const recommendedPapers = await literatureAggregator.getRecommendedPapers(literature, 5);
+
+    // Create Open Access metadata map
+    const openAccessMap = literature.reduce((map, paper) => {
+      if (paper.pmid && paper.openAccessUrl) {
+        map[paper.pmid] = paper.openAccessUrl;
+      }
+      return map;
+    }, {});
+
+    const literatureInsightsTime = Date.now() - literatureInsightsStart;
+    console.log(`[GaiaLab] Literature insights extracted in ${literatureInsightsTime}ms (${leadingResearchers.length} researchers, ${recommendedPapers.length} recommendations, ${Object.keys(openAccessMap).length} OA papers)`);
+
     // PHASE 2: AI synthesis using Claude
     const aiStartTime = Date.now();
 
@@ -254,6 +271,15 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
           : []
       },
       citations: literatureAggregator.formatCitations(literature.slice(0, 20)),
+      citationCounts: literature.reduce((map, paper) => {
+        if (paper.pmid && paper.citationCount !== undefined) {
+          map[paper.pmid] = paper.citationCount;
+        }
+        return map;
+      }, {}), // NEW: Map of PMID → citation count for UI display
+      openAccessMap, // NEW: Map of PMID → Open Access PDF URL
+      leadingResearchers, // NEW: Top researchers from literature corpus
+      recommendedPapers, // NEW: Related papers from Semantic Scholar
       totalPapersUsed, // NEW: Actual count of unique PMIDs used by AI
       audience,
       audienceLabel: audienceLabels[audience] || "Contextual view",
@@ -262,11 +288,20 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
       dataSource: {
         genes: 'Ensembl + ClinVar + UniProt + GO', // Four-layer gene synthesis
         pathways: 'KEGG',
-        literature: 'PubMed',
+        literature: 'PubMed + Semantic Scholar', // Enhanced with citation metrics
         interactions: 'STRING + BioGRID', // Cross-validated protein interactions
         clinical: 'Open Targets + DisGeNET', // Cross-validated disease associations
-        drugs: 'ChEMBL + DrugBank', // Cross-validated drug targets
+        drugs: 'ChEMBL (2.4M+ compounds) + DrugBank', // Cross-validated drug targets
         ai: insights.aiModel || 'Unknown AI'
+      },
+      databaseStats: {
+        totalDatabases: 13,
+        bioactiveCompounds: '2.4M+',
+        databases: [
+          'UniProt', 'KEGG', 'PubMed', 'STRING', 'Open Targets',
+          'BioGRID', 'Gene Ontology', 'Ensembl', 'DisGeNET',
+          'ClinVar', 'ChEMBL', 'DrugBank', 'Semantic Scholar'
+        ]
       },
       disclaimer:
         "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",

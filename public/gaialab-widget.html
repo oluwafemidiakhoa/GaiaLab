@@ -239,17 +239,49 @@
         color: #60a5fa;
         text-decoration: none;
         font-size: 0.7rem;
-        margin-right: 6px;
+        margin-right: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
       }
 
       .citation-link:hover {
         text-decoration: underline;
       }
 
+      .citation-count {
+        font-size: 0.65rem;
+        color: #9ca3af;
+        font-weight: 500;
+      }
+
+      .citation-impact {
+        font-size: 0.8rem;
+        margin-left: 2px;
+      }
+
+      .oa-indicator {
+        font-size: 0.7rem;
+        margin-left: 4px;
+        color: #22c55e;
+        text-decoration: none;
+      }
+
+      .oa-indicator:hover {
+        color: #16a34a;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
       .citations-section {
         margin-top: 8px;
         padding-top: 6px;
         border-top: 1px solid #1f2937;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
       }
 
       .data-source-badge {
@@ -312,10 +344,10 @@
         <div class="title">
           <div class="pill">
             <span class="pill-dot"></span>
-            GaiaLab · Conceptual Insight Board
+            GaiaLab · 13 Database Integration
           </div>
           <h2>Living Systems Design Canvas</h2>
-          <span>High-level exploratory view over genes, pathways, and therapeutic directions.</span>
+          <span>Powered by 13 biological databases · 2.4M+ bioactive compounds · Citation-enriched insights</span>
         </div>
         <div class="controls">
           <label for="audience-select">Audience</label>
@@ -325,6 +357,14 @@
             <option value="executive">Executive</option>
             <option value="student">Student</option>
           </select>
+          <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+            <input type="checkbox" id="oa-toggle" style="cursor: pointer;">
+            <span>Open Access Only</span>
+          </label>
+          <div style="display: flex; gap: 4px; margin-left: 12px;">
+            <button id="export-csv-btn" style="font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; border: 1px solid #374151; background: #020617; color: #e5e7eb; cursor: pointer;">📄 CSV</button>
+            <button id="export-json-btn" style="font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; border: 1px solid #374151; background: #020617; color: #e5e7eb; cursor: pointer;">💾 JSON</button>
+          </div>
         </div>
       </header>
 
@@ -352,6 +392,16 @@
           <h3>Conceptual Directions</h3>
           <ul class="list" id="strategies-list"></ul>
         </section>
+
+        <section class="card" id="researchers-card">
+          <h3>Leading Researchers</h3>
+          <ul class="list" id="researchers-list"></ul>
+        </section>
+
+        <section class="card" id="recommendations-card">
+          <h3>Related Papers</h3>
+          <ul class="list" id="recommendations-list"></ul>
+        </section>
       </section>
 
       <footer id="footer">
@@ -374,10 +424,14 @@
       const topicsListEl = document.querySelector("#topics-list");
       const pathwaysListEl = document.querySelector("#pathways-list");
       const strategiesListEl = document.querySelector("#strategies-list");
+      const researchersListEl = document.querySelector("#researchers-list");
+      const recommendationsListEl = document.querySelector("#recommendations-list");
       const audienceSelectEl = document.querySelector("#audience-select");
+      const oaToggleEl = document.querySelector("#oa-toggle");
       const timestampEl = document.querySelector("#timestamp");
 
       let board = window.openai?.toolOutput ?? null;
+      let oaFilterEnabled = false;
 
       const renderSummary = () => {
         summaryEl.innerHTML = "";
@@ -498,7 +552,51 @@
               link.href = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
               link.target = "_blank";
               link.className = "citation-link";
-              link.textContent = citation;
+
+              // Display PMID
+              link.appendChild(document.createTextNode(citation));
+
+              // Add citation count if available
+              if (board.citationCounts && board.citationCounts[pmid] !== undefined) {
+                const count = board.citationCounts[pmid];
+                const countSpan = document.createElement("span");
+                countSpan.className = "citation-count";
+                countSpan.textContent = `(${count.toLocaleString()})`;
+                link.appendChild(countSpan);
+
+                // Add impact indicator for highly cited papers
+                if (count >= 500) {
+                  const fire = document.createElement("span");
+                  fire.className = "citation-impact";
+                  fire.textContent = "🔥";
+                  fire.title = "Seminal paper (500+ citations)";
+                  link.appendChild(fire);
+                } else if (count >= 100) {
+                  const star = document.createElement("span");
+                  star.className = "citation-impact";
+                  star.textContent = "⭐";
+                  star.title = "Highly influential (100+ citations)";
+                  link.appendChild(star);
+                }
+              }
+
+              // Add Open Access indicator if available
+              const hasOA = board.openAccessMap && board.openAccessMap[pmid];
+              if (hasOA) {
+                const oaLink = document.createElement("a");
+                oaLink.href = board.openAccessMap[pmid];
+                oaLink.target = "_blank";
+                oaLink.className = "oa-indicator";
+                oaLink.textContent = "📄 OA";
+                oaLink.title = "Open Access PDF available";
+                link.appendChild(oaLink);
+              }
+
+              // Apply OA filter if enabled
+              if (oaFilterEnabled && !hasOA) {
+                link.classList.add("hidden");
+              }
+
               citationsDiv.appendChild(link);
             });
 
@@ -531,7 +629,42 @@
 
         sourceBadges.innerHTML = "";
 
-        if (board?.dataSource) {
+        // Show 13 database integration
+        if (board?.databaseStats) {
+          const statsDiv = document.createElement("div");
+          statsDiv.style.display = "flex";
+          statsDiv.style.flexWrap = "wrap";
+          statsDiv.style.gap = "4px";
+          statsDiv.style.alignItems = "center";
+
+          // Total databases badge
+          const totalBadge = document.createElement("span");
+          totalBadge.className = "data-source-badge";
+          totalBadge.style.background = "rgba(34, 197, 94, 0.2)";
+          totalBadge.style.borderColor = "rgba(34, 197, 94, 0.5)";
+          totalBadge.style.color = "#86efac";
+          totalBadge.textContent = `${board.databaseStats.totalDatabases} Databases`;
+          statsDiv.appendChild(totalBadge);
+
+          // Individual database badges
+          board.databaseStats.databases.forEach((db) => {
+            const badge = document.createElement("span");
+            badge.className = "data-source-badge";
+            badge.textContent = db;
+            statsDiv.appendChild(badge);
+          });
+
+          // Compounds badge
+          const compoundsBadge = document.createElement("span");
+          compoundsBadge.className = "data-source-badge";
+          compoundsBadge.style.background = "rgba(59, 130, 246, 0.2)";
+          compoundsBadge.style.borderColor = "rgba(59, 130, 246, 0.5)";
+          compoundsBadge.textContent = `${board.databaseStats.bioactiveCompounds} Bioactive Compounds`;
+          statsDiv.appendChild(compoundsBadge);
+
+          sourceBadges.appendChild(statsDiv);
+        } else if (board?.dataSource) {
+          // Fallback to old format if databaseStats not available
           const sources = [
             { name: "Genes", value: board.dataSource.genes },
             { name: "Pathways", value: board.dataSource.pathways },
@@ -550,6 +683,103 @@
         if (disclaimerEl && board?.disclaimer) {
           disclaimerEl.textContent = board.disclaimer;
         }
+      };
+
+      const renderResearchers = () => {
+        researchersListEl.innerHTML = "";
+
+        if (!board || !board.leadingResearchers || board.leadingResearchers.length === 0) {
+          const li = document.createElement("li");
+          li.textContent = "Leading researchers will appear when literature data is available.";
+          li.style.color = "#6b7280";
+          li.style.fontStyle = "italic";
+          researchersListEl.appendChild(li);
+          return;
+        }
+
+        board.leadingResearchers.forEach((researcher) => {
+          const li = document.createElement("li");
+
+          const nameDiv = document.createElement("div");
+          nameDiv.className = "list-item-title";
+          nameDiv.textContent = researcher.name;
+
+          const roleSpan = document.createElement("span");
+          roleSpan.style.fontSize = "0.65rem";
+          roleSpan.style.color = "#9ca3af";
+          roleSpan.style.marginLeft = "8px";
+          roleSpan.textContent = researcher.role || "Contributor";
+          nameDiv.appendChild(roleSpan);
+
+          const statsDiv = document.createElement("div");
+          statsDiv.className = "list-item-body";
+          statsDiv.textContent = `${researcher.paperCount} papers · ${researcher.totalCitations.toLocaleString()} citations · ${researcher.avgCitations} avg`;
+
+          if (researcher.topPaper) {
+            const topPaperDiv = document.createElement("div");
+            topPaperDiv.style.fontSize = "0.65rem";
+            topPaperDiv.style.color = "#6b7280";
+            topPaperDiv.style.marginTop = "4px";
+            topPaperDiv.innerHTML = `<strong>Top paper:</strong> ${researcher.topPaper.title?.substring(0, 80) || 'Unknown'}... (${researcher.topPaper.citationCount} citations)`;
+            statsDiv.appendChild(topPaperDiv);
+          }
+
+          li.appendChild(nameDiv);
+          li.appendChild(statsDiv);
+          researchersListEl.appendChild(li);
+        });
+      };
+
+      const renderRecommendations = () => {
+        recommendationsListEl.innerHTML = "";
+
+        if (!board || !board.recommendedPapers || board.recommendedPapers.length === 0) {
+          const li = document.createElement("li");
+          li.textContent = "Related paper recommendations will appear when available.";
+          li.style.color = "#6b7280";
+          li.style.fontStyle = "italic";
+          recommendationsListEl.appendChild(li);
+          return;
+        }
+
+        board.recommendedPapers.forEach((paper) => {
+          const li = document.createElement("li");
+
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "list-item-title";
+          titleDiv.textContent = paper.title;
+
+          const metaDiv = document.createElement("div");
+          metaDiv.className = "list-item-body";
+          metaDiv.innerHTML = `${paper.authors} · ${paper.year} · ${paper.citationCount.toLocaleString()} citations`;
+
+          // Add OA link if available
+          if (paper.openAccessUrl) {
+            const oaLink = document.createElement("a");
+            oaLink.href = paper.openAccessUrl;
+            oaLink.target = "_blank";
+            oaLink.className = "oa-indicator";
+            oaLink.textContent = "📄 Download PDF";
+            oaLink.style.marginLeft = "8px";
+            metaDiv.appendChild(oaLink);
+          }
+
+          // Add PubMed link
+          if (paper.pmid) {
+            const pmidLink = document.createElement("a");
+            pmidLink.href = `https://pubmed.ncbi.nlm.nih.gov/${paper.pmid}/`;
+            pmidLink.target = "_blank";
+            pmidLink.className = "citation-link";
+            pmidLink.textContent = `PMID:${paper.pmid}`;
+            pmidLink.style.display = "inline-block";
+            pmidLink.style.marginTop = "4px";
+            metaDiv.appendChild(pmidLink);
+          }
+
+          li.appendChild(titleDiv);
+          li.appendChild(metaDiv);
+          recommendationsListEl.appendChild(li);
+        });
       };
 
       const renderAll = () => {
@@ -577,6 +807,8 @@
           "High-level, non-procedural directions will show here.",
           { showRisk: true }
         );
+        renderResearchers();
+        renderRecommendations();
         renderTimestamp();
         renderDataSources();
       };
@@ -628,6 +860,97 @@
             renderAll();
           }
         });
+      }
+
+      // OA toggle filter
+      if (oaToggleEl) {
+        oaToggleEl.addEventListener("change", (event) => {
+          oaFilterEnabled = event.target.checked;
+          renderAll(); // Re-render to apply filter
+        });
+      }
+
+      // Export functions
+      const exportToCSV = () => {
+        if (!board) return alert("No data to export");
+
+        let csv = "GaiaLab Analysis Export\\n\\n";
+        csv += `Disease Context:,${board.diseaseContext}\\n`;
+        csv += `Generated:,${board.generatedAtIso}\\n`;
+        csv += `Analysis Time:,${board.analysisTime}\\n`;
+        csv += `Databases:,13 integrated databases\\n\\n`;
+
+        // Genes section
+        csv += "GENES\\n";
+        csv += "Symbol,Name,Function,Importance Score,UniProt ID\\n";
+        (board.genes || []).forEach(g => {
+          csv += `${g.symbol},"${g.name || ''}","${(g.function || '').replace(/"/g, '""')}",${g.importanceScore || ''},${g.uniprotId || ''}\\n`;
+        });
+
+        // Pathways section
+        csv += "\\nPATHWAYS\\n";
+        csv += "Name,P-value,Confidence,Citations\\n";
+        (board.pathways || []).forEach(p => {
+          csv += `"${p.name}",${p.pvalue || ''},${p.confidence || ''},"${(p.citations || []).join('; ')}"\\n`;
+        });
+
+        // Literature themes
+        csv += "\\nLITERATURE THEMES\\n";
+        csv += "Theme,Summary,Citations\\n";
+        (board.topics || []).forEach(t => {
+          csv += `"${t.theme || ''}","${(t.summary || '').replace(/"/g, '""')}","${(t.citations || []).join('; ')}"\\n`;
+        });
+
+        // Therapeutic strategies
+        csv += "\\nTHERAPEUTIC STRATEGIES\\n";
+        csv += "Strategy,Rationale,Risk Level,Citations\\n";
+        (board.strategies || []).forEach(s => {
+          csv += `"${s.label || ''}","${(s.rationale || '').replace(/"/g, '""')}",${s.riskLevel || ''},"${(s.citations || []).join('; ')}"\\n`;
+        });
+
+        // Leading researchers
+        if (board.leadingResearchers && board.leadingResearchers.length > 0) {
+          csv += "\\nLEADING RESEARCHERS\\n";
+          csv += "Name,Role,Paper Count,Total Citations,Avg Citations\\n";
+          board.leadingResearchers.forEach(r => {
+            csv += `"${r.name}",${r.role},${r.paperCount},${r.totalCitations},${r.avgCitations}\\n`;
+          });
+        }
+
+        // Download
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `gaialab-analysis-${new Date().toISOString().slice(0,10)}.csv`;
+        link.click();
+      };
+
+      const exportToJSON = () => {
+        if (!board) return alert("No data to export");
+
+        const exportData = {
+          ...board,
+          exportedAt: new Date().toISOString(),
+          version: "1.0"
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `gaialab-analysis-${new Date().toISOString().slice(0,10)}.json`;
+        link.click();
+      };
+
+      // Export button event listeners
+      const csvBtn = document.querySelector("#export-csv-btn");
+      const jsonBtn = document.querySelector("#export-json-btn");
+
+      if (csvBtn) {
+        csvBtn.addEventListener("click", exportToCSV);
+      }
+
+      if (jsonBtn) {
+        jsonBtn.addEventListener("click", exportToJSON);
       }
 
       renderAll();
