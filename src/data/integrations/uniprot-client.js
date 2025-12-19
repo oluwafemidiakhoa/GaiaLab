@@ -118,8 +118,20 @@ export class UniProtClient {
     const promises = geneSymbols.map(symbol => this.getGeneData(symbol));
     const results = await Promise.all(promises);
 
-    // Filter out nulls and return valid results
-    return results.filter(r => r !== null);
+    // Return all results, including nulls (replaced with fallback objects)
+    return results.map((result, index) => {
+      if (result !== null) {
+        return result;
+      }
+      // Fallback for genes not found in UniProt
+      return {
+        symbol: geneSymbols[index].toUpperCase(),
+        name: 'Not found in UniProt',
+        function: 'Data not available in UniProt database - gene may be poorly annotated or have alternative nomenclature',
+        source: 'UniProt (not found)',
+        dataAvailable: false
+      };
+    });
   }
 
   /**

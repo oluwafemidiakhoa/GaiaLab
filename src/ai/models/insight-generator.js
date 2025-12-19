@@ -308,21 +308,26 @@ ${JSON.stringify(literatureInfo, null, 2)}
 
 **CRITICAL REQUIREMENTS FOR NATURE METHODS-LEVEL ANALYSIS:**
 
-1. QUANTITATIVE DATA EXTRACTION IS MANDATORY:
-   - ALWAYS extract specific numerical values when present in abstracts:
+1. QUANTITATIVE DATA EXTRACTION IS MANDATORY - EXTRACT TO DEDICATED FIELD:
+   - ALWAYS scan abstracts for numerical values and extract them to the "quantitativeData" field
+   - ALSO include key numbers in mechanism/rationale text for context
+   - Types of data to extract:
      * Drug potency: IC50, Ki, EC50, Kd (e.g., "IC50 = 5 nM", "Ki = 2.4 μM")
      * Enzyme kinetics: Km, kcat, Vmax (e.g., "Km = 2.4 μM, kcat = 0.15 s⁻¹")
      * Expression changes: Fold changes, percentages (e.g., "3.2-fold increase", "70% of patients")
      * Clinical outcomes: Hazard ratios, p-values, confidence intervals (e.g., "HR=0.58, 95% CI: 0.43-0.80, p<0.001")
      * Patient numbers: Sample sizes (e.g., "n=302 patients", "68/127 resistant cases")
      * Survival metrics: mPFS, mOS, ORR with numbers (e.g., "mPFS: 7.0 vs 4.2 months")
-   - If not found in abstracts, state: "Not reported in abstracts" (be honest, don't guess)
+   - EXAMPLE - BAD: "quantitativeData": "Not reported in abstracts" when you just wrote "3.2-fold increase" in mechanism text
+   - EXAMPLE - GOOD: "quantitativeData": "LRRK2 G2019S increases kinase activity 2-3 fold; MLi-2 IC50 = 0.76 nM"
+   - If truly no quantitative data exists in abstracts, then state: "Not reported in abstracts"
 
 2. MECHANISTIC DEPTH WITH PRECISION:
    - Name specific enzymes, substrates, binding sites, phosphorylation sites WITH quantification
    - BAD: "PKA phosphorylates CREB"
    - GOOD: "PKA phosphorylates CREB at Ser133 (3.5-fold increase in pCREB levels)"
    - Include experimental model details with sample sizes when available
+   - REMEMBER: Extract all numbers to the quantitativeData field as well
 
 3. CLINICAL TRIAL DATA:
    - Extract trial names, phases, endpoints with exact numbers
@@ -330,11 +335,13 @@ ${JSON.stringify(literatureInfo, null, 2)}
    - GOOD: "OlympiAD Phase III (n=302): mPFS 7.0 vs 4.2 months (HR=0.58, p<0.001)"
    - Include FDA approval year and indication if mentioned
 
-4. CONSENSUS QUANTIFICATION:
+4. CONSENSUS QUANTIFICATION - EXTRACT TO DEDICATED FIELD:
    - Count supporting vs contradicting papers when possible
-   - BAD: "Well-established"
-   - GOOD: "Strong consensus (18/21 papers, 86% agreement)"
-   - Note emerging vs established findings
+   - ALWAYS populate the "consensusMetrics" field with quantitative consensus data
+   - BAD: "consensusMetrics": "Well-established" OR leaving it null
+   - GOOD: "consensusMetrics": "Strong consensus (18/21 papers, 86% agreement)"
+   - ALTERNATIVES if paper count unclear: "Emerging evidence (3 papers)" OR "Well-replicated finding (validated in 12+ studies)"
+   - Note emerging vs established findings with numbers
 
 5. CITATION QUALITY OVER QUANTITY:
    - Prioritize review papers from Nature Reviews, Annual Reviews, Cell Reviews

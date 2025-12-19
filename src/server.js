@@ -188,6 +188,26 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
     const totalTime = Date.now() - startTime;
     console.log(`[GaiaLab] Total analysis time: ${totalTime}ms`);
 
+    // Collect all unique PMIDs from AI insights
+    const allCitations = new Set();
+    for (const pathway of formattedPathways) {
+      for (const citation of pathway.citations || []) {
+        allCitations.add(citation);
+      }
+    }
+    for (const strategy of formattedStrategies) {
+      for (const citation of strategy.citations || []) {
+        allCitations.add(citation);
+      }
+    }
+    for (const topic of formattedTopics) {
+      for (const citation of topic.citations || []) {
+        allCitations.add(citation);
+      }
+    }
+    const totalPapersUsed = allCitations.size;
+    console.log(`[GaiaLab] Used ${totalPapersUsed} unique papers in synthesis`);
+
     const result = {
       diseaseContext,
       genes: geneData.map(g => ({
@@ -234,6 +254,7 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
           : []
       },
       citations: literatureAggregator.formatCitations(literature.slice(0, 20)),
+      totalPapersUsed, // NEW: Actual count of unique PMIDs used by AI
       audience,
       audienceLabel: audienceLabels[audience] || "Contextual view",
       generatedAtIso: nowIso,

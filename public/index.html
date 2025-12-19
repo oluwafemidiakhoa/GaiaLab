@@ -318,7 +318,20 @@
         }
 
         .citations {
-            margin-top: 12px;
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+        }
+
+        .citations::before {
+            content: "📚 References: ";
+            font-weight: 700;
+            color: #667eea;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .citation-link {
@@ -326,12 +339,19 @@
             color: #667eea;
             text-decoration: none;
             font-size: 13px;
-            margin-right: 10px;
+            margin-right: 12px;
+            margin-bottom: 6px;
             font-weight: 600;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
         .citation-link:hover {
-            text-decoration: underline;
+            background: rgba(102, 126, 234, 0.2);
+            text-decoration: none;
+            transform: translateY(-1px);
         }
 
         .pvalue {
@@ -668,7 +688,7 @@
                     gtag('event', 'analysis_completed', {
                         'gene_count': genes.length,
                         'pathways_found': data.pathways?.length || 0,
-                        'citations_found': data.citations?.length || 0,
+                        'citations_found': data.totalPapersUsed || 0,
                         'analysis_time': data.analysisTime
                     });
                 }
@@ -693,7 +713,7 @@
                     <div class="meta">
                         ${data.genes?.length || 0} genes analyzed |
                         ${data.pathways?.length || 0} pathways found |
-                        ${data.citations?.length || 0} papers reviewed |
+                        ${data.totalPapersUsed || 0} papers reviewed |
                         ${data.analysisTime || 'N/A'}
                     </div>
                 </div>
