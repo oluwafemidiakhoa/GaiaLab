@@ -1,0 +1,46 @@
+# Exclude from Docker build context for faster builds
+
+# Local environment file (contains secrets - NEVER include in image)
+.env
+.env.local
+.env.*
+
+# Dependencies (will be installed during build)
+node_modules
+npm-debug.log
+
+# Git
+.git
+.gitignore
+
+# Development files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Build outputs
+dist
+build
+
+# Logs
+logs
+*.log
+
+# Testing
+coverage
+.nyc_output
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Documentation
+README.md
+CLAUDE.md
+*.md
+
+# Railway config (not needed in image)
+nixpacks.toml
+railway.toml
