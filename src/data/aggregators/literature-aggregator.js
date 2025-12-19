@@ -1,12 +1,14 @@
 import { pubmedClient } from '../integrations/pubmed-client.js';
+import { semanticScholarClient } from '../integrations/semantic-scholar-client.js';
 
 /**
  * Literature Aggregator - finds and synthesizes relevant scientific papers
- * Uses PubMed to build evidence for biological insights
+ * Uses PubMed for biomedical literature + Semantic Scholar for citation metrics
  */
 export class LiteratureAggregator {
   constructor() {
     this.pubmed = pubmedClient;
+    this.semanticScholar = semanticScholarClient;
   }
 
   /**
@@ -20,19 +22,84 @@ export class LiteratureAggregator {
     const { maxResults = 30 } = options;
 
     try {
-      // Search for papers mentioning multiple genes + disease context
+      // STEP 1: Fetch papers from PubMed
       const papers = await this.pubmed.getMultiGenePapers(genes, {
         diseaseContext,
         maxResults
       });
 
-      // Rank papers by relevance
-      const rankedPapers = this.rankPapersByRelevance(papers, genes);
+      // STEP 2: Enrich with Semantic Scholar metadata (citation counts, author data, OA links)
+      const enrichedPapers = await this._enrichWithSemanticScholar(papers);
+
+      // STEP 3: Rank papers by relevance (now uses citation counts from S2!)
+      const rankedPapers = this.rankPapersByRelevance(enrichedPapers, genes);
 
       return rankedPapers.slice(0, maxResults);
     } catch (error) {
       console.error('Literature search error:', error.message);
       return [];
+    }
+  }
+
+  /**
+   * Enrich PubMed papers with Semantic Scholar metadata
+   * Adds citation counts, author data, OA links, and more
+   * @private
+   */
+  async _enrichWithSemanticScholar(papers) {
+    if (!papers || papers.length === 0) {
+      return papers;
+    }
+
+    // Check if Semantic Scholar is configured
+    if (!this.semanticScholar.isConfigured()) {
+      console.log('[Semantic Scholar] ⚠️  API key not configured - skipping enrichment');
+      console.log('[Semantic Scholar] Get free key at: https://www.semanticscholar.org/product/api');
+      return papers;
+    }
+
+    try {
+      const startTime = Date.now();
+      const pmids = papers.map(p => p.pmid);
+
+      console.log(`[Semantic Scholar] Enriching ${pmids.length} papers...`);
+
+      // Batch fetch S2 data for all papers
+      const s2DataMap = await this.semanticScholar.enrichByPMID(pmids);
+
+      // Merge S2 fields into PubMed papers
+      const enriched = papers.map(paper => {
+        const s2Data = s2DataMap[paper.pmid];
+
+        if (!s2Data) {
+          // Paper not found in Semantic Scholar - keep original
+          return paper;
+        }
+
+        // Merge S2 enrichment into paper
+        return {
+          ...paper,
+          citationCount: s2Data.citationCount || 0,
+          influentialCitationCount: s2Data.influentialCitationCount || 0,
+          openAccessUrl: s2Data.openAccessPdf?.url || null,
+          semanticAuthors: s2Data.authors || null,
+          fieldsOfStudy: s2Data.fieldsOfStudy || [],
+          semanticScholarId: s2Data.paperId || null
+        };
+      });
+
+      const enrichTime = Date.now() - startTime;
+      const enrichedCount = enriched.filter(p => p.citationCount > 0).length;
+      const avgCitations = enrichedCount > 0
+        ? Math.round(enriched.reduce((sum, p) => sum + (p.citationCount || 0), 0) / enrichedCount)
+        : 0;
+
+      console.log(`[Semantic Scholar] ✅ Enriched ${enrichedCount}/${papers.length} papers in ${enrichTime}ms (avg ${avgCitations} citations)`);
+
+      return enriched;
+    } catch (error) {
+      console.error('[Semantic Scholar] ❌ Enrichment failed, using PubMed data only:', error.message);
+      return papers; // Graceful degradation
     }
   }
 
@@ -48,8 +115,8 @@ export class LiteratureAggregator {
       // PRIORITY 1: Review papers (2x weight for authoritative overviews)
       const isReview = paper.publicationTypes?.includes('Review') ||
                        paper.publicationTypes?.includes('Journal Article Review') ||
-                       paper.title.toLowerCase().includes('review:') ||
-                       paper.abstract.toLowerCase().includes('this review');
+                       (paper.title && paper.title.toLowerCase().includes('review:')) ||
+                       (paper.abstract && paper.abstract.toLowerCase().includes('this review'));
       if (isReview) {
         relevanceScore *= 2.0;
       }
@@ -59,7 +126,7 @@ export class LiteratureAggregator {
         'nat rev', 'nature reviews', 'annu rev', 'annual review',
         'cell rev', 'trends', 'curr opin', 'crit rev'
       ];
-      const journalLower = paper.journal.toLowerCase();
+      const journalLower = (paper.journal || '').toLowerCase();
       if (reviewJournals.some(j => journalLower.includes(j))) {
         relevanceScore *= 1.8;
       }
