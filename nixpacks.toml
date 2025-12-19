@@ -1,30 +1,15 @@
 # Railway Nixpacks Configuration
 # Fixes: "secret SEMANTIC_SCHOLAR_API_KEY not found" build error
-# All API keys are runtime environment variables, not build secrets
+# This app requires NO build secrets - all API keys are runtime environment variables
 
 [phases.setup]
 nixPkgs = ["nodejs-22_x"]
 
 [phases.install]
-cmds = ["npm install"]
-
-[phases.build]
-# No build phase needed - this is a pure Node.js runtime app
-cmds = []
+cmds = ["npm ci --only=production"]
 
 [start]
 cmd = "npm start"
 
-# Ensure all environment variables are available at runtime, not build time
-[variables]
-# These are loaded from Railway environment variables at runtime
-# DEEPSEEK_API_KEY - runtime
-# OPENAI_API_KEY - runtime
-# GOOGLE_API_KEY - runtime
-# ANTHROPIC_API_KEY - runtime
-# NCBI_API_KEY - runtime
-# SEMANTIC_SCHOLAR_API_KEY - runtime
-# BIOGRID_API_KEY - runtime
-# DISGENET_API_KEY - runtime
-# DRUGBANK_API_KEY - runtime
-# PORT - runtime
+# Explicitly disable build phase to prevent Railway from treating env vars as build secrets
+[phases.build]
