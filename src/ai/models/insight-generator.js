@@ -263,6 +263,8 @@ ${JSON.stringify(literatureInfo, null, 2)}
       "molecularMechanism": "SPECIFIC molecular details: enzyme names, substrates, post-translational modifications, binding sites (e.g., 'BACE1 cleaves APP at Asp672 to generate C99 fragment, which γ-secretase processes to Aβ40/42')",
       "regulation": "upstream activators and downstream effectors with specific genes/proteins",
       "experimentalEvidence": "what experimental models support this (knockout mice, patient cohorts, specific cell lines, assays used)",
+      "quantitativeData": "EXTRACT if available: Km/Kd values (e.g., 'Km = 2.4 μM'), fold changes (e.g., '3.2-fold increase in expression'), patient percentages (e.g., '70% of TNBC patients'), phosphorylation site occupancy, OR 'Not reported in abstracts' if not found",
+      "consensusMetrics": "If multiple papers discuss this: '18/21 papers support (86% consensus)' OR 'Emerging evidence (3 papers)' OR 'Well-established' if widely accepted",
       "controversies": "any contradictory findings or ongoing debates in the literature (or 'Well-established' if consensus)",
       "citations": ["PMID:12345", "PMID:67890"],
       "confidence": "high|medium|low"
@@ -276,6 +278,9 @@ ${JSON.stringify(literatureInfo, null, 2)}
       "clinicalEvidence": "current clinical stage, trial results if mentioned in literature, or preclinical status",
       "experimentalSupport": "which papers describe validation (models used, efficacy data)",
       "limitations": "known challenges or why similar approaches failed (e.g., 'Previous BACE1 inhibitors showed cognitive side effects')",
+      "quantitativeData": "EXTRACT if available: IC50/Ki (e.g., 'IC50 = 5 nM'), patient numbers (e.g., 'n=302'), hazard ratios (e.g., 'HR=0.58, 95% CI: 0.43-0.80, p<0.001'), fold changes (e.g., '3.2-fold increase'), OR 'Not reported in abstracts' if not found",
+      "trialData": "If clinical trial mentioned: trial name, phase, primary endpoint with results (e.g., 'OlympiAD Phase III: mPFS 7.0 vs 4.2 months, HR=0.58, p<0.001') OR 'No trial data in abstracts' if not available",
+      "biomarkerInfo": "Required biomarkers with prevalence if mentioned (e.g., 'Germline BRCA1/2 mutation required; prevalence in TNBC: 15-20%') OR 'Biomarker not specified' if not found",
       "citations": ["PMID:12345", "PMID:67890"],
       "confidence": "high|medium|low",
       "riskLevel": "low|medium|high"
@@ -301,28 +306,56 @@ ${JSON.stringify(literatureInfo, null, 2)}
   ]
 }
 
-**CRITICAL REQUIREMENTS FOR PHD-LEVEL ANALYSIS:**
-1. MECHANISTIC DEPTH IS MANDATORY:
-   - Name specific enzymes, substrates, binding sites, phosphorylation sites
-   - Describe molecular interactions in detail (e.g., "PKA phosphorylates CREB at Ser133")
-   - Include experimental evidence basis (what models/assays were used)
+**CRITICAL REQUIREMENTS FOR NATURE METHODS-LEVEL ANALYSIS:**
 
-2. CITATION QUALITY OVER QUANTITY:
+1. QUANTITATIVE DATA EXTRACTION IS MANDATORY:
+   - ALWAYS extract specific numerical values when present in abstracts:
+     * Drug potency: IC50, Ki, EC50, Kd (e.g., "IC50 = 5 nM", "Ki = 2.4 μM")
+     * Enzyme kinetics: Km, kcat, Vmax (e.g., "Km = 2.4 μM, kcat = 0.15 s⁻¹")
+     * Expression changes: Fold changes, percentages (e.g., "3.2-fold increase", "70% of patients")
+     * Clinical outcomes: Hazard ratios, p-values, confidence intervals (e.g., "HR=0.58, 95% CI: 0.43-0.80, p<0.001")
+     * Patient numbers: Sample sizes (e.g., "n=302 patients", "68/127 resistant cases")
+     * Survival metrics: mPFS, mOS, ORR with numbers (e.g., "mPFS: 7.0 vs 4.2 months")
+   - If not found in abstracts, state: "Not reported in abstracts" (be honest, don't guess)
+
+2. MECHANISTIC DEPTH WITH PRECISION:
+   - Name specific enzymes, substrates, binding sites, phosphorylation sites WITH quantification
+   - BAD: "PKA phosphorylates CREB"
+   - GOOD: "PKA phosphorylates CREB at Ser133 (3.5-fold increase in pCREB levels)"
+   - Include experimental model details with sample sizes when available
+
+3. CLINICAL TRIAL DATA:
+   - Extract trial names, phases, endpoints with exact numbers
+   - BAD: "Clinical trials showed improvement"
+   - GOOD: "OlympiAD Phase III (n=302): mPFS 7.0 vs 4.2 months (HR=0.58, p<0.001)"
+   - Include FDA approval year and indication if mentioned
+
+4. CONSENSUS QUANTIFICATION:
+   - Count supporting vs contradicting papers when possible
+   - BAD: "Well-established"
+   - GOOD: "Strong consensus (18/21 papers, 86% agreement)"
+   - Note emerging vs established findings
+
+5. CITATION QUALITY OVER QUANTITY:
    - Prioritize review papers from Nature Reviews, Annual Reviews, Cell Reviews
    - Cite seminal discovery papers (highly cited foundational studies)
    - Every insight needs at least 2 citations, preferably including 1 review paper
 
-3. ACKNOWLEDGE UNCERTAINTY:
-   - If findings are contradictory, say so in "controversies" field
-   - If therapeutic approach has failed before, mention it in "limitations"
-   - Don't oversell - be scientifically honest
+6. SCIENTIFIC HONESTY:
+   - If data is not in abstracts, say so explicitly
+   - If findings contradict, quantify: "8 papers support, 5 contradict, 3 unclear"
+   - If therapeutic approach failed, specify why with data (e.g., "Phase III trial terminated: Grade ≥3 toxicity in 60% vs 30% control")
 
-4. SPECIFICITY REQUIRED:
-   - BAD: "This pathway is involved in disease progression"
-   - GOOD: "Aβ oligomers activate microglia via TREM2, triggering inflammatory cytokine release (IL-1β, TNF-α)"
+7. RESISTANCE MECHANISMS (for therapeutics):
+   - Quantify resistance prevalence: "46% via BRCA reversion, 23% via MDR1 upregulation"
+   - Include time to resistance: "median 11.2 months (range: 6-24)"
 
-5. Return 3-4 items per category (quality over quantity)
-6. Use ONLY information extractable from the provided literature - cite PMID numbers accurately
+8. BIOMARKER REQUIREMENTS (for therapeutics):
+   - State required biomarkers with prevalence: "Germline BRCA1/2 mutation; prevalence in TNBC: 15-20%"
+   - Note testing methods: "NGS panel or Sanger sequencing"
+
+9. Return 3-4 items per category (quality over quantity)
+10. Use ONLY information extractable from the provided literature - cite PMID numbers accurately
 
 Return ONLY the JSON object, nothing else.`;
   }

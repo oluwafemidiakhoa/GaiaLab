@@ -141,6 +141,8 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
       molecularMechanism: p.molecularMechanism,  // NEW: specific enzymes, PTMs, binding sites
       regulation: p.regulation,  // NEW: upstream/downstream regulators
       experimentalEvidence: p.experimentalEvidence,  // NEW: knockout models, cell lines, assays
+      quantitativeData: p.quantitativeData,  // ULTRA-NEW: Km, fold changes, patient %
+      consensusMetrics: p.consensusMetrics,  // ULTRA-NEW: papers supporting, % agreement
       controversies: p.controversies,  // NEW: contradictory findings or debates
       score: p.confidence === 'high' ? 0.9 : p.confidence === 'medium' ? 0.7 : 0.5,
       pvalue: enrichedPathways[i]?.pvalue || 0.05,
@@ -164,6 +166,9 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
       clinicalEvidence: s.clinicalEvidence,  // NEW: clinical stage/trial results
       experimentalSupport: s.experimentalSupport,  // NEW: validation models/assays
       limitations: s.limitations,  // NEW: known challenges/failures
+      quantitativeData: s.quantitativeData,  // ULTRA-NEW: IC50, HR, patient n, fold changes
+      trialData: s.trialData,  // ULTRA-NEW: trial names, phases, endpoints
+      biomarkerInfo: s.biomarkerInfo,  // ULTRA-NEW: required biomarkers with prevalence
       riskLevel: s.riskLevel || 'medium',
       citations: s.citations || [],
       confidence: s.confidence

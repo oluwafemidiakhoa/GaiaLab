@@ -780,6 +780,20 @@
                                 </div>
                             ` : ''}
 
+                            ${pathway.quantitativeData ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(33, 150, 243, 0.05); border-left: 3px solid #2196F3; border-radius: 4px;">
+                                    <strong style="color: #2196F3;">📊 Quantitative Data:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em; font-family: 'Courier New', monospace;">${pathway.quantitativeData}</p>
+                                </div>
+                            ` : ''}
+
+                            ${pathway.consensusMetrics ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(103, 58, 183, 0.05); border-left: 3px solid #673AB7; border-radius: 4px;">
+                                    <strong style="color: #673AB7;">📈 Literature Consensus:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em; font-family: 'Courier New', monospace;">${pathway.consensusMetrics}</p>
+                                </div>
+                            ` : ''}
+
                             <div style="margin-top: 12px;">
                                 ${pathway.pvalue ? `<span class="pvalue">p = ${pathway.pvalue.toExponential(2)}</span>` : ''}
                                 ${pathway.confidence ? `<span class="badge ${confidenceBadge}">${pathway.confidence} confidence</span>` : ''}
@@ -840,6 +854,27 @@
                                 <div style="margin-top: 10px; padding: 10px; background: rgba(156, 39, 176, 0.05); border-left: 3px solid #9C27B0; border-radius: 4px;">
                                     <strong style="color: #9C27B0;">🔬 Experimental Support:</strong>
                                     <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.experimentalSupport}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.quantitativeData ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(33, 150, 243, 0.05); border-left: 3px solid #2196F3; border-radius: 4px;">
+                                    <strong style="color: #2196F3;">📊 Quantitative Data:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em; font-family: 'Courier New', monospace;">${strategy.quantitativeData}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.trialData ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(0, 150, 136, 0.05); border-left: 3px solid #009688; border-radius: 4px;">
+                                    <strong style="color: #009688;">🏆 Clinical Trial Data:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em; font-family: 'Courier New', monospace;">${strategy.trialData}</p>
+                                </div>
+                            ` : ''}
+
+                            ${strategy.biomarkerInfo ? `
+                                <div style="margin-top: 10px; padding: 10px; background: rgba(233, 30, 99, 0.05); border-left: 3px solid #E91E63; border-radius: 4px;">
+                                    <strong style="color: #E91E63;">🧬 Biomarker Requirements:</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 0.95em;">${strategy.biomarkerInfo}</p>
                                 </div>
                             ` : ''}
 
