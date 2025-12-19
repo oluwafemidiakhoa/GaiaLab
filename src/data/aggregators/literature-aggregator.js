@@ -362,22 +362,40 @@ export class LiteratureAggregator {
     }
 
     try {
-      // Get recommendations from top 3 most cited papers
-      const topPapers = papers
-        .filter(p => p.citationCount > 0)
-        .sort((a, b) => b.citationCount - a.citationCount)
-        .slice(0, 3);
+      // Get top papers with Semantic Scholar IDs (needed for recommendations)
+      const eligiblePapers = papers
+        .filter(p => p.citationCount > 0 && p.semanticScholarId)
+        .sort((a, b) => b.citationCount - a.citationCount);
 
-      if (topPapers.length === 0) return [];
+      if (eligiblePapers.length === 0) {
+        console.log('[Recommendations] No papers with Semantic Scholar IDs available');
+        return [];
+      }
+
+      // Try top 3 papers first, expand to 5 if needed
+      const batchSize = Math.min(3, eligiblePapers.length);
+      let topPapers = eligiblePapers.slice(0, batchSize);
 
       console.log(`[Recommendations] Fetching recommendations from ${topPapers.length} top papers...`);
 
-      // Fetch recommendations in parallel
-      const recommendationPromises = topPapers.map(paper =>
-        this.semanticScholar.getRecommendations(paper.pmid, 3)
+      // Fetch recommendations in parallel (using S2 paper ID for better success rate)
+      let recommendationPromises = topPapers.map(paper =>
+        this.semanticScholar.getRecommendations(paper.semanticScholarId, 3)
       );
 
-      const allRecommendations = await Promise.all(recommendationPromises);
+      let allRecommendations = await Promise.all(recommendationPromises);
+
+      // If no recommendations from first batch and more papers available, try 2 more
+      const totalRecs = allRecommendations.reduce((sum, recs) => sum + recs.length, 0);
+      if (totalRecs === 0 && eligiblePapers.length > batchSize) {
+        console.log('[Recommendations] First batch empty, trying additional papers...');
+        const nextBatch = eligiblePapers.slice(batchSize, batchSize + 2);
+        const nextPromises = nextBatch.map(paper =>
+          this.semanticScholar.getRecommendations(paper.semanticScholarId, 3)
+        );
+        const nextRecs = await Promise.all(nextPromises);
+        allRecommendations = [...allRecommendations, ...nextRecs];
+      }
 
       // Flatten and deduplicate recommendations
       const seenPapers = new Set(papers.map(p => p.pmid));

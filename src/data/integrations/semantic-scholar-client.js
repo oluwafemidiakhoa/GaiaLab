@@ -106,14 +106,19 @@ export class SemanticScholarClient {
 
   /**
    * Get paper recommendations (similar papers)
-   * @param {string} pmid - Base paper PMID
+   * @param {string} paperIdOrPmid - Semantic Scholar paper ID (preferred) or PMID
    * @param {number} limit - Number of recommendations (default 5)
    * @returns {Promise<Array>} Array of recommended papers
    */
-  async getRecommendations(pmid, limit = 5) {
+  async getRecommendations(paperIdOrPmid, limit = 5) {
     try {
+      // Format the paper identifier (add PMID: prefix if it's a PMID)
+      const paperId = paperIdOrPmid.startsWith('PMID:') || paperIdOrPmid.length > 20
+        ? paperIdOrPmid
+        : `PMID:${paperIdOrPmid}`;
+
       const response = await axios.get(
-        `${this.baseUrl}/paper/PMID:${pmid}/recommendations`,
+        `${this.baseUrl}/paper/${paperId}/recommendations`,
         {
           headers: this._getHeaders(),
           params: {
@@ -129,7 +134,10 @@ export class SemanticScholarClient {
 
       return [];
     } catch (error) {
-      console.error(`[Semantic Scholar] Recommendations error for PMID:${pmid}:`, error.message);
+      // Silently fail for papers without recommendations (expected for recent/obscure papers)
+      if (error.response?.status !== 404) {
+        console.error(`[Semantic Scholar] Recommendations error for ${paperIdOrPmid}:`, error.message);
+      }
       return [];
     }
   }
