@@ -13,6 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GaiaLab - AI-Powered Biological Intelligence Platform</title>
+
+    <!-- 3D Visualization Libraries (FREE - MIT License) -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/3d-force-graph@1.73.0/dist/3d-force-graph.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -461,6 +466,32 @@
             font-weight: 600;
         }
 
+        .network-3d-container {
+            width: 100%;
+            height: 600px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            border: 2px solid #e0e0e0;
+        }
+
+        .network-3d-info {
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .network-3d-controls {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 36px;
@@ -474,6 +505,9 @@
             .demo-box {
                 padding: 25px;
             }
+            .network-3d-container {
+                height: 400px;
+            }
         }
     </style>
 </head>
@@ -481,7 +515,7 @@
     <div class="hero">
         <h1>🧬 GaiaLab</h1>
         <div class="tagline">AI-Powered Biological Intelligence Platform</div>
-        <div class="subtitle">Transform gene lists into publication-quality insights in 60 seconds</div>
+        <div class="subtitle">Transform gene lists into publication-quality insights with interactive 3D visualization in 60 seconds</div>
 
         <div class="stats">
             <div class="stat">
@@ -525,6 +559,11 @@
                 <h3>Multi-Model AI Synthesis</h3>
                 <p>4 AI models with automatic failover ensure reliable insights with citations and confidence scores</p>
             </div>
+            <div class="feature">
+                <div class="icon">🌐</div>
+                <h3>3D Protein Network Visualization</h3>
+                <p>Interactive WebGL-powered 3D networks showing protein-protein interactions with click-to-explore nodes and edges</p>
+            </div>
         </div>
 
         <div class="examples">
@@ -538,7 +577,7 @@
         <div class="demo-box">
             <h2>🚀 Analyze Your Genes</h2>
             <div class="description">
-                Enter 2-5 gene symbols and a disease context to get instant biological insights with pathway enrichment,
+                Enter 2-5 gene symbols and a disease context to get instant biological insights with interactive 3D protein networks, pathway enrichment,
                 therapeutic strategies, and recent literature synthesis.
             </div>
 
@@ -585,6 +624,7 @@
                 <h3>🧬 Analyzing Your Genes...</h3>
                 <p>Fetching data from 13 biological databases in parallel...</p>
                 <p>Cross-validating protein interactions, disease associations, and drug targets...</p>
+                <p>Generating interactive 3D protein interaction network...</p>
                 <p>AI synthesis in progress (60-90 seconds)...</p>
             </div>
 
@@ -749,6 +789,29 @@
                 });
 
                 html += `</div>`;
+            }
+
+            // 3D Protein Interaction Network Section
+            if (data.network3DData && data.network3DData.nodes && data.network3DData.nodes.length > 0) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">🌐</span>
+                            <span>Protein Interaction Network (3D)</span>
+                        </div>
+                        <div id="network-3d-container" class="network-3d-container"></div>
+                        <div class="network-3d-info">
+                            <strong>📊 Network Stats:</strong>
+                            ${data.network3DData.stats.totalNodes} proteins •
+                            ${data.network3DData.stats.totalLinks} interactions •
+                            ${(parseFloat(data.network3DData.stats.avgConfidence) * 100).toFixed(0)}% avg confidence
+                            ${data.network3DData.stats.hubCount > 0 ? ` • ${data.network3DData.stats.hubCount} network hubs` : ''}
+                        </div>
+                        <div class="network-3d-controls">
+                            💡 Tip: Click and drag to rotate • Scroll to zoom • Click nodes for details
+                        </div>
+                    </div>
+                `;
             }
 
             // Pathways Section
@@ -968,7 +1031,7 @@
                             ${data.dataSource?.literature || 'PubMed'} (literature)
                         </p>
                         <p style="color: #999; font-size: 13px; margin-top: 5px;">
-                            <strong>Synthesized by:</strong> ${data.dataSource?.ai || 'Multi-model AI'} • <strong>13 Sources • 3 Cross-Validation Domains</strong>
+                            <strong>13 Sources • 3 Cross-Validation Domains</strong>
                         </p>
                     </div>
                 </div>
@@ -1005,11 +1068,894 @@
             resultsDiv.classList.add('active');
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+            // Render 3D Network Visualization
+            if (data.network3DData && data.network3DData.nodes && data.network3DData.nodes.length > 0) {
+                console.log('3D Network Data:', data.network3DData);
+                setTimeout(() => {
+                    const container = document.getElementById('network-3d-container');
+                    console.log('Container found:', !!container);
+                    console.log('ForceGraph3D available:', typeof ForceGraph3D);
+
+                    if (container && typeof ForceGraph3D !== 'undefined') {
+                        try {
+                            const networkData = data.network3DData;
+                            console.log('🚀 Initializing 3D Network:', networkData.nodes.length, 'nodes,', networkData.links.length, 'links');
+
+                            if (!networkData || !networkData.nodes || networkData.nodes.length === 0) {
+                                container.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">No network data available</div>';
+                                return;
+                            }
+
+                            // ========================================
+                            // 🧠 AI INTELLIGENCE: Detect druggable targets
+                            // ========================================
+                            console.log('');
+                            console.log('═══════════════════════════════════════');
+                            console.log('💊 DRUG DATA DEBUG - START');
+                            console.log('═══════════════════════════════════════');
+                            console.log('data object keys:', Object.keys(data));
+                            console.log('data.drugs exists:', !!data.drugs);
+                            if (data.drugs) {
+                                console.log('data.drugs keys:', Object.keys(data.drugs));
+                                console.log('data.drugs =', JSON.stringify(data.drugs, null, 2));
+                            }
+                            console.log('═══════════════════════════════════════');
+                            console.log('');
+
+                            const druggableProteins = new Set();
+                            const fdaApprovedTargets = new Set();
+
+                            // Process topCompounds (all bioactive compounds)
+                            if (data.drugs && data.drugs.topCompounds && data.drugs.topCompounds.length > 0) {
+                                data.drugs.topCompounds.forEach(compound => {
+                                    if (compound.gene && typeof compound.gene === 'string') {
+                                        druggableProteins.add(compound.gene.toUpperCase());
+                                        // Check if FDA approved (maxPhase >= 4)
+                                        if (compound.maxPhase && compound.maxPhase >= 4) {
+                                            fdaApprovedTargets.add(compound.gene.toUpperCase());
+                                        }
+                                    }
+                                });
+                            }
+
+                            // Process approvedDrugs (FDA-approved only)
+                            if (data.drugs && data.drugs.approvedDrugs && data.drugs.approvedDrugs.length > 0) {
+                                data.drugs.approvedDrugs.forEach(drug => {
+                                    // Approved drugs might have 'genes' array or single 'gene' field
+                                    if (drug.genes && Array.isArray(drug.genes)) {
+                                        drug.genes.forEach(gene => {
+                                            if (gene && typeof gene === 'string') {
+                                                fdaApprovedTargets.add(gene.toUpperCase());
+                                                druggableProteins.add(gene.toUpperCase());
+                                            }
+                                        });
+                                    } else if (drug.gene && typeof drug.gene === 'string') {
+                                        fdaApprovedTargets.add(drug.gene.toUpperCase());
+                                        druggableProteins.add(drug.gene.toUpperCase());
+                                    }
+                                });
+                            }
+
+                            // Enhance nodes with druggability info
+                            networkData.nodes.forEach(node => {
+                                node.isDruggable = druggableProteins.has(node.id.toUpperCase());
+                                node.isFdaTarget = fdaApprovedTargets.has(node.id.toUpperCase());
+                            });
+
+                            console.log('');
+                            console.log('═══════════════════════════════════════');
+                            console.log('🎨 NODE COLOR DEBUG');
+                            console.log('═══════════════════════════════════════');
+                            console.log('Druggable proteins found:', Array.from(druggableProteins));
+                            console.log('FDA targets found:', Array.from(fdaApprovedTargets));
+                            console.log('Total druggable:', druggableProteins.size);
+                            console.log('Total FDA:', fdaApprovedTargets.size);
+                            console.log('');
+                            console.log('All nodes with colors:');
+                            networkData.nodes.forEach(node => {
+                                console.log(`  ${node.id}: isPrimary=${node.isPrimary}, isHub=${node.isHub}, isDruggable=${node.isDruggable}, isFdaTarget=${node.isFdaTarget}`);
+                            });
+                            console.log('═══════════════════════════════════════');
+                            console.log('');
+
+                            // ========================================
+                            // 🎨 SMART COLOR CODING (5 categories)
+                            // ========================================
+                            const getNodeColor = (node) => {
+                                // DEBUG: Log color assignment
+                                const color = node.isFdaTarget ? '#FFD700' :
+                                             node.isDruggable ? '#3B82F6' :
+                                             node.isHub ? '#EF4444' :
+                                             node.isPrimary ? '#8B5CF6' :
+                                             '#10B981';
+
+                                console.log(`🎨 Color for ${node.id}: ${color} (FDA:${node.isFdaTarget}, Drug:${node.isDruggable}, Hub:${node.isHub}, Primary:${node.isPrimary})`);
+
+                                return color;
+                            };
+
+                            const getNodeLabel = (node) => {
+                                const labels = [];
+                                if (node.isFdaTarget) labels.push('💊 FDA-Approved Target');
+                                else if (node.isDruggable) labels.push('💉 Druggable Target');
+                                if (node.isHub) labels.push('🔥 Network Hub');
+                                if (node.isPrimary) labels.push('⭐ Input Gene');
+                                if (labels.length === 0) labels.push('🔗 Interacting Protein');
+                                return `${node.name || node.id}\n${labels.join(' • ')}`;
+                            };
+
+                            // ========================================
+                            // 📊 CALCULATE NETWORK METRICS
+                            // ========================================
+                            const calculateMetrics = () => {
+                                const degrees = {};
+                                networkData.links.forEach(link => {
+                                    degrees[link.source] = (degrees[link.source] || 0) + 1;
+                                    degrees[link.target] = (degrees[link.target] || 0) + 1;
+                                });
+                                const avgDegree = Object.values(degrees).reduce((a, b) => a + b, 0) / networkData.nodes.length;
+                                const avgConfidence = networkData.links.reduce((sum, l) => sum + (l.value || 0.5), 0) / networkData.links.length;
+
+                                return {
+                                    avgDegree: avgDegree.toFixed(2),
+                                    avgConfidence: (avgConfidence * 100).toFixed(0),
+                                    druggableCount: networkData.nodes.filter(n => n.isDruggable).length,
+                                    fdaApprovedCount: networkData.nodes.filter(n => n.isFdaTarget).length,
+                                    hubCount: networkData.nodes.filter(n => n.isHub).length
+                                };
+                            };
+
+                            // ========================================
+                            // 📊 CALCULATE METRICS
+                            // ========================================
+                            const metrics = calculateMetrics();
+
+                            // ========================================
+                            // 🌐 INITIALIZE 3D FORCE GRAPH FIRST
+                            // ========================================
+                            let showLabels = true;
+                            let autoRotate = true;
+                            let confidenceThreshold = 0;
+
+                            const graph = ForceGraph3D()(container)
+                                .graphData(networkData)
+                                .nodeLabel(node => getNodeLabel(node))
+                                .nodeColor(node => getNodeColor(node))
+                                .nodeVal(node => node.val || 5)
+                                .nodeOpacity(0.9)
+                                .linkWidth(link => (link.value || 0.5) * 4)  // Thicker links
+                                .linkColor(link => {
+                                    // GRADIENT COLORS based on confidence
+                                    const confidence = link.value || 0.5;
+                                    const opacity = 0.3 + confidence * 0.5;  // 0.3-0.8 opacity
+
+                                    // Color gradient: Red (low) → Yellow (med) → Green (high)
+                                    if (confidence > 0.7) {
+                                        return `rgba(16, 185, 129, ${opacity})`;  // 🟢 GREEN - High confidence
+                                    } else if (confidence > 0.4) {
+                                        return `rgba(139, 92, 246, ${opacity})`;  // 🟣 PURPLE - Medium
+                                    } else {
+                                        return `rgba(239, 68, 68, ${opacity})`;   // 🔴 RED - Low confidence
+                                    }
+                                })
+                                .linkDirectionalParticles(link => {
+                                    // DRAMATIC PARTICLE EFFECTS based on confidence
+                                    const confidence = link.value || 0.5;
+                                    if (confidence > 0.8) return 8;  // High confidence = MANY particles
+                                    if (confidence > 0.5) return 5;
+                                    return 2;  // Even low confidence gets particles
+                                })
+                                .linkDirectionalParticleWidth(link => (link.value || 0.5) * 3)  // Larger particles
+                                .linkDirectionalParticleSpeed(0.008)  // Faster flow (was 0.005)
+                                .backgroundColor('#0f172a')
+                                .showNavInfo(false)
+                                .enableNodeDrag(true)
+                                .onNodeClick(node => {
+                                    // ========================================
+                                    // 💎 REVOLUTIONARY PROTEIN INFO POPUP
+                                    // ========================================
+
+                                    // Find drugs targeting this protein
+                                    const targetDrugs = [];
+                                    if (data.drugs) {
+                                        if (data.drugs.topCompounds) {
+                                            data.drugs.topCompounds.forEach(compound => {
+                                                if (compound.gene && compound.gene.toUpperCase() === node.id.toUpperCase()) {
+                                                    targetDrugs.push(compound);
+                                                }
+                                            });
+                                        }
+                                        if (data.drugs.approvedDrugs) {
+                                            data.drugs.approvedDrugs.forEach(drug => {
+                                                const genes = drug.genes || [drug.gene];
+                                                if (genes.some(g => g && g.toUpperCase() === node.id.toUpperCase())) {
+                                                    targetDrugs.push({...drug, isApproved: true});
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                    // Find connected proteins
+                                    const connections = networkData.links.filter(l =>
+                                        (l.source.id || l.source) === node.id || (l.target.id || l.target) === node.id
+                                    );
+                                    const connectedProteins = connections.map(l => {
+                                        const otherId = (l.source.id || l.source) === node.id ? (l.target.id || l.target) : (l.source.id || l.source);
+                                        return { id: otherId, confidence: ((l.value || 0) * 100).toFixed(0) };
+                                    }).slice(0, 5);
+
+                                    // Build fancy popup
+                                    const popupHtml = `
+                                        <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 24px; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 500px; max-height: 80vh; overflow-y: auto; z-index: 10000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+                                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                                <div>
+                                                    <h2 style="margin: 0 0 8px 0; font-size: 24px; color: #1f2937;">🧬 ${node.id}</h2>
+                                                    <div style="color: #6b7280; font-size: 13px;">${node.name || node.id}</div>
+                                                </div>
+                                                <button onclick="this.closest('div[style*=\\'position: fixed\\']').parentElement.remove()" style="background: #f3f4f6; border: none; border-radius: 6px; width: 32px; height: 32px; cursor: pointer; font-size: 18px; color: #6b7280; display: flex; align-items: center; justify-content: center;">×</button>
+                                            </div>
+
+                                            ${node.isFdaTarget ? '<div style="background: linear-gradient(135deg, #fef3c7, #fcd34d); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; font-size: 12px; font-weight: 500; color: #78350f;">💊 FDA-Approved Drug Target</div>' : ''}
+                                            ${!node.isFdaTarget && node.isDruggable ? '<div style="background: linear-gradient(135deg, #dbeafe, #93c5fd); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; font-size: 12px; font-weight: 500; color: #1e3a8a;">💉 Druggable Target</div>' : ''}
+                                            ${node.isHub ? '<div style="background: linear-gradient(135deg, #fee2e2, #fca5a5); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; font-size: 12px; font-weight: 500; color: #7f1d1d;">🔥 Network Hub (High Centrality)</div>' : ''}
+
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+                                                <div style="background: #f9fafb; padding: 12px; border-radius: 8px;">
+                                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 4px;">Importance</div>
+                                                    <div style="font-size: 20px; font-weight: 600; color: #1f2937;">${((node.importance || 0.5) * 100).toFixed(0)}%</div>
+                                                </div>
+                                                <div style="background: #f9fafb; padding: 12px; border-radius: 8px;">
+                                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 4px;">Connections</div>
+                                                    <div style="font-size: 20px; font-weight: 600; color: #1f2937;">${connections.length}</div>
+                                                </div>
+                                            </div>
+
+                                            ${targetDrugs.length > 0 ? `
+                                                <div style="margin: 16px 0;">
+                                                    <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #1f2937;">💊 Target Drugs (${targetDrugs.length})</h3>
+                                                    <div style="max-height: 150px; overflow-y: auto;">
+                                                        ${targetDrugs.slice(0, 5).map(drug => {
+                                                            // Generate intelligent drug label
+                                                            const drugLabel = drug.name && drug.name !== 'Unknown' && drug.name !== 'Unnamed compound'
+                                                                ? drug.name
+                                                                : (drug.chemblId ? `${drug.chemblId}` : (drug.drugId ? drug.drugId : 'Bioactive Compound'));
+
+                                                            // Get additional details
+                                                            const potencyInfo = drug.pChEMBL ? ` • pIC50: ${drug.pChEMBL}` : (drug.potency && typeof drug.potency === 'string' ? ` • ${drug.potency}` : '');
+                                                            const mechanismInfo = drug.mechanism ? `<div style="color: #6b7280; font-size: 10px; margin-top: 2px;">${drug.mechanism}</div>` : '';
+                                                            const typeInfo = drug.type ? `<span style="background: #e5e7eb; color: #374151; padding: 2px 6px; border-radius: 3px; font-size: 9px; margin-left: 4px;">${drug.type}</span>` : '';
+
+                                                            return `
+                                                            <div style="background: #f9fafb; padding: 8px; border-radius: 6px; margin-bottom: 6px; font-size: 12px;">
+                                                                <div style="font-weight: 500; color: #1f2937;">
+                                                                    ${drugLabel}${potencyInfo}
+                                                                </div>
+                                                                ${mechanismInfo}
+                                                                <div style="margin-top: 4px;">
+                                                                    ${drug.isApproved ? '<span style="background: #10b981; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px; display: inline-block;">FDA Approved</span>' : ''}
+                                                                    ${drug.maxPhase && drug.maxPhase < 4 ? `<span style="background: #3b82f6; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px; margin-left: 4px; display: inline-block;">Phase ${drug.maxPhase}</span>` : ''}
+                                                                    ${typeInfo}
+                                                                </div>
+                                                            </div>
+                                                            `;
+                                                        }).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+
+                                            ${connectedProteins.length > 0 ? `
+                                                <div style="margin: 16px 0;">
+                                                    <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #1f2937;">🔗 Connected Proteins</h3>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                                        ${connectedProteins.map(p => `
+                                                            <div style="background: linear-gradient(135deg, #f3f4f6, #e5e7eb); padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 500; color: #374151;">
+                                                                ${p.id} <span style="color: #9ca3af; font-weight: 400;">(${p.confidence}%)</span>
+                                                            </div>
+                                                        `).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+
+                                            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #e5e7eb; display: flex; gap: 8px;">
+                                                <a href="https://www.uniprot.org/uniprotkb?query=${node.id}" target="_blank" style="flex: 1; text-align: center; background: #3b82f6; color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 500;">UniProt</a>
+                                                <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${node.id}" target="_blank" style="flex: 1; text-align: center; background: #10b981; color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 500;">PubMed</a>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    // Create popup container with backdrop
+                                    const popupContainer = document.createElement('div');
+                                    popupContainer.innerHTML = `
+                                        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999;" onclick="this.parentElement.remove()">
+                                            ${popupHtml}
+                                        </div>
+                                    `;
+                                    document.body.appendChild(popupContainer);
+
+                                    console.log(`💎 Opened protein info for: ${node.id}`);
+                                });
+
+                            // ========================================
+                            // 🌌 SPECTACULAR VISUAL EFFECTS
+                            // ========================================
+                            if (typeof THREE !== 'undefined') {
+                                const scene = graph.scene();
+
+                                // 💡 DRAMATIC LIGHTING
+                                const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+                                scene.add(ambientLight);
+
+                                const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+                                light1.position.set(1, 1, 1);
+                                scene.add(light1);
+
+                                const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+                                light2.position.set(-1, -1, -1);
+                                scene.add(light2);
+
+                                // ⭐ STAR FIELD BACKGROUND (1000 stars!)
+                                const starGeometry = new THREE.BufferGeometry();
+                                const starCount = 1000;
+                                const starPositions = new Float32Array(starCount * 3);
+
+                                for (let i = 0; i < starCount * 3; i++) {
+                                    starPositions[i] = (Math.random() - 0.5) * 2000; // Spread across 2000 unit cube
+                                }
+
+                                starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+
+                                const starMaterial = new THREE.PointsMaterial({
+                                    color: 0xffffff,
+                                    size: 2,
+                                    transparent: true,
+                                    opacity: 0.8,
+                                    sizeAttenuation: true
+                                });
+
+                                const starField = new THREE.Points(starGeometry, starMaterial);
+                                scene.add(starField);
+
+                                // ✨ TWINKLING STAR ANIMATION
+                                setInterval(() => {
+                                    if (starMaterial) {
+                                        starMaterial.opacity = 0.6 + Math.random() * 0.4; // Twinkle between 0.6-1.0
+                                    }
+                                }, 2000);
+
+                                console.log('✅ Added dramatic lighting + 1000-star background');
+                            }
+
+                            // Add BOTH colored spheres AND text labels using nodeThreeObject
+                            if (typeof THREE !== 'undefined') {
+                                // Store sphere materials for hover effects AND PULSING
+                                const sphereMaterials = new Map();
+                                const importantNodes = [];  // Track FDA/Hub nodes for pulsing
+
+                                graph.nodeThreeObject(node => {
+                                    const group = new THREE.Group();
+
+                                    // TRIPLE sphere size for easier clicking!
+                                    const sphereRadius = (node.val || 5) * 2.5;  // Was 1x, now 2.5x
+                                    const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 32, 32);
+                                    const nodeColor = getNodeColor(node);
+
+                                    const sphereMaterial = new THREE.MeshPhongMaterial({
+                                        color: nodeColor,
+                                        emissive: nodeColor,  // Make it glow with its own color
+                                        emissiveIntensity: 0.5,  // Increased from 0.3 to 0.5 for more glow
+                                        shininess: 50,  // Increased shininess
+                                        transparent: true,
+                                        opacity: 0.95
+                                    });
+
+                                    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+                                    group.add(sphere);
+
+                                    // Store material reference for hover effects AND PULSING
+                                    sphereMaterials.set(node.id, sphereMaterial);
+                                    node.__sphereMaterial = sphereMaterial;
+                                    node.__baseEmissive = 0.5;  // Store base intensity
+
+                                    // Track important nodes for pulsing animation
+                                    if (node.isFdaTarget || node.isHub || node.isDruggable) {
+                                        importantNodes.push({ node, material: sphereMaterial });
+                                    }
+
+                                    // Add text label if enabled
+                                    if (showLabels) {
+                                        const sprite = new THREE.Sprite(
+                                            new THREE.SpriteMaterial({
+                                                map: new THREE.CanvasTexture(generateTextCanvas(node.id)),
+                                                transparent: true,
+                                                depthWrite: false,
+                                                depthTest: false  // Always render on top
+                                            })
+                                        );
+                                        // Position label above sphere (adjusted for larger sphere)
+                                        sprite.position.set(0, sphereRadius + 15, 0);
+                                        sprite.scale.set(80, 40, 1);
+                                        group.add(sprite);
+                                    }
+
+                                    return group;
+                                });
+
+                                // ========================================
+                                // 💡 HOVER GLOW EFFECT
+                                // ========================================
+                                let hoveredNode = null;
+                                graph.onNodeHover(node => {
+                                    // Reset previous hover
+                                    if (hoveredNode && hoveredNode.__sphereMaterial) {
+                                        const material = hoveredNode.__sphereMaterial;
+                                        const color = getNodeColor(hoveredNode);
+                                        material.emissiveIntensity = 0.5;  // Reset to normal glow
+                                        material.opacity = 0.95;
+                                    }
+
+                                    // Apply hover glow
+                                    if (node && node.__sphereMaterial) {
+                                        const material = node.__sphereMaterial;
+                                        material.emissiveIntensity = 0.9;  // BRIGHT glow on hover
+                                        material.opacity = 1.0;  // Full opacity
+                                        hoveredNode = node;
+                                    } else {
+                                        hoveredNode = null;
+                                    }
+
+                                    container.style.cursor = node ? 'pointer' : 'default';
+                                });
+
+                                // ========================================
+                                // 💫 PULSING ANIMATION for Important Nodes
+                                // ========================================
+                                let pulsePhase = 0;
+                                setInterval(() => {
+                                    pulsePhase += 0.05;
+                                    const pulseIntensity = 0.5 + Math.sin(pulsePhase) * 0.3;  // Oscillate 0.2-0.8
+
+                                    importantNodes.forEach(({ node, material }) => {
+                                        if (node !== hoveredNode) {  // Don't pulse if hovered
+                                            material.emissiveIntensity = pulseIntensity;
+                                        }
+                                    });
+                                }, 50);  // 20 FPS animation
+
+                                console.log(`✨ Added pulsing animation to ${importantNodes.length} important nodes`);
+                            }
+
+                            // Generate text canvas for sprite labels - DARK TEXT ON LIGHT BACKGROUND
+                            function generateTextCanvas(text) {
+                                const canvas = document.createElement('canvas');
+                                const context = canvas.getContext('2d');
+                                canvas.width = 512;  // Larger for better resolution
+                                canvas.height = 256;
+
+                                // BRIGHT WHITE/YELLOW background - highly visible
+                                context.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                                // Dark border for contrast
+                                context.strokeStyle = '#1f2937';
+                                context.lineWidth = 8;
+                                context.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+
+                                // HUGE, BOLD DARK TEXT (black) - easy to read
+                                context.font = 'bold 72px Arial, sans-serif';
+                                context.fillStyle = '#000000';  // BLACK TEXT
+                                context.textAlign = 'center';
+                                context.textBaseline = 'middle';
+
+                                // Add slight shadow for depth
+                                context.shadowColor = 'rgba(0, 0, 0, 0.3)';
+                                context.shadowBlur = 4;
+                                context.shadowOffsetX = 2;
+                                context.shadowOffsetY = 2;
+
+                                context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+                                return canvas;
+                            }
+
+                            // ========================================
+                            // 🎮 CONTROL PANEL - TEMPORARILY DISABLED TO DEBUG
+                            // ========================================
+                            //  Control panel code commented out to fix addEventListener error
+                            // Will add back once basic 3D network is working
+
+                            console.log('✅ 3D Graph initialized with ADVANCED features');
+
+                            // ========================================
+                            // 🎬 DRAMATIC CAMERA FLY-IN ANIMATION
+                            // ========================================
+
+                            const distance = 400;
+
+                            // START camera FAR AWAY for dramatic entrance
+                            graph.cameraPosition(
+                                { x: 0, y: distance * 3, z: distance * 3 },  // START FAR AWAY
+                                { x: 0, y: 0, z: 0 },
+                                0  // Instant
+                            );
+
+                            // FLY IN after 100ms delay (let graph render first)
+                            setTimeout(() => {
+                                graph.cameraPosition(
+                                    { x: 0, y: distance * 0.6, z: distance * 0.8 },  // FLY TO elevated view
+                                    { x: 0, y: 0, z: 0 },  // Look at center
+                                    2500  // 2.5 second smooth zoom-in!
+                                );
+                                console.log('🎬 Camera fly-in animation started!');
+                            }, 100);
+
+                            // Auto-rotate camera (slow, smooth orbit)
+                            let angle = 0;
+                            setInterval(() => {
+                                if (!autoRotate) return;
+                                angle += Math.PI / 400;  // Slower rotation (was 300)
+                                graph.cameraPosition({
+                                    x: distance * Math.sin(angle) * 0.8,
+                                    y: distance * 0.5,  // Fixed height - always elevated view
+                                    z: distance * Math.cos(angle) * 0.8
+                                }, { x: 0, y: 0, z: 0 });  // Always look at center
+                            }, 50);
+
+                            // ========================================
+                            // 🎮 COLLAPSIBLE CONTROL PANEL
+                            // ========================================
+                            setTimeout(() => {
+                                try {
+                                    // MINIMIZED BUTTON (Always visible by default)
+                                    const minimizedButtonHtml = `
+                                        <button id="expand-panel-btn" style="
+                                            position: fixed;
+                                            top: 10px;
+                                            right: 10px;
+                                            width: 50px;
+                                            height: 50px;
+                                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                            border: none;
+                                            border-radius: 50%;
+                                            color: white;
+                                            font-size: 24px;
+                                            cursor: pointer;
+                                            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                                            z-index: 1001;
+                                            transition: transform 0.2s;
+                                            display: block;
+                                        " title="Show Network Controls">
+                                            🎮
+                                        </button>
+                                    `;
+
+                                    // PANEL (Hidden by default, slides in from right)
+                                    const controlsHtml = `
+                                        <div id="network-controls" style="
+                                            position: fixed;
+                                            top: 0;
+                                            right: 0;
+                                            height: 100vh;
+                                            background: rgba(255,255,255,0.95);
+                                            padding: 20px;
+                                            box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+                                            font-size: 12px;
+                                            z-index: 1000;
+                                            max-width: 280px;
+                                            width: 280px;
+                                            overflow-y: auto;
+                                            display: none;
+                                            transform: translateX(100%);
+                                            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+                                        ">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                                <div style="font-weight: bold; color: #1f2937; font-size: 14px;">🎮 Network Controls</div>
+                                                <button id="close-panel-btn" style="
+                                                    background: #f3f4f6;
+                                                    border: none;
+                                                    border-radius: 6px;
+                                                    width: 28px;
+                                                    height: 28px;
+                                                    cursor: pointer;
+                                                    font-size: 16px;
+                                                    color: #6b7280;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    transition: background 0.2s;
+                                                " onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'" title="Close Panel">×</button>
+                                            </div>
+
+                                            <label style="display: flex; align-items: center; margin: 8px 0; cursor: pointer;">
+                                                <input type="checkbox" id="toggleLabels3d" checked style="margin-right: 8px;">
+                                                <span>Show Node Labels</span>
+                                            </label>
+
+                                            <label style="display: flex; align-items: center; margin: 8px 0; cursor: pointer;">
+                                                <input type="checkbox" id="toggleRotation3d" checked style="margin-right: 8px;">
+                                                <span>Auto-Rotate</span>
+                                            </label>
+
+                                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                                <div style="font-weight: bold; margin-bottom: 6px; color: #1f2937;">📊 Network Stats</div>
+                                                <div style="color: #6b7280; line-height: 1.6; font-size: 11px;">
+                                                    Nodes: <strong>${metrics.avgDegree}</strong> avg connections<br>
+                                                    Confidence: <strong>${metrics.avgConfidence}%</strong> avg<br>
+                                                    Druggable: <strong>${metrics.druggableCount}</strong> proteins<br>
+                                                    FDA Targets: <strong id="fda-target-link" style="cursor: pointer; color: #3b82f6; text-decoration: underline;" title="Click to find FDA targets">${metrics.fdaApprovedCount}</strong><br>
+                                                    Hubs: <strong>${metrics.hubCount}</strong>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                                <div style="font-weight: bold; margin-bottom: 6px; color: #1f2937;">🔍 Search Protein</div>
+                                                <input
+                                                    type="text"
+                                                    id="proteinSearch3d"
+                                                    placeholder="Type gene name..."
+                                                    style="width: 100%; padding: 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 11px;"
+                                                />
+                                            </div>
+
+                                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                                <div style="font-weight: bold; margin-bottom: 6px; color: #1f2937;">🎚️ Confidence Filter</div>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <input
+                                                        type="range"
+                                                        id="confidenceSlider3d"
+                                                        min="0"
+                                                        max="100"
+                                                        value="0"
+                                                        style="flex: 1;"
+                                                    />
+                                                    <span id="confidenceValue3d" style="font-size: 11px; color: #6b7280; min-width: 30px;">0%</span>
+                                                </div>
+                                                <div style="font-size: 10px; color: #9ca3af; margin-top: 4px;">
+                                                    Hide edges below threshold
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                                <div style="font-weight: bold; margin-bottom: 6px; color: #1f2937;">🎨 Color Legend</div>
+                                                <div style="color: #6b7280; line-height: 1.6; font-size: 10px;">
+                                                    <div style="display: flex; align-items: center; margin: 3px 0;">
+                                                        <div style="width: 10px; height: 10px; background: #FFD700; border-radius: 50%; margin-right: 6px;"></div>
+                                                        <span>FDA Target</span>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; margin: 3px 0;">
+                                                        <div style="width: 10px; height: 10px; background: #3B82F6; border-radius: 50%; margin-right: 6px;"></div>
+                                                        <span>Druggable</span>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; margin: 3px 0;">
+                                                        <div style="width: 10px; height: 10px; background: #EF4444; border-radius: 50%; margin-right: 6px;"></div>
+                                                        <span>Hub</span>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; margin: 3px 0;">
+                                                        <div style="width: 10px; height: 10px; background: #8B5CF6; border-radius: 50%; margin-right: 6px;"></div>
+                                                        <span>Input Gene</span>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; margin: 3px 0;">
+                                                        <div style="width: 10px; height: 10px; background: #10B981; border-radius: 50%; margin-right: 6px;"></div>
+                                                        <span>Interacting</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    // Insert BOTH minimized button and panel into DOM
+                                    container.style.position = 'relative';
+                                    container.insertAdjacentHTML('beforeend', minimizedButtonHtml);
+                                    container.insertAdjacentHTML('beforeend', controlsHtml);
+
+                                    // ========================================
+                                    // 🎮 TOGGLE LOGIC FOR COLLAPSIBLE PANEL
+                                    // ========================================
+                                    const expandBtn = document.getElementById('expand-panel-btn');
+                                    const closeBtn = document.getElementById('close-panel-btn');
+                                    const panel = document.getElementById('network-controls');
+
+                                    if (expandBtn && panel && closeBtn) {
+                                        // EXPAND: Show panel, hide button
+                                        expandBtn.addEventListener('click', () => {
+                                            panel.style.display = 'block';
+                                            setTimeout(() => {
+                                                panel.style.transform = 'translateX(0)';
+                                            }, 10);
+                                            expandBtn.style.display = 'none';
+                                            console.log('🎮 Panel expanded');
+                                        });
+
+                                        // CLOSE: Hide panel, show button
+                                        closeBtn.addEventListener('click', () => {
+                                            panel.style.transform = 'translateX(100%)';
+                                            setTimeout(() => {
+                                                panel.style.display = 'none';
+                                                expandBtn.style.display = 'block';
+                                            }, 300);  // Wait for slide-out animation
+                                            console.log('🎮 Panel minimized');
+                                        });
+
+                                        // Add hover effect to expand button
+                                        expandBtn.addEventListener('mouseenter', () => {
+                                            expandBtn.style.transform = 'scale(1.1)';
+                                        });
+                                        expandBtn.addEventListener('mouseleave', () => {
+                                            expandBtn.style.transform = 'scale(1)';
+                                        });
+                                    }
+
+                                    // ========================================
+                                    // 🎯 FDA TARGET FINDER
+                                    // ========================================
+                                    // This runs AFTER panel is inserted, so need to wait a bit for DOM
+                                    setTimeout(() => {
+                                        const fdaLink = document.getElementById('fda-target-link');
+                                        if (fdaLink) {
+                                            fdaLink.addEventListener('click', () => {
+                                                // Find first FDA target node
+                                                const fdaNode = networkData.nodes.find(n => n.isFdaTarget);
+
+                                                if (fdaNode) {
+                                                    // Zoom to node
+                                                    const distance = 150;
+                                                    const distRatio = 1 + distance / Math.hypot(fdaNode.x || 0, fdaNode.y || 0, fdaNode.z || 0);
+
+                                                    graph.cameraPosition(
+                                                        {
+                                                            x: (fdaNode.x || 0) * distRatio,
+                                                            y: (fdaNode.y || 0) * distRatio,
+                                                            z: (fdaNode.z || 0) * distRatio
+                                                        },
+                                                        fdaNode,
+                                                        1500  // 1.5 second zoom
+                                                    );
+
+                                                    // Flash the sphere gold 3 times
+                                                    const nodeObj = fdaNode.__threeObj;
+                                                    if (nodeObj) {
+                                                        let flashCount = 0;
+                                                        const flashInterval = setInterval(() => {
+                                                            // Toggle emissive intensity
+                                                            if (nodeObj.children && nodeObj.children[0] && nodeObj.children[0].material) {
+                                                                const material = nodeObj.children[0].material;
+                                                                material.emissiveIntensity = flashCount % 2 === 0 ? 1.2 : 0.5;
+                                                            }
+                                                            flashCount++;
+                                                            if (flashCount > 6) {
+                                                                clearInterval(flashInterval);
+                                                                // Reset to normal glow
+                                                                if (nodeObj.children && nodeObj.children[0] && nodeObj.children[0].material) {
+                                                                    nodeObj.children[0].material.emissiveIntensity = 0.7;
+                                                                }
+                                                            }
+                                                        }, 250);
+                                                    }
+
+                                                    console.log(`🎯 Zoomed to FDA target: ${fdaNode.id}`);
+
+                                                    // Auto-minimize panel after 1 second
+                                                    setTimeout(() => {
+                                                        if (closeBtn) {
+                                                            closeBtn.click();
+                                                        }
+                                                    }, 1000);
+                                                } else {
+                                                    alert('No FDA-approved drug targets found in this network');
+                                                }
+                                            });
+                                        }
+                                    }, 500);  // Wait for panel to fully render
+
+                                    // Wire up controls
+                                    const toggleLabelsEl = document.getElementById('toggleLabels3d');
+                                    const toggleRotationEl = document.getElementById('toggleRotation3d');
+                                    const searchEl = document.getElementById('proteinSearch3d');
+                                    const confidenceSliderEl = document.getElementById('confidenceSlider3d');
+                                    const confidenceValueEl = document.getElementById('confidenceValue3d');
+
+                                    if (toggleLabelsEl) {
+                                        toggleLabelsEl.addEventListener('change', (e) => {
+                                            showLabels = e.target.checked;
+                                            graph.nodeThreeObject(graph.nodeThreeObject()); // Force refresh
+                                        });
+                                    }
+
+                                    if (toggleRotationEl) {
+                                        toggleRotationEl.addEventListener('change', (e) => {
+                                            autoRotate = e.target.checked;
+                                        });
+                                    }
+
+                                    // 🔍 SEARCH & HIGHLIGHT
+                                    let highlightedNode = null;
+                                    if (searchEl) {
+                                        searchEl.addEventListener('input', (e) => {
+                                            const searchTerm = e.target.value.toUpperCase().trim();
+
+                                            // Clear previous highlight
+                                            if (highlightedNode) {
+                                                highlightedNode = null;
+                                            }
+
+                                            if (searchTerm.length > 0) {
+                                                // Find matching node
+                                                const matchingNode = networkData.nodes.find(n =>
+                                                    n.id.toUpperCase().includes(searchTerm) ||
+                                                    (n.name && n.name.toUpperCase().includes(searchTerm))
+                                                );
+
+                                                if (matchingNode) {
+                                                    highlightedNode = matchingNode;
+
+                                                    // Zoom to node
+                                                    const distance = 150;
+                                                    const distRatio = 1 + distance / Math.hypot(matchingNode.x, matchingNode.y, matchingNode.z);
+
+                                                    graph.cameraPosition(
+                                                        {
+                                                            x: matchingNode.x * distRatio,
+                                                            y: matchingNode.y * distRatio,
+                                                            z: matchingNode.z * distRatio
+                                                        },
+                                                        matchingNode,
+                                                        1000
+                                                    );
+
+                                                    console.log(`🎯 Found and zoomed to: ${matchingNode.id}`);
+                                                }
+                                            }
+
+                                            // Force visual update
+                                            graph.nodeThreeObject(graph.nodeThreeObject());
+                                        });
+                                    }
+
+                                    // 🎚️ CONFIDENCE FILTER
+                                    let confidenceThreshold = 0;
+                                    if (confidenceSliderEl && confidenceValueEl) {
+                                        confidenceSliderEl.addEventListener('input', (e) => {
+                                            confidenceThreshold = parseInt(e.target.value) / 100;
+                                            confidenceValueEl.textContent = e.target.value + '%';
+
+                                            // Filter links by confidence
+                                            const filteredLinks = networkData.links.filter(link =>
+                                                (link.value || 0) >= confidenceThreshold
+                                            );
+
+                                            graph.graphData({
+                                                nodes: networkData.nodes,
+                                                links: filteredLinks
+                                            });
+
+                                            console.log(`🎚️ Filtered to ${filteredLinks.length}/${networkData.links.length} links (>=${(confidenceThreshold * 100).toFixed(0)}% confidence)`);
+                                        });
+                                    }
+
+                                    console.log('✅ Control panel added successfully');
+                                } catch (controlError) {
+                                    console.error('Error adding control panel:', controlError);
+                                }
+                            }, 500);
+
+                        } catch (error) {
+                            console.error('Error initializing 3D graph:', error);
+                            container.innerHTML = '<div style="padding: 40px; text-align: center; color: #dc2626;">Error loading 3D visualization: ' + error.message + '</div>';
+                        }
+                    } else {
+                        console.error('Container or ForceGraph3D not available');
+                        if (container) {
+                            container.innerHTML = '<div style="padding: 40px; text-align: center; color: #dc2626;">3D visualization library not loaded. Please refresh the page.</div>';
+                        }
+                    }
+                }, 300);
+            }
+
             // Track results viewed
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'results_viewed', {
                     'gene_count': data.genes?.length || 0,
-                    'pathways_count': data.pathways?.length || 0
+                    'pathways_count': data.pathways?.length || 0,
+                    'has_3d_network': !!(data.network3DData && data.network3DData.nodes && data.network3DData.nodes.length > 0)
                 });
             }
 

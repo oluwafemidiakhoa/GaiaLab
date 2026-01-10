@@ -16,6 +16,7 @@ import { drugAggregator } from "./data/aggregators/drug-aggregator.js"; // NEW: 
 import { insightGenerator } from "./ai/models/insight-generator.js";
 import { startSlackBot } from "./integrations/slack-bot.js";
 import { resultCache } from "./utils/result-cache.js"; // NEW: In-memory result cache
+import { formatNetwork3DData } from "./visualization/network-formatter.js"; // NEW: 3D network visualization
 
 const GAIALAB_HTML = readFileSync("public/gaialab-widget.html", "utf8");
 const INDEX_HTML = readFileSync("public/index.html", "utf8");
@@ -250,6 +251,25 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
             .map(([gene, score]) => ({ gene, centrality: score })) : [],
         networkImageUrl: interactions.network?.imageUrl || null
       },
+      network3DData: (() => {
+        const topInteractors = interactions.interactions?.slice(0, 100) || [];
+        console.log(`[3D Network DEBUG] Raw interactions count: ${interactions.interactions?.length || 0}`);
+        console.log(`[3D Network DEBUG] TopInteractors count: ${topInteractors.length}`);
+        if (topInteractors.length > 0) {
+          console.log(`[3D Network DEBUG] Sample interaction:`, JSON.stringify(topInteractors[0]));
+        }
+        return formatNetwork3DData(
+          geneData,
+          {
+            topInteractors,
+            networkHubs: interactions.centrality?.centrality ?
+              Object.entries(interactions.centrality.centrality)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10)
+                .map(([gene, score]) => ({ gene, centrality: score })) : []
+          }
+        );
+      })(), // NEW: 3D visualization data (FREE - client-side rendering)
       clinical: { // NEW: Disease association data
         totalAssociations: clinical.stats?.totalAssociations || 0,
         avgScore: clinical.stats?.avgScore || 0,
@@ -436,13 +456,24 @@ const httpServer = createServer(async (req, res) => {
 
   const url = new URL(req.url, `http://${req.headers.host ?? "localhost"}`);
 
-  // CORS preflight
+  // CORS preflight for MCP
   if (req.method === "OPTIONS" && url.pathname === MCP_PATH) {
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "POST, GET, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "content-type, mcp-session-id",
       "Access-Control-Expose-Headers": "Mcp-Session-Id"
+    });
+    res.end();
+    return;
+  }
+
+  // CORS preflight for /analyze
+  if (req.method === "OPTIONS" && url.pathname === "/analyze") {
+    res.writeHead(204, {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "content-type"
     });
     res.end();
     return;
