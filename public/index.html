@@ -800,6 +800,100 @@
                             <span>Protein Interaction Network (3D)</span>
                         </div>
                         <div id="network-3d-container" class="network-3d-container"></div>
+
+                        <!-- ⏱️ TIME-LAPSE NETWORK EVOLUTION CONTROLS -->
+                        <div id="timeline-controls" style="
+                            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                            padding: 16px 20px;
+                            border-radius: 12px;
+                            margin: 16px 0;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                        ">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <button id="timeline-play-btn" style="
+                                        background: linear-gradient(135deg, #3b82f6, #2563eb);
+                                        border: none;
+                                        border-radius: 8px;
+                                        padding: 8px 16px;
+                                        color: white;
+                                        font-weight: 600;
+                                        cursor: pointer;
+                                        font-size: 14px;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 6px;
+                                        transition: all 0.2s;
+                                    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                        ▶️ Play Evolution
+                                    </button>
+
+                                    <div id="timeline-year-display" style="
+                                        font-size: 28px;
+                                        font-weight: 700;
+                                        color: #fbbf24;
+                                        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                                        min-width: 80px;
+                                        text-align: center;
+                                    ">1995</div>
+
+                                    <div style="color: #94a3b8; font-size: 12px;">
+                                        <span id="timeline-visible-count">0</span> / ${data.network3DData.stats.totalLinks} interactions
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <button id="timeline-color-toggle" style="
+                                        background: rgba(255,255,255,0.1);
+                                        border: 1px solid rgba(255,255,255,0.2);
+                                        border-radius: 6px;
+                                        padding: 6px 12px;
+                                        color: #cbd5e1;
+                                        font-size: 11px;
+                                        cursor: pointer;
+                                        transition: all 0.2s;
+                                    " onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                        🎨 Era Colors
+                                    </button>
+                                    <div style="border-left: 1px solid rgba(255,255,255,0.2); height: 20px;"></div>
+                                    <label style="color: #cbd5e1; font-size: 11px;">Speed:</label>
+                                    <input type="range" id="timeline-speed-slider" min="1" max="10" value="5" style="width: 80px;">
+                                    <span id="timeline-speed-value" style="color: #cbd5e1; font-size: 11px; min-width: 30px;">5x</span>
+                                </div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div style="position: relative; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                <div id="timeline-progress" style="
+                                    height: 100%;
+                                    width: 0%;
+                                    background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e);
+                                    transition: width 0.3s;
+                                    border-radius: 4px;
+                                "></div>
+                            </div>
+
+                            <!-- Era Legend -->
+                            <div style="display: flex; gap: 16px; margin-top: 12px; font-size: 11px; color: #cbd5e1;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <div style="width: 12px; height: 12px; background: #ef4444; border-radius: 3px;"></div>
+                                    <span>1990s</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <div style="width: 12px; height: 12px; background: #f97316; border-radius: 3px;"></div>
+                                    <span>2000s</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <div style="width: 12px; height: 12px; background: #eab308; border-radius: 3px;"></div>
+                                    <span>2010s</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <div style="width: 12px; height: 12px; background: #22c55e; border-radius: 3px;"></div>
+                                    <span>2020s</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="network-3d-info">
                             <strong>📊 Network Stats:</strong>
                             ${data.network3DData.stats.totalNodes} proteins •
@@ -812,6 +906,111 @@
                         </div>
                     </div>
                 `;
+            }
+
+            // 💊 Drug Repurposing Section (Enterprise Feature: $10K-50K/year)
+            // ALWAYS show this section - even if no candidates found
+            if (data.drugRepurposing || data.drugs) {
+                const repurposing = data.drugRepurposing;
+                const hasCandidates = repurposing && repurposing.candidates && repurposing.candidates.length > 0;
+
+                html += `
+                    <div class="section">
+                        <div class="section-title">
+                            <span class="icon">💊</span>
+                            <span>Drug Repurposing Analysis</span>
+                            <span style="font-size: 11px; color: #3b82f6; background: rgba(59, 130, 246, 0.1); padding: 4px 8px; border-radius: 6px; margin-left: 12px; font-weight: 600;">ENTERPRISE</span>
+                        </div>
+                `;
+
+                if (hasCandidates) {
+                    // Show candidates in simplified format
+                    html += `
+                        <!-- Summary -->
+                        <div style="background: #667eea; padding: 14px 18px; border-radius: 8px; color: white; margin-bottom: 16px;">
+                            <div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">
+                                ${repurposing.summary.headline}
+                            </div>
+                            <div style="font-size: 13px; opacity: 0.95;">
+                                ${repurposing.summary.summary}
+                            </div>
+                        </div>
+
+                        <!-- Simplified Candidates -->
+                        <div style="display: grid; gap: 12px;">
+                            ${repurposing.candidates.slice(0, 5).map((candidate, index) => `
+                                <div style="border-left: 4px solid ${candidate.confidence === 'high' ? '#22c55e' : candidate.confidence === 'medium' ? '#f59e0b' : '#94a3b8'}; padding: 14px; background: white; border-radius: 6px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                        <div style="flex: 1;">
+                                            <div style="font-size: 16px; font-weight: 700; color: #1f2937;">
+                                                ${index + 1}. ${candidate.drug}
+                                            </div>
+                                            <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">
+                                                ${candidate.currentIndication} → ${candidate.proposedIndication}
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right; margin-left: 16px;">
+                                            <div style="font-size: 24px; font-weight: 800; color: ${candidate.confidence === 'high' ? '#22c55e' : candidate.confidence === 'medium' ? '#f59e0b' : '#94a3b8'};">
+                                                ${candidate.repurposingScore}%
+                                            </div>
+                                            <div style="font-size: 10px; color: #6b7280; text-transform: uppercase;">
+                                                ${candidate.confidence}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Key Info Only -->
+                                    <div style="font-size: 12px; color: #1f2937; line-height: 1.6;">
+                                        ${candidate.reasoning[0] || 'Analysis in progress...'}
+                                    </div>
+
+                                    ${candidate.matchedTargets && candidate.matchedTargets.length > 0 ? `
+                                        <div style="margin-top: 8px; display: flex; gap: 4px; flex-wrap: wrap;">
+                                            ${candidate.matchedTargets.map(target => `
+                                                <span style="background: #dbeafe; color: #1e3a8a; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">
+                                                    ${target}
+                                                </span>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+
+                                    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 11px; color: #6b7280;">
+                                        <span><strong style="color: #166534;">${candidate.estimatedSavings.cost}</strong> savings</span>
+                                        <span>${candidate.phase}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div style="margin-top: 12px; padding: 12px; background: #f9fafb; border-radius: 6px; font-size: 11px; color: #6b7280; text-align: center;">
+                            Analyzed ${repurposing.stats.totalDrugsAnalyzed} drugs •
+                            Found ${repurposing.stats.candidatesFound} candidates •
+                            Avg score: ${repurposing.stats.avgScore}%
+                        </div>
+                    `;
+                } else {
+                    // No candidates found - show helpful message
+                    html += `
+                        <div style="padding: 40px 20px; text-align: center; background: #f9fafb; border-radius: 8px; border: 2px dashed #d1d5db;">
+                            <div style="font-size: 48px; margin-bottom: 12px;">🔬</div>
+                            <div style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 8px;">
+                                No Drug Candidates Found
+                            </div>
+                            <div style="font-size: 13px; color: #6b7280; line-height: 1.6; max-width: 500px; margin: 0 auto;">
+                                Drug databases (ChEMBL/DrugBank) did not return compound data for these genes.
+                                This may be because:<br>
+                                • Gene symbols need validation<br>
+                                • No approved drugs target these specific proteins yet<br>
+                                • Database API timeout (try again in a moment)
+                            </div>
+                            <div style="margin-top: 16px; font-size: 12px; color: #3b82f6;">
+                                💡 Try running the analysis again or contact support for assistance
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
             }
 
             // Pathways Section
@@ -1216,6 +1415,15 @@
                             let showLabels = true;
                             let autoRotate = true;
                             let confidenceThreshold = 0;
+                            let useEraColors = false; // Toggle between confidence and era colors
+
+                            // Helper: Get era color based on discovery year
+                            const getEraColor = (year) => {
+                                if (year < 2000) return '#EF4444'; // Red - 1990s
+                                if (year < 2010) return '#F97316'; // Orange - 2000s
+                                if (year < 2020) return '#EAB308'; // Yellow - 2010s
+                                return '#22C55E'; // Green - 2020s
+                            };
 
                             const graph = ForceGraph3D()(container)
                                 .graphData(networkData)
@@ -1225,17 +1433,29 @@
                                 .nodeOpacity(0.9)
                                 .linkWidth(link => (link.value || 0.5) * 4)  // Thicker links
                                 .linkColor(link => {
-                                    // GRADIENT COLORS based on confidence
-                                    const confidence = link.value || 0.5;
-                                    const opacity = 0.3 + confidence * 0.5;  // 0.3-0.8 opacity
+                                    const opacity = 0.6;
 
-                                    // Color gradient: Red (low) → Yellow (med) → Green (high)
+                                    // ERA COLORS MODE: Show discovery timeline
+                                    if (useEraColors && link.discoveryYear) {
+                                        const hexColor = getEraColor(link.discoveryYear);
+                                        // Convert hex to rgba
+                                        const r = parseInt(hexColor.slice(1, 3), 16);
+                                        const g = parseInt(hexColor.slice(3, 5), 16);
+                                        const b = parseInt(hexColor.slice(5, 7), 16);
+                                        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+                                    }
+
+                                    // CONFIDENCE COLORS MODE (default)
+                                    const confidence = link.value || 0.5;
+                                    const confOpacity = 0.3 + confidence * 0.5;  // 0.3-0.8 opacity
+
+                                    // Color gradient: Red (low) → Purple (med) → Green (high)
                                     if (confidence > 0.7) {
-                                        return `rgba(16, 185, 129, ${opacity})`;  // 🟢 GREEN - High confidence
+                                        return `rgba(16, 185, 129, ${confOpacity})`;  // 🟢 GREEN - High confidence
                                     } else if (confidence > 0.4) {
-                                        return `rgba(139, 92, 246, ${opacity})`;  // 🟣 PURPLE - Medium
+                                        return `rgba(139, 92, 246, ${confOpacity})`;  // 🟣 PURPLE - Medium
                                     } else {
-                                        return `rgba(239, 68, 68, ${opacity})`;   // 🔴 RED - Low confidence
+                                        return `rgba(239, 68, 68, ${confOpacity})`;   // 🔴 RED - Low confidence
                                     }
                                 })
                                 .linkDirectionalParticles(link => {
@@ -1931,6 +2151,173 @@
                                         });
                                     }
 
+                                    // ========================================
+                                    // ⏱️ TIME-LAPSE NETWORK EVOLUTION
+                                    // ========================================
+                                    const timelinePlayBtn = document.getElementById('timeline-play-btn');
+                                    const timelineYearDisplay = document.getElementById('timeline-year-display');
+                                    const timelineProgress = document.getElementById('timeline-progress');
+                                    const timelineVisibleCount = document.getElementById('timeline-visible-count');
+                                    const timelineSpeedSlider = document.getElementById('timeline-speed-slider');
+                                    const timelineSpeedValue = document.getElementById('timeline-speed-value');
+                                    const timelineColorToggle = document.getElementById('timeline-color-toggle');
+
+                                    let timelineInterval = null;
+                                    let currentYear = 1995;
+                                    let isPlaying = false;
+                                    let timelineSpeed = 5; // Default speed multiplier
+
+                                    // Store original network data
+                                    const allLinks = [...networkData.links];
+                                    const allNodes = [...networkData.nodes];
+
+                                    // Debug: Check if discoveryYear is set
+                                    console.log('🎨 Discovery Year Debug:');
+                                    allLinks.slice(0, 5).forEach(link => {
+                                        console.log(`  ${link.source} → ${link.target}: Year ${link.discoveryYear || 'NOT SET'}, Confidence ${(link.value * 100).toFixed(0)}%`);
+                                    });
+
+                                    // Update speed display
+                                    if (timelineSpeedSlider && timelineSpeedValue) {
+                                        timelineSpeedSlider.addEventListener('input', (e) => {
+                                            timelineSpeed = parseInt(e.target.value);
+                                            timelineSpeedValue.textContent = timelineSpeed + 'x';
+                                        });
+                                    }
+
+                                    // Color toggle button
+                                    if (timelineColorToggle) {
+                                        timelineColorToggle.addEventListener('click', () => {
+                                            useEraColors = !useEraColors;
+
+                                            if (useEraColors) {
+                                                timelineColorToggle.innerHTML = '✅ Era Colors';
+                                                timelineColorToggle.style.background = 'rgba(34, 197, 94, 0.2)';
+                                                timelineColorToggle.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                                                console.log('🎨 Switched to ERA COLORS mode');
+                                            } else {
+                                                timelineColorToggle.innerHTML = '🎨 Era Colors';
+                                                timelineColorToggle.style.background = 'rgba(255,255,255,0.1)';
+                                                timelineColorToggle.style.borderColor = 'rgba(255,255,255,0.2)';
+                                                console.log('🎨 Switched to CONFIDENCE COLORS mode');
+                                            }
+
+                                            // Force link color refresh
+                                            graph.linkColor(graph.linkColor());
+                                        });
+                                    }
+
+                                    // Timeline animation logic
+                                    function updateNetworkByYear(year) {
+                                        currentYear = year;
+
+                                        // Filter links by discovery year (show all links discovered up to current year)
+                                        const visibleLinks = allLinks.filter(link =>
+                                            (link.discoveryYear || 2000) <= year
+                                        );
+
+                                        // Get unique nodes from visible links
+                                        const visibleNodeIds = new Set();
+                                        visibleLinks.forEach(link => {
+                                            visibleNodeIds.add(link.source.id || link.source);
+                                            visibleNodeIds.add(link.target.id || link.target);
+                                        });
+
+                                        // Include all primary input genes (always visible)
+                                        const visibleNodes = allNodes.filter(node =>
+                                            node.isPrimary || visibleNodeIds.has(node.id)
+                                        );
+
+                                        // Update graph
+                                        graph.graphData({
+                                            nodes: visibleNodes,
+                                            links: visibleLinks
+                                        });
+
+                                        // Update UI
+                                        if (timelineYearDisplay) timelineYearDisplay.textContent = year;
+                                        if (timelineVisibleCount) timelineVisibleCount.textContent = visibleLinks.length;
+                                        if (timelineProgress) {
+                                            const progress = ((year - 1995) / (2025 - 1995)) * 100;
+                                            timelineProgress.style.width = progress + '%';
+                                        }
+
+                                        console.log(`⏱️ Timeline: ${year} - ${visibleLinks.length}/${allLinks.length} interactions visible`);
+                                    }
+
+                                    // Play/Pause button
+                                    if (timelinePlayBtn) {
+                                        timelinePlayBtn.addEventListener('click', () => {
+                                            if (isPlaying) {
+                                                // PAUSE
+                                                clearInterval(timelineInterval);
+                                                isPlaying = false;
+                                                timelinePlayBtn.innerHTML = '▶️ Play Evolution';
+
+                                                // DISABLE ERA COLORS - back to confidence colors
+                                                useEraColors = false;
+                                                if (timelineColorToggle) {
+                                                    timelineColorToggle.innerHTML = '🎨 Era Colors';
+                                                    timelineColorToggle.style.background = 'rgba(255,255,255,0.1)';
+                                                    timelineColorToggle.style.borderColor = 'rgba(255,255,255,0.2)';
+                                                }
+                                                graph.linkColor(graph.linkColor()); // Force refresh
+
+                                                console.log('⏸️ Timeline paused - switched to confidence colors');
+                                            } else {
+                                                // PLAY
+                                                isPlaying = true;
+                                                timelinePlayBtn.innerHTML = '⏸️ Pause';
+
+                                                // ENABLE ERA COLORS - show timeline
+                                                useEraColors = true;
+                                                if (timelineColorToggle) {
+                                                    timelineColorToggle.innerHTML = '✅ Era Colors';
+                                                    timelineColorToggle.style.background = 'rgba(34, 197, 94, 0.2)';
+                                                    timelineColorToggle.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                                                }
+                                                graph.linkColor(graph.linkColor()); // Force refresh
+
+                                                console.log('▶️ Timeline playing - switched to era colors');
+
+                                                // Reset if at the end
+                                                if (currentYear >= 2025) {
+                                                    currentYear = 1995;
+                                                }
+
+                                                // Animation loop
+                                                timelineInterval = setInterval(() => {
+                                                    currentYear++;
+
+                                                    if (currentYear > 2025) {
+                                                        // END OF TIMELINE
+                                                        clearInterval(timelineInterval);
+                                                        isPlaying = false;
+                                                        timelinePlayBtn.innerHTML = '🔄 Replay Evolution';
+
+                                                        // DISABLE ERA COLORS when done
+                                                        useEraColors = false;
+                                                        if (timelineColorToggle) {
+                                                            timelineColorToggle.innerHTML = '🎨 Era Colors';
+                                                            timelineColorToggle.style.background = 'rgba(255,255,255,0.1)';
+                                                            timelineColorToggle.style.borderColor = 'rgba(255,255,255,0.2)';
+                                                        }
+                                                        graph.linkColor(graph.linkColor()); // Force refresh
+
+                                                        console.log('✅ Timeline completed - switched back to confidence colors');
+                                                        return;
+                                                    }
+
+                                                    updateNetworkByYear(currentYear);
+                                                }, 300 / timelineSpeed); // Faster with higher speed
+                                            }
+                                        });
+                                    }
+
+                                    // Initialize at 1995 (start of timeline)
+                                    updateNetworkByYear(1995);
+                                    console.log('⏱️ Time-Lapse Network Evolution initialized');
+
                                     console.log('✅ Control panel added successfully');
                                 } catch (controlError) {
                                     console.error('Error adding control panel:', controlError);
@@ -2016,6 +2403,465 @@
                 }
             }, 100);
         }
+    </script>
+
+    <!-- ========================================
+         🤖 AI RESEARCH ASSISTANT CHATBOT
+         ======================================== -->
+    <style>
+        #ai-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        #ai-chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        #ai-chat-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 9998;
+            overflow: hidden;
+        }
+
+        #ai-chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #ai-chat-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        #ai-chat-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        #ai-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9fafb;
+        }
+
+        .chat-message {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .message-avatar.user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .message-avatar.ai {
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .chat-message.user .message-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.ai .message-content {
+            background: white;
+            color: #1f2937;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-content code {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .chat-message.ai .message-content code {
+            background: #f3f4f6;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 8px 12px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #9ca3af;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        #ai-chat-input-container {
+            padding: 16px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        #ai-chat-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: none;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        #ai-chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #ai-chat-send {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        #ai-chat-send:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        #ai-chat-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .chat-citation {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chat-citation:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #ai-chat-window {
+                width: calc(100vw - 40px);
+                height: 70vh;
+                bottom: 80px;
+            }
+        }
+    </style>
+
+    <!-- Chat Button -->
+    <button id="ai-chat-button" title="Ask GaiaLab AI">
+        🤖
+    </button>
+
+    <!-- Chat Window -->
+    <div id="ai-chat-window">
+        <div id="ai-chat-header">
+            <div>
+                <div style="font-size: 16px;">🤖 GaiaLab AI Assistant</div>
+                <div style="font-size: 11px; opacity: 0.9; margin-top: 2px;">Ask anything about your genes</div>
+            </div>
+            <button id="ai-chat-close">×</button>
+        </div>
+
+        <div id="ai-chat-messages">
+            <div class="chat-message ai">
+                <div class="message-avatar ai">🤖</div>
+                <div class="message-content">
+                    Hi! I'm your AI research assistant. I can help you understand your gene analysis results, explain protein interactions, suggest research directions, and more.
+                    <br><br>
+                    Try asking:
+                    <br>• "What's the relationship between APP and APOE?"
+                    <br>• "Which genes are druggable targets?"
+                    <br>• "Explain the p53 pathway"
+                </div>
+            </div>
+        </div>
+
+        <div id="ai-chat-input-container">
+            <textarea
+                id="ai-chat-input"
+                placeholder="Ask a biology question..."
+                rows="1"
+            ></textarea>
+            <button id="ai-chat-send">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // AI CHATBOT FUNCTIONALITY
+        // ========================================
+        (function() {
+            const chatButton = document.getElementById('ai-chat-button');
+            const chatWindow = document.getElementById('ai-chat-window');
+            const chatClose = document.getElementById('ai-chat-close');
+            const chatMessages = document.getElementById('ai-chat-messages');
+            const chatInput = document.getElementById('ai-chat-input');
+            const chatSend = document.getElementById('ai-chat-send');
+
+            let conversationHistory = [];
+            let currentAnalysisContext = null;
+
+            // Toggle chat window
+            chatButton.addEventListener('click', () => {
+                chatWindow.style.display = 'flex';
+                chatButton.style.display = 'none';
+                chatInput.focus();
+            });
+
+            chatClose.addEventListener('click', () => {
+                chatWindow.style.display = 'none';
+                chatButton.style.display = 'flex';
+            });
+
+            // Send message on Enter (Shift+Enter for new line)
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            chatSend.addEventListener('click', sendMessage);
+
+            async function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // Add user message to chat
+                addMessage('user', message);
+                chatInput.value = '';
+
+                // Show typing indicator
+                const typingId = showTypingIndicator();
+
+                // Disable input while processing
+                chatInput.disabled = true;
+                chatSend.disabled = true;
+
+                try {
+                    // Send to backend
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message,
+                            conversationHistory,
+                            analysisContext: currentAnalysisContext
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to get response');
+                    }
+
+                    const data = await response.json();
+
+                    // Remove typing indicator
+                    removeTypingIndicator(typingId);
+
+                    // Add AI response
+                    addMessage('ai', data.response);
+
+                    // Update conversation history
+                    conversationHistory.push(
+                        { role: 'user', content: message },
+                        { role: 'assistant', content: data.response }
+                    );
+
+                } catch (error) {
+                    removeTypingIndicator(typingId);
+                    addMessage('ai', '❌ Sorry, I encountered an error. Please try again or check if the server is running.');
+                    console.error('Chat error:', error);
+                }
+
+                // Re-enable input
+                chatInput.disabled = false;
+                chatSend.disabled = false;
+                chatInput.focus();
+            }
+
+            function addMessage(type, content) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${type}`;
+
+                const avatar = document.createElement('div');
+                avatar.className = `message-avatar ${type}`;
+                avatar.textContent = type === 'user' ? '👤' : '🤖';
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+
+                // Parse markdown-style citations: [PMID:12345]
+                const formattedContent = content.replace(
+                    /\[PMID:(\d+)\]/g,
+                    '<a href="https://pubmed.ncbi.nlm.nih.gov/$1" target="_blank" class="chat-citation">PMID:$1</a>'
+                );
+
+                contentDiv.innerHTML = formattedContent;
+
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(contentDiv);
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'chat-message ai';
+                typingDiv.id = 'typing-indicator';
+
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar ai';
+                avatar.textContent = '🤖';
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                contentDiv.innerHTML = `
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+
+                typingDiv.appendChild(avatar);
+                typingDiv.appendChild(contentDiv);
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                return 'typing-indicator';
+            }
+
+            function removeTypingIndicator(id) {
+                const indicator = document.getElementById(id);
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
+
+            // Store analysis context when results are loaded
+            window.setAIChatContext = function(analysisData) {
+                currentAnalysisContext = analysisData;
+                console.log('[AI Chat] Analysis context updated');
+            };
+
+            // Auto-resize textarea
+            chatInput.addEventListener('input', () => {
+                chatInput.style.height = 'auto';
+                chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+            });
+        })();
     </script>
 </body>
 </html>

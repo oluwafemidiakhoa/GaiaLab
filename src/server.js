@@ -14,12 +14,20 @@ import { interactionAggregator } from "./data/aggregators/interaction-aggregator
 import { clinicalAggregator } from "./data/aggregators/clinical-aggregator.js"; // NEW: Disease associations
 import { drugAggregator } from "./data/aggregators/drug-aggregator.js"; // NEW: Bioactive compounds
 import { insightGenerator } from "./ai/models/insight-generator.js";
+import { analyzeRepurposingCandidates, generateRepurposingSummary } from "./ai/models/drug-repurposing-engine.js"; // NEW: Drug repurposing
 import { startSlackBot } from "./integrations/slack-bot.js";
 import { resultCache } from "./utils/result-cache.js"; // NEW: In-memory result cache
 import { formatNetwork3DData } from "./visualization/network-formatter.js"; // NEW: 3D network visualization
+import OpenAI from 'openai'; // For AI Chatbot
 
 const GAIALAB_HTML = readFileSync("public/gaialab-widget.html", "utf8");
 const INDEX_HTML = readFileSync("public/index.html", "utf8");
+
+// Initialize DeepSeek client for AI chatbot
+const deepseekClient = process.env.DEEPSEEK_API_KEY ? new OpenAI({
+  apiKey: process.env.DEEPSEEK_API_KEY,
+  baseURL: 'https://api.deepseek.com/v1'
+}) : null;
 
 // High-level input schema for the GaiaLab tool
 const gaiaInputSchema = {
@@ -290,6 +298,44 @@ async function buildRealGaiaBoard({ genes, diseaseContext, audience, includeDrug
           ? drugAggregator.findMultiTargetCompounds(drugs).slice(0, 5)
           : []
       },
+      drugRepurposing: (() => {
+        // 💊 DRUG REPURPOSING ENGINE: $10K-50K/year enterprise feature
+        if (!drugs.compounds || drugs.compounds.length === 0) {
+          return null;
+        }
+
+        console.log('[Drug Repurposing] Starting analysis...');
+
+        // Combine ChEMBL + DrugBank drugs
+        const allDrugs = [
+          ...(drugs.compounds || []),
+          ...(drugs.approvedDrugs || [])
+        ];
+
+        // Run repurposing analysis
+        const repurposingResults = analyzeRepurposingCandidates(
+          allDrugs,
+          normalizedGenes,
+          enrichedPathways,
+          diseaseContext,
+          {
+            minScore: 30,          // 30% minimum match
+            maxResults: 10,        // Top 10 candidates
+            onlyApproved: false    // Include clinical trials
+          }
+        );
+
+        // Generate executive summary
+        const summary = generateRepurposingSummary(repurposingResults, diseaseContext);
+
+        return {
+          candidates: repurposingResults.candidates,
+          stats: repurposingResults.stats,
+          summary,
+          enterpriseValue: '$10K-50K/year',
+          timestamp: nowIso
+        };
+      })(),
       citations: literatureAggregator.formatCitations(literature.slice(0, 20)),
       citationCounts: literature.reduce((map, paper) => {
         if (paper.pmid && paper.citationCount !== undefined) {
@@ -524,6 +570,66 @@ const httpServer = createServer(async (req, res) => {
         console.error("[API] Analysis error:", error);
         res.writeHead(500).end(JSON.stringify({
           error: "Analysis failed",
+          message: error.message
+        }));
+      }
+    });
+    return;
+  }
+
+  // AI Chat endpoint
+  if (url.pathname === "/api/chat" && req.method === "POST") {
+    let body = "";
+    req.on("data", chunk => { body += chunk.toString(); });
+    req.on("end", async () => {
+      try {
+        const { message, conversationHistory, analysisContext } = JSON.parse(body);
+
+        // Build context-aware prompt
+        let systemPrompt = `You are GaiaLab AI, a helpful biology research assistant. You help researchers understand their gene analysis results, explain protein interactions, and suggest research directions.
+
+When answering questions:
+1. Be concise but informative (2-4 sentences)
+2. Use scientific terminology appropriately
+3. Cite PubMed IDs when making claims, formatted as [PMID:12345]
+4. If you don't have enough information, say so honestly
+5. Focus on the user's analysis context when available`;
+
+        // Add analysis context if available
+        if (analysisContext) {
+          systemPrompt += `\n\nCurrent analysis context:\n${JSON.stringify(analysisContext, null, 2)}`;
+        }
+
+        // Build conversation for DeepSeek
+        const messages = [
+          { role: "system", content: systemPrompt },
+          ...conversationHistory,
+          { role: "user", content: message }
+        ];
+
+        // Call DeepSeek AI
+        if (!deepseekClient) {
+          throw new Error("DeepSeek API key not configured. Set DEEPSEEK_API_KEY in .env");
+        }
+
+        const aiResponse = await deepseekClient.chat.completions.create({
+          model: 'deepseek-chat',
+          messages,
+          temperature: 0.3,
+          max_tokens: 500
+        });
+
+        const response = aiResponse.choices[0].message.content;
+
+        res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify({
+          response,
+          timestamp: new Date().toISOString()
+        }));
+
+      } catch (error) {
+        console.error("[Chat] Error:", error);
+        res.writeHead(500).end(JSON.stringify({
+          error: "Chat failed",
           message: error.message
         }));
       }

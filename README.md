@@ -1,10 +1,10 @@
 # GaiaLab: AI-Powered Biological Intelligence Platform 🧬
 
-**Transform gene lists into actionable insights in 60 seconds.**
+**Transform gene lists into actionable insights in 60 seconds — now with drug repurposing.**
 
 > 🌟 **Developed by Oluwafemi Idiakhoa** — The most advanced biological intelligence synthesis platform
 
-GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates **13 biological databases** with AI-powered synthesis to deliver publication-quality insights. By cross-validating findings across multiple independent sources, GaiaLab demonstrates how **truth emerges through consensus**.
+GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates **13 biological databases** with AI-powered synthesis to deliver publication-quality insights. By cross-validating findings across multiple independent sources, GaiaLab demonstrates how **truth emerges through consensus**. Now featuring an enterprise-grade **Drug Repurposing Engine** with $2.3B+ savings potential per drug.
 
 ## 🚀 What Makes This Revolutionary
 
@@ -15,6 +15,7 @@ GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates *
 - **AI Synthesis**: Multi-model AI architecture with automatic failover generates insights with citations and confidence scores
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
+- **💊 Drug Repurposing Engine**: Enterprise AI feature analyzing 2.4M compounds with $2.3B+ savings potential per drug
 
 ## 🏗️ Complete Data Architecture (13/13 Sources)
 
@@ -159,6 +160,42 @@ See [.env.example](.env.example) for all configuration options.
 - **Timestamped**: Files named with ISO date for organization
 - **Comprehensive**: Includes genes, pathways, literature, researchers, and more
 
+### 💊 Drug Repurposing Engine
+**Enterprise Feature ($10K-50K/year value)** — AI-powered analysis to identify existing FDA-approved drugs for new disease indications
+
+**5-Factor Scoring Algorithm:**
+- 🎯 **Target Match (30%)**: Does the drug target your genes of interest?
+- 🧬 **Pathway Overlap (20%)**: Drug affects disease-related pathways?
+- 📊 **Clinical Evidence (20%)**: Existing trials or FDA approval?
+- ✅ **Safety Profile (15%)**: FDA approval = proven safety
+- ⚙️ **Mechanism Relevance (15%)**: Mechanism of action matches disease?
+
+**Cost Savings Calculator:**
+- New drug development: **$2.6B** over **10-15 years**
+- Repurposed drug: **$300M** over **3-5 years**
+- **Potential savings: $2.3B + 8 years faster**
+
+**Features:**
+- Analyzes ChEMBL (2.4M compounds) + DrugBank (14K drugs)
+- Cross-validates drug targets across both databases
+- Confidence scoring: High (≥70%), Medium (40-70%), Low (<40%)
+- Shows current indication → proposed new indication
+- Displays matched gene targets, mechanism of action, clinical phase
+- Always visible with helpful fallback when no candidates found
+
+**Example Output:**
+```javascript
+{
+  drug: "Metformin",
+  repurposingScore: 78,  // High confidence
+  currentIndication: "Type 2 Diabetes",
+  proposedIndication: "Alzheimer's Disease",
+  matchedTargets: ["APP", "PSEN1"],
+  estimatedSavings: "$1800M - $2300M",
+  phase: "FDA Approved"
+}
+```
+
 ## 🎨 3D Network Visualization
 
 GaiaLab features a **spectacular 3D protein interaction network** that rivals $10,000/year commercial tools — completely free and open source.
@@ -183,6 +220,17 @@ GaiaLab features a **spectacular 3D protein interaction network** that rivals $1
   - Camera auto-zooms to target gene (1.5s smooth transition)
   - Sphere flashes bright gold 3 times (250ms intervals)
   - Panel auto-minimizes after zoom
+- ⏱️ **Time-Lapse Network Evolution (1995-2025)**
+  - Animated playback showing how protein interaction networks were discovered over 30 years
+  - Heuristic: High confidence interactions = early discovery, Low confidence = recent
+  - Era-based color coding:
+    - 🔴 Red: 1990s discoveries
+    - 🟠 Orange: 2000s discoveries
+    - 🟡 Yellow: 2010s discoveries
+    - 🟢 Green: 2020s discoveries
+  - Play/Pause controls with adjustable speed slider
+  - Manual color toggle: Switch between confidence colors and era colors
+  - Real-time stats: Year display, visible interaction count, progress bar
 - 💊 **Intelligent Drug Display**: Click any node to see:
   - ChEMBL IDs (e.g., CHEMBL4164)
   - Potency values (pIC50)
@@ -334,10 +382,11 @@ gaialab-app/
 │   │       ├── clinical-aggregator.js   # Cross-validation
 │   │       └── drug-aggregator.js       # Cross-validation
 │   ├── visualization/                   # 3D Network Rendering
-│   │   └── network-formatter.js        # Three.js data formatting
+│   │   └── network-formatter.js        # Three.js data formatting + timeline
 │   └── ai/
 │       └── models/
-│           └── insight-generator.js    # Multi-model AI synthesis
+│           ├── insight-generator.js    # Multi-model AI synthesis
+│           └── drug-repurposing-engine.js # 5-factor drug scoring algorithm
 ├── public/
 │   ├── index.html                      # Homepage with 3D network
 │   └── gaialab-widget.html             # Interactive widget UI
@@ -346,13 +395,15 @@ gaialab-app/
 
 ## 🚦 Development Roadmap
 
-### ✅ Phase 1: MVP (Complete - 13/13 Sources + 3D Visualization)
+### ✅ Phase 1: MVP (Complete - 13/13 Sources + 3D Visualization + Drug Repurposing)
 - ✅ 13 biological data sources integrated (added Semantic Scholar)
 - ✅ 3 cross-validation domains
 - ✅ Multi-model AI synthesis with automatic failover across 4 providers
 - ✅ Citation validation & confidence scoring
 - ✅ **3D Network Visualization** with star field, pulsing nodes, gradient links, particles
+- ✅ **Time-Lapse Network Evolution** (1995-2025) with era-based color coding
 - ✅ **Collapsible UI** with FDA target finder & intelligent drug display
+- ✅ **Drug Repurposing Engine** with 5-factor scoring & cost savings calculator
 - ✅ Performance optimizations: Timeouts, optional drug aggregation, in-memory caching
 - ✅ Analysis time: 10-35s (200x faster than manual)
 
@@ -366,8 +417,8 @@ gaialab-app/
 ### 📅 Phase 3: Growth
 - [ ] Enterprise API with rate limiting
 - [ ] Clinical trial matcher
-- [ ] Drug repurposing module
 - [ ] Real-time alerts for new publications
+- [ ] Advanced drug repurposing (clinical trial predictions, combination therapy)
 - [ ] 5,000 users, $100K MRR
 - [ ] Series A: $5M at $20M-$30M valuation
 
@@ -416,13 +467,16 @@ Proprietary - All Rights Reserved
 - **3 Validation Domains** for multi-source consensus
 - **Multi-Model AI** with automatic failover across 4 providers
 - **3D Visualization** with 1,000 stars, pulsing nodes, gradient links, particle effects
+- **Time-Lapse Evolution** animating 30 years of network discovery (1995-2025)
+- **Drug Repurposing Engine** analyzing 2.4M compounds with 5-factor scoring
 - **29-node networks** with force-directed layout (WebGL rendering at 60 FPS)
 - **2.4M+ Compounds** from ChEMBL database
 - **30M+ Papers** from PubMed literature
 - **10-35 Second** average analysis time (with performance optimizations)
 - **200x Faster** than manual literature review
+- **$2.3B+ Savings** potential per repurposed drug vs. new development
 - **Instant Results** for repeat queries (in-memory caching)
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** • Powered by 13 biological databases + multi-model AI + 3D visualization • Designed to demonstrate emergent intelligence 🌍
+**🌟 Developed by Oluwafemi Idiakhoa** • Powered by 13 biological databases + multi-model AI + 3D visualization + drug repurposing engine • Designed to demonstrate emergent intelligence 🌍
