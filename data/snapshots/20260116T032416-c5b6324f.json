@@ -1,0 +1,4204 @@
+{
+  "id": "20260116T032416-c5b6324f",
+  "createdAt": "2026-01-16T03:24:16.970Z",
+  "query": {
+    "genes": [
+      "BRCA1",
+      "EGFR",
+      "TP53"
+    ],
+    "diseaseContext": "triple-negative breast cancer",
+    "audience": "researcher",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "Reactome v95",
+      "KEGG"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets"
+    ],
+    "drugs": [
+      "ChEMBL",
+      "PubChem",
+      "DGIdb",
+      "DrugBank"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 20,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 1,
+    "compounds": 725,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "38735837",
+      "38588696",
+      "38900236",
+      "39500221",
+      "38502995",
+      "40003864",
+      "38141462",
+      "38981022",
+      "38388873",
+      "40460322",
+      "38772416",
+      "40282933",
+      "38604999",
+      "39572842",
+      "39838117",
+      "40460510",
+      "38422473",
+      "39612162",
+      "39405593",
+      "39085861",
+      "38652877",
+      "39402579",
+      "39531335",
+      "38869741",
+      "39627505",
+      "40482645",
+      "39779850",
+      "39869307",
+      "39709655",
+      "40532362"
+    ],
+    "pathways": [
+      "R-HSA-5693565",
+      "path:hsa05219",
+      "path:hsa03272",
+      "path:hsa05213",
+      "path:hsa05120",
+      "path:hsa05230",
+      "path:hsa05218",
+      "path:hsa05223",
+      "path:hsa05214",
+      "path:hsa05212",
+      "path:hsa04012",
+      "path:hsa05210",
+      "path:hsa04540",
+      "path:hsa05235",
+      "path:hsa04520",
+      "path:hsa04912",
+      "path:hsa05231",
+      "path:hsa01521",
+      "path:hsa01522",
+      "path:hsa04137"
+    ],
+    "clinical": [
+      "BRCA1:triple-negative breast cancer"
+    ],
+    "compounds": [
+      "DACOMITINIB ANHYDROUS",
+      "OSIMERTINIB",
+      "GEFITINIB",
+      "ERLOTINIB",
+      "CARBOPLATIN",
+      "PACLITAXEL",
+      "CISPLATIN",
+      "DOXORUBICIN HYDROCHLORIDE",
+      "TALAZOPARIB",
+      "TAMOXIFEN",
+      "DAUNORUBICIN HYDROCHLORIDE",
+      "MITOMYCIN",
+      "MITOXANTRONE",
+      "RESVERATROL",
+      "OLAPARIB",
+      "OXALIPLATIN",
+      "GEMCITABINE",
+      "ERLOTINIB",
+      "SIROLIMUS",
+      "OSIMERTINIB"
+    ]
+  },
+  "analysis": {
+    "diseaseContext": "triple-negative breast cancer",
+    "genes": [
+      {
+        "symbol": "BRCA1",
+        "name": "RING-type E3 ubiquitin transferase",
+        "function": "Function not well characterized",
+        "importanceScore": 0.8416666666666668,
+        "centrality": 0.8333333333333334,
+        "uniprotId": "A0A2R8Y7V5",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "EGFR",
+        "name": "Receptor protein-tyrosine kinase",
+        "function": "Function not well characterized",
+        "importanceScore": 0.5166666666666666,
+        "centrality": 0.3333333333333333,
+        "uniprotId": "C9JYS6",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "TP53",
+        "name": "Cellular tumor antigen p53",
+        "function": "Multifunctional transcription factor that induces cell cycle arrest, DNA repair or apoptosis upon binding to its target DNA sequence. Acts as a tumor suppressor in many tumor types; induces growth arrest or apoptosis depending on the physiological circumstances and cell type. Negatively regulates...",
+        "importanceScore": 0.95,
+        "centrality": 1,
+        "uniprotId": "S4R334",
+        "tissueExpression": "Expression pattern not well characterized"
+      }
+    ],
+    "pathways": [
+      {
+        "id": "pathway-0",
+        "name": "EGFR tyrosine kinase inhibitor resistance",
+        "rationale": "This pathway is critically important in triple-negative breast cancer (TNBC) due to the high expression of EGFR, which is associated with poor prognosis and limited treatment options.",
+        "significance": "This pathway is critically important in triple-negative breast cancer (TNBC) due to the high expression of EGFR, which is associated with poor prognosis and limited treatment options. Context anchors: dna repair, p53, angiogenesis, ras-mapk. Context anchors: cell cycle",
+        "molecularMechanism": "EGFR activation leads to downstream signaling through the PI3K/Akt pathway, promoting cell proliferation and survival. Mutations in EGFR or aberrant activation can lead to resistance against EGFR-targeted therapies. For instance, secondary mutations like T790M can alter the binding affinity of inhibitors.",
+        "regulation": "Upstream activators include EGF and other ligands that bind to EGFR, while downstream effectors include AKT and mTOR, which regulate cell growth and metabolism.",
+        "experimentalEvidence": "Studies have shown that EGFR is overexpressed in TNBC cell lines and patient samples, with evidence from knockout models demonstrating the role of EGFR in tumor growth.",
+        "quantitativeData": "Not reported in abstracts",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Some studies suggest that targeting EGFR alone may not be sufficient due to compensatory activation of alternative pathways, leading to treatment resistance.",
+        "score": 0.5,
+        "pvalue": 0.00016790625,
+        "genesInPathway": [
+          "BRCA1",
+          "EGFR"
+        ],
+        "canonicalTags": [
+          "dna repair"
+        ],
+        "citations": [
+          "PMID:38900236",
+          "PMID:38772416"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "pathway-1",
+        "name": "Central carbon metabolism in cancer",
+        "rationale": "Alterations in central carbon metabolism are crucial for the survival and proliferation of cancer cells, particularly in TNBC, which often exhibits metabolic reprogramming.",
+        "significance": "Alterations in central carbon metabolism are crucial for the survival and proliferation of cancer cells, particularly in TNBC, which often exhibits metabolic reprogramming.",
+        "molecularMechanism": "Cancer cells utilize aerobic glycolysis (Warburg effect) to convert glucose to lactate, even in the presence of oxygen, which is facilitated by enzymes such as hexokinase and lactate dehydrogenase. This metabolic shift supports rapid cell division and growth.",
+        "regulation": "Key regulators include c-MYC, which enhances glycolytic enzyme expression, and HIF-1, which promotes anaerobic metabolism under hypoxic conditions.",
+        "experimentalEvidence": "Evidence from patient cohorts indicates that metabolic reprogramming correlates with aggressive tumor behavior and poor prognosis in TNBC.",
+        "quantitativeData": "n=351; p=0.00005; 635 patients",
+        "consensusMetrics": "Strong consensus (18/21 papers, 86% agreement)",
+        "controversies": "Debates exist regarding the extent to which metabolic alterations are primary drivers of cancer versus secondary adaptations.",
+        "score": 0.5,
+        "pvalue": 0.0061374011151250005,
+        "genesInPathway": [
+          "TP53"
+        ],
+        "canonicalTags": [
+          "p53",
+          "angiogenesis",
+          "ras-mapk"
+        ],
+        "citations": [
+          "PMID:39531335",
+          "PMID:39838117"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [
+          {
+            "pmid": "39531335",
+            "evidence": "n=351",
+            "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+          },
+          {
+            "pmid": "39838117",
+            "evidence": "p=0.00005",
+            "context": "atment difference, 8.5 percentage points; 95% CI, 4.2-12.8; P = 0.00005). Event-free survival was not mature in this analysis. Duri"
+          },
+          {
+            "pmid": "39838117",
+            "evidence": "635 patients",
+            "context": "ee survival in the intention-to-treat population. In total, 635 patients were assigned to the pembrolizumab-chemotherapy arm and 643"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "pathway-2",
+        "name": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+        "rationale": "This pathway is critical in TNBC due to the frequent DNA damage response deficiencies observed in tumors with BRCA1 mutations.",
+        "significance": "This pathway is critical in TNBC due to the frequent DNA damage response deficiencies observed in tumors with BRCA1 mutations.",
+        "molecularMechanism": "ATM phosphorylates key substrates such as p53 and CHK2 in response to DNA double-strand breaks, facilitating cell cycle arrest and DNA repair processes.",
+        "regulation": "Upstream signals include DNA damage recognition, while downstream effectors include p53, which regulates apoptosis and cell cycle checkpoints.",
+        "experimentalEvidence": "Studies using BRCA1-deficient cell lines demonstrate impaired ATM signaling and increased sensitivity to DNA-damaging agents.",
+        "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Contradictory findings exist regarding the effectiveness of targeting ATM in BRCA1-deficient cancers.",
+        "score": 0.5,
+        "pvalue": 0.007182733824,
+        "genesInPathway": [
+          "TP53"
+        ],
+        "canonicalTags": [],
+        "citations": [
+          "PMID:38588696",
+          "PMID:38422473"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      }
+    ],
+    "topics": [
+      {
+        "id": "topic-0",
+        "theme": "Resistance mechanisms in TNBC therapies",
+        "summary": "Recent literature highlights the complexity of resistance mechanisms in TNBC, particularly concerning targeted therapies and chemotherapy.",
+        "keyFindings": [],
+        "citations": [
+          "PMID:38588696",
+          "PMID:39838117"
+        ],
+        "evidenceSnippets": [
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      }
+    ],
+    "strategies": [
+      {
+        "id": "strategy-0",
+        "label": "EGFR-targeted therapy",
+        "rationale": "Inhibition of EGFR can reduce downstream signaling through the PI3K/Akt pathway, which is often hyperactivated in TNBC, leading to decreased cell proliferation and increased apoptosis.",
+        "molecularTarget": "EGFR, with inhibitors designed to block its kinase activity to reduce tumor growth.",
+        "clinicalEvidence": "Current clinical trials are evaluating the efficacy of EGFR inhibitors in combination with chemotherapy in TNBC patients, with some showing improved outcomes.",
+        "experimentalSupport": "Studies indicate that EGFR inhibition can sensitize TNBC cells to chemotherapy, as shown in preclinical models.",
+        "limitations": "Resistance mechanisms, including mutations in EGFR and activation of compensatory pathways, limit the effectiveness of monotherapy.",
+        "quantitativeData": "Not reported in abstracts",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "EGFR expression levels are used as biomarkers; high expression is observed in a significant proportion of TNBC patients.",
+        "riskLevel": "medium",
+        "citations": [
+          "PMID:38772416",
+          "PMID:38604999"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "strategy-1",
+        "label": "PARP inhibitors in BRCA-mutated TNBC",
+        "rationale": "Inhibition of PARP1 in BRCA1/2-deficient tumors leads to synthetic lethality, as these tumors are already compromised in their ability to repair DNA damage.",
+        "molecularTarget": "PARP1, which is involved in DNA repair processes.",
+        "clinicalEvidence": "Clinical trials have demonstrated improved progression-free survival in patients with BRCA mutations receiving PARP inhibitors.",
+        "experimentalSupport": "Evidence from patient cohorts shows that BRCA mutations correlate with response to PARP inhibition.",
+        "limitations": "Resistance can develop through restoration of BRCA function or activation of alternative repair pathways.",
+        "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "Germline BRCA1/2 mutations are required for this therapeutic approach; prevalence in TNBC is approximately 15-20%.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:39572842",
+          "PMID:38588696"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "hypothesis-0",
+        "label": "Novel hypothesis: Targeting the crosstalk between EGFR and metabolic pathways could enhance therapeutic efficacy in TNBC.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:38981022",
+          "PMID:38652877"
+        ],
+        "confidence": "low",
+        "isHypothesis": true
+      }
+    ],
+    "whyItMatters": {
+      "summary": "The genes and pathways analyzed are central to understanding the aggressive nature of triple-negative breast cancer and its resistance to conventional therapies. Context anchors: dna repair, p53. Context anchors: therapy",
+      "impact": "Insights from these analyses can guide the development of targeted therapies and improve patient outcomes in TNBC.",
+      "nextSteps": [
+        "Investigate combination therapies targeting EGFR and metabolic pathways.",
+        "Conduct clinical trials assessing the efficacy of novel agents in BRCA-mutated TNBC."
+      ],
+      "citations": [
+        "PMID:38588696",
+        "PMID:38900236"
+      ],
+      "confidence": "medium"
+    },
+    "mechanisticChains": [
+      {
+        "id": "chain-0",
+        "title": "BRCA1, EGFR → EGFR tyrosine kinase inhibitor resistance → triple-negative breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "BRCA1, EGFR",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "EGFR tyrosine kinase inhibitor resistance",
+            "description": "EGFR activation leads to downstream signaling through the PI3K/Akt pathway, promoting cell proliferation and survival. Mutations in EGFR or aberrant activation can lead to resistance against EGFR-targeted therapies. For instance, secondary mutations like T790M can alter the binding affinity of inhibitors."
+          },
+          {
+            "type": "disease",
+            "label": "triple-negative breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:38900236",
+          "PMID:38772416"
+        ],
+        "confidence": "low"
+      },
+      {
+        "id": "chain-1",
+        "title": "TP53 → Central carbon metabolism in cancer → triple-negative breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "TP53",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Central carbon metabolism in cancer",
+            "description": "Cancer cells utilize aerobic glycolysis (Warburg effect) to convert glucose to lactate, even in the presence of oxygen, which is facilitated by enzymes such as hexokinase and lactate dehydrogenase. This metabolic shift supports rapid cell division and growth."
+          },
+          {
+            "type": "disease",
+            "label": "triple-negative breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:39531335",
+          "PMID:39838117"
+        ],
+        "confidence": "low"
+      },
+      {
+        "id": "chain-2",
+        "title": "TP53 → Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks → triple-negative breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "TP53",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+            "description": "ATM phosphorylates key substrates such as p53 and CHK2 in response to DNA double-strand breaks, facilitating cell cycle arrest and DNA repair processes."
+          },
+          {
+            "type": "disease",
+            "label": "triple-negative breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:38588696",
+          "PMID:38422473"
+        ],
+        "confidence": "low"
+      }
+    ],
+    "interactions": {
+      "totalInteractions": 30,
+      "avgConfidence": "0.001",
+      "topInteractors": [
+        {
+          "gene": "TP53",
+          "partner": "EP300",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.964,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "CREBBP",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "BCL2L1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.955,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "MDM2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.964,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.983,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "MDM4",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.983,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "BCL2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.618,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "TP53BP2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "TP53BP1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "HTT",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.307,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.8,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.979,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "PPP1R13L",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.783,
+              "sources": 1
+            }
+          ]
+        }
+      ],
+      "networkHubs": [
+        {
+          "gene": "TP53",
+          "centrality": 1
+        },
+        {
+          "gene": "BRCA1",
+          "centrality": 0.8333333333333334
+        },
+        {
+          "gene": "ABRAXAS2",
+          "centrality": 0.3333333333333333
+        },
+        {
+          "gene": "FANCC",
+          "centrality": 0.3333333333333333
+        },
+        {
+          "gene": "EGFR",
+          "centrality": 0.3333333333333333
+        }
+      ],
+      "networkImageUrl": "https://string-db.org/api/image/network?identifiers=BRCA1%0AEGFR%0ATP53&species=9606&required_score=700&network_flavor=confidence&hide_disconnected_nodes=1"
+    },
+    "network3DData": {
+      "nodes": [
+        {
+          "id": "BRCA1",
+          "name": "RING-type E3 ubiquitin transferase",
+          "group": 0,
+          "importance": 0.8416666666666668,
+          "val": 12.5,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.8333333333333334
+        },
+        {
+          "id": "EGFR",
+          "name": "Receptor protein-tyrosine kinase",
+          "group": 0,
+          "importance": 0.5166666666666666,
+          "val": 5,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.3333333333333333
+        },
+        {
+          "id": "TP53",
+          "name": "Cellular tumor antigen p53",
+          "group": 0,
+          "importance": 0.95,
+          "val": 15,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 1
+        },
+        {
+          "id": "EP300",
+          "name": "EP300",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CREBBP",
+          "name": "CREBBP",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BCL2L1",
+          "name": "BCL2L1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MDM2",
+          "name": "MDM2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MDM4",
+          "name": "MDM4",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BCL2",
+          "name": "BCL2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TP53BP2",
+          "name": "TP53BP2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TP53BP1",
+          "name": "TP53BP1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HTT",
+          "name": "HTT",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PPP1R13L",
+          "name": "PPP1R13L",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ABRAXAS1",
+          "name": "ABRAXAS1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BABAM2",
+          "name": "BABAM2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BARD1",
+          "name": "BARD1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "UIMC1",
+          "name": "UIMC1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PALB2",
+          "name": "PALB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BRIP1",
+          "name": "BRIP1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BABAM1",
+          "name": "BABAM1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BRCC3",
+          "name": "BRCC3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RBBP8",
+          "name": "RBBP8",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RAD51",
+          "name": "RAD51",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CBL",
+          "name": "CBL",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TGFA",
+          "name": "TGFA",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EREG",
+          "name": "EREG",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "GRB2",
+          "name": "GRB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HBEGF",
+          "name": "HBEGF",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EPGN",
+          "name": "EPGN",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ERBB3",
+          "name": "ERBB3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ERBB2",
+          "name": "ERBB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EGF",
+          "name": "EGF",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "DCN",
+          "name": "DCN",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        }
+      ],
+      "links": [
+        {
+          "source": "TP53",
+          "target": "EP300",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "CREBBP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "BCL2L1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "MDM2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "MDM4",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "BCL2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "TP53BP2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "TP53BP1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "HTT",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "PPP1R13L",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "ABRAXAS1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BABAM2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BARD1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "UIMC1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "PALB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BRIP1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BABAM1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BRCC3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "RBBP8",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "RAD51",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "CBL",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "38604999",
+              "title": "PDZK1 suppresses TNBC development and sensitizes TNBC cells to erlotinib via the EGFR pathway.",
+              "year": 2024,
+              "citationCount": 9,
+              "influentialCitationCount": 0,
+              "studyType": "mixed",
+              "studyDesign": "in vivo",
+              "sampleSize": null,
+              "evidencePolarity": "support",
+              "journalTier": "tier1",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 4
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 4
+        },
+        {
+          "source": "EGFR",
+          "target": "TGFA",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "EREG",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "GRB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "HBEGF",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "EPGN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "ERBB3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "ERBB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "EGF",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "DCN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        }
+      ],
+      "stats": {
+        "totalNodes": 33,
+        "totalLinks": 30,
+        "avgConfidence": "0.00",
+        "hubCount": 3
+      }
+    },
+    "clinical": {
+      "totalAssociations": 1,
+      "avgScore": 0.483,
+      "highConfidence": 0,
+      "topAssociations": [
+        {
+          "gene": "BRCA1",
+          "disease": "triple-negative breast cancer",
+          "diseaseId": "EFO_0005537",
+          "score": 0.483,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Genetic Association",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.99,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.745,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        }
+      ],
+      "sharedDiseases": []
+    },
+    "drugs": {
+      "totalCompounds": 725,
+      "totalApproved": 0,
+      "avgPotency": 7.27,
+      "phaseDistribution": {
+        "approved": 209,
+        "phase3": 0,
+        "phase2": 1,
+        "phase1": 497,
+        "preclinical": 0
+      },
+      "topCompounds": [
+        {
+          "chemblId": "CHEMBL2110732",
+          "name": "DACOMITINIB ANHYDROUS",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "469.95",
+          "activityType": "IC50",
+          "activityValue": "5.8",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "8.24",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 11511120,
+            "molecularWeight": "469.9",
+            "xlogp": 4.4,
+            "inchikey": "LVXJQMNHJWSHET-AATRIKPKSA-N",
+            "iupacName": "(E)-N-[4-(3-chloro-4-fluoroanilino)-7-methoxyquinazolin-6-yl]-4-piperidin-1-ylbut-2-enamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL3353410",
+          "name": "OSIMERTINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "499.62",
+          "activityType": "IC50",
+          "activityValue": "0.009",
+          "activityUnits": "uM",
+          "pChEMBL": "8.05",
+          "potency": "high",
+          "assayDescription": "Inhibition of wild type EGFR in mouse BaF3 cells assessed as cell growth inhibition measured after 72 hrs by CellTiter-Glo assay",
+          "pubmedId": "CHEMBL5329204",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 71496458,
+            "molecularWeight": "499.6",
+            "xlogp": 3.7,
+            "inchikey": "DUYJMQONPNNFPI-UHFFFAOYSA-N",
+            "iupacName": "N-[2-[2-(dimethylamino)ethyl-methylamino]-4-methoxy-5-[[4-(1-methylindol-3-yl)pyrimidin-2-yl]amino]phenyl]prop-2-enamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL939",
+          "name": "GEFITINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "446.91",
+          "activityType": "IC50",
+          "activityValue": "14.4",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "7.84",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 123631,
+            "molecularWeight": "446.9",
+            "xlogp": 4.1,
+            "inchikey": "XGALLCVXEZPNRQ-UHFFFAOYSA-N",
+            "iupacName": "N-(3-chloro-4-fluorophenyl)-7-methoxy-6-(3-morpholin-4-ylpropoxy)quinazolin-4-amine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL553",
+          "name": "ERLOTINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "393.44",
+          "activityType": "IC50",
+          "activityValue": "19.3",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "7.71",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 176870,
+            "molecularWeight": "393.4",
+            "xlogp": 3.3,
+            "inchikey": "AAKJLRGGTJKAMG-UHFFFAOYSA-N",
+            "iupacName": "N-(3-ethynylphenyl)-6,7-bis(2-methoxyethoxy)quinazolin-4-amine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "CARBOPLATIN",
+          "chemblId": "rxcui:40048",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 10339178,
+            "molecularWeight": "371.25",
+            "inchikey": "OLESAACUTLOWQZ-UHFFFAOYSA-L",
+            "iupacName": "azane;cyclobutane-1,1-dicarboxylate;platinum(2+)",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "PACLITAXEL",
+          "chemblId": "rxcui:56946",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            12684687
+          ],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 36314,
+            "molecularWeight": "853.9",
+            "xlogp": 2.5,
+            "inchikey": "RCINICONZNJXQF-MZXODVADSA-N",
+            "iupacName": "[(1S,2S,3R,4S,7R,9S,10S,12R,15S)-4,12-diacetyloxy-15-[(2R,3S)-3-benzamido-2-hydroxy-3-phenylpropanoyl]oxy-1,9-dihydroxy-10,14,17,17-tetramethyl-11-oxo-6-oxatetracyclo[11.3.1.03,10.04,7]heptadec-13-en-2-yl] benzoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "CISPLATIN",
+          "chemblId": "rxcui:2555",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 4,
+          "pmids": [
+            16982732
+          ],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 5460033,
+            "molecularWeight": "300.05",
+            "inchikey": "LXZZYRPGZAFOLE-UHFFFAOYSA-L",
+            "iupacName": "azane;dichloroplatinum",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "DOXORUBICIN HYDROCHLORIDE",
+          "chemblId": "rxcui:142433",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [
+            12698198
+          ],
+          "genes": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 443939,
+            "molecularWeight": "580.0",
+            "inchikey": "MWWSFMDVAYGXBV-RUELKSSGSA-N",
+            "iupacName": "(7S,9S)-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-9-(2-hydroxyacetyl)-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione;hydrochloride",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "TALAZOPARIB",
+          "chemblId": "rxcui:2099704",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 4,
+          "pmids": [],
+          "genes": [
+            "BRCA1",
+            "EGFR"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 135565082,
+            "molecularWeight": "380.4",
+            "xlogp": 2.3,
+            "inchikey": "HWGQMRYQVZSGDQ-HZPDHXFCSA-N",
+            "iupacName": "(11S,12R)-7-fluoro-11-(4-fluorophenyl)-12-(2-methyl-1,2,4-triazol-3-yl)-2,3,10-triazatricyclo[7.3.1.05,13]trideca-1,5(13),6,8-tetraen-4-one",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "TAMOXIFEN",
+          "chemblId": "rxcui:10324",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [
+            15750629,
+            11130383,
+            16636335,
+            16331614,
+            15197194
+          ],
+          "genes": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 2733526,
+            "molecularWeight": "371.5",
+            "xlogp": 7.1,
+            "inchikey": "NKANXQFJJICGDU-QPLCGJKRSA-N",
+            "iupacName": "2-[4-[(Z)-1,2-diphenylbut-1-enyl]phenoxy]-N,N-dimethylethanamine",
+            "source": "PubChem"
+          }
+        }
+      ],
+      "approvedDrugs": [],
+      "multiTargetCompounds": [
+        {
+          "name": "CARBOPLATIN",
+          "chemblId": "rxcui:40048",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "PACLITAXEL",
+          "chemblId": "rxcui:56946",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "CISPLATIN",
+          "chemblId": "rxcui:2555",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "DOXORUBICIN HYDROCHLORIDE",
+          "chemblId": "rxcui:142433",
+          "targets": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "TALAZOPARIB",
+          "chemblId": "rxcui:2099704",
+          "targets": [
+            "BRCA1",
+            "EGFR"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        }
+      ]
+    },
+    "drugRepurposing": {
+      "candidates": [
+        {
+          "drug": "CARBOPLATIN",
+          "drugId": "rxcui:40048",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "PACLITAXEL",
+          "drugId": "rxcui:56946",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "CISPLATIN",
+          "drugId": "rxcui:2555",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "DOXORUBICIN HYDROCHLORIDE",
+          "drugId": "rxcui:142433",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "TALAZOPARIB",
+          "drugId": "rxcui:2099704",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "TAMOXIFEN",
+          "drugId": "rxcui:10324",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "DAUNORUBICIN HYDROCHLORIDE",
+          "drugId": "rxcui:81992",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MITOMYCIN",
+          "drugId": "rxcui:632",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MITOXANTRONE",
+          "drugId": "rxcui:7005",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "RESVERATROL",
+          "drugId": "rxcui:1000492",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "triple-negative breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        }
+      ],
+      "stats": {
+        "totalDrugsAnalyzed": 725,
+        "candidatesFound": 10,
+        "avgScore": 45,
+        "analysisTime": "16ms",
+        "minScore": 30,
+        "onlyApproved": false
+      },
+      "summary": {
+        "headline": "10 drug repurposing candidates identified for triple-negative breast cancer",
+        "summary": "Top candidate: CARBOPLATIN (45% match). 10 FDA-approved drugs found.",
+        "recommendation": "Prioritize CARBOPLATIN for experimental validation. Estimated savings: $1035M - $1535M vs. new drug development.",
+        "commercialValue": "Enterprise feature worth $10K-50K/year. Total potential savings across 10 candidates: $15000M - $25000M."
+      },
+      "enterpriseValue": "$10K-50K/year",
+      "timestamp": "2026-01-16T03:21:50.630Z"
+    },
+    "novelHypotheses": {
+      "hypotheses": [
+        {
+          "type": "drug_repurposing",
+          "statement": "CARBOPLATIN may be repurposed to treat triple-negative breast cancer",
+          "drug": "CARBOPLATIN",
+          "drugId": "rxcui:40048",
+          "disease": "triple-negative breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets BRCA1, EGFR, TP53 which are implicated in disease",
+          "score": 1,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8999999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8599999999999999,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.483
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.3
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8939999999999999,
+          "scorecard": {
+            "confidence": 0.8999999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8599999999999999,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 11,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 1,
+          "experimentalDesign": {
+            "hypothesis": "CARBOPLATIN may be repurposed to treat triple-negative breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for triple-negative breast cancer",
+              "2. Treat with CARBOPLATIN across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "90% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "06aef2f77f479e5a",
+          "shareUrl": "http://localhost:8787/hypothesis/06aef2f77f479e5a",
+          "reportValidationUrl": "http://localhost:8787/api/validate/06aef2f77f479e5a"
+        }
+      ],
+      "stats": {
+        "candidatesGenerated": 5,
+        "hypothesesReturned": 1,
+        "avgConfidence": 0.8999999999999999,
+        "avgNovelty": 0.85,
+        "generationTime": "95ms",
+        "graphSize": {
+          "nodes": 779,
+          "edges": 803
+        }
+      },
+      "metadata": {
+        "timestamp": "2026-01-16T03:22:10.602Z",
+        "diseaseContext": "triple-negative breast cancer",
+        "geneCount": 3,
+        "minConfidence": 0.65,
+        "noveltyThreshold": 0.7
+      },
+      "accuracyStats": {
+        "overallAccuracy": 0,
+        "totalHypotheses": 444,
+        "totalValidations": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "partial": 0,
+        "pending": 0,
+        "accuracyByType": {},
+        "trustScore": 0,
+        "message": "Building trust - Testing predictions in the lab"
+      },
+      "enterpriseValue": "$100K-500K/year",
+      "patentPotential": "HIGH - Novel predictions can be patented",
+      "revolutionaryNote": "These predictions go BEYOND existing literature - they are NEW knowledge generated by AI",
+      "learningNote": "AI improves with every validation. Current accuracy: 0.0% based on 0 validations"
+    },
+    "citations": [
+      {
+        "pmid": "38735837",
+        "citation": "Yan Q, Deng Y, Zhang Q. A comprehensive overview of metaplastic breast cancer: Features and treatments.. Cancer science. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38735837/"
+      },
+      {
+        "pmid": "38588696",
+        "citation": "Abraham JE, Pinilla K, Dayimu A. The PARTNER trial of neoadjuvant olaparib with chemotherapy in triple-negative breast cancer.. Nature. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38588696/"
+      },
+      {
+        "pmid": "38900236",
+        "citation": "Ganesan K, Xu C, Wu J. Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.. Science China. Life sciences. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38900236/"
+      },
+      {
+        "pmid": "39500221",
+        "citation": "Sun L, Jia X, Wang K. Unveiling the future of breast cancer therapy: Cutting-edge antibody-drug conjugate strategies and clinical outcomes.. Breast (Edinburgh, Scotland). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39500221/"
+      },
+      {
+        "pmid": "38502995",
+        "citation": "Heist RS, Sands J, Bardia A. Clinical management, monitoring, and prophylaxis of adverse events of special interest associated with datopotamab deruxtecan.. Cancer treatment reviews. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38502995/"
+      },
+      {
+        "pmid": "40003864",
+        "citation": "Nedeljković M, Vuletić A, Mirjačić Martinović K. Divide and Conquer-Targeted Therapy for Triple-Negative Breast Cancer.. International journal of molecular sciences. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40003864/"
+      },
+      {
+        "pmid": "38141462",
+        "citation": "Cantini L, Trapani D, Guidi L. Neoadjuvant therapy in hormone Receptor-Positive/HER2-Negative breast cancer.. Cancer treatment reviews. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38141462/"
+      },
+      {
+        "pmid": "38981022",
+        "citation": "Wang Z, Li Y, Yang J. CircCFL1 Promotes TNBC Stemness and Immunoescape via Deacetylation-Mediated c-Myc Deubiquitylation to Facilitate Mutant TP53 Transcription.. Advanced science (Weinheim, Baden-Wurttemberg, Germany). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38981022/"
+      },
+      {
+        "pmid": "38388873",
+        "citation": "Shirley M. Capivasertib: First Approval.. Drugs. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38388873/"
+      },
+      {
+        "pmid": "40460322",
+        "citation": "Riaz F, Gruber JJ, Telli ML. New Treatment Approaches for Triple-Negative Breast Cancer.. American Society of Clinical Oncology educational book. American Society of Clinical Oncology. Annual Meeting. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40460322/"
+      },
+      {
+        "pmid": "38772416",
+        "citation": "Cheung A, Chenoweth AM, Johansson A. Anti-EGFR Antibody-Drug Conjugate Carrying an Inhibitor Targeting CDK Restricts Triple-Negative Breast Cancer Growth.. Clinical cancer research : an official journal of the American Association for Cancer Research. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38772416/"
+      },
+      {
+        "pmid": "40282933",
+        "citation": "Shaaban AM, Kaur T, Provenzano E. HER2-Low Breast Cancer-Current Knowledge and Future Directions.. Medicina (Kaunas, Lithuania). 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40282933/"
+      },
+      {
+        "pmid": "38604999",
+        "citation": "Ma Y, Fang Z, Zhang H. PDZK1 suppresses TNBC development and sensitizes TNBC cells to erlotinib via the EGFR pathway.. Cell death & disease. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38604999/"
+      },
+      {
+        "pmid": "39572842",
+        "citation": "Jain A, Barge A, Parris CN. Combination strategies with PARP inhibitors in BRCA-mutated triple-negative breast cancer: overcoming resistance mechanisms.. Oncogene. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39572842/"
+      },
+      {
+        "pmid": "39838117",
+        "citation": "Cardoso F, O'Shaughnessy J, Liu Z. Pembrolizumab and chemotherapy in high-risk, early-stage, ER/HER2 breast cancer: a randomized phase 3 trial.. Nature medicine. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39838117/"
+      },
+      {
+        "pmid": "40460510",
+        "citation": "Murase Y, Nanjo S, Ueda T. Mechanisms of resistance to antibody-drug conjugates in cancers.. Respiratory investigation. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40460510/"
+      },
+      {
+        "pmid": "38422473",
+        "citation": "Bardia A, Rugo HS, Tolaney SM. Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.. Journal of clinical oncology : official journal of the American Society of Clinical Oncology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38422473/"
+      },
+      {
+        "pmid": "39612162",
+        "citation": "Randall M, Akers R, Rao R. A Review of Current and Future Antibody Drug Conjugates in Breast Cancer.. Current treatment options in oncology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39612162/"
+      },
+      {
+        "pmid": "39405593",
+        "citation": "Schmidt M, Loibl S. Chemotherapy in older patients with early breast cancer.. Breast (Edinburgh, Scotland). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39405593/"
+      },
+      {
+        "pmid": "39085861",
+        "citation": "Shi HX, Tao HT, He JJ. Targeting DKK1 enhances the antitumor activity of paclitaxel and alleviates chemotherapy-induced peripheral neuropathy in breast cancer.. Molecular cancer. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39085861/"
+      }
+    ],
+    "citationCounts": {
+      "38141462": 26,
+      "38388873": 19,
+      "38422473": 92,
+      "38502995": 36,
+      "38588696": 27,
+      "38604999": 9,
+      "38652877": 65,
+      "38735837": 13,
+      "38772416": 16,
+      "38869741": 17,
+      "38900236": 83,
+      "38981022": 20,
+      "39085861": 14,
+      "39402579": 2,
+      "39405593": 7,
+      "39500221": 14,
+      "39531335": 7,
+      "39572842": 37,
+      "39612162": 4,
+      "39627505": 8,
+      "39709655": 12,
+      "39779850": 16,
+      "39838117": 57,
+      "39869307": 0,
+      "40003864": 10,
+      "40282933": 7,
+      "40460322": 3,
+      "40460510": 6,
+      "40482645": 4,
+      "40532362": 4
+    },
+    "openAccessMap": {
+      "38422473": "https://escholarship.org/content/qt3271x9mg/qt3271x9mg.pdf?t=se5ad2",
+      "38502995": "https://doi.org/10.1016/j.ctrv.2024.102720",
+      "38588696": "https://doi.org/10.1038/s41586-024-07384-2",
+      "38604999": "https://www.nature.com/articles/s41419-024-06502-2.pdf",
+      "38652877": "https://doi.org/10.1200/jco.23.01909",
+      "38735837": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/cas.16208",
+      "38772416": "https://aacrjournals.org/clincancerres/article-pdf/doi/10.1158/1078-0432.CCR-23-3110/3454004/ccr-23-3110.pdf",
+      "38869741": "https://link.springer.com/content/pdf/10.1007/s12094-024-03541-1.pdf",
+      "38981022": "https://doi.org/10.1002/advs.202404628",
+      "39085861": "https://molecular-cancer.biomedcentral.com/counter/pdf/10.1186/s12943-024-02067-y",
+      "39572842": "https://doi.org/10.1038/s41388-024-03227-6",
+      "39709655": "https://doi.org/10.1016/j.ctrv.2024.102865",
+      "39838117": "https://doi.org/10.1038/s41591-024-03415-7",
+      "40003864": "https://doi.org/10.3390/ijms26041396"
+    },
+    "leadingResearchers": [
+      {
+        "name": "S. Hurvitz",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "H. Rugo",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "K. Punie",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Mafalda Oliveira",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "A. Brufsky",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "K. Kalinsky",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Javier Cortés",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Joyce O' Shaughnessy",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "V. Diéras",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "L. Carey",
+        "paperCount": 1,
+        "totalCitations": 92,
+        "avgCitations": 92,
+        "topPaper": {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "year": "2024",
+          "citationCount": 92
+        },
+        "role": "Active Contributor"
+      }
+    ],
+    "recommendedPapers": [],
+    "totalPapersUsed": 10,
+    "evidenceSummary": {
+      "totalItems": 20,
+      "papersWithEvidence": 8,
+      "topItems": [
+        {
+          "pmid": "38588696",
+          "label": "p=0.753",
+          "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p>0.9",
+          "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p=0.8",
+          "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p<0.001",
+          "context": "ths was 90%, and in those with non-pCR it was 70% (log-rank P < 0.001), and OS was 96% and 83% (log-rank P < 0.001), respectively"
+        },
+        {
+          "pmid": "38588696",
+          "label": "n=559",
+          "context": "ld type. Here we report the results of the trial. Patients (n = 559) were randomized on a 1:1 basis to receive neoadjuvant carb"
+        },
+        {
+          "pmid": "39838117",
+          "label": "p=0.00005",
+          "context": "atment difference, 8.5 percentage points; 95% CI, 4.2-12.8; P = 0.00005). Event-free survival was not mature in this analysis. Duri"
+        },
+        {
+          "pmid": "39838117",
+          "label": "635 patients",
+          "context": "ee survival in the intention-to-treat population. In total, 635 patients were assigned to the pembrolizumab-chemotherapy arm and 643"
+        },
+        {
+          "pmid": "38422473",
+          "label": "n=267",
+          "context": "ed safety analyses are provided.In this final analysis, SG (n = 267) improved median progression-free survival (PFS; 4.8 1.7 m"
+        },
+        {
+          "pmid": "38422473",
+          "label": "n=262",
+          "context": "1.8 6.9 months; HR, 0.51 [95% CI, 0.42 to 0.63]) over TPC (n = 262). SG improved PFS over TPC in each Trop-2 expression quarti"
+        },
+        {
+          "pmid": "38422473",
+          "label": "n=168",
+          "context": "G improved PFS over TPC in each Trop-2 expression quartile (n = 168); a trend was observed for improved OS across quartiles. Ov"
+        },
+        {
+          "pmid": "38652877",
+          "label": "85 patients",
+          "context": "ive BC (TNBC) are reported. At data cutoff (July 22, 2022), 85 patients (HR+/HER2- BC = 41, and TNBC = 44) had received Dato-DXd. T"
+        },
+        {
+          "pmid": "39531335",
+          "label": "n=351",
+          "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+        },
+        {
+          "pmid": "39869307",
+          "label": "423 patients",
+          "context": "xpression was assessed immunohistochemically in tumors from 423 patients [119 triple-negative breast cancer (TNBC); 75 HER2+; and 22"
+        },
+        {
+          "pmid": "39709655",
+          "label": "p<0.001",
+          "context": "ter PFS and OS than CT in HR+/HER2-low and TN/HER2-low (all p < 0.001). SG had higher rates of neutropenia, diarrhea and alopecia"
+        },
+        {
+          "pmid": "39709655",
+          "label": "956 patients",
+          "context": "PFS/OS. P-score was used for treatment ranking. Three RCTs (956 patients) were included in the primary analysis and 5 (1,445) in the"
+        },
+        {
+          "pmid": "40532362",
+          "label": "p=0.02",
+          "context": "ssociated with significantly longer rwPFS in HER2-positive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Amon"
+        },
+        {
+          "pmid": "40532362",
+          "label": "p=0.07",
+          "context": "itive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Among patients with triple-negative disease pretreated wi"
+        },
+        {
+          "pmid": "40532362",
+          "label": "p=0.009",
+          "context": "r lines of treatment, shorter rwPFS (3.4 versus 5.7 months, P = 0.009) and OS (9.0 versus 14.5 months, P = 0.002) were observed c"
+        },
+        {
+          "pmid": "40532362",
+          "label": "p=0.002",
+          "context": "rsus 5.7 months, P = 0.009) and OS (9.0 versus 14.5 months, P = 0.002) were observed compared with patients without prior SG (n ="
+        },
+        {
+          "pmid": "40532362",
+          "label": "p=0.31",
+          "context": "ed death-ligand 1-negative disease (6.9 versus 12.6 months, P = 0.31). In a large dataset, T-DXd showed favorable activity for t"
+        }
+      ]
+    },
+    "evidenceLedger": {
+      "summary": {
+        "totalItems": 20,
+        "papersWithEvidence": 8,
+        "topItems": [
+          {
+            "pmid": "38588696",
+            "label": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p<0.001",
+            "context": "ths was 90%, and in those with non-pCR it was 70% (log-rank P < 0.001), and OS was 96% and 83% (log-rank P < 0.001), respectively"
+          },
+          {
+            "pmid": "38588696",
+            "label": "n=559",
+            "context": "ld type. Here we report the results of the trial. Patients (n = 559) were randomized on a 1:1 basis to receive neoadjuvant carb"
+          },
+          {
+            "pmid": "39838117",
+            "label": "p=0.00005",
+            "context": "atment difference, 8.5 percentage points; 95% CI, 4.2-12.8; P = 0.00005). Event-free survival was not mature in this analysis. Duri"
+          },
+          {
+            "pmid": "39838117",
+            "label": "635 patients",
+            "context": "ee survival in the intention-to-treat population. In total, 635 patients were assigned to the pembrolizumab-chemotherapy arm and 643"
+          },
+          {
+            "pmid": "38422473",
+            "label": "n=267",
+            "context": "ed safety analyses are provided.In this final analysis, SG (n = 267) improved median progression-free survival (PFS; 4.8 1.7 m"
+          },
+          {
+            "pmid": "38422473",
+            "label": "n=262",
+            "context": "1.8 6.9 months; HR, 0.51 [95% CI, 0.42 to 0.63]) over TPC (n = 262). SG improved PFS over TPC in each Trop-2 expression quarti"
+          },
+          {
+            "pmid": "38422473",
+            "label": "n=168",
+            "context": "G improved PFS over TPC in each Trop-2 expression quartile (n = 168); a trend was observed for improved OS across quartiles. Ov"
+          },
+          {
+            "pmid": "38652877",
+            "label": "85 patients",
+            "context": "ive BC (TNBC) are reported. At data cutoff (July 22, 2022), 85 patients (HR+/HER2- BC = 41, and TNBC = 44) had received Dato-DXd. T"
+          },
+          {
+            "pmid": "39531335",
+            "label": "n=351",
+            "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+          },
+          {
+            "pmid": "39869307",
+            "label": "423 patients",
+            "context": "xpression was assessed immunohistochemically in tumors from 423 patients [119 triple-negative breast cancer (TNBC); 75 HER2+; and 22"
+          },
+          {
+            "pmid": "39709655",
+            "label": "p<0.001",
+            "context": "ter PFS and OS than CT in HR+/HER2-low and TN/HER2-low (all p < 0.001). SG had higher rates of neutropenia, diarrhea and alopecia"
+          },
+          {
+            "pmid": "39709655",
+            "label": "956 patients",
+            "context": "PFS/OS. P-score was used for treatment ranking. Three RCTs (956 patients) were included in the primary analysis and 5 (1,445) in the"
+          },
+          {
+            "pmid": "40532362",
+            "label": "p=0.02",
+            "context": "ssociated with significantly longer rwPFS in HER2-positive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Amon"
+          },
+          {
+            "pmid": "40532362",
+            "label": "p=0.07",
+            "context": "itive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Among patients with triple-negative disease pretreated wi"
+          },
+          {
+            "pmid": "40532362",
+            "label": "p=0.009",
+            "context": "r lines of treatment, shorter rwPFS (3.4 versus 5.7 months, P = 0.009) and OS (9.0 versus 14.5 months, P = 0.002) were observed c"
+          },
+          {
+            "pmid": "40532362",
+            "label": "p=0.002",
+            "context": "rsus 5.7 months, P = 0.009) and OS (9.0 versus 14.5 months, P = 0.002) were observed compared with patients without prior SG (n ="
+          },
+          {
+            "pmid": "40532362",
+            "label": "p=0.31",
+            "context": "ed death-ligand 1-negative disease (6.9 versus 12.6 months, P = 0.31). In a large dataset, T-DXd showed favorable activity for t"
+          }
+        ]
+      },
+      "papers": [
+        {
+          "pmid": "38588696",
+          "title": "The PARTNER trial of neoadjuvant olaparib with chemotherapy in triple-negative breast cancer.",
+          "journal": "Nature",
+          "year": "2024",
+          "citationCount": 27,
+          "influentialCitationCount": 1,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "randomized",
+          "sampleSize": 559,
+          "sampleSizeText": "n=559",
+          "openAccessUrl": "https://doi.org/10.1038/s41586-024-07384-2",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier1",
+          "trialPhase": "II",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38588696",
+              "label": "p=0.753",
+              "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+            },
+            {
+              "pmid": "38588696",
+              "label": "p>0.9",
+              "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+            },
+            {
+              "pmid": "38588696",
+              "label": "p=0.8",
+              "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+            }
+          ],
+          "evidenceCount": 5,
+          "evidenceScore": 8.67,
+          "evidenceScoreComponents": {
+            "citations": 1.74,
+            "influential": 0.27,
+            "sampleSize": 2.06,
+            "evidenceItems": 1.75,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.75,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0.35,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "journal": "Science China. Life sciences",
+          "year": "2024",
+          "citationCount": 83,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 5.29,
+          "evidenceScoreComponents": {
+            "citations": 2.31,
+            "influential": 0.43,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38981022",
+          "title": "CircCFL1 Promotes TNBC Stemness and Immunoescape via Deacetylation-Mediated c-Myc Deubiquitylation to Facilitate Mutant TP53 Transcription.",
+          "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+          "year": "2024",
+          "citationCount": 20,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://doi.org/10.1002/advs.202404628",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 4.57,
+          "evidenceScoreComponents": {
+            "citations": 1.59,
+            "influential": 0.43,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38772416",
+          "title": "Anti-EGFR Antibody-Drug Conjugate Carrying an Inhibitor Targeting CDK Restricts Triple-Negative Breast Cancer Growth.",
+          "journal": "Clinical cancer research : an official journal of the American Association for Cancer Research",
+          "year": "2024",
+          "citationCount": 16,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "in vitro",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://aacrjournals.org/clincancerres/article-pdf/doi/10.1158/1078-0432.CCR-23-3110/3454004/ccr-23-3110.pdf",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier2",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.73,
+          "evidenceScoreComponents": {
+            "citations": 1.48,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.15,
+            "polarity": 0.4,
+            "journalTier": 0.35,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38604999",
+          "title": "PDZK1 suppresses TNBC development and sensitizes TNBC cells to erlotinib via the EGFR pathway.",
+          "journal": "Cell death & disease",
+          "year": "2024",
+          "citationCount": 9,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "in vivo",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://www.nature.com/articles/s41419-024-06502-2.pdf",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 4,
+          "evidenceScoreComponents": {
+            "citations": 1.2,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.25,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39572842",
+          "title": "Combination strategies with PARP inhibitors in BRCA-mutated triple-negative breast cancer: overcoming resistance mechanisms.",
+          "journal": "Oncogene",
+          "year": "2025",
+          "citationCount": 37,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://doi.org/10.1038/s41388-024-03227-6",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.8,
+          "evidenceScoreComponents": {
+            "citations": 1.9,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39838117",
+          "title": "Pembrolizumab and chemotherapy in high-risk, early-stage, ER/HER2 breast cancer: a randomized phase 3 trial.",
+          "journal": "Nature medicine",
+          "year": "2025",
+          "citationCount": 57,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "randomized",
+          "sampleSize": 635,
+          "sampleSizeText": "635 patients",
+          "openAccessUrl": "https://doi.org/10.1038/s41591-024-03415-7",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier1",
+          "trialPhase": "III",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39838117",
+              "label": "p=0.00005",
+              "context": "atment difference, 8.5 percentage points; 95% CI, 4.2-12.8; P = 0.00005). Event-free survival was not mature in this analysis. Duri"
+            },
+            {
+              "pmid": "39838117",
+              "label": "635 patients",
+              "context": "ee survival in the intention-to-treat population. In total, 635 patients were assigned to the pembrolizumab-chemotherapy arm and 643"
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 8.35,
+          "evidenceScoreComponents": {
+            "citations": 2.12,
+            "influential": 0.43,
+            "sampleSize": 2.1,
+            "evidenceItems": 0.7,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.75,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0.5,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38422473",
+          "title": "Final Results From the Randomized Phase III ASCENT Clinical Trial in Metastatic Triple-Negative Breast Cancer and Association of Outcomes by Human Epidermal Growth Factor Receptor 2 and Trophoblast Cell Surface Antigen 2 Expression.",
+          "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+          "year": "2024",
+          "citationCount": 92,
+          "influentialCitationCount": 8,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "randomized",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://escholarship.org/content/qt3271x9mg/qt3271x9mg.pdf?t=se5ad2",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier3",
+          "trialPhase": "III",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38422473",
+              "label": "n=267",
+              "context": "ed safety analyses are provided.In this final analysis, SG (n = 267) improved median progression-free survival (PFS; 4.8 1.7 m"
+            },
+            {
+              "pmid": "38422473",
+              "label": "n=262",
+              "context": "1.8 6.9 months; HR, 0.51 [95% CI, 0.42 to 0.63]) over TPC (n = 262). SG improved PFS over TPC in each Trop-2 expression quarti"
+            },
+            {
+              "pmid": "38422473",
+              "label": "n=168",
+              "context": "G improved PFS over TPC in each Trop-2 expression quartile (n = 168); a trend was observed for improved OS across quartiles. Ov"
+            }
+          ],
+          "evidenceCount": 3,
+          "evidenceScore": 6.82,
+          "evidenceScoreComponents": {
+            "citations": 2.36,
+            "influential": 0.86,
+            "sampleSize": 0,
+            "evidenceItems": 1.05,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.75,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0.5,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38652877",
+          "title": "Datopotamab Deruxtecan in Advanced or Metastatic HR+/HER2- and Triple-Negative Breast Cancer: Results From the Phase I TROPION-PanTumor01 Study.",
+          "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+          "year": "2024",
+          "citationCount": 65,
+          "influentialCitationCount": 5,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "cohort",
+          "sampleSize": 85,
+          "sampleSizeText": "85 patients",
+          "openAccessUrl": "https://doi.org/10.1200/jco.23.01909",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier3",
+          "trialPhase": "I",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38652877",
+              "label": "85 patients",
+              "context": "ive BC (TNBC) are reported. At data cutoff (July 22, 2022), 85 patients (HR+/HER2- BC = 41, and TNBC = 44) had received Dato-DXd. T"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 6.63,
+          "evidenceScoreComponents": {
+            "citations": 2.18,
+            "influential": 0.7,
+            "sampleSize": 1.45,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.45,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0.2,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39531335",
+          "title": "MAP3K1 mutations confer tumor immune heterogeneity in hormone receptor-positive HER2-negative breast cancer.",
+          "journal": "The Journal of clinical investigation",
+          "year": "2024",
+          "citationCount": 7,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "cohort",
+          "sampleSize": 351,
+          "sampleSizeText": "n=351",
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39531335",
+              "label": "n=351",
+              "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 5.89,
+          "evidenceScoreComponents": {
+            "citations": 1.08,
+            "influential": 0,
+            "sampleSize": 1.91,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.45,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39869307",
+          "title": "Receptor CDCP1 Is a Potential Target for Personalized Imaging and Treatment of Poor Outcome HER2+, Triple-Negative, and Metastatic ER+/HER2- Breast Cancers.",
+          "journal": "Clinical cancer research : an official journal of the American Association for Cancer Research",
+          "year": "2025",
+          "citationCount": 0,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "in vivo",
+          "sampleSize": 423,
+          "sampleSizeText": "423 patients",
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier2",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39869307",
+              "label": "423 patients",
+              "context": "xpression was assessed immunohistochemically in tumors from 423 patients [119 triple-negative breast cancer (TNBC); 75 HER2+; and 22"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 4.07,
+          "evidenceScoreComponents": {
+            "citations": 0,
+            "influential": 0,
+            "sampleSize": 1.97,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.25,
+            "polarity": 0,
+            "journalTier": 0.35,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39709655",
+          "title": "Efficacy and safety of antibody-drug conjugates in pretreated HER2-low metastatic breast cancer: A systematic review and network meta-analysis.",
+          "journal": "Cancer treatment reviews",
+          "year": "2025",
+          "citationCount": 12,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "meta-analysis",
+          "studyDesign": "meta-analysis",
+          "sampleSize": 956,
+          "sampleSizeText": "956 patients",
+          "openAccessUrl": "https://doi.org/10.1016/j.ctrv.2024.102865",
+          "evidencePolarity": "contradict",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 1
+          },
+          "contradictionTags": [
+            "statistical",
+            "endpoint"
+          ],
+          "contradictionSummary": "Non-significant statistics, Endpoint mismatch",
+          "contradictionSeverity": "high",
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39709655",
+              "label": "p<0.001",
+              "context": "ter PFS and OS than CT in HR+/HER2-low and TN/HER2-low (all p < 0.001). SG had higher rates of neutropenia, diarrhea and alopecia"
+            },
+            {
+              "pmid": "39709655",
+              "label": "956 patients",
+              "context": "PFS/OS. P-score was used for treatment ranking. Three RCTs (956 patients) were included in the primary analysis and 5 (1,445) in the"
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 5.67,
+          "evidenceScoreComponents": {
+            "citations": 1.34,
+            "influential": 0,
+            "sampleSize": 2.24,
+            "evidenceItems": 0.7,
+            "evidenceSignals": -0.35,
+            "recency": 0.35,
+            "studyType": 1.2,
+            "studyDesign": 0.6,
+            "polarity": -0.55,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40532362",
+          "title": "Outcomes with trastuzumab deruxtecan by biomarker status, line of treatment and prior receipt of sacituzumab govitecan in a large real-world database of patients with metastatic breast cancer.",
+          "journal": "ESMO open",
+          "year": "2025",
+          "citationCount": 4,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "clinical",
+          "studyDesign": null,
+          "sampleSize": 1490,
+          "sampleSizeText": "1490 patients",
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "contradictionSeverity": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "40532362",
+              "label": "p=0.02",
+              "context": "ssociated with significantly longer rwPFS in HER2-positive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Amon"
+            },
+            {
+              "pmid": "40532362",
+              "label": "p=0.07",
+              "context": "itive (P = 0.02), but not in HR-positive/HER2-negative MBC (P = 0.07). Among patients with triple-negative disease pretreated wi"
+            },
+            {
+              "pmid": "40532362",
+              "label": "p=0.009",
+              "context": "r lines of treatment, shorter rwPFS (3.4 versus 5.7 months, P = 0.009) and OS (9.0 versus 14.5 months, P = 0.002) were observed c"
+            }
+          ],
+          "evidenceCount": 5,
+          "evidenceScore": 7.07,
+          "evidenceScoreComponents": {
+            "citations": 0.84,
+            "influential": 0,
+            "sampleSize": 2.38,
+            "evidenceItems": 1.75,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 1,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        }
+      ],
+      "insightLinks": {
+        "pathways": [
+          {
+            "id": "pathway-0",
+            "label": "EGFR tyrosine kinase inhibitor resistance",
+            "citations": [
+              "PMID:38900236",
+              "PMID:38772416"
+            ],
+            "pmids": [
+              "38900236",
+              "38772416"
+            ],
+            "supportingPmids": [
+              "38900236",
+              "38772416"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 2/2 papers; top support PMID:38900236 (TIER1, mixed, score 5.29).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.69,
+              "supportCount": 2,
+              "contradictCount": 0,
+              "detail": "Support 2 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "38900236",
+                "38772416"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 2/2 papers; top support PMID:38900236 (TIER1, mixed, score 5.29).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.69,
+                "supportCount": 2,
+                "contradictCount": 0,
+                "detail": "Support 2 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "pathway-1",
+            "label": "Central carbon metabolism in cancer",
+            "citations": [
+              "PMID:39531335",
+              "PMID:39838117"
+            ],
+            "pmids": [
+              "39531335",
+              "39838117"
+            ],
+            "supportingPmids": [
+              "39531335"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "n=351; p=0.00005; 635 patients",
+            "quantEvidence": [
+              {
+                "pmid": "39531335",
+                "label": "n=351",
+                "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+              },
+              {
+                "pmid": "39838117",
+                "label": "p=0.00005",
+                "context": "atment difference, 8.5 percentage points; 95% CI, 4.2-12.8; P = 0.00005). Event-free survival was not mature in this analysis. Duri"
+              },
+              {
+                "pmid": "39838117",
+                "label": "635 patients",
+                "context": "ee survival in the intention-to-treat population. In total, 635 patients were assigned to the pembrolizumab-chemotherapy arm and 643"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39531335 (TIER3, mixed, n=351, score 5.89).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.64,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39531335"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39531335 (TIER3, mixed, n=351, score 5.89).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.64,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "pathway-2",
+            "label": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+            "citations": [
+              "PMID:38588696",
+              "PMID:38422473"
+            ],
+            "pmids": [
+              "38588696",
+              "38422473"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+            "quantEvidence": [
+              {
+                "pmid": "38588696",
+                "label": "p=0.753",
+                "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p>0.9",
+                "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p=0.8",
+                "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+              }
+            ],
+            "trustRationale": "No direct support in 2 cited papers.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            },
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 2 cited papers.",
+              "evidenceBadge": {
+                "label": "Evidence sparse",
+                "level": "sparse",
+                "score": 0,
+                "supportCount": 0,
+                "contradictCount": 0,
+                "detail": "No supporting papers linked"
+              }
+            }
+          }
+        ],
+        "strategies": [
+          {
+            "id": "strategy-0",
+            "label": "EGFR-targeted therapy",
+            "citations": [
+              "PMID:38772416",
+              "PMID:38604999"
+            ],
+            "pmids": [
+              "38772416",
+              "38604999"
+            ],
+            "supportingPmids": [
+              "38772416",
+              "38604999"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 2/2 papers; top support PMID:38604999 (TIER1, mixed, score 4).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.66,
+              "supportCount": 2,
+              "contradictCount": 0,
+              "detail": "Support 2 • Contradict 0 • Top journal TIER2 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "38772416",
+                "38604999"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 2/2 papers; top support PMID:38604999 (TIER1, mixed, score 4).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.66,
+                "supportCount": 2,
+                "contradictCount": 0,
+                "detail": "Support 2 • Contradict 0 • Top journal TIER2 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "strategy-1",
+            "label": "PARP inhibitors in BRCA-mutated TNBC",
+            "citations": [
+              "PMID:39572842",
+              "PMID:38588696"
+            ],
+            "pmids": [
+              "39572842",
+              "38588696"
+            ],
+            "supportingPmids": [
+              "39572842"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+            "quantEvidence": [
+              {
+                "pmid": "38588696",
+                "label": "p=0.753",
+                "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p>0.9",
+                "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p=0.8",
+                "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39572842 (TIER3, review, score 3.8).",
+            "evidenceBadge": {
+              "label": "Preliminary evidence",
+              "level": "preliminary",
+              "score": 0.53,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39572842"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39572842 (TIER3, review, score 3.8).",
+              "evidenceBadge": {
+                "label": "Preliminary evidence",
+                "level": "preliminary",
+                "score": 0.53,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "hypothesis-0",
+            "label": "Novel hypothesis: Targeting the crosstalk between EGFR and metabolic pathways could enhance therapeutic efficacy in TNBC.",
+            "citations": [
+              "PMID:38981022",
+              "PMID:38652877"
+            ],
+            "pmids": [
+              "38981022",
+              "38652877"
+            ],
+            "supportingPmids": [
+              "38981022"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [
+              {
+                "pmid": "38652877",
+                "label": "85 patients",
+                "context": "ive BC (TNBC) are reported. At data cutoff (July 22, 2022), 85 patients (HR+/HER2- BC = 41, and TNBC = 44) had received Dato-DXd. T"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:38981022 (TIER1, mixed, score 4.57).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.73,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "38981022"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:38981022 (TIER1, mixed, score 4.57).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.73,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          }
+        ],
+        "topics": [
+          {
+            "id": "topic-0",
+            "label": "Resistance mechanisms in TNBC therapies",
+            "citations": [
+              "PMID:38588696",
+              "PMID:39838117"
+            ],
+            "pmids": [
+              "38588696",
+              "39838117"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantEvidence": [
+              {
+                "pmid": "38588696",
+                "label": "p=0.753",
+                "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p>0.9",
+                "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p=0.8",
+                "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+              }
+            ],
+            "trustRationale": "No direct support in 2 cited papers.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            },
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 2 cited papers.",
+              "evidenceBadge": {
+                "label": "Evidence sparse",
+                "level": "sparse",
+                "score": 0,
+                "supportCount": 0,
+                "contradictCount": 0,
+                "detail": "No supporting papers linked"
+              }
+            }
+          }
+        ]
+      },
+      "hypothesisLinks": [
+        {
+          "id": "06aef2f77f479e5a",
+          "type": "drug_repurposing",
+          "statement": "CARBOPLATIN may be repurposed to treat triple-negative breast cancer",
+          "confidence": 0.8999999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.483,
+              "gene": "BRCA1"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.3,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.3,
+              "gene": "TP53"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.483,
+              "gene": "BRCA1"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        }
+      ]
+    },
+    "evidenceScorecard": {
+      "papers": {
+        "support": 12,
+        "contradict": 1,
+        "mixed": 1,
+        "neutral": 16
+      },
+      "insights": {
+        "total": 7,
+        "withSupport": 5,
+        "withContradictions": 0,
+        "withMixed": 0,
+        "withoutCitations": 0
+      },
+      "hypotheses": {
+        "total": 1,
+        "withSupport": 0,
+        "withContradictions": 0,
+        "withMixed": 0
+      },
+      "citationWarnings": 0,
+      "consensus": {
+        "supportWeight": 34.35,
+        "contradictWeight": 5.67,
+        "mixedWeight": 0,
+        "totalWeight": 40.02,
+        "consensusRatio": 0.86,
+        "contentionRatio": 0.14,
+        "netConsensus": 0.72,
+        "consensusLabel": "Strong",
+        "contentionLabel": "Low"
+      }
+    },
+    "qualityMetrics": {
+      "score": 82,
+      "groundedRatio": 0.67,
+      "groundedCount": 4,
+      "insightCount": 6,
+      "pathways": 3,
+      "strategies": 2,
+      "topics": 1,
+      "hypotheses": 1,
+      "papersUsed": 10,
+      "evidenceItems": 20,
+      "evidencePapers": 8,
+      "sourcesAvailable": 14,
+      "sourcesTotal": 16
+    },
+    "learningMemory": {
+      "source": "knowledge-graph-cache",
+      "pathways": [
+        {
+          "pathway": "undefined",
+          "geneOverlap": [
+            "TP53",
+            "BRCA1",
+            "EGFR"
+          ],
+          "confidence": "cached"
+        }
+      ],
+      "message": "Instant results from previous analyses! (No API calls needed)"
+    },
+    "audience": "researcher",
+    "audienceLabel": "Researcher-focused view",
+    "generatedAtIso": "2026-01-16T03:21:50.630Z",
+    "analysisTime": "146278ms",
+    "modelConfig": {
+      "aiModelUsed": "GPT-4o-mini",
+      "modelTimeoutMs": 90000,
+      "providers": {
+        "openai": true,
+        "deepseek": true,
+        "gemini": false,
+        "anthropic": true
+      },
+      "modelIds": {
+        "openai": "gpt-4o-mini",
+        "deepseek": "deepseek-chat",
+        "gemini": "gemini-2.0-flash-exp",
+        "anthropic": "claude-3-5-sonnet-latest"
+      },
+      "includeDrugs": true
+    },
+    "dataSource": {
+      "genes": "Ensembl + ClinVar + UniProt + Gene Ontology",
+      "pathways": "Reactome v95 + KEGG",
+      "literature": "PubMed + Semantic Scholar",
+      "interactions": "STRING",
+      "clinical": "Open Targets",
+      "drugs": "ChEMBL + PubChem + DGIdb + DrugBank",
+      "ai": "GPT-4o-mini",
+      "hypothesisEngine": "GaiaLab AI (Graph Neural Networks + Probabilistic Reasoning)"
+    },
+    "dataAvailability": {
+      "literature": {
+        "pubmed": true,
+        "semanticScholar": true
+      },
+      "pathways": {
+        "kegg": true,
+        "reactome": true
+      },
+      "interactions": {
+        "string": true,
+        "biogrid": false
+      },
+      "clinical": {
+        "openTargets": true,
+        "disgenet": false,
+        "gwasCatalog": true
+      },
+      "drugs": {
+        "chembl": true,
+        "drugbank": false,
+        "drugbankFallback": true,
+        "dgidb": true,
+        "pubchem": true
+      }
+    },
+    "databaseStats": {
+      "totalDatabases": 16,
+      "availableDatabases": [
+        "Ensembl",
+        "ClinVar",
+        "UniProt",
+        "Gene Ontology",
+        "Reactome v95",
+        "KEGG",
+        "PubMed",
+        "Semantic Scholar",
+        "STRING",
+        "Open Targets",
+        "ChEMBL",
+        "PubChem",
+        "DGIdb",
+        "DrugBank"
+      ],
+      "availableCount": 14,
+      "bioactiveCompounds": "2.4M+",
+      "databases": [
+        "UniProt",
+        "KEGG",
+        "Reactome",
+        "PubMed",
+        "STRING",
+        "Open Targets",
+        "BioGRID",
+        "Gene Ontology",
+        "Ensembl",
+        "GWAS Catalog",
+        "DisGeNET",
+        "ClinVar",
+        "ChEMBL",
+        "PubChem",
+        "DrugBank",
+        "Semantic Scholar"
+      ]
+    },
+    "snapshot": null,
+    "disclaimer": "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",
+    "cacheStats": {
+      "cached": false,
+      "timestamp": 1768533856968,
+      "tier": "fresh",
+      "hitRate": "50.0"
+    }
+  },
+  "modelConfig": {
+    "aiModelUsed": "GPT-4o-mini",
+    "modelTimeoutMs": 90000,
+    "providers": {
+      "openai": true,
+      "deepseek": true,
+      "gemini": false,
+      "anthropic": true
+    },
+    "modelIds": {
+      "openai": "gpt-4o-mini",
+      "deepseek": "deepseek-chat",
+      "gemini": "gemini-2.0-flash-exp",
+      "anthropic": "claude-3-5-sonnet-latest"
+    },
+    "includeDrugs": true
+  },
+  "versions": {
+    "app": "0.1.0",
+    "node": "v22.18.0"
+  },
+  "signature": "593ba35f4c48"
+}

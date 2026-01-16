@@ -344,10 +344,10 @@
         <div class="title">
           <div class="pill">
             <span class="pill-dot"></span>
-            GaiaLab · 13 Database Integration
+            GaiaLab · Multi-source Integration
           </div>
           <h2>Living Systems Design Canvas</h2>
-          <span>Powered by 13 biological databases · 2.4M+ bioactive compounds · Citation-enriched insights</span>
+          <span>Powered by multi-source biological datasets · 2.4M+ bioactive compounds · Citation-enriched insights</span>
         </div>
         <div class="controls">
           <label for="audience-select">Audience</label>
@@ -393,9 +393,9 @@
           <ul class="list" id="strategies-list"></ul>
         </section>
 
-        <section class="card" id="network3d-card" style="grid-column: 1 / -1;">
+        <section class="card" id="network3d-card" style="grid-column: 1 / -1; margin-bottom: 16px;">
           <h3>🧬 Protein Interaction Network (3D)</h3>
-          <div id="network3d-container" style="width: 100%; height: 500px; position: relative; background: rgba(0,0,0,0.2); border-radius: 8px;"></div>
+          <div id="network3d-container" style="width: 100%; height: 500px; position: relative; background: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; margin-bottom: 12px;"></div>
           <div class="empty-state" id="network3d-loading">Loading 3D visualization...</div>
           <div class="empty-state" id="network3d-empty" style="display: none;">No interaction data available for 3D visualization.</div>
           <div id="network3d-info" style="margin-top: 8px; font-size: 0.85rem; color: #9ca3af; display: none;">
@@ -646,7 +646,7 @@
 
         sourceBadges.innerHTML = "";
 
-        // Show 13 database integration
+        // Show multi-source integration
         if (board?.databaseStats) {
           const statsDiv = document.createElement("div");
           statsDiv.style.display = "flex";
@@ -660,7 +660,7 @@
           totalBadge.style.background = "rgba(34, 197, 94, 0.2)";
           totalBadge.style.borderColor = "rgba(34, 197, 94, 0.5)";
           totalBadge.style.color = "#86efac";
-          totalBadge.textContent = `${board.databaseStats.totalDatabases} Databases`;
+          totalBadge.textContent = "Multi-source datasets";
           statsDiv.appendChild(totalBadge);
 
           // Individual database badges
@@ -956,7 +956,7 @@
         csv += `Disease Context:,${board.diseaseContext}\\n`;
         csv += `Generated:,${board.generatedAtIso}\\n`;
         csv += `Analysis Time:,${board.analysisTime}\\n`;
-        csv += `Databases:,13 integrated databases\\n\\n`;
+        csv += `Databases:,multi-source integrated datasets\\n\\n`;
 
         // Genes section
         csv += "GENES\\n";

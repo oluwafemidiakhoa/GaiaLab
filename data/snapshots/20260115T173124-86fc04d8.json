@@ -1,0 +1,132 @@
+{
+  "id": "20260115T173124-86fc04d8",
+  "createdAt": "2026-01-15T17:31:24.149Z",
+  "query": {
+    "genes": [
+      "BRCA1",
+      "EGFR",
+      "TP53"
+    ],
+    "diseaseContext": "triple-negative breast cancer",
+    "audience": "clinician",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "Reactome v95",
+      "KEGG"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets"
+    ],
+    "drugs": [
+      "ChEMBL",
+      "PubChem",
+      "DGIdb",
+      "DrugBank"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 20,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 1,
+    "compounds": 725,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "38735837",
+      "38588696",
+      "38900236",
+      "39500221",
+      "38502995",
+      "40003864",
+      "38141462",
+      "38981022",
+      "38388873",
+      "40460322",
+      "38772416",
+      "40282933",
+      "38604999",
+      "39572842",
+      "39838117",
+      "40460510",
+      "38422473",
+      "39612162",
+      "39405593",
+      "39085861",
+      "38652877",
+      "39402579",
+      "39531335",
+      "38869741",
+      "39627505",
+      "40482645",
+      "39779850",
+      "39869307",
+      "39709655",
+      "40532362"
+    ],
+    "pathways": [
+      "R-HSA-5693565",
+      "path:hsa05219",
+      "path:hsa03272",
+      "path:hsa05213",
+      "path:hsa05120",
+      "path:hsa05230",
+      "path:hsa05218",
+      "path:hsa05223",
+      "path:hsa05214",
+      "path:hsa05212",
+      "path:hsa04012",
+      "path:hsa05210",
+      "path:hsa04540",
+      "path:hsa05235",
+      "path:hsa04520",
+      "path:hsa04912",
+      "path:hsa05231",
+      "path:hsa01521",
+      "path:hsa01522",
+      "path:hsa04137"
+    ],
+    "clinical": [
+      "BRCA1:triple-negative breast cancer"
+    ],
+    "compounds": [
+      "DACOMITINIB ANHYDROUS",
+      "OSIMERTINIB",
+      "GEFITINIB",
+      "ERLOTINIB",
+      "CARBOPLATIN",
+      "PACLITAXEL",
+      "CISPLATIN",
+      "DOXORUBICIN HYDROCHLORIDE",
+      "TALAZOPARIB",
+      "TAMOXIFEN",
+      "DAUNORUBICIN HYDROCHLORIDE",
+      "MITOMYCIN",
+      "MITOXANTRONE",
+      "RESVERATROL",
+      "OLAPARIB",
+      "OXALIPLATIN",
+      "GEMCITABINE",
+      "ERLOTINIB",
+      "SIROLIMUS",
+      "OSIMERTINIB"
+    ]
+  }
+}

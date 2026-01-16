@@ -1,0 +1,388 @@
+{
+  "options": {
+    "endpoint": "http://localhost:8787/analyze",
+    "benchmarks": "data/benchmarks/gold-standard.json",
+    "timeout": 300000,
+    "strict": false,
+    "out": "data/eval/gold-last-run.json",
+    "bypassCache": true
+  },
+  "benchmarkVersion": 1,
+  "summary": {
+    "startedAt": "2026-01-16T02:29:12.225Z",
+    "finishedAt": "2026-01-16T02:35:28.554Z",
+    "totalCases": 6,
+    "failures": 0,
+    "avgScore": 69.17,
+    "avgTimeMs": 62654.5,
+    "avgPapersUsed": 6.83,
+    "avgEvidenceItems": 11.17,
+    "avgHypotheses": 5,
+    "avgExpectationScore": 100
+  },
+  "results": [
+    {
+      "id": "bc_tp53_brca1_egfr",
+      "payload": {
+        "genes": [
+          "TP53",
+          "BRCA1",
+          "EGFR"
+        ],
+        "diseaseContext": "breast cancer",
+        "audience": "researcher",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 132487,
+        "model": "GPT-4o-mini",
+        "pathways": 2,
+        "topics": 1,
+        "strategies": 2,
+        "hypotheses": 5,
+        "papersUsed": 5,
+        "evidenceItems": 14,
+        "evidencePapers": 9,
+        "groundedRatio": 0.6,
+        "availableDatabases": 14,
+        "score": 68,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank fallback in use",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [
+            "DNA repair",
+            "cell cycle",
+            "p53"
+          ],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [
+            "PARP",
+            "EGFR"
+          ],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "breast cancer",
+            "therapy"
+          ],
+          "missing": []
+        }
+      }
+    },
+    {
+      "id": "alz_app_psen1_apoe",
+      "payload": {
+        "genes": [
+          "APP",
+          "PSEN1",
+          "APOE"
+        ],
+        "diseaseContext": "alzheimer's disease",
+        "audience": "clinician",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 59220,
+        "model": "GPT-4o-mini",
+        "pathways": 2,
+        "topics": 1,
+        "strategies": 1,
+        "hypotheses": 5,
+        "papersUsed": 5,
+        "evidenceItems": 12,
+        "evidencePapers": 4,
+        "groundedRatio": 0,
+        "availableDatabases": 15,
+        "score": 66,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank fallback in use",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [
+            "amyloid",
+            "tau",
+            "neuroinflammation"
+          ],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "cognitive",
+            "degeneration",
+            "alzheimer"
+          ],
+          "missing": []
+        }
+      }
+    },
+    {
+      "id": "aml_flt3_npm1_dnmt3a",
+      "payload": {
+        "genes": [
+          "FLT3",
+          "NPM1",
+          "DNMT3A"
+        ],
+        "diseaseContext": "acute myeloid leukemia",
+        "audience": "researcher",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 55868,
+        "model": "GPT-4o-mini",
+        "pathways": 3,
+        "topics": 1,
+        "strategies": 2,
+        "hypotheses": 5,
+        "papersUsed": 7,
+        "evidenceItems": 17,
+        "evidencePapers": 7,
+        "groundedRatio": 0,
+        "availableDatabases": 13,
+        "score": 78,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [
+            "FLT3",
+            "epigenetic"
+          ],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "leukemia"
+          ],
+          "missing": []
+        }
+      }
+    },
+    {
+      "id": "pd_lrrk2_snca_prkn",
+      "payload": {
+        "genes": [
+          "LRRK2",
+          "SNCA",
+          "PRKN"
+        ],
+        "diseaseContext": "parkinson's disease",
+        "audience": "researcher",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 46663,
+        "model": "GPT-4o-mini",
+        "pathways": 2,
+        "topics": 1,
+        "strategies": 2,
+        "hypotheses": 5,
+        "papersUsed": 10,
+        "evidenceItems": 3,
+        "evidencePapers": 2,
+        "groundedRatio": 0.4,
+        "availableDatabases": 14,
+        "score": 67,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [
+            "mitochondrial",
+            "autophagy",
+            "synuclein"
+          ],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "parkinson"
+          ],
+          "missing": []
+        }
+      }
+    },
+    {
+      "id": "glioblastoma_egfr_pten_pdgfra",
+      "payload": {
+        "genes": [
+          "EGFR",
+          "PTEN",
+          "PDGFRA"
+        ],
+        "diseaseContext": "glioblastoma",
+        "audience": "researcher",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 44724,
+        "model": "GPT-4o-mini",
+        "pathways": 3,
+        "topics": 1,
+        "strategies": 2,
+        "hypotheses": 5,
+        "papersUsed": 7,
+        "evidenceItems": 4,
+        "evidencePapers": 3,
+        "groundedRatio": 0,
+        "availableDatabases": 13,
+        "score": 60,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank fallback in use",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [
+            "EGFR",
+            "PDGF"
+          ],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "glioblastoma",
+            "tumor"
+          ],
+          "missing": []
+        }
+      }
+    },
+    {
+      "id": "t2d_tcf7l2_pparg_slc2a4",
+      "payload": {
+        "genes": [
+          "TCF7L2",
+          "PPARG",
+          "SLC2A4"
+        ],
+        "diseaseContext": "type 2 diabetes",
+        "audience": "clinician",
+        "includeDrugs": true,
+        "bypassCache": true
+      },
+      "metrics": {
+        "analysisTimeMs": 36965,
+        "model": "GPT-4o-mini",
+        "pathways": 2,
+        "topics": 1,
+        "strategies": 2,
+        "hypotheses": 5,
+        "papersUsed": 7,
+        "evidenceItems": 17,
+        "evidencePapers": 7,
+        "groundedRatio": 0.6,
+        "availableDatabases": 13,
+        "score": 76,
+        "expectationScore": 100
+      },
+      "warnings": [],
+      "availabilityNotes": [
+        "BioGRID disabled",
+        "DisGeNET disabled",
+        "DrugBank disabled"
+      ],
+      "expectations": {
+        "pathways": {
+          "matched": [
+            "insulin",
+            "glucose",
+            "metabolic"
+          ],
+          "missing": []
+        },
+        "strategies": {
+          "matched": [],
+          "missing": []
+        },
+        "topics": {
+          "matched": [],
+          "missing": []
+        },
+        "whyItMatters": {
+          "matched": [
+            "diabetes",
+            "metabolic"
+          ],
+          "missing": []
+        }
+      }
+    }
+  ]
+}

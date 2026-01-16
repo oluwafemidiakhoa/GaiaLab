@@ -32,9 +32,12 @@ export class LiteratureAggregator {
       const enrichedPapers = await this._enrichWithSemanticScholar(papers);
 
       // STEP 3: Rank papers by relevance (now uses citation counts from S2!)
-      const rankedPapers = this.rankPapersByRelevance(enrichedPapers, genes);
+      const rankedPapers = this.rankPapersByRelevance(enrichedPapers, genes, diseaseContext);
+      const annotatedPapers = this.annotateEvidencePolarity(rankedPapers, genes, diseaseContext);
+      const enrichedSignals = this.annotateStudySignals(annotatedPapers);
+      const qualitySignals = this.annotateQualitySignals(enrichedSignals);
 
-      return rankedPapers.slice(0, maxResults);
+      return qualitySignals.slice(0, maxResults);
     } catch (error) {
       console.error('Literature search error:', error.message);
       return [];
@@ -108,15 +111,20 @@ export class LiteratureAggregator {
    * Prioritizes: review papers, high-impact journals, seminal studies
    * @private
    */
-  rankPapersByRelevance(papers, genes) {
+  rankPapersByRelevance(papers, genes, diseaseContext) {
+    const diseaseTokens = this.tokenizeContext(diseaseContext);
+    const diseasePhrase = String(diseaseContext || '').toLowerCase().trim();
+
     return papers.map(paper => {
       let relevanceScore = paper.relevanceScore || 1.0;
 
       // PRIORITY 1: Review papers (2x weight for authoritative overviews)
+      const titleLower = String(paper.title || '').toLowerCase();
+      const abstractLower = String(paper.abstract || '').toLowerCase();
       const isReview = paper.publicationTypes?.includes('Review') ||
                        paper.publicationTypes?.includes('Journal Article Review') ||
-                       (paper.title && paper.title.toLowerCase().includes('review:')) ||
-                       (paper.abstract && paper.abstract.toLowerCase().includes('this review'));
+                       titleLower.includes('review:') ||
+                       abstractLower.includes('this review');
       if (isReview) {
         relevanceScore *= 2.0;
       }
@@ -126,7 +134,7 @@ export class LiteratureAggregator {
         'nat rev', 'nature reviews', 'annu rev', 'annual review',
         'cell rev', 'trends', 'curr opin', 'crit rev'
       ];
-      const journalLower = (paper.journal || '').toLowerCase();
+      const journalLower = String(paper.journal || '').toLowerCase();
       if (reviewJournals.some(j => journalLower.includes(j))) {
         relevanceScore *= 1.8;
       }
@@ -153,6 +161,46 @@ export class LiteratureAggregator {
       const mentionedCount = paper.mentionedGenes?.length || 0;
       relevanceScore *= (1 + mentionedCount * 0.2);
 
+      const combinedText = `${titleLower} ${abstractLower}`.trim();
+
+      // Boost if disease context appears in title/abstract
+      if (diseasePhrase && combinedText.includes(diseasePhrase)) {
+        relevanceScore *= 1.3;
+      }
+
+      if (diseaseTokens.length > 0) {
+        let matchScore = 0;
+        for (const token of diseaseTokens) {
+          if (titleLower.includes(token)) {
+            matchScore += 2;
+          } else if (abstractLower.includes(token)) {
+            matchScore += 1;
+          }
+        }
+
+        if (matchScore > 0) {
+          relevanceScore *= (1 + Math.min(matchScore, 6) * 0.08);
+        } else {
+          relevanceScore *= 0.85;
+        }
+      }
+
+      // Boost if gene symbols appear in the title (strong relevance)
+      if (genes && genes.length > 0) {
+        const titleGeneHits = genes.filter(gene =>
+          titleLower.includes(String(gene || '').toLowerCase())
+        ).length;
+        if (titleGeneHits > 0) {
+          relevanceScore *= (1 + Math.min(titleGeneHits, 3) * 0.1);
+        }
+      }
+
+      // Boost for clinical trial/meta-analysis signals
+      const clinicalTypes = ['Clinical Trial', 'Randomized Controlled Trial', 'Meta-Analysis'];
+      if (paper.publicationTypes?.some(type => clinicalTypes.includes(type))) {
+        relevanceScore *= 1.15;
+      }
+
       // Balance recency vs. established findings
       const currentYear = new Date().getFullYear();
       const paperYear = parseInt(paper.year) || currentYear - 10;
@@ -174,6 +222,462 @@ export class LiteratureAggregator {
         citationCount
       };
     }).sort((a, b) => b.relevanceScore - a.relevanceScore);
+  }
+
+  annotateEvidencePolarity(papers, genes, diseaseContext) {
+    const positivePatterns = [
+      /\bstrongly associated\b/i,
+      /\bassociated with\b/i,
+      /\bsignificant(?:ly)? (?:association|correlation|increase|decrease)\b/i,
+      /\bpositive association\b/i,
+      /\bpromot(?:e|es|ed|ing)\b/i,
+      /\bdrives\b/i,
+      /\bkey role\b/i,
+      /\bcritical\b/i,
+      /\benhances?\b/i,
+      /\bupregulat(?:e|es|ed|ion)\b/i,
+      /\bdownregulat(?:e|es|ed|ion)\b/i
+    ];
+
+    const negativePatterns = [
+      /\bno association\b/i,
+      /\bnot associated\b/i,
+      /\bno significant\b/i,
+      /\bnot significant\b/i,
+      /\bfailed to\b/i,
+      /\bno evidence\b/i,
+      /\bno effect\b/i,
+      /\bnot correlated\b/i,
+      /\bnegative (?:results|finding|association)\b/i,
+      /\bcontradict(?:s|ory|ing)?\b/i,
+      /\bconflict(?:s|ing)?\b/i,
+      /\binconsistent\b/i
+    ];
+
+    return (papers || []).map(paper => {
+      const text = `${paper.title || ''} ${paper.abstract || ''}`.toLowerCase();
+      const supportHits = this.countPatternHits(text, positivePatterns);
+      const contradictHits = this.countPatternHits(text, negativePatterns);
+
+      let evidencePolarity = 'neutral';
+      if (supportHits > 0 && contradictHits === 0) {
+        evidencePolarity = 'support';
+      } else if (contradictHits > 0 && supportHits === 0) {
+        evidencePolarity = 'contradict';
+      } else if (supportHits > 0 && contradictHits > 0) {
+        evidencePolarity = 'mixed';
+      }
+
+      const contradictionMeta = (evidencePolarity === 'contradict' || evidencePolarity === 'mixed')
+        ? this.classifyContradictions(text)
+        : { tags: [], summary: null };
+
+      return {
+        ...paper,
+        evidencePolarity,
+        evidenceSignals: {
+          supportHits,
+          contradictHits
+        },
+        contradictionTags: contradictionMeta.tags,
+        contradictionSummary: contradictionMeta.summary
+      };
+    });
+  }
+
+  classifyContradictions(text) {
+    const content = String(text || '').toLowerCase();
+    const tags = new Set();
+
+    if (/\bno association\b|\bnot associated\b|\bno evidence\b|\bno effect\b/.test(content)) {
+      tags.add('no_association');
+    }
+    if (/\bno significant\b|\bnot significant\b|\bnon[- ]significant\b|\bp\s*[>≥]\s*0\.0?5\b|\bdid not reach significance\b/.test(content)) {
+      tags.add('statistical');
+    }
+    if (/\bfailed to replicate\b|\bnot replicated\b|\bcould not reproduce\b|\bfailed to reproduce\b/.test(content)) {
+      tags.add('replication');
+    }
+    if (/\binconsistent\b|\bconflicting\b|\bheterogeneous\b|\bvariable results\b|\bdiscordant\b/.test(content)) {
+      tags.add('heterogeneity');
+    }
+    if (/\bcohort\b|\bpopulation\b|\bethnic\b|\bethnicity\b|\bsex-specific\b|\bgender\b|\bage-specific\b|\bpediatric\b|\badult\b/.test(content)) {
+      tags.add('population');
+    }
+    if (/\bin vitro\b|\bin vivo\b|\bcell line\b|\bmouse\b|\bmurine\b|\brat\b|\bxenograft\b|\borganoid\b|\banimal model\b/.test(content)) {
+      tags.add('model');
+    }
+    if (/\bassay\b|\bmethod\b|\bprotocol\b|\bplatform\b|\bbatch effects\b|\bartifact\b/.test(content)) {
+      tags.add('methodological');
+    }
+    if (/\bdose-dependent\b|\bdose response\b|\btime-dependent\b|\bshort-term\b|\blong-term\b|\bduration\b/.test(content)) {
+      tags.add('dose_time');
+    }
+    const upSignals = /\b(increase|increased|upregulat(?:e|es|ed|ion)|elevat(?:e|es|ed|ion)|overexpress(?:ed|ion)?|gain of function)\b/;
+    const downSignals = /\b(decrease|decreased|downregulat(?:e|es|ed|ion)|reduc(?:e|es|ed|tion)|suppress(?:ed|ion)?|loss of function)\b/;
+    if (upSignals.test(content) && downSignals.test(content)) {
+      tags.add('directionality');
+    }
+    if (/\b(overall survival|progression[- ]free|response rate|endpoint|outcome|hazard ratio|odds ratio|biomarker)\b/.test(content)) {
+      tags.add('endpoint');
+    }
+    if (/\b(publication bias|reporting bias|selective reporting|p-hacking|file drawer)\b/.test(content)) {
+      tags.add('publication_bias');
+    }
+    if (/\bunderpowered\b|\blow power\b|\bsmall sample\b|\blimited sample\b/.test(content)) {
+      tags.add('underpowered');
+    }
+    const preclinicalSignals = /\b(in vitro|in vivo|cell line|xenograft|organoid|mouse|mice|murine|rat|zebrafish)\b/;
+    const clinicalSignals = /\b(clinical trial|patients|patient cohort|phase i|phase ii|phase iii|phase iv|prospective|retrospective|randomized)\b/;
+    if (preclinicalSignals.test(content) && clinicalSignals.test(content)) {
+      tags.add('translation_gap');
+    }
+
+    if (tags.size === 0) {
+      tags.add('unspecified');
+    }
+
+    const tagList = Array.from(tags);
+    const summary = this.formatContradictionSummary(tagList);
+
+    return { tags: tagList, summary };
+  }
+
+  getContradictionLabelMap() {
+    return {
+      no_association: 'No association',
+      statistical: 'Non-significant statistics',
+      replication: 'Replication failure',
+      heterogeneity: 'Heterogeneity',
+      population: 'Population-specific',
+      model: 'Model/system mismatch',
+      methodological: 'Methodological',
+      dose_time: 'Dose/time effects',
+      directionality: 'Opposite effect direction',
+      endpoint: 'Endpoint mismatch',
+      publication_bias: 'Publication bias',
+      underpowered: 'Underpowered sample',
+      translation_gap: 'Preclinical vs clinical gap',
+      early_phase: 'Early-phase trial',
+      unspecified: 'Unspecified'
+    };
+  }
+
+  formatContradictionSummary(tags) {
+    const labels = this.getContradictionLabelMap();
+    return (tags || []).map(tag => labels[tag] || tag).join(', ');
+  }
+
+  augmentContradictionTags(paper) {
+    const baseTags = new Set(paper.contradictionTags || []);
+    const polarity = paper.evidencePolarity || 'neutral';
+    if (!['contradict', 'mixed'].includes(polarity)) {
+      return Array.from(baseTags);
+    }
+
+    const sampleSize = Number(paper.sampleSize || 0);
+    const studyType = paper.studyType || 'unknown';
+    const trialPhase = String(paper.trialPhase || '').toUpperCase();
+
+    const sampleThreshold = studyType === 'preclinical' ? 15 : 50;
+    if (sampleSize > 0 && sampleSize < sampleThreshold) {
+      baseTags.add('underpowered');
+    }
+
+    if (trialPhase && ['I', 'I/II', 'II'].includes(trialPhase)) {
+      baseTags.add('early_phase');
+    }
+
+    if (baseTags.has('unspecified') && baseTags.size > 1) {
+      baseTags.delete('unspecified');
+    }
+
+    return Array.from(baseTags);
+  }
+
+  computeContradictionSeverity(tags) {
+    const tagSet = new Set(tags || []);
+    if (tagSet.size === 0) return null;
+
+    const high = new Set(['replication', 'no_association', 'statistical', 'directionality']);
+    const moderate = new Set([
+      'heterogeneity',
+      'population',
+      'endpoint',
+      'methodological',
+      'dose_time',
+      'translation_gap',
+      'underpowered',
+      'publication_bias',
+      'early_phase'
+    ]);
+
+    if ([...tagSet].some(tag => high.has(tag))) {
+      return 'high';
+    }
+    if ([...tagSet].some(tag => moderate.has(tag))) {
+      return 'moderate';
+    }
+    return 'low';
+  }
+
+  annotateStudySignals(papers) {
+    return (papers || []).map(paper => {
+      const text = `${paper.title || ''} ${paper.abstract || ''}`.trim();
+      const { studyType, studyDesign, sampleSize, sampleSizeText } = this.extractStudySignals(
+        text,
+        paper.publicationTypes || [],
+        paper.isReview
+      );
+
+      return {
+        ...paper,
+        studyType,
+        studyDesign,
+        sampleSize,
+        sampleSizeText
+      };
+    });
+  }
+
+  annotateQualitySignals(papers) {
+    return (papers || []).map(paper => {
+      const publicationTypes = paper.publicationTypes || [];
+      const journal = String(paper.journal || '');
+      const text = `${paper.title || ''} ${paper.abstract || ''}`.trim();
+
+      const journalTier = this.classifyJournalTier(journal);
+      const trialPhase = this.extractTrialPhase(text, publicationTypes);
+      const isRetracted = publicationTypes.some(type => /retracted|retraction/i.test(type)) ||
+        /retracted|retraction/i.test(String(paper.title || ''));
+
+      const qualityFlags = [];
+      if (isRetracted) qualityFlags.push('retracted');
+      if (trialPhase) qualityFlags.push(`trial:${trialPhase}`);
+      if (journalTier) qualityFlags.push(`tier:${journalTier}`);
+
+      const contradictionTags = this.augmentContradictionTags({
+        contradictionTags: paper.contradictionTags,
+        evidencePolarity: paper.evidencePolarity,
+        sampleSize: paper.sampleSize,
+        studyType: paper.studyType,
+        trialPhase
+      });
+      const contradictionSummary = contradictionTags.length
+        ? this.formatContradictionSummary(contradictionTags)
+        : null;
+      const contradictionSeverity = this.computeContradictionSeverity(contradictionTags);
+
+      return {
+        ...paper,
+        journalTier,
+        trialPhase,
+        isRetracted,
+        qualityFlags,
+        contradictionTags,
+        contradictionSummary,
+        contradictionSeverity
+      };
+    });
+  }
+
+  classifyJournalTier(journal) {
+    const name = String(journal || '').toLowerCase();
+    if (!name) return 'unknown';
+
+    const tier1 = [
+      'nature', 'science', 'cell', 'new england journal of medicine', 'nejm', 'lancet'
+    ];
+    const tier2 = [
+      'nature medicine', 'nature genetics', 'nature biotechnology', 'cancer cell', 'immunity',
+      'neuron', 'jama', 'bmj', 'pnas', 'annals of oncology', 'clinical cancer research',
+      'blood', 'circulation', 'jci', 'cell stem cell'
+    ];
+
+    if (tier1.some(term => name.includes(term))) {
+      return 'tier1';
+    }
+    if (tier2.some(term => name.includes(term))) {
+      return 'tier2';
+    }
+    return 'tier3';
+  }
+
+  extractTrialPhase(text, publicationTypes = []) {
+    const typeMatch = publicationTypes.find(type => /phase/i.test(String(type)));
+    const raw = typeMatch || text;
+    if (!raw) return null;
+
+    const phasePattern = /\bphase\s*(i{1,3}|iv|1|2|3|4|i\/ii|ii\/iii|i-ii|ii-iii|ii-iv|iii-iv)\b/i;
+    const match = String(raw).match(phasePattern);
+    if (!match) return null;
+
+    const normalized = match[1].toLowerCase().replace(/\s+/g, '');
+    const map = {
+      '1': 'I',
+      '2': 'II',
+      '3': 'III',
+      '4': 'IV',
+      'i': 'I',
+      'ii': 'II',
+      'iii': 'III',
+      'iv': 'IV',
+      'i/ii': 'I/II',
+      'ii/iii': 'II/III',
+      'i-ii': 'I/II',
+      'ii-iii': 'II/III',
+      'ii-iv': 'II/IV',
+      'iii-iv': 'III/IV'
+    };
+
+    return map[normalized] || normalized.toUpperCase();
+  }
+
+  extractStudySignals(text, publicationTypes = [], isReview = false) {
+    const content = String(text || '').toLowerCase();
+    const types = publicationTypes.map(type => String(type || '').toLowerCase());
+    const hasMeta = types.some(type => type.includes('meta-analysis')) || content.includes('meta-analysis');
+    const hasReview = isReview || types.some(type => type.includes('review'));
+    const clinicalTypeHit = types.some(type =>
+      type.includes('clinical trial') ||
+      type.includes('randomized controlled trial') ||
+      type.includes('controlled clinical trial') ||
+      type.includes('phase')
+    );
+
+    const clinicalSignals = [
+      'randomized', 'randomised', 'double-blind', 'placebo', 'phase i', 'phase ii', 'phase iii', 'phase iv',
+      'clinical trial', 'trial', 'patients', 'patient', 'participants', 'participant', 'subjects', 'subject',
+      'cohort', 'case-control', 'case series', 'registry', 'prospective', 'retrospective'
+    ];
+    const preclinicalSignals = [
+      'mouse', 'mice', 'murine', 'rat', 'rats', 'zebrafish', 'drosophila',
+      'xenograft', 'organoid', 'cell line', 'cell culture', 'in vitro', 'in vivo',
+      'knockout', 'transgenic', 'primary cells'
+    ];
+
+    const clinicalHit = clinicalTypeHit || clinicalSignals.some(term => content.includes(term));
+    const preclinicalHit = preclinicalSignals.some(term => content.includes(term));
+
+    let studyType = 'unknown';
+    if (hasMeta) {
+      studyType = 'meta-analysis';
+    } else if (hasReview) {
+      studyType = 'review';
+    } else if (clinicalHit && preclinicalHit) {
+      studyType = 'mixed';
+    } else if (clinicalHit) {
+      studyType = 'clinical';
+    } else if (preclinicalHit) {
+      studyType = 'preclinical';
+    }
+
+    let studyDesign = null;
+    if (hasMeta) {
+      studyDesign = 'meta-analysis';
+    } else if (content.includes('randomized') || content.includes('randomised')) {
+      studyDesign = 'randomized';
+    } else if (content.includes('double-blind')) {
+      studyDesign = 'double-blind';
+    } else if (content.includes('cohort')) {
+      studyDesign = 'cohort';
+    } else if (content.includes('case-control')) {
+      studyDesign = 'case-control';
+    } else if (content.includes('case series')) {
+      studyDesign = 'case series';
+    } else if (content.includes('in vivo')) {
+      studyDesign = 'in vivo';
+    } else if (content.includes('in vitro')) {
+      studyDesign = 'in vitro';
+    }
+
+    const { sampleSize, sampleSizeText } = this.extractSampleSize(content);
+
+    return {
+      studyType,
+      studyDesign,
+      sampleSize,
+      sampleSizeText
+    };
+  }
+
+  extractSampleSize(text) {
+    if (!text) {
+      return { sampleSize: null, sampleSizeText: null };
+    }
+
+    const candidates = [];
+    const contextKeywords = [
+      'patient', 'patients', 'participant', 'participants', 'subject', 'subjects', 'case', 'cases',
+      'cohort', 'trial', 'study', 'registry', 'sample', 'samples', 'mouse', 'mice', 'rat', 'rats',
+      'animal', 'animals', 'tumor', 'tumors'
+    ];
+
+    const nMatches = text.matchAll(/\b[nN]\s*=\s*(\d{2,6})\b/g);
+    for (const match of nMatches) {
+      const value = parseInt(match[1], 10);
+      if (!Number.isFinite(value)) {
+        continue;
+      }
+      const index = typeof match.index === 'number' ? match.index : 0;
+      const start = Math.max(0, index - 40);
+      const end = Math.min(text.length, index + match[0].length + 40);
+      const window = text.slice(start, end);
+      const hasContext = contextKeywords.some(keyword => window.includes(keyword));
+      if (!hasContext) {
+        continue;
+      }
+      candidates.push({ value, label: `n=${value}` });
+    }
+
+    const labeledMatches = text.matchAll(/\b(\d{2,6})\s+(patients|subjects|participants|cases|samples|mice|rats|animals|tumors|individuals|volunteers)\b/gi);
+    for (const match of labeledMatches) {
+      const value = parseInt(match[1], 10);
+      const label = `${match[1]} ${match[2].toLowerCase()}`;
+      if (Number.isFinite(value)) {
+        candidates.push({ value, label });
+      }
+    }
+
+    const filtered = candidates.filter(candidate => candidate.value >= 5 && candidate.value <= 200000);
+    if (filtered.length === 0) {
+      return { sampleSize: null, sampleSizeText: null };
+    }
+
+    filtered.sort((a, b) => b.value - a.value);
+    return {
+      sampleSize: filtered[0].value,
+      sampleSizeText: filtered[0].label
+    };
+  }
+
+  countPatternHits(text, patterns) {
+    if (!text) return 0;
+    return patterns.reduce((count, pattern) => {
+      if (pattern.test(text)) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+  }
+
+  /**
+   * Tokenize disease context for scoring
+   * @private
+   */
+  tokenizeContext(diseaseContext) {
+    const raw = String(diseaseContext || '').toLowerCase().trim();
+    if (!raw) return [];
+
+    const stopwords = new Set([
+      'and', 'or', 'the', 'of', 'in', 'with', 'without', 'type', 'disease',
+      'syndrome', 'disorder', 'condition', 'patients'
+    ]);
+
+    return raw
+      .split(/[^a-z0-9]+/g)
+      .map(token => token.trim())
+      .filter(token => token.length > 2 && !stopwords.has(token));
   }
 
   /**

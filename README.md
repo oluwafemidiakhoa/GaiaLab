@@ -2,22 +2,22 @@
 
 **Transform gene lists into actionable insights in 60 seconds — now with drug repurposing.**
 
-> 🌟 **Developed by Oluwafemi Idiakhoa** — The most advanced biological intelligence synthesis platform
-
-GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates **13 biological databases** with AI-powered synthesis to deliver publication-quality insights. By cross-validating findings across multiple independent sources, GaiaLab demonstrates how **truth emerges through consensus**. Now featuring an enterprise-grade **Drug Repurposing Engine** with $2.3B+ savings potential per drug.
+GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates **17 biological databases** with AI-powered synthesis to deliver publication-quality insights. By cross-validating findings across multiple independent sources, GaiaLab demonstrates how **truth emerges through consensus**. Now featuring an enterprise-grade **Drug Repurposing Engine** with $2.3B+ savings potential per drug.
 
 ## 🚀 What Makes This Revolutionary
 
-- **13 Data Sources**: The most comprehensive biological data integration ever built for an MCP server (now with Semantic Scholar citation enrichment)
+- **17 Data Sources**: The most comprehensive biological data integration ever built for an MCP server (now with Semantic Scholar citation enrichment)
 - **3 Cross-Validation Domains**: Protein interactions, disease associations, and drug targets
 - **Multi-Source Intelligence**: When independent databases agree → truth emerges with high confidence
 - **60-Second Analysis**: What takes researchers 2 weeks, GaiaLab delivers instantly
 - **AI Synthesis**: Multi-model AI architecture with automatic failover generates insights with citations and confidence scores
 - **Citation-Backed**: Every insight linked to real PubMed papers
 - **Statistical Rigor**: Fisher's exact test for pathway enrichment with p-values
+- **Evidence Rigor & Provenance**: Proof-of-evidence badges, contradiction taxonomy, journal tier/trial phase signals, and claim-level evidence ledgers
+- **Executive Summary + Reproducible Reports**: Auto-generated executive summary plus exports with snapshot + model config + evidence ledger
 - **💊 Drug Repurposing Engine**: Enterprise AI feature analyzing 2.4M compounds with $2.3B+ savings potential per drug
 
-## 🏗️ Complete Data Architecture (13/13 Sources)
+## 🏗️ Complete Data Architecture (17/17 Sources)
 
 ### 📊 Gene Layer (4 Sources)
 | Source | Purpose | Data Type |
@@ -27,10 +27,11 @@ GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates *
 | **UniProt** | Protein function, expression, domains | Protein |
 | **Gene Ontology** | Standardized functional annotations (BP/MF/CC) | Functional |
 
-### 🧬 Pathway Layer (1 Source)
+### 🧬 Pathway Layer (2 Sources)
 | Source | Purpose |
 |--------|---------|
 | **KEGG** | Metabolic & signaling pathways with enrichment |
+| **Reactome** | Curated pathway membership across human biology |
 
 ### 📚 Literature Layer (2 Sources - **Citation-Enriched**)
 | Source | Purpose | Features |
@@ -48,19 +49,22 @@ GaiaLab is a revolutionary MCP (Model Context Protocol) server that integrates *
 
 **Cross-Validation:** When STRING + BioGRID confirm same interaction → **+15% confidence**
 
-### 🏥 Clinical Layer (2 Sources - **Cross-Validated**)
+### 🏥 Clinical Layer (3 Sources - **Cross-Validated**)
 | Source | Type | Evidence |
 |--------|------|----------|
 | **Open Targets** | Genetic disease evidence | GWAS, Genomic |
 | **DisGeNET** | Disease associations | Literature, GWAS |
+| **GWAS Catalog** | Trait associations | GWAS studies |
 
 **Cross-Validation:** When Open Targets + DisGeNET agree → **+15% confidence**
 
-### 💊 Drug Layer (2 Sources - **Cross-Validated**)
+### 💊 Drug Layer (4 Sources - **Cross-Validated**)
 | Source | Database Size | Type |
 |--------|---------------|------|
 | **ChEMBL** | 2.4M bioactive compounds | Potency data |
 | **DrugBank** | 14K approved + experimental drugs | FDA status |
+| **DGIdb** | 40K+ drug-gene interactions | Interaction catalog |
+| **PubChem** | 100M+ compounds | Chemical properties |
 
 **Cross-Validation:** When ChEMBL + DrugBank agree → **+15% confidence**
 
@@ -115,6 +119,11 @@ GaiaLab supports multiple AI providers with automatic failover:
 
 Configure at least one API key for AI-powered synthesis.
 
+Optional AI tuning:
+- **AI_MODEL_TIMEOUT_MS**: Timeout per model call in ms (default 90000)
+- **AI_PREFERRED_MODEL**: Prefer a provider or model name (e.g., `openai`, `deepseek`, `gpt-4o-mini`)
+- **DEEPSEEK_MODEL / OPENAI_MODEL / GOOGLE_MODEL / ANTHROPIC_MODEL**: Override model IDs
+
 ### Data Sources (Optional - Enhance Performance)
 - **NCBI_API_KEY**: PubMed rate limit 3→10 req/sec (free)
 - **BIOGRID_API_KEY**: Protein interaction cross-validation (free)
@@ -136,6 +145,17 @@ See [.env.example](.env.example) for all configuration options.
   - ⭐ Highly influential (100+ citations)
 - **Open Access Filter**: Toggle to show only papers with free PDF downloads
 - **OA Download Links**: Direct links to Open Access PDFs when available
+
+### Evidence Rigor & Provenance
+- **Proof-of-Evidence Ribbon**: Badge + rationale attached to each insight
+- **Contradiction Taxonomy**: Replication, statistical, population, endpoint, directionality, and translation-gap tags with severity
+- **Quality Signals**: Journal tier, trial phase, and retraction detection surfaced per paper
+
+### Evidence Graph Intelligence
+- **Weighted Evidence Score**: Combines citations, study type, sample size, and polarity
+- **Consensus vs Contention**: Scorecard summarizing support vs contradiction
+- **Conflict Filters**: Filter by polarity, study design, and contradiction hotspots
+- **High-Impact Timeline**: Highlight influential papers and split clinical vs preclinical views
 
 ### Author Network Analysis
 - **Leading Researchers**: Identifies top contributors in the field
@@ -159,6 +179,7 @@ See [.env.example](.env.example) for all configuration options.
 - **JSON Export**: Complete structured data export with metadata
 - **Timestamped**: Files named with ISO date for organization
 - **Comprehensive**: Includes genes, pathways, literature, researchers, and more
+- **Reproducible Reports**: Snapshot + model config + evidence ledger bundle for exact reruns
 
 ### 💊 Drug Repurposing Engine
 **Enterprise Feature ($10K-50K/year value)** — AI-powered analysis to identify existing FDA-approved drugs for new disease indications
@@ -215,6 +236,8 @@ GaiaLab features a **spectacular 3D protein interaction network** that rivals $1
   - Slides in/out from right edge with smooth cubic-bezier transitions
   - Hover effect: scales to 110%
   - Full network stats, search, and filters when expanded
+- 🧩 **Community Detection Overlays**: Module labels with significance tiers and bridge-node highlights
+- 🎨 **Community Colors Toggle**: Switch to community palette without losing FDA/druggable/hub emphasis
 - 🎯 **FDA Target Finder**: One-click zoom to FDA-approved drug targets
   - Click blue underlined "FDA Targets" count
   - Camera auto-zooms to target gene (1.5s smooth transition)
@@ -314,6 +337,19 @@ Output: 29-node network showing:
 }
 ```
 
+### Executive Summary Example
+```
+🧭 Executive Summary
+Plain-English summary: GaiaLab analyzed 3 genes in Parkinson's disease and surfaced 2 pathways, 3 therapeutic strategies, and 5 hypotheses.
+
+Evidence spans 3 signals across 4 papers.
+
+Clinical impact: Clinical impact is promising: 7 repurposing candidates flagged for feasibility review.
+Market impact: Market impact is mid-term: 10 bioactive compounds suggest a pipeline for optimization.
+2 high-confidence strategies identified.
+2 pathways prioritized for mechanism-driven follow-up.
+```
+
 ## 🚀 Performance
 
 | Phase | Duration | Parallelization |
@@ -360,7 +396,7 @@ gaialab-app/
 ├── src/
 │   ├── server.js                        # MCP server + orchestration
 │   ├── data/
-│   │   ├── integrations/               # 13 API clients
+│   │   ├── integrations/               # 17 API clients
 │   │   │   ├── ensembl-client.js
 │   │   │   ├── clinvar-client.js
 │   │   │   ├── uniprot-client.js
@@ -395,8 +431,8 @@ gaialab-app/
 
 ## 🚦 Development Roadmap
 
-### ✅ Phase 1: MVP (Complete - 13/13 Sources + 3D Visualization + Drug Repurposing)
-- ✅ 13 biological data sources integrated (added Semantic Scholar)
+### ✅ Phase 1: MVP (Complete - 17/17 Sources + 3D Visualization + Drug Repurposing)
+- ✅ 17 biological data sources integrated (added Semantic Scholar)
 - ✅ 3 cross-validation domains
 - ✅ Multi-model AI synthesis with automatic failover across 4 providers
 - ✅ Citation validation & confidence scoring
@@ -463,7 +499,7 @@ Proprietary - All Rights Reserved
 
 ## 📊 Key Statistics
 
-- **13 Data Sources** integrated with cross-validation (added Semantic Scholar)
+- **17 Data Sources** integrated with cross-validation (added Semantic Scholar)
 - **3 Validation Domains** for multi-source consensus
 - **Multi-Model AI** with automatic failover across 4 providers
 - **3D Visualization** with 1,000 stars, pulsing nodes, gradient links, particle effects
@@ -479,4 +515,3 @@ Proprietary - All Rights Reserved
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** • Powered by 13 biological databases + multi-model AI + 3D visualization + drug repurposing engine • Designed to demonstrate emergent intelligence 🌍

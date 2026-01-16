@@ -1,0 +1,5031 @@
+{
+  "id": "20260115T192709-2b80e837",
+  "createdAt": "2026-01-15T19:27:09.496Z",
+  "query": {
+    "genes": [
+      "PPARG",
+      "SLC2A4",
+      "TCF7L2"
+    ],
+    "diseaseContext": "type 2 diabetes",
+    "audience": "clinician",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "Reactome v95",
+      "KEGG"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets"
+    ],
+    "drugs": [
+      "DGIdb",
+      "PubChem",
+      "ChEMBL"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 20,
+    "papers": 30,
+    "interactions": 23,
+    "clinicalAssociations": 4,
+    "compounds": 221,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "38490340",
+      "38322335",
+      "38272413",
+      "39625861",
+      "39125399",
+      "41474140",
+      "39398333",
+      "39250818",
+      "39640975",
+      "39020091",
+      "38925318",
+      "40010634",
+      "38788910",
+      "39217825",
+      "39710002",
+      "39550874",
+      "40116328",
+      "39396421",
+      "39600283",
+      "40320521",
+      "40658092",
+      "38453649",
+      "40198135",
+      "41153348",
+      "40754711",
+      "41516154",
+      "39182843",
+      "40927642",
+      "39542250",
+      "39815992"
+    ],
+    "pathways": [
+      "R-HSA-381340",
+      "path:hsa05216",
+      "path:hsa05213",
+      "path:hsa05217",
+      "path:hsa05221",
+      "path:hsa05412",
+      "path:hsa05210",
+      "path:hsa04520",
+      "path:hsa04916",
+      "path:hsa05215",
+      "path:hsa04936",
+      "path:hsa05224",
+      "path:hsa05226",
+      "R-HSA-8853884",
+      "R-HSA-8951430",
+      "R-HSA-4086398",
+      "R-HSA-381771",
+      "R-HSA-4411364",
+      "R-HSA-201722",
+      "R-HSA-3769402"
+    ],
+    "clinical": [
+      "PPARG:type 2 diabetes mellitus",
+      "TCF7L2:type 2 diabetes mellitus",
+      "TCF7L2:type 2 diabetes nephropathy",
+      "SLC2A4:type 2 diabetes mellitus"
+    ],
+    "compounds": [
+      "TROGLITAZONE",
+      "ESTRADIOL VALERATE",
+      "GLYBURIDE",
+      "METFORMIN",
+      "PROPYLPARABEN",
+      "SPIRONOLACTONE",
+      "ROSIGLITAZONE MALEATE",
+      "CELECOXIB",
+      "MYCOPHENOLATE",
+      "ROSIGLITAZONE",
+      "PIOGLITAZONE HYDROCHLORIDE",
+      "MESALAMINE",
+      "BEZAFIBRATE",
+      "BENZBROMARONE",
+      "DICLOFENAC SODIUM",
+      "GENTIAN VIOLET CATION",
+      "RALOXIFENE HYDROCHLORIDE",
+      "METHYLENE BLUE ANHYDROUS",
+      "APIGENIN",
+      "SULFASALAZINE"
+    ]
+  },
+  "analysis": {
+    "diseaseContext": "type 2 diabetes",
+    "genes": [
+      {
+        "symbol": "PPARG",
+        "name": "Peroxisome proliferator-activated receptor gamma",
+        "function": "Nuclear receptor that binds peroxisome proliferators such as hypolipidemic drugs and fatty acids. Once activated by a ligand, the nuclear receptor binds to DNA specific PPAR response elements (PPRE) and modulates the transcription of its target genes, such as acyl-CoA oxidase. It therefore contro...",
+        "importanceScore": 0.95,
+        "centrality": 1,
+        "uniprotId": "A0A494C0T3",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "SLC2A4",
+        "name": "Unknown protein",
+        "function": "Function not well characterized",
+        "importanceScore": 0.56,
+        "centrality": 0.4,
+        "uniprotId": "I3L1S2",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "TCF7L2",
+        "name": "Unknown protein",
+        "function": "Function not well characterized",
+        "importanceScore": 0.56,
+        "centrality": 0.4,
+        "uniprotId": "A0A2Z5HTM8",
+        "tissueExpression": "Expression pattern not well characterized"
+      }
+    ],
+    "pathways": [
+      {
+        "id": "pathway-0",
+        "name": "Transcriptional regulation of white adipocyte differentiation",
+        "rationale": "This pathway is critically important in type 2 diabetes as it regulates adipogenesis, which is crucial for maintaining insulin sensitivity and glucose homeostasis.",
+        "significance": "This pathway is critically important in type 2 diabetes as it regulates adipogenesis, which is crucial for maintaining insulin sensitivity and glucose homeostasis.",
+        "molecularMechanism": "PPARG activates transcription of genes involved in adipocyte differentiation by binding to PPAR response elements (PPREs) in target gene promoters, leading to increased expression of adipogenic markers.",
+        "regulation": "PPARG is activated by ligands such as fatty acids and thiazolidinediones, which enhance its transcriptional activity, while downstream effectors include genes involved in lipid metabolism and insulin sensitivity.",
+        "experimentalEvidence": "Studies using knockout mice for PPARG demonstrate impaired adipocyte differentiation and insulin resistance, while patient cohorts show correlation between PPARG variants and diabetes risk.",
+        "quantitativeData": "91 patients",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Some studies suggest that PPARG agonists may have adverse effects on weight gain and cardiovascular health.",
+        "score": 0.9,
+        "pvalue": 0.00016790625,
+        "genesInPathway": [
+          "SLC2A4",
+          "TCF7L2"
+        ],
+        "citations": [
+          "PMID:39398333",
+          "PMID:38490340"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [
+          {
+            "pmid": "39398333",
+            "evidence": "91 patients",
+            "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "pathway-1",
+        "name": "Wnt signaling pathway",
+        "rationale": "The Wnt signaling pathway is integral to the regulation of insulin signaling and glucose homeostasis, making it a critical target for therapeutic intervention in type 2 diabetes.",
+        "significance": "The Wnt signaling pathway is integral to the regulation of insulin signaling and glucose homeostasis, making it a critical target for therapeutic intervention in type 2 diabetes.",
+        "molecularMechanism": "TCF7L2, a key transcription factor in the Wnt pathway, forms a complex with beta-catenin to activate target genes that regulate glucose metabolism and insulin sensitivity.",
+        "regulation": "Wnt signaling is activated by Wnt ligands binding to Frizzled receptors, leading to stabilization of beta-catenin, which then translocates to the nucleus to activate TCF7L2.",
+        "experimentalEvidence": "Studies in diabetic mouse models show that modulation of Wnt signaling impacts insulin sensitivity and glucose levels, while human studies link TCF7L2 variants to diabetes susceptibility.",
+        "quantitativeData": "Not reported in abstracts",
+        "consensusMetrics": "Strong consensus (18/21 papers, 86% agreement)",
+        "controversies": "Debate exists on whether Wnt activation or inhibition is more beneficial for insulin signaling.",
+        "score": 0.7,
+        "pvalue": 0.005539738831625,
+        "genesInPathway": [
+          "PPARG"
+        ],
+        "citations": [
+          "PMID:38272413",
+          "PMID:40010634"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      }
+    ],
+    "topics": [
+      {
+        "id": "topic-0",
+        "theme": "Role of genetic factors in type 2 diabetes and associated comorbidities",
+        "summary": "Recent literature emphasizes the genetic predisposition to type 2 diabetes and its links to various cancers and metabolic disorders.",
+        "keyFindings": [],
+        "citations": [
+          "PMID:39398333",
+          "PMID:39640975"
+        ],
+        "evidenceSnippets": [
+          {
+            "pmid": "39398333",
+            "evidence": "91 patients",
+            "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+          },
+          {
+            "pmid": "39640975",
+            "evidence": "OR=0.886",
+            "context": "be suggestively associated with a reduced risk of melanoma (OR: 0.886, 95% confidence interval (CI): 0.792-0.991, = 0.0347). Add"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      }
+    ],
+    "strategies": [
+      {
+        "id": "strategy-0",
+        "label": "PPARγ agonists for enhancing insulin sensitivity",
+        "rationale": "Activation of PPARγ improves insulin sensitivity and promotes adipocyte differentiation, which is essential for glucose homeostasis in type 2 diabetes.",
+        "molecularTarget": "PPARG",
+        "clinicalEvidence": "PPARγ agonists like thiazolidinediones are in clinical use, showing efficacy in lowering blood glucose levels in diabetic patients.",
+        "experimentalSupport": "Clinical trials have demonstrated significant improvements in glycemic control with PPARγ agonists (e.g., rosiglitazone).",
+        "limitations": "Concerns regarding weight gain and cardiovascular risks have limited the use of some PPARγ agonists.",
+        "quantitativeData": "91 patients",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "Biomarker not specified",
+        "riskLevel": "medium",
+        "citations": [
+          "PMID:39398333",
+          "PMID:38490340"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [
+          {
+            "pmid": "39398333",
+            "evidence": "91 patients",
+            "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "strategy-1",
+        "label": "Wnt pathway modulation",
+        "rationale": "Targeting TCF7L2 in the Wnt signaling pathway could enhance insulin signaling and improve glucose metabolism in type 2 diabetes.",
+        "molecularTarget": "TCF7L2",
+        "clinicalEvidence": "Emerging studies suggest that TCF7L2 variants are associated with altered responses to diabetes treatments.",
+        "experimentalSupport": "Animal models have shown that inhibition of Wnt signaling can improve insulin sensitivity.",
+        "limitations": "The complexity of Wnt signaling and its dual role in various tissues complicates therapeutic targeting.",
+        "quantitativeData": "Not reported in abstracts",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "Biomarker not specified",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:38272413",
+          "PMID:40010634"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "hypothesis-0",
+        "label": "Novel hypothesis: Modulation of Wnt signaling could synergistically enhance the effects of PPARγ agonists in type 2 diabetes treatment.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:38272413"
+        ],
+        "confidence": "low",
+        "isHypothesis": true
+      }
+    ],
+    "whyItMatters": {
+      "summary": "Understanding the roles of PPARG and TCF7L2 in type 2 diabetes provides insights into potential therapeutic targets for improving insulin sensitivity and managing the disease.",
+      "impact": "Targeting these pathways could lead to novel treatments that enhance patient outcomes in type 2 diabetes.",
+      "nextSteps": [
+        "Investigate combination therapies targeting both PPARG and Wnt signaling",
+        "Conduct clinical trials to evaluate the efficacy of these strategies"
+      ],
+      "citations": [
+        "PMID:39398333",
+        "PMID:38490340"
+      ],
+      "confidence": "high"
+    },
+    "mechanisticChains": [
+      {
+        "id": "chain-0",
+        "title": "SLC2A4, TCF7L2 → Transcriptional regulation of white adipocyte differentiation → type 2 diabetes",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "SLC2A4, TCF7L2",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Transcriptional regulation of white adipocyte differentiation",
+            "description": "PPARG activates transcription of genes involved in adipocyte differentiation by binding to PPAR response elements (PPREs) in target gene promoters, leading to increased expression of adipogenic markers."
+          },
+          {
+            "type": "disease",
+            "label": "type 2 diabetes",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:39398333",
+          "PMID:38490340"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "chain-1",
+        "title": "PPARG → Wnt signaling pathway → type 2 diabetes",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "PPARG",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Wnt signaling pathway",
+            "description": "TCF7L2, a key transcription factor in the Wnt pathway, forms a complex with beta-catenin to activate target genes that regulate glucose metabolism and insulin sensitivity."
+          },
+          {
+            "type": "disease",
+            "label": "type 2 diabetes",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:38272413",
+          "PMID:40010634"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "interactions": {
+      "totalInteractions": 23,
+      "avgConfidence": "0.001",
+      "topInteractors": [
+        {
+          "gene": "TCF7L2",
+          "partner": "CTNNB1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.971,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.985,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "BCL9",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.893,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.72,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "TCF7L1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.612,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "JUP",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.526,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.205,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "CREBBP",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.496,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "EP300",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.292,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.167,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "TCF7",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.315,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "TERT",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 1,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "RUVBL1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 1,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TCF7L2",
+          "partner": "HDAC1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.782,
+              "sources": 1
+            }
+          ]
+        }
+      ],
+      "networkHubs": [
+        {
+          "gene": "PPARG",
+          "centrality": 1
+        },
+        {
+          "gene": "UCP1",
+          "centrality": 0.4
+        },
+        {
+          "gene": "SLC2A4",
+          "centrality": 0.4
+        },
+        {
+          "gene": "KCNJ11",
+          "centrality": 0.4
+        },
+        {
+          "gene": "TCF7L2",
+          "centrality": 0.4
+        }
+      ],
+      "networkImageUrl": "https://string-db.org/api/image/network?identifiers=PPARG%0ASLC2A4%0ATCF7L2&species=9606&required_score=700&network_flavor=confidence&hide_disconnected_nodes=1"
+    },
+    "network3DData": {
+      "nodes": [
+        {
+          "id": "PPARG",
+          "name": "Peroxisome proliferator-activated receptor gamma",
+          "group": 0,
+          "importance": 0.95,
+          "val": 15,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 1
+        },
+        {
+          "id": "SLC2A4",
+          "name": "Unknown protein",
+          "group": 0,
+          "importance": 0.56,
+          "val": 6,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.4
+        },
+        {
+          "id": "TCF7L2",
+          "name": "Unknown protein",
+          "group": 0,
+          "importance": 0.56,
+          "val": 6,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.4
+        },
+        {
+          "id": "CTNNB1",
+          "name": "CTNNB1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BCL9",
+          "name": "BCL9",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TCF7L1",
+          "name": "TCF7L1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "JUP",
+          "name": "JUP",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CREBBP",
+          "name": "CREBBP",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EP300",
+          "name": "EP300",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TCF7",
+          "name": "TCF7",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TERT",
+          "name": "TERT",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RUVBL1",
+          "name": "RUVBL1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HDAC1",
+          "name": "HDAC1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PPARGC1A",
+          "name": "PPARGC1A",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RXRA",
+          "name": "RXRA",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "NCOR1",
+          "name": "NCOR1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MED1",
+          "name": "MED1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "NCOA1",
+          "name": "NCOA1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "NCOR2",
+          "name": "NCOR2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "NCOA2",
+          "name": "NCOA2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PRDM16",
+          "name": "PRDM16",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "XPR1",
+          "name": "XPR1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ASPSCR1",
+          "name": "ASPSCR1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "SLC2A1",
+          "name": "SLC2A1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "DAXX",
+          "name": "DAXX",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        }
+      ],
+      "links": [
+        {
+          "source": "TCF7L2",
+          "target": "CTNNB1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "BCL9",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "TCF7L1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "JUP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "CREBBP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "EP300",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "TCF7",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "TERT",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "RUVBL1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TCF7L2",
+          "target": "HDAC1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "PPARGC1A",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "RXRA",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "NCOR1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "MED1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "NCOA1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "NCOR2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "38490340",
+              "title": "Epigenetics of Diabetes: A bioinformatic approach.",
+              "year": 2024,
+              "citationCount": 3,
+              "influentialCitationCount": 0,
+              "studyType": "review",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "support",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 2.42
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 2.42
+        },
+        {
+          "source": "PPARG",
+          "target": "NCOA2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "CREBBP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "38490340",
+              "title": "Epigenetics of Diabetes: A bioinformatic approach.",
+              "year": 2024,
+              "citationCount": 3,
+              "influentialCitationCount": 0,
+              "studyType": "review",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "support",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 2.42
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 2.42
+        },
+        {
+          "source": "PPARG",
+          "target": "PRDM16",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PPARG",
+          "target": "XPR1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SLC2A4",
+          "target": "ASPSCR1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SLC2A4",
+          "target": "SLC2A1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SLC2A4",
+          "target": "DAXX",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        }
+      ],
+      "stats": {
+        "totalNodes": 25,
+        "totalLinks": 23,
+        "avgConfidence": "0.00",
+        "hubCount": 3
+      }
+    },
+    "clinical": {
+      "totalAssociations": 4,
+      "avgScore": 0.57,
+      "highConfidence": 1,
+      "topAssociations": [
+        {
+          "gene": "PPARG",
+          "disease": "type 2 diabetes mellitus",
+          "diseaseId": "MONDO_0005148",
+          "score": 0.846,
+          "confidenceLevel": "high",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Known Drug, genetic_literature, Literature, Genetic Association, Animal Model",
+          "evidenceBreakdown": [
+            {
+              "type": "Known Drug",
+              "score": 0.996,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.919,
+              "sources": 1
+            },
+            {
+              "type": "Literature",
+              "score": 0.899,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.805,
+              "sources": 1
+            },
+            {
+              "type": "Animal Model",
+              "score": 0.574,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "TCF7L2",
+          "disease": "type 2 diabetes mellitus",
+          "diseaseId": "MONDO_0005148",
+          "score": 0.676,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Animal Model, Genetic Association, genetic_literature",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.962,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.786,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.608,
+              "sources": 1
+            },
+            {
+              "type": "Animal Model",
+              "score": 0.46,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "TCF7L2",
+          "disease": "type 2 diabetes nephropathy",
+          "diseaseId": "EFO_0004997",
+          "score": 0.505,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Genetic Association",
+          "evidenceBreakdown": [
+            {
+              "type": "Genetic Association",
+              "score": 0.83,
+              "sources": 1
+            },
+            {
+              "type": "Literature",
+              "score": 0.012,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "SLC2A4",
+          "disease": "type 2 diabetes mellitus",
+          "diseaseId": "MONDO_0005148",
+          "score": 0.251,
+          "confidenceLevel": "low",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Animal Model, Genetic Association, genetic_literature",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.71,
+              "sources": 1
+            },
+            {
+              "type": "Animal Model",
+              "score": 0.411,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.304,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.28,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        }
+      ],
+      "sharedDiseases": [
+        {
+          "disease": "type 2 diabetes mellitus",
+          "diseaseId": "MONDO_0005148",
+          "affectedGenes": [
+            "PPARG",
+            "TCF7L2",
+            "SLC2A4"
+          ],
+          "geneCount": 3,
+          "coverage": 1,
+          "avgScore": "0.591",
+          "role": "primary"
+        }
+      ]
+    },
+    "drugs": {
+      "totalCompounds": 221,
+      "totalApproved": 0,
+      "avgPotency": 7.63,
+      "phaseDistribution": {
+        "approved": 73,
+        "phase3": 0,
+        "phase2": 0,
+        "phase1": 118,
+        "preclinical": 0
+      },
+      "topCompounds": [
+        {
+          "name": "TROGLITAZONE",
+          "chemblId": "rxcui:72610",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: agonist",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [
+            16680159,
+            22424300,
+            22342624,
+            22579484
+          ],
+          "genes": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 5591,
+            "molecularWeight": "441.5",
+            "xlogp": 5.1,
+            "inchikey": "GXPHKUHSUJUWKP-UHFFFAOYSA-N",
+            "iupacName": "5-[[4-[(6-hydroxy-2,5,7,8-tetramethyl-3,4-dihydrochromen-2-yl)methoxy]phenyl]methyl]-1,3-thiazolidine-2,4-dione",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "ESTRADIOL VALERATE",
+          "chemblId": "rxcui:24395",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 13791,
+            "molecularWeight": "356.5",
+            "xlogp": 6,
+            "inchikey": "RSEPBGGWRJCQGY-RBRWEJTLSA-N",
+            "iupacName": "[(8R,9S,13S,14S,17S)-3-hydroxy-13-methyl-6,7,8,9,11,12,14,15,16,17-decahydrocyclopenta[a]phenanthren-17-yl] pentanoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "GLYBURIDE",
+          "chemblId": "rxcui:4815",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            26384286
+          ],
+          "genes": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 3488,
+            "molecularWeight": "494.0",
+            "xlogp": 4.8,
+            "inchikey": "ZNNLBTZKUZBEKO-UHFFFAOYSA-N",
+            "iupacName": "5-chloro-N-[2-[4-(cyclohexylcarbamoylsulfamoyl)phenyl]ethyl]-2-methoxybenzamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "METFORMIN",
+          "chemblId": "rxcui:6809",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            22179955
+          ],
+          "genes": [
+            "PPARG",
+            "TCF7L2"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 4091,
+            "molecularWeight": "129.16",
+            "xlogp": -1.3,
+            "inchikey": "XZWYZXLIPXDOLR-UHFFFAOYSA-N",
+            "iupacName": "3-(diaminomethylidene)-1,1-dimethylguanidine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "PROPYLPARABEN",
+          "chemblId": "rxcui:34706",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 7175,
+            "molecularWeight": "180.20",
+            "xlogp": 3,
+            "inchikey": "QELSKZZBTMNZEB-UHFFFAOYSA-N",
+            "iupacName": "propyl 4-hydroxybenzoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "SPIRONOLACTONE",
+          "chemblId": "rxcui:9997",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 5833,
+            "molecularWeight": "416.6",
+            "xlogp": 2.9,
+            "inchikey": "LXMSZDCAJNLERA-ZHYRCANASA-N",
+            "iupacName": "S-[(7R,8R,9S,10R,13S,14S,17R)-10,13-dimethyl-3,5'-dioxospiro[2,6,7,8,9,11,12,14,15,16-decahydro-1H-cyclopenta[a]phenanthrene-17,2'-oxolane]-7-yl] ethanethioate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "ROSIGLITAZONE MALEATE",
+          "chemblId": "rxcui:253198",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: agonist",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 5281055,
+            "molecularWeight": "473.5",
+            "inchikey": "SUFUKZSWUHZXAV-BTJKTKAUSA-N",
+            "iupacName": "(Z)-but-2-enedioic acid;5-[[4-[2-[methyl(pyridin-2-yl)amino]ethoxy]phenyl]methyl]-1,3-thiazolidine-2,4-dione",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "CELECOXIB",
+          "chemblId": "rxcui:140587",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            22336956
+          ],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 2662,
+            "molecularWeight": "381.4",
+            "xlogp": 3.4,
+            "inchikey": "RZEKVGVHFLEQIL-UHFFFAOYSA-N",
+            "iupacName": "4-[5-(4-methylphenyl)-3-(trifluoromethyl)pyrazol-1-yl]benzenesulfonamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "MYCOPHENOLATE",
+          "chemblId": "rxcui:265323",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            17618115
+          ],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 6918995,
+            "molecularWeight": "319.3",
+            "xlogp": 3.8,
+            "inchikey": "HPNSFSBZBAHARI-RUDMXATFSA-M",
+            "iupacName": "(E)-6-(4-hydroxy-6-methoxy-7-methyl-3-oxo-1H-2-benzofuran-5-yl)-4-methylhex-4-enoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "ROSIGLITAZONE",
+          "chemblId": "rxcui:84108",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 3,
+          "pmids": [
+            25497132,
+            24890090,
+            21030263,
+            16680159,
+            19719236,
+            23273519,
+            22934537,
+            22070604,
+            26384286,
+            22819190,
+            15745794,
+            25442322
+          ],
+          "genes": [
+            "PPARG"
+          ],
+          "targets": [
+            "PPARG"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "PPARG",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 77999,
+            "molecularWeight": "357.4",
+            "xlogp": 3.1,
+            "inchikey": "YASAKCUCGLMORW-UHFFFAOYSA-N",
+            "iupacName": "5-[[4-[2-[methyl(pyridin-2-yl)amino]ethoxy]phenyl]methyl]-1,3-thiazolidine-2,4-dione",
+            "source": "PubChem"
+          }
+        }
+      ],
+      "approvedDrugs": [],
+      "multiTargetCompounds": [
+        {
+          "name": "TROGLITAZONE",
+          "chemblId": "rxcui:72610",
+          "targets": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: agonist",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "ESTRADIOL VALERATE",
+          "chemblId": "rxcui:24395",
+          "targets": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "GLYBURIDE",
+          "chemblId": "rxcui:4815",
+          "targets": [
+            "PPARG",
+            "SLC2A4"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "METFORMIN",
+          "chemblId": "rxcui:6809",
+          "targets": [
+            "PPARG",
+            "TCF7L2"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        }
+      ]
+    },
+    "drugRepurposing": {
+      "candidates": [
+        {
+          "drug": "TROGLITAZONE",
+          "drugId": "rxcui:72610",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "ESTRADIOL VALERATE",
+          "drugId": "rxcui:24395",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "GLYBURIDE",
+          "drugId": "rxcui:4815",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "METFORMIN",
+          "drugId": "rxcui:6809",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "PROPYLPARABEN",
+          "drugId": "rxcui:34706",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "SPIRONOLACTONE",
+          "drugId": "rxcui:9997",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "ROSIGLITAZONE MALEATE",
+          "drugId": "rxcui:253198",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "CELECOXIB",
+          "drugId": "rxcui:140587",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MYCOPHENOLATE",
+          "drugId": "rxcui:265323",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "ROSIGLITAZONE",
+          "drugId": "rxcui:84108",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "PPARG"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "type 2 diabetes",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        }
+      ],
+      "stats": {
+        "totalDrugsAnalyzed": 221,
+        "candidatesFound": 10,
+        "avgScore": 45,
+        "analysisTime": "2ms",
+        "minScore": 30,
+        "onlyApproved": false
+      },
+      "summary": {
+        "headline": "10 drug repurposing candidates identified for type 2 diabetes",
+        "summary": "Top candidate: TROGLITAZONE (45% match). 10 FDA-approved drugs found.",
+        "recommendation": "Prioritize TROGLITAZONE for experimental validation. Estimated savings: $1035M - $1535M vs. new drug development.",
+        "commercialValue": "Enterprise feature worth $10K-50K/year. Total potential savings across 10 candidates: $15000M - $25000M."
+      },
+      "enterpriseValue": "$10K-50K/year",
+      "timestamp": "2026-01-15T19:26:17.249Z"
+    },
+    "novelHypotheses": {
+      "hypotheses": [
+        {
+          "type": "drug_repurposing",
+          "statement": "METFORMIN may be repurposed to treat type 2 diabetes",
+          "drug": "METFORMIN",
+          "drugId": "rxcui:6809",
+          "disease": "type 2 diabetes",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets PPARG, TCF7L2 which are implicated in disease",
+          "score": 1,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8999999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8599999999999999,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TCF7L2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.676
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8939999999999999,
+          "scorecard": {
+            "confidence": 0.8999999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8599999999999999,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 21,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 1,
+          "experimentalDesign": {
+            "hypothesis": "METFORMIN may be repurposed to treat type 2 diabetes",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for type 2 diabetes",
+              "2. Treat with METFORMIN across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "90% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "8235cdf5544d2d1f",
+          "shareUrl": "http://localhost:8787/hypothesis/8235cdf5544d2d1f",
+          "reportValidationUrl": "http://localhost:8787/api/validate/8235cdf5544d2d1f"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "TROGLITAZONE may be repurposed to treat type 2 diabetes",
+          "drug": "TROGLITAZONE",
+          "drugId": "rxcui:72610",
+          "disease": "type 2 diabetes",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets PPARG, SLC2A4 which are implicated in disease",
+          "score": 0.94,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8879999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8432,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8872799999999998,
+          "scorecard": {
+            "confidence": 0.8879999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8432,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 16,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 2,
+          "experimentalDesign": {
+            "hypothesis": "TROGLITAZONE may be repurposed to treat type 2 diabetes",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for type 2 diabetes",
+              "2. Treat with TROGLITAZONE across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "c1182c1c9717bfcf",
+          "shareUrl": "http://localhost:8787/hypothesis/c1182c1c9717bfcf",
+          "reportValidationUrl": "http://localhost:8787/api/validate/c1182c1c9717bfcf"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "ESTRADIOL VALERATE may be repurposed to treat type 2 diabetes",
+          "drug": "ESTRADIOL VALERATE",
+          "drugId": "rxcui:24395",
+          "disease": "type 2 diabetes",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets PPARG, SLC2A4 which are implicated in disease",
+          "score": 0.94,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8879999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8432,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8872799999999998,
+          "scorecard": {
+            "confidence": 0.8879999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8432,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 16,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 3,
+          "experimentalDesign": {
+            "hypothesis": "ESTRADIOL VALERATE may be repurposed to treat type 2 diabetes",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for type 2 diabetes",
+              "2. Treat with ESTRADIOL VALERATE across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "1f6a85a27af4f049",
+          "shareUrl": "http://localhost:8787/hypothesis/1f6a85a27af4f049",
+          "reportValidationUrl": "http://localhost:8787/api/validate/1f6a85a27af4f049"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "GLYBURIDE may be repurposed to treat type 2 diabetes",
+          "drug": "GLYBURIDE",
+          "drugId": "rxcui:4815",
+          "disease": "type 2 diabetes",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets PPARG, SLC2A4 which are implicated in disease",
+          "score": 0.94,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8879999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8432,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "SLC2A4",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.251
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8872799999999998,
+          "scorecard": {
+            "confidence": 0.8879999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8432,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 16,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 4,
+          "experimentalDesign": {
+            "hypothesis": "GLYBURIDE may be repurposed to treat type 2 diabetes",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for type 2 diabetes",
+              "2. Treat with GLYBURIDE across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "653f66e750996b30",
+          "shareUrl": "http://localhost:8787/hypothesis/653f66e750996b30",
+          "reportValidationUrl": "http://localhost:8787/api/validate/653f66e750996b30"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "PROPYLPARABEN may be repurposed to treat type 2 diabetes",
+          "drug": "PROPYLPARABEN",
+          "drugId": "rxcui:34706",
+          "disease": "type 2 diabetes",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets PPARG which are implicated in disease",
+          "score": 0.78,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.856,
+          "impact": 0.95,
+          "plausibility": 0.7984000000000001,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            },
+            {
+              "type": "target_overlap",
+              "gene": "PPARG",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.846
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.86936,
+          "scorecard": {
+            "confidence": 0.856,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.7984000000000001,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 12,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 5,
+          "experimentalDesign": {
+            "hypothesis": "PROPYLPARABEN may be repurposed to treat type 2 diabetes",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for type 2 diabetes",
+              "2. Treat with PROPYLPARABEN across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "86% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "15c7057f6b971144",
+          "shareUrl": "http://localhost:8787/hypothesis/15c7057f6b971144",
+          "reportValidationUrl": "http://localhost:8787/api/validate/15c7057f6b971144"
+        }
+      ],
+      "stats": {
+        "candidatesGenerated": 5,
+        "hypothesesReturned": 5,
+        "avgConfidence": 0.884,
+        "avgNovelty": 0.85,
+        "generationTime": "18ms",
+        "graphSize": {
+          "nodes": 267,
+          "edges": 273
+        }
+      },
+      "metadata": {
+        "timestamp": "2026-01-15T19:26:31.195Z",
+        "diseaseContext": "type 2 diabetes",
+        "geneCount": 3,
+        "minConfidence": 0.65,
+        "noveltyThreshold": 0.7
+      },
+      "accuracyStats": {
+        "overallAccuracy": 0,
+        "totalHypotheses": 117,
+        "totalValidations": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "partial": 0,
+        "pending": 0,
+        "accuracyByType": {},
+        "trustScore": 0,
+        "message": "Building trust - Testing predictions in the lab"
+      },
+      "enterpriseValue": "$100K-500K/year",
+      "patentPotential": "HIGH - Novel predictions can be patented",
+      "revolutionaryNote": "These predictions go BEYOND existing literature - they are NEW knowledge generated by AI",
+      "learningNote": "AI improves with every validation. Current accuracy: 0.0% based on 0 validations"
+    },
+    "citations": [
+      {
+        "pmid": "38490340",
+        "citation": "Emantoko Dwi Putra S, Martriano Humardani F, Antonius Y. Epigenetics of Diabetes: A bioinformatic approach.. Clinica chimica acta; international journal of clinical chemistry. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38490340/"
+      },
+      {
+        "pmid": "38322335",
+        "citation": "Le J, Chen Y, Yang W. Metabolic basis of solute carrier transporters in treatment of type 2 diabetes mellitus.. Acta pharmaceutica Sinica. B. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38322335/"
+      },
+      {
+        "pmid": "38272413",
+        "citation": "Yadav R, Patel B. Insights on effects of Wnt pathway modulation on insulin signaling and glucose homeostasis for the treatment of type 2 diabetes mellitus: Wnt activation or Wnt inhibition?. International journal of biological macromolecules. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38272413/"
+      },
+      {
+        "pmid": "39625861",
+        "citation": "Kobaek-Larsen M, Maschek S, Kolstrup SH. Effect of carrot intake on glucose tolerance, microbiota, and gene expression in a type 2 diabetes mouse model.. Clinical and translational science. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39625861/"
+      },
+      {
+        "pmid": "39125399",
+        "citation": "AlAnazi MM, Ventura EF, Lovegrove JA. A Systematic Review of the Gene-Lifestyle Interactions on Metabolic Disease-Related Outcomes in Arab Populations.. Nutrients. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39125399/"
+      },
+      {
+        "pmid": "41474140",
+        "citation": "Yaluri AS, Ürgeová A, Maršálek M. Pharmacogenetics of incretin-based therapies.. Postgraduate medical journal. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41474140/"
+      },
+      {
+        "pmid": "39398333",
+        "citation": "Soares RMV, da Silva MA, Campos JTAM. Familial partial lipodystrophy resulting from loss-of-function PPARγ pathogenic variants: phenotypic, clinical, and genetic features.. Frontiers in endocrinology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39398333/"
+      },
+      {
+        "pmid": "39250818",
+        "citation": "Fu S, Gong X, Liang K. KLF3 impacts insulin sensitivity and glucose uptake in skeletal muscle.. American journal of physiology. Cell physiology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39250818/"
+      },
+      {
+        "pmid": "39640975",
+        "citation": "Zhao J, Zhang Y, Li J. Genetic association of type 2 diabetes and antidiabetic drug target with skin cancer.. Frontiers in medicine. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39640975/"
+      },
+      {
+        "pmid": "39020091",
+        "citation": "Chen W, Zhang T, Zhang H. Causal relationship between type 2 diabetes and glioblastoma: bidirectional Mendelian randomization analysis.. Scientific reports. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39020091/"
+      },
+      {
+        "pmid": "38925318",
+        "citation": "Shi L, Li LJ, Sun XY. Er-Dong-Xiao-Ke decoction regulates lipid metabolism via PPARG-mediated UCP2/AMPK signaling to alleviate diabetic meibomian gland dysfunction.. Journal of ethnopharmacology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38925318/"
+      },
+      {
+        "pmid": "40010634",
+        "citation": "Li C, Cai D, Yuan W. The canonical Wnt/β-catenin signaling pathway upregulates carbonic anhydrase 2 via transcription factor 7-like 2 to promote cardiomyopathy in type 2 diabetic mice.. Life sciences. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40010634/"
+      },
+      {
+        "pmid": "38788910",
+        "citation": "Francisca S, Gloria AF, Marco PB. Metformin exposure during pregnancy and lactation affects offspring's long-term body weight and adipose tissue mass independent of the maternal metabolic state.. Biochimica et biophysica acta. Molecular basis of disease. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38788910/"
+      },
+      {
+        "pmid": "39217825",
+        "citation": "Dutta A, Hossain MA, Somadder PD. Exploring the therapeutic targets of stevioside in management of type 2 diabetes by network pharmacology and in-silico approach.. Diabetes & metabolic syndrome. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39217825/"
+      },
+      {
+        "pmid": "39710002",
+        "citation": "Dou C, Liu D, Kong L. Shared genetic architecture of type 2 diabetes with muscle mass and function and frailty reveals comorbidity etiology and pleiotropic druggable targets.. Metabolism: clinical and experimental. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39710002/"
+      },
+      {
+        "pmid": "39550874",
+        "citation": "Hong Y, Wang D, Lin Y. Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.. Ecotoxicology and environmental safety. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39550874/"
+      },
+      {
+        "pmid": "40116328",
+        "citation": "Zhou X, Yang N, Xu W. Associations of genetic factors with vascular diabetes complications: an umbrella review.. Journal of global health. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40116328/"
+      },
+      {
+        "pmid": "39396421",
+        "citation": "Ranade SD, Alegaon SG, Khatib NA. Reversal of insulin resistance to combat type 2 diabetes mellitus by newer thiazolidinedione's in fructose induced insulin resistant rats.. European journal of medicinal chemistry. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39396421/"
+      },
+      {
+        "pmid": "39600283",
+        "citation": "Javid J, Mir R, Elfaki I. Dysregulated Vitamin D, , , and  Δ32 Gene Variations are Associated with Coronary Artery Disease.. Discovery medicine. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39600283/"
+      },
+      {
+        "pmid": "40320521",
+        "citation": "Atas E, Berchtold K, Schlederer M. The anti-diabetic PPARγ agonist Pioglitazone inhibits cell proliferation and induces metabolic reprogramming in prostate cancer.. Molecular cancer. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40320521/"
+      }
+    ],
+    "citationCounts": {
+      "38272413": 9,
+      "38322335": 14,
+      "38453649": 9,
+      "38490340": 3,
+      "38788910": 2,
+      "38925318": 11,
+      "39020091": 7,
+      "39125399": 2,
+      "39182843": 5,
+      "39217825": 5,
+      "39250818": 4,
+      "39396421": 19,
+      "39398333": 5,
+      "39542250": 0,
+      "39550874": 43,
+      "39600283": 1,
+      "39625861": 1,
+      "39640975": 1,
+      "39710002": 2,
+      "39815992": 5,
+      "40010634": 3,
+      "40116328": 3,
+      "40198135": 4,
+      "40320521": 5,
+      "40658092": 0,
+      "40754711": 0,
+      "40927642": 0,
+      "41153348": 0,
+      "41474140": 0,
+      "41516154": 0
+    },
+    "openAccessMap": {
+      "38322335": "https://doi.org/10.1016/j.apsb.2023.09.004",
+      "39020091": "https://www.nature.com/articles/s41598-024-67341-x.pdf",
+      "39125399": "https://www.mdpi.com/2072-6643/16/15/2519/pdf?version=1722506629",
+      "39182843": "https://doi.org/10.1016/j.molmet.2024.102014",
+      "39217825": "https://doi.org/10.1016/j.dsx.2024.103111",
+      "39398333": "https://doi.org/10.3389/fendo.2024.1394102",
+      "39625861": "https://doi.org/10.1111/cts.70090",
+      "39640975": "https://doi.org/10.3389/fmed.2024.1445853",
+      "40116328": "https://doi.org/10.7189/jogh.15.04081"
+    },
+    "leadingResearchers": [
+      {
+        "name": "Chunyan Hua",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "Yanggang Hong",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Deqi Wang",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Yinfang Lin",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Qianru Yang",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Yi Wang",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Yuanyuan Xie",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Wanyi Shu",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Sheng Gao",
+        "paperCount": 1,
+        "totalCitations": 43,
+        "avgCitations": 43,
+        "topPaper": {
+          "pmid": "39550874",
+          "title": "Environmental triggers and future risk of developing autoimmune diseases: Molecular mechanism and network toxicology analysis of bisphenol A.",
+          "year": "2024",
+          "citationCount": 43
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "B. Kumar",
+        "paperCount": 1,
+        "totalCitations": 19,
+        "avgCitations": 19,
+        "topPaper": {
+          "pmid": "39396421",
+          "title": "Reversal of insulin resistance to combat type 2 diabetes mellitus by newer thiazolidinedione's in fructose induced insulin resistant rats.",
+          "year": "2024",
+          "citationCount": 19
+        },
+        "role": "Senior Researcher"
+      }
+    ],
+    "recommendedPapers": [],
+    "totalPapersUsed": 5,
+    "evidenceSummary": {
+      "totalItems": 17,
+      "papersWithEvidence": 7,
+      "topItems": [
+        {
+          "pmid": "39398333",
+          "label": "91 patients",
+          "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+        },
+        {
+          "pmid": "39640975",
+          "label": "OR=0.886",
+          "context": "be suggestively associated with a reduced risk of melanoma (OR: 0.886, 95% confidence interval (CI): 0.792-0.991, = 0.0347). Add"
+        },
+        {
+          "pmid": "39640975",
+          "label": "OR=0.960",
+          "context": "tably associated with a lower risk of basal cell carcinoma (OR: 0.960, 95% CI: 0.928-0.992, = 0.0147). The study also discovered"
+        },
+        {
+          "pmid": "39640975",
+          "label": "OR=2.004",
+          "context": "turbation equivalent to a 6.75 mmol/mol decrement in HbA1c: OR: 2.004, 95% CI: 1.270-3.161, = 0.0027). However, this finding was"
+        },
+        {
+          "pmid": "39020091",
+          "label": "p=0.019",
+          "context": "nd an increased risk of GBM (OR [95% CI] 1.70 [1.09, 2.65], P = 0.019). Conversely, the reverse association between T2DM and GBM"
+        },
+        {
+          "pmid": "39020091",
+          "label": "p=0.408",
+          "context": "M and GBM was insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test"
+        },
+        {
+          "pmid": "39020091",
+          "label": "p>0.40",
+          "context": "s insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test and funnel"
+        },
+        {
+          "pmid": "39020091",
+          "label": "n=62",
+          "context": "(MR) analysis using data from genome-wide studies on T2DM (N = 62,892) and GBM (N = 218,792) in European populations. The res"
+        },
+        {
+          "pmid": "39020091",
+          "label": "n=218",
+          "context": "data from genome-wide studies on T2DM (N = 62,892) and GBM (N = 218,792) in European populations. The results of the inverse-va"
+        },
+        {
+          "pmid": "39600283",
+          "label": "OR=2.51",
+          "context": "he Δ32 bp (ins/del) mutation was also associated with CAD (OR = 2.51, = 0.006). Additionally, the T allele of the rs12255372 G"
+        },
+        {
+          "pmid": "39600283",
+          "label": "OR=1.89",
+          "context": "s12255372 G > T SNP was linked to an increased risk of CAD (OR = 1.89, = 0.006). The rs1562902 C > T, Δ32 (rs333), and rs1225"
+        },
+        {
+          "pmid": "38453649",
+          "label": "OR=1.35",
+          "context": "1.08, 95% confidence interval (CI): 0.5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47,"
+        },
+        {
+          "pmid": "38453649",
+          "label": "OR=1.4",
+          "context": "5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2."
+        },
+        {
+          "pmid": "38453649",
+          "label": "OR=1.28",
+          "context": "66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2.98, = 0.57, respectively]. Regarding the"
+        },
+        {
+          "pmid": "40754711",
+          "label": "1.3-fold",
+          "context": "46, increased risk of new-onset Type 2 diabetes mellitus by 1.3-fold. Similarly, POU5F1 rs879882 was associated with a higher ri"
+        },
+        {
+          "pmid": "41516154",
+          "label": "n=39",
+          "context": "loped from the Korean Genome and Epidemiology Study (KoGES; n = 39,605), and participants were classified into four genetic ri"
+        },
+        {
+          "pmid": "41516154",
+          "label": "4.5-fold",
+          "context": "levels ( = 0.0025 and = 0.001, respectively), as well as a 4.5-fold increased risk of developing DM compared with other groups."
+        }
+      ]
+    },
+    "evidenceLedger": {
+      "summary": {
+        "totalItems": 17,
+        "papersWithEvidence": 7,
+        "topItems": [
+          {
+            "pmid": "39398333",
+            "label": "91 patients",
+            "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+          },
+          {
+            "pmid": "39640975",
+            "label": "OR=0.886",
+            "context": "be suggestively associated with a reduced risk of melanoma (OR: 0.886, 95% confidence interval (CI): 0.792-0.991, = 0.0347). Add"
+          },
+          {
+            "pmid": "39640975",
+            "label": "OR=0.960",
+            "context": "tably associated with a lower risk of basal cell carcinoma (OR: 0.960, 95% CI: 0.928-0.992, = 0.0147). The study also discovered"
+          },
+          {
+            "pmid": "39640975",
+            "label": "OR=2.004",
+            "context": "turbation equivalent to a 6.75 mmol/mol decrement in HbA1c: OR: 2.004, 95% CI: 1.270-3.161, = 0.0027). However, this finding was"
+          },
+          {
+            "pmid": "39020091",
+            "label": "p=0.019",
+            "context": "nd an increased risk of GBM (OR [95% CI] 1.70 [1.09, 2.65], P = 0.019). Conversely, the reverse association between T2DM and GBM"
+          },
+          {
+            "pmid": "39020091",
+            "label": "p=0.408",
+            "context": "M and GBM was insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test"
+          },
+          {
+            "pmid": "39020091",
+            "label": "p>0.40",
+            "context": "s insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test and funnel"
+          },
+          {
+            "pmid": "39020091",
+            "label": "n=62",
+            "context": "(MR) analysis using data from genome-wide studies on T2DM (N = 62,892) and GBM (N = 218,792) in European populations. The res"
+          },
+          {
+            "pmid": "39020091",
+            "label": "n=218",
+            "context": "data from genome-wide studies on T2DM (N = 62,892) and GBM (N = 218,792) in European populations. The results of the inverse-va"
+          },
+          {
+            "pmid": "39600283",
+            "label": "OR=2.51",
+            "context": "he Δ32 bp (ins/del) mutation was also associated with CAD (OR = 2.51, = 0.006). Additionally, the T allele of the rs12255372 G"
+          },
+          {
+            "pmid": "39600283",
+            "label": "OR=1.89",
+            "context": "s12255372 G > T SNP was linked to an increased risk of CAD (OR = 1.89, = 0.006). The rs1562902 C > T, Δ32 (rs333), and rs1225"
+          },
+          {
+            "pmid": "38453649",
+            "label": "OR=1.35",
+            "context": "1.08, 95% confidence interval (CI): 0.5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47,"
+          },
+          {
+            "pmid": "38453649",
+            "label": "OR=1.4",
+            "context": "5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2."
+          },
+          {
+            "pmid": "38453649",
+            "label": "OR=1.28",
+            "context": "66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2.98, = 0.57, respectively]. Regarding the"
+          },
+          {
+            "pmid": "40754711",
+            "label": "1.3-fold",
+            "context": "46, increased risk of new-onset Type 2 diabetes mellitus by 1.3-fold. Similarly, POU5F1 rs879882 was associated with a higher ri"
+          },
+          {
+            "pmid": "41516154",
+            "label": "n=39",
+            "context": "loped from the Korean Genome and Epidemiology Study (KoGES; n = 39,605), and participants were classified into four genetic ri"
+          },
+          {
+            "pmid": "41516154",
+            "label": "4.5-fold",
+            "context": "levels ( = 0.0025 and = 0.001, respectively), as well as a 4.5-fold increased risk of developing DM compared with other groups."
+          }
+        ]
+      },
+      "papers": [
+        {
+          "pmid": "38490340",
+          "title": "Epigenetics of Diabetes: A bioinformatic approach.",
+          "journal": "Clinica chimica acta; international journal of clinical chemistry",
+          "year": "2024",
+          "citationCount": 3,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.42,
+          "evidenceScoreComponents": {
+            "citations": 0.72,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38272413",
+          "title": "Insights on effects of Wnt pathway modulation on insulin signaling and glucose homeostasis for the treatment of type 2 diabetes mellitus: Wnt activation or Wnt inhibition?",
+          "journal": "International journal of biological macromolecules",
+          "year": "2024",
+          "citationCount": 9,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.3,
+          "evidenceScoreComponents": {
+            "citations": 1.2,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39398333",
+          "title": "Familial partial lipodystrophy resulting from loss-of-function PPARγ pathogenic variants: phenotypic, clinical, and genetic features.",
+          "journal": "Frontiers in endocrinology",
+          "year": "2024",
+          "citationCount": 5,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": 91,
+          "sampleSizeText": "91 patients",
+          "openAccessUrl": "https://doi.org/10.3389/fendo.2024.1394102",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39398333",
+              "label": "91 patients",
+              "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 4.46,
+          "evidenceScoreComponents": {
+            "citations": 0.93,
+            "influential": 0,
+            "sampleSize": 1.47,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39640975",
+          "title": "Genetic association of type 2 diabetes and antidiabetic drug target with skin cancer.",
+          "journal": "Frontiers in medicine",
+          "year": "2024",
+          "citationCount": 1,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "unknown",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://doi.org/10.3389/fmed.2024.1445853",
+          "evidencePolarity": "mixed",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 1
+          },
+          "contradictionTags": [
+            "methodological"
+          ],
+          "contradictionSummary": "Methodological",
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39640975",
+              "label": "OR=0.886",
+              "context": "be suggestively associated with a reduced risk of melanoma (OR: 0.886, 95% confidence interval (CI): 0.792-0.991, = 0.0347). Add"
+            },
+            {
+              "pmid": "39640975",
+              "label": "OR=0.960",
+              "context": "tably associated with a lower risk of basal cell carcinoma (OR: 0.960, 95% CI: 0.928-0.992, = 0.0147). The study also discovered"
+            },
+            {
+              "pmid": "39640975",
+              "label": "OR=2.004",
+              "context": "turbation equivalent to a 6.75 mmol/mol decrement in HbA1c: OR: 2.004, 95% CI: 1.270-3.161, = 0.0027). However, this finding was"
+            }
+          ],
+          "evidenceCount": 3,
+          "evidenceScore": 1.86,
+          "evidenceScoreComponents": {
+            "citations": 0.36,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 1.05,
+            "evidenceSignals": -0.15,
+            "recency": 0.35,
+            "studyType": 0,
+            "studyDesign": 0,
+            "polarity": 0.1,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39020091",
+          "title": "Causal relationship between type 2 diabetes and glioblastoma: bidirectional Mendelian randomization analysis.",
+          "journal": "Scientific reports",
+          "year": "2024",
+          "citationCount": 7,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "unknown",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://www.nature.com/articles/s41598-024-67341-x.pdf",
+          "evidencePolarity": "mixed",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 1
+          },
+          "contradictionTags": [
+            "no_association",
+            "methodological"
+          ],
+          "contradictionSummary": "No association, Methodological",
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39020091",
+              "label": "p=0.019",
+              "context": "nd an increased risk of GBM (OR [95% CI] 1.70 [1.09, 2.65], P = 0.019). Conversely, the reverse association between T2DM and GBM"
+            },
+            {
+              "pmid": "39020091",
+              "label": "p=0.408",
+              "context": "M and GBM was insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test"
+            },
+            {
+              "pmid": "39020091",
+              "label": "p>0.40",
+              "context": "s insignificant (OR [95% CI] 1.00 [0.99, 1.01], P = 0.408) (P > 0.40). Furthermore, the results from Cochran's Q-test and funnel"
+            }
+          ],
+          "evidenceCount": 5,
+          "evidenceScore": 3.28,
+          "evidenceScoreComponents": {
+            "citations": 1.08,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 1.75,
+            "evidenceSignals": -0.15,
+            "recency": 0.35,
+            "studyType": 0,
+            "studyDesign": 0,
+            "polarity": 0.1,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40010634",
+          "title": "The canonical Wnt/β-catenin signaling pathway upregulates carbonic anhydrase 2 via transcription factor 7-like 2 to promote cardiomyopathy in type 2 diabetic mice.",
+          "journal": "Life sciences",
+          "year": "2025",
+          "citationCount": 3,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "preclinical",
+          "studyDesign": "in vivo",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 3,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.37,
+          "evidenceScoreComponents": {
+            "citations": 0.72,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.6,
+            "recency": 0.35,
+            "studyType": 0.45,
+            "studyDesign": 0.25,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39600283",
+          "title": "Dysregulated Vitamin D, , , and  Δ32 Gene Variations are Associated with Coronary Artery Disease.",
+          "journal": "Discovery medicine",
+          "year": "2024",
+          "citationCount": 1,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "case-control",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39600283",
+              "label": "OR=2.51",
+              "context": "he Δ32 bp (ins/del) mutation was also associated with CAD (OR = 2.51, = 0.006). Additionally, the T allele of the rs12255372 G"
+            },
+            {
+              "pmid": "39600283",
+              "label": "OR=1.89",
+              "context": "s12255372 G > T SNP was linked to an increased risk of CAD (OR = 1.89, = 0.006). The rs1562902 C > T, Δ32 (rs333), and rs1225"
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 3.31,
+          "evidenceScoreComponents": {
+            "citations": 0.36,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0.7,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.35,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38453649",
+          "title": "Association between variants in , , and  genes and response to therapy with glucagon-like peptide-1 receptor agonists.",
+          "journal": "Postgraduate medicine",
+          "year": "2024",
+          "citationCount": 9,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "mixed",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 1
+          },
+          "contradictionTags": [
+            "no_association"
+          ],
+          "contradictionSummary": "No association",
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38453649",
+              "label": "OR=1.35",
+              "context": "1.08, 95% confidence interval (CI): 0.5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47,"
+            },
+            {
+              "pmid": "38453649",
+              "label": "OR=1.4",
+              "context": "5, 2.31, = 0.85 and OR: 1.35, 95% CI: 0.66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2."
+            },
+            {
+              "pmid": "38453649",
+              "label": "OR=1.28",
+              "context": "66, 2.76, = 0.42; OR: 1.4, 95% CI: 0.56, 3.47, = 0.47 and OR: 1.28, 95% CI: 0.55, 2.98, = 0.57, respectively]. Regarding the"
+            }
+          ],
+          "evidenceCount": 3,
+          "evidenceScore": 3.5,
+          "evidenceScoreComponents": {
+            "citations": 1.2,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 1.05,
+            "evidenceSignals": -0.15,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0.1,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40754711",
+          "title": "Genetic variants linked to statin-associated Type 2 diabetes mellitus: Findings from the UK Biobank and the All of Us Research Program.",
+          "journal": "British journal of pharmacology",
+          "year": "2025",
+          "citationCount": 0,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "clinical",
+          "studyDesign": "cohort",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "40754711",
+              "label": "1.3-fold",
+              "context": "46, increased risk of new-onset Type 2 diabetes mellitus by 1.3-fold. Similarly, POU5F1 rs879882 was associated with a higher ri"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 2.9,
+          "evidenceScoreComponents": {
+            "citations": 0,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 1,
+            "studyDesign": 0.45,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "41516154",
+          "title": "Real-World Utility of GWAS-Based Diabetes Mellitus Panel Testing.",
+          "journal": "International journal of molecular sciences",
+          "year": "2025",
+          "citationCount": 0,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": 302,
+          "sampleSizeText": "302 individuals",
+          "openAccessUrl": null,
+          "evidencePolarity": "contradict",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 1
+          },
+          "contradictionTags": [
+            "statistical",
+            "population"
+          ],
+          "contradictionSummary": "Non-significant statistics, Population-specific",
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "41516154",
+              "label": "n=39",
+              "context": "loped from the Korean Genome and Epidemiology Study (KoGES; n = 39,605), and participants were classified into four genetic ri"
+            },
+            {
+              "pmid": "41516154",
+              "label": "4.5-fold",
+              "context": "levels ( = 0.0025 and = 0.001, respectively), as well as a 4.5-fold increased risk of developing DM compared with other groups."
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 3.41,
+          "evidenceScoreComponents": {
+            "citations": 0,
+            "influential": 0,
+            "sampleSize": 1.86,
+            "evidenceItems": 0.7,
+            "evidenceSignals": -0.35,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": -0.55,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        }
+      ],
+      "insightLinks": {
+        "pathways": [
+          {
+            "id": "pathway-0",
+            "label": "Transcriptional regulation of white adipocyte differentiation",
+            "citations": [
+              "PMID:39398333",
+              "PMID:38490340"
+            ],
+            "pmids": [
+              "39398333",
+              "38490340"
+            ],
+            "supportingPmids": [
+              "39398333",
+              "38490340"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "91 patients",
+            "quantEvidence": [
+              {
+                "pmid": "39398333",
+                "label": "91 patients",
+                "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+              }
+            ],
+            "trustRationale": "Supported by 2/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46).",
+            "provenance": {
+              "supportingPmids": [
+                "39398333",
+                "38490340"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 2/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46)."
+            }
+          },
+          {
+            "id": "pathway-1",
+            "label": "Wnt signaling pathway",
+            "citations": [
+              "PMID:38272413",
+              "PMID:40010634"
+            ],
+            "pmids": [
+              "38272413",
+              "40010634"
+            ],
+            "supportingPmids": [
+              "40010634"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:40010634 (TIER1, preclinical, score 3.37).",
+            "provenance": {
+              "supportingPmids": [
+                "40010634"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:40010634 (TIER1, preclinical, score 3.37)."
+            }
+          }
+        ],
+        "strategies": [
+          {
+            "id": "strategy-0",
+            "label": "PPARγ agonists for enhancing insulin sensitivity",
+            "citations": [
+              "PMID:39398333",
+              "PMID:38490340"
+            ],
+            "pmids": [
+              "39398333",
+              "38490340"
+            ],
+            "supportingPmids": [
+              "39398333",
+              "38490340"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "91 patients",
+            "quantEvidence": [
+              {
+                "pmid": "39398333",
+                "label": "91 patients",
+                "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+              }
+            ],
+            "trustRationale": "Supported by 2/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46).",
+            "provenance": {
+              "supportingPmids": [
+                "39398333",
+                "38490340"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 2/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46)."
+            }
+          },
+          {
+            "id": "strategy-1",
+            "label": "Wnt pathway modulation",
+            "citations": [
+              "PMID:38272413",
+              "PMID:40010634"
+            ],
+            "pmids": [
+              "38272413",
+              "40010634"
+            ],
+            "supportingPmids": [
+              "40010634"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:40010634 (TIER1, preclinical, score 3.37).",
+            "provenance": {
+              "supportingPmids": [
+                "40010634"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:40010634 (TIER1, preclinical, score 3.37)."
+            }
+          },
+          {
+            "id": "hypothesis-0",
+            "label": "Novel hypothesis: Modulation of Wnt signaling could synergistically enhance the effects of PPARγ agonists in type 2 diabetes treatment.",
+            "citations": [
+              "PMID:38272413"
+            ],
+            "pmids": [
+              "38272413"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [],
+            "trustRationale": "No direct support in 1 cited papers.",
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 1 cited papers."
+            }
+          }
+        ],
+        "topics": [
+          {
+            "id": "topic-0",
+            "label": "Role of genetic factors in type 2 diabetes and associated comorbidities",
+            "citations": [
+              "PMID:39398333",
+              "PMID:39640975"
+            ],
+            "pmids": [
+              "39398333",
+              "39640975"
+            ],
+            "supportingPmids": [
+              "39398333"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [
+              "39640975"
+            ],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantEvidence": [
+              {
+                "pmid": "39398333",
+                "label": "91 patients",
+                "context": "hting the genetic and clinical heterogeneity observed among 91 patients. Most of them were female, and the average age at the onset"
+              },
+              {
+                "pmid": "39640975",
+                "label": "OR=0.886",
+                "context": "be suggestively associated with a reduced risk of melanoma (OR: 0.886, 95% confidence interval (CI): 0.792-0.991, = 0.0347). Add"
+              },
+              {
+                "pmid": "39640975",
+                "label": "OR=0.960",
+                "context": "tably associated with a lower risk of basal cell carcinoma (OR: 0.960, 95% CI: 0.928-0.992, = 0.0147). The study also discovered"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46).",
+            "provenance": {
+              "supportingPmids": [
+                "39398333"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [
+                "39640975"
+              ],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39398333 (TIER3, review, n=91, score 4.46)."
+            }
+          }
+        ]
+      },
+      "hypothesisLinks": [
+        {
+          "id": "8235cdf5544d2d1f",
+          "type": "drug_repurposing",
+          "statement": "METFORMIN may be repurposed to treat type 2 diabetes",
+          "confidence": 0.8999999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.676,
+              "gene": "TCF7L2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.676,
+              "gene": "TCF7L2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "c1182c1c9717bfcf",
+          "type": "drug_repurposing",
+          "statement": "TROGLITAZONE may be repurposed to treat type 2 diabetes",
+          "confidence": 0.8879999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "1f6a85a27af4f049",
+          "type": "drug_repurposing",
+          "statement": "ESTRADIOL VALERATE may be repurposed to treat type 2 diabetes",
+          "confidence": 0.8879999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "653f66e750996b30",
+          "type": "drug_repurposing",
+          "statement": "GLYBURIDE may be repurposed to treat type 2 diabetes",
+          "confidence": 0.8879999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.251,
+              "gene": "SLC2A4"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "15c7057f6b971144",
+          "type": "drug_repurposing",
+          "statement": "PROPYLPARABEN may be repurposed to treat type 2 diabetes",
+          "confidence": 0.856,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.846,
+              "gene": "PPARG"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        }
+      ]
+    },
+    "evidenceScorecard": {
+      "papers": {
+        "support": 18,
+        "contradict": 2,
+        "mixed": 4,
+        "neutral": 6
+      },
+      "insights": {
+        "total": 6,
+        "withSupport": 5,
+        "withContradictions": 0,
+        "withMixed": 1,
+        "withoutCitations": 0
+      },
+      "hypotheses": {
+        "total": 5,
+        "withSupport": 0,
+        "withContradictions": 0,
+        "withMixed": 0
+      },
+      "citationWarnings": 0,
+      "consensus": {
+        "supportWeight": 16.46,
+        "contradictWeight": 3.41,
+        "mixedWeight": 8.64,
+        "totalWeight": 28.51,
+        "consensusRatio": 0.58,
+        "contentionRatio": 0.42,
+        "netConsensus": 0.46,
+        "consensusLabel": "Moderate",
+        "contentionLabel": "High"
+      }
+    },
+    "qualityMetrics": {
+      "score": 68,
+      "groundedRatio": 0.6,
+      "groundedCount": 3,
+      "insightCount": 5,
+      "pathways": 2,
+      "strategies": 2,
+      "topics": 1,
+      "hypotheses": 5,
+      "papersUsed": 5,
+      "evidenceItems": 17,
+      "evidencePapers": 7,
+      "sourcesAvailable": 13,
+      "sourcesTotal": 16
+    },
+    "learningMemory": null,
+    "audience": "clinician",
+    "audienceLabel": "Clinician-focused view",
+    "generatedAtIso": "2026-01-15T19:26:17.249Z",
+    "analysisTime": "52238ms",
+    "dataSource": {
+      "genes": "Ensembl + ClinVar + UniProt + Gene Ontology",
+      "pathways": "Reactome v95 + KEGG",
+      "literature": "PubMed + Semantic Scholar",
+      "interactions": "STRING",
+      "clinical": "Open Targets",
+      "drugs": "DGIdb + PubChem + ChEMBL",
+      "ai": "GPT-4o-mini",
+      "hypothesisEngine": "GaiaLab AI (Graph Neural Networks + Probabilistic Reasoning)"
+    },
+    "dataAvailability": {
+      "literature": {
+        "pubmed": true,
+        "semanticScholar": true
+      },
+      "pathways": {
+        "kegg": true,
+        "reactome": true
+      },
+      "interactions": {
+        "string": true,
+        "biogrid": false
+      },
+      "clinical": {
+        "openTargets": true,
+        "disgenet": false,
+        "gwasCatalog": true
+      },
+      "drugs": {
+        "chembl": true,
+        "drugbank": false,
+        "drugbankFallback": false,
+        "dgidb": true,
+        "pubchem": true
+      }
+    },
+    "databaseStats": {
+      "totalDatabases": 16,
+      "availableDatabases": [
+        "Ensembl",
+        "ClinVar",
+        "UniProt",
+        "Gene Ontology",
+        "Reactome v95",
+        "KEGG",
+        "PubMed",
+        "Semantic Scholar",
+        "STRING",
+        "Open Targets",
+        "DGIdb",
+        "PubChem",
+        "ChEMBL"
+      ],
+      "availableCount": 13,
+      "bioactiveCompounds": "2.4M+",
+      "databases": [
+        "UniProt",
+        "KEGG",
+        "Reactome",
+        "PubMed",
+        "STRING",
+        "Open Targets",
+        "BioGRID",
+        "Gene Ontology",
+        "Ensembl",
+        "GWAS Catalog",
+        "DisGeNET",
+        "ClinVar",
+        "ChEMBL",
+        "PubChem",
+        "DrugBank",
+        "Semantic Scholar"
+      ]
+    },
+    "snapshot": null,
+    "disclaimer": "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",
+    "cacheStats": {
+      "cached": false,
+      "timestamp": 1768505229496,
+      "tier": "fresh",
+      "hitRate": "0.0"
+    }
+  },
+  "modelConfig": {
+    "aiModelUsed": "GPT-4o-mini",
+    "modelTimeoutMs": 90000,
+    "providers": {
+      "openai": true,
+      "deepseek": true,
+      "gemini": false,
+      "anthropic": true
+    },
+    "modelIds": {
+      "openai": "gpt-4o-mini",
+      "deepseek": "deepseek-chat",
+      "gemini": "gemini-2.0-flash-exp",
+      "anthropic": "claude-3-5-sonnet-latest"
+    },
+    "includeDrugs": true
+  },
+  "versions": {
+    "app": "0.1.0",
+    "node": "v22.18.0"
+  },
+  "signature": "f7dc33ca753e"
+}

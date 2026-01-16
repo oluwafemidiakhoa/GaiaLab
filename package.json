@@ -2,12 +2,14 @@
   "name": "gaialab-chatgpt-app",
   "version": "0.1.0",
   "description": "AI-Powered Biological Intelligence Platform - Transform gene lists into publication-quality insights in 60 seconds",
-  "author": "Oluwafemi Idiakhoa",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon --watch src --watch public src/server.js"
+    "dev": "nodemon --watch src --watch public src/server.js",
+    "eval": "node scripts/gaialab-eval.js",
+    "eval:gold": "node scripts/gaialab-eval.js --benchmarks data/benchmarks/gold-standard.json --out data/eval/gold-last-run.json --bypassCache true",
+    "eval:dashboard": "node scripts/gaialab-dashboard.js --in data/eval/last-run.json --out data/eval/dashboard.html"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",

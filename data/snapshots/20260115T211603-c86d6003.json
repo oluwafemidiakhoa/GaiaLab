@@ -1,0 +1,5484 @@
+{
+  "id": "20260115T211603-c86d6003",
+  "createdAt": "2026-01-15T21:16:03.441Z",
+  "query": {
+    "genes": [
+      "BRCA1",
+      "EGFR",
+      "TP53"
+    ],
+    "diseaseContext": "breast cancer",
+    "audience": "researcher",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "Reactome v95",
+      "KEGG"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets"
+    ],
+    "drugs": [
+      "ChEMBL",
+      "PubChem",
+      "DGIdb",
+      "DrugBank"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 20,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 6,
+    "compounds": 725,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "38759648",
+      "39073550",
+      "38900236",
+      "38875362",
+      "39643918",
+      "38588696",
+      "39486153",
+      "38772169",
+      "38566315",
+      "39674130",
+      "39821040",
+      "40690248",
+      "38772416",
+      "38788968",
+      "39023171",
+      "39085861",
+      "38872062",
+      "39848244",
+      "38513188",
+      "39248702",
+      "40614190",
+      "39542653",
+      "38869741",
+      "39531335",
+      "39891928",
+      "39627505",
+      "40247739",
+      "40824544",
+      "40133264",
+      "40017004"
+    ],
+    "pathways": [
+      "R-HSA-5693565",
+      "path:hsa05219",
+      "path:hsa03272",
+      "path:hsa05213",
+      "path:hsa05120",
+      "path:hsa05230",
+      "path:hsa05218",
+      "path:hsa05223",
+      "path:hsa05214",
+      "path:hsa05212",
+      "path:hsa04012",
+      "path:hsa05210",
+      "path:hsa04540",
+      "path:hsa05235",
+      "path:hsa04520",
+      "path:hsa04912",
+      "path:hsa05231",
+      "path:hsa01521",
+      "path:hsa01522",
+      "path:hsa04137"
+    ],
+    "clinical": [
+      "BRCA1:breast cancer",
+      "TP53:Hereditary breast cancer",
+      "BRCA1:Hereditary breast cancer",
+      "EGFR:breast cancer",
+      "TP53:breast cancer",
+      "BRCA1:triple-negative breast cancer"
+    ],
+    "compounds": [
+      "DACOMITINIB ANHYDROUS",
+      "OSIMERTINIB",
+      "GEFITINIB",
+      "ERLOTINIB",
+      "CARBOPLATIN",
+      "PACLITAXEL",
+      "CISPLATIN",
+      "DOXORUBICIN HYDROCHLORIDE",
+      "TALAZOPARIB",
+      "TAMOXIFEN",
+      "DAUNORUBICIN HYDROCHLORIDE",
+      "MITOMYCIN",
+      "MITOXANTRONE",
+      "RESVERATROL",
+      "OLAPARIB",
+      "OXALIPLATIN",
+      "GEMCITABINE",
+      "ERLOTINIB",
+      "SIROLIMUS",
+      "OSIMERTINIB"
+    ]
+  },
+  "analysis": {
+    "diseaseContext": "breast cancer",
+    "genes": [
+      {
+        "symbol": "BRCA1",
+        "name": "RING-type E3 ubiquitin transferase",
+        "function": "Function not well characterized",
+        "importanceScore": 0.8416666666666668,
+        "centrality": 0.8333333333333334,
+        "uniprotId": "A0A2R8Y7V5",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "EGFR",
+        "name": "Receptor protein-tyrosine kinase",
+        "function": "Function not well characterized",
+        "importanceScore": 0.5166666666666666,
+        "centrality": 0.3333333333333333,
+        "uniprotId": "C9JYS6",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "TP53",
+        "name": "Cellular tumor antigen p53",
+        "function": "Multifunctional transcription factor that induces cell cycle arrest, DNA repair or apoptosis upon binding to its target DNA sequence. Acts as a tumor suppressor in many tumor types; induces growth arrest or apoptosis depending on the physiological circumstances and cell type. Negatively regulates...",
+        "importanceScore": 0.95,
+        "centrality": 1,
+        "uniprotId": "S4R334",
+        "tissueExpression": "Expression pattern not well characterized"
+      }
+    ],
+    "pathways": [
+      {
+        "id": "pathway-0",
+        "name": "Central carbon metabolism in cancer",
+        "rationale": "This pathway is critically important in breast cancer as it highlights the metabolic reprogramming that cancer cells undergo to support rapid growth and survival.",
+        "significance": "This pathway is critically important in breast cancer as it highlights the metabolic reprogramming that cancer cells undergo to support rapid growth and survival. Context anchors: dna repair, p53, angiogenesis, ras-mapk",
+        "molecularMechanism": "Cancer cells exhibit a shift towards aerobic glycolysis, known as the Warburg effect, where glucose is converted to lactate even in the presence of oxygen. Key enzymes involved include hexokinase (HK), phosphofructokinase (PFK), and lactate dehydrogenase (LDH). Enhanced activity of c-MYC and HIF-1α promotes this metabolic shift.",
+        "regulation": "Upstream regulators include oncogenes such as MYC and signaling pathways like PI3K/AKT. Downstream effectors include lactate and ATP production, which are crucial for cell proliferation.",
+        "experimentalEvidence": "Evidence from patient cohorts shows that alterations in glycolytic enzymes correlate with tumor aggressiveness. Studies using cell lines demonstrate that inhibition of glycolysis reduces tumor growth.",
+        "quantitativeData": "n=573; n=348",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Debates exist regarding the extent to which the Warburg effect contributes to tumorigenesis versus being a byproduct of rapid proliferation.",
+        "score": 0.7,
+        "pvalue": 0.00016790625,
+        "genesInPathway": [
+          "BRCA1",
+          "EGFR"
+        ],
+        "canonicalTags": [
+          "dna repair"
+        ],
+        "citations": [
+          "PMID:38872062",
+          "PMID:39674130"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [
+          {
+            "pmid": "38872062",
+            "evidence": "n=573",
+            "context": "receiving 1st-line aromatase inhibitor + CDK4/6 inhibitor (n = 573) with ESR1mut had less favorable rwPFS and rwOS versus ESR1"
+          },
+          {
+            "pmid": "38872062",
+            "evidence": "n=348",
+            "context": "fferences were observed for fulvestrant + CDK4/6 inhibitor (n = 348). Our study suggests obtaining TBx for CGP at time of de no"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "pathway-1",
+        "name": "EGFR tyrosine kinase inhibitor resistance",
+        "rationale": "Understanding resistance mechanisms to EGFR inhibitors is crucial for improving therapeutic outcomes in breast cancer patients, particularly those with triple-negative subtypes.",
+        "significance": "Understanding resistance mechanisms to EGFR inhibitors is crucial for improving therapeutic outcomes in breast cancer patients, particularly those with triple-negative subtypes.",
+        "molecularMechanism": "Resistance often arises through secondary mutations in EGFR (e.g., T790M), activation of compensatory pathways such as MET, and downstream alterations in the PI3K/AKT pathway. These changes lead to sustained cell proliferation and survival despite EGFR inhibition.",
+        "regulation": "Upstream, growth factors such as HGF can activate MET, while downstream, AKT and mTOR pathways are often hyperactivated in resistant cells.",
+        "experimentalEvidence": "Studies in cell lines and patient-derived xenografts demonstrate that targeting both EGFR and MET can overcome resistance. Clinical data show that patients with MET amplification have poorer responses to EGFR inhibitors.",
+        "quantitativeData": "Not reported in abstracts",
+        "consensusMetrics": "Strong consensus (18/21 papers, 86% agreement)",
+        "controversies": "Ongoing debates regarding the best combination therapies to counteract resistance mechanisms.",
+        "score": 0.5,
+        "pvalue": 0.0061374011151250005,
+        "genesInPathway": [
+          "TP53"
+        ],
+        "canonicalTags": [
+          "p53",
+          "angiogenesis",
+          "ras-mapk"
+        ],
+        "citations": [
+          "PMID:38788968",
+          "PMID:39023171"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "pathway-2",
+        "name": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+        "rationale": "This pathway is vital for maintaining genomic stability in breast cancer cells, particularly those with BRCA1 mutations, which are common in hereditary breast cancer.",
+        "significance": "This pathway is vital for maintaining genomic stability in breast cancer cells, particularly those with BRCA1 mutations, which are common in hereditary breast cancer.",
+        "molecularMechanism": "ATM phosphorylates key substrates such as H2AX and p53 at Ser15, facilitating the recruitment of DNA repair proteins to sites of double-strand breaks. This phosphorylation is critical for initiating the homologous recombination repair process.",
+        "regulation": "ATM is activated by DNA damage, leading to a cascade of signaling events that promote cell cycle arrest and DNA repair. Downstream effectors include BRCA1 and RAD51, which are essential for homologous recombination.",
+        "experimentalEvidence": "Studies using BRCA1-deficient cell lines show impaired DNA repair and increased sensitivity to DNA-damaging agents. Patient data indicate that mutations in ATM correlate with poor prognosis.",
+        "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Debates exist regarding the role of ATM in non-homologous end joining versus homologous recombination.",
+        "score": 0.7,
+        "pvalue": 0.007182733824,
+        "genesInPathway": [
+          "TP53"
+        ],
+        "canonicalTags": [],
+        "citations": [
+          "PMID:39643918",
+          "PMID:38588696"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      }
+    ],
+    "topics": [
+      {
+        "id": "topic-0",
+        "theme": "Resistance mechanisms in breast cancer therapies",
+        "summary": "Recent literature emphasizes the complexity of resistance mechanisms to targeted therapies in breast cancer, particularly involving EGFR and PI3K/AKT pathways.",
+        "keyFindings": [],
+        "citations": [
+          "PMID:38788968",
+          "PMID:39023171"
+        ],
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      }
+    ],
+    "strategies": [
+      {
+        "id": "strategy-0",
+        "label": "Combination therapy targeting EGFR and PI3K/AKT pathways",
+        "rationale": "Given that EGFR activation leads to downstream activation of the PI3K/AKT pathway, dual inhibition may prevent compensatory survival signaling in resistant breast cancer cells.",
+        "molecularTarget": "EGFR and AKT, aiming to inhibit both upstream signaling and downstream effects on cell survival.",
+        "clinicalEvidence": "Current trials are evaluating dual inhibitors in patients with resistant breast cancer, showing promising early results.",
+        "experimentalSupport": "Studies demonstrate that dual targeting reduces tumor growth more effectively than single-agent therapies in preclinical models.",
+        "limitations": "Challenges include potential toxicity and the need for precise patient stratification to identify those likely to benefit.",
+        "quantitativeData": "Not reported in abstracts",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "EGFR mutation status is a required biomarker; prevalence in breast cancer varies.",
+        "riskLevel": "medium",
+        "citations": [
+          "PMID:38788968",
+          "PMID:39023171"
+        ],
+        "confidence": "low",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "strategy-1",
+        "label": "PARP inhibitors in BRCA1/2 mutated breast cancer",
+        "rationale": "BRCA1/2 mutations impair homologous recombination repair, making tumors reliant on PARP-mediated repair, which can be targeted effectively.",
+        "molecularTarget": "PARP1, to exploit the synthetic lethality in BRCA-deficient tumors.",
+        "clinicalEvidence": "Ongoing clinical trials show significant efficacy of PARP inhibitors in BRCA-mutated breast cancer, with some achieving FDA approval.",
+        "experimentalSupport": "Preclinical studies demonstrate that BRCA1-deficient cell lines are highly sensitive to PARP inhibition.",
+        "limitations": "Resistance can develop through reversion mutations in BRCA1/2, limiting long-term efficacy.",
+        "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+        "trialData": "OlympiAD Phase III (n=302): mPFS 7.0 vs 4.2 months (HR=0.58, p<0.001)",
+        "biomarkerInfo": "Germline BRCA1/2 mutation required; prevalence in breast cancer: 15-20%.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:39643918",
+          "PMID:38588696"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "evidence": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "strategy-2",
+        "label": "Targeting the PI3K/AKT/mTOR pathway",
+        "rationale": "Alterations in the PI3K/AKT pathway are prevalent in hormone receptor-positive breast cancer, contributing to resistance against endocrine therapies.",
+        "molecularTarget": "mTOR, to inhibit the downstream effects of PI3K/AKT signaling in hormone receptor-positive breast cancer.",
+        "clinicalEvidence": "Clinical trials are underway assessing mTOR inhibitors in combination with endocrine therapy, showing improved outcomes.",
+        "experimentalSupport": "Evidence from cell line studies indicates that mTOR inhibition sensitizes resistant cells to endocrine therapy.",
+        "limitations": "Potential for metabolic side effects and the need for careful patient selection.",
+        "quantitativeData": "220 patients",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "PIK3CA mutations are a common biomarker; prevalence in HR-positive breast cancer: 30-40%.",
+        "riskLevel": "medium",
+        "citations": [
+          "PMID:39674130",
+          "PMID:38513188"
+        ],
+        "confidence": "medium",
+        "evidenceSnippets": [
+          {
+            "pmid": "38513188",
+            "evidence": "220 patients",
+            "context": "val (PFS) in patients treated with F versus F + P. Overall, 220 patients were randomly assigned between September 2017 and February"
+          }
+        ],
+        "evidenceStatus": "grounded"
+      },
+      {
+        "id": "hypothesis-0",
+        "label": "Novel hypothesis: The interplay between EGFR and BRCA1/2 pathways may reveal novel therapeutic targets.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:38788968",
+          "PMID:38900236"
+        ],
+        "confidence": "low",
+        "isHypothesis": true
+      }
+    ],
+    "whyItMatters": {
+      "summary": "The interplay between BRCA1, EGFR, and TP53 in breast cancer highlights critical pathways that drive tumorigenesis and therapeutic resistance, making them essential targets for treatment. Context anchors: dna repair. Context anchors: therapy",
+      "impact": "Understanding these pathways can lead to more effective personalized therapies and improved patient outcomes.",
+      "nextSteps": [
+        "Investigate combination therapies targeting both EGFR and PI3K/AKT pathways.",
+        "Explore the role of BRCA1/2 mutations in predicting response to PARP inhibitors."
+      ],
+      "citations": [
+        "PMID:39643918",
+        "PMID:38588696"
+      ],
+      "confidence": "medium"
+    },
+    "mechanisticChains": [
+      {
+        "id": "chain-0",
+        "title": "BRCA1, EGFR → Central carbon metabolism in cancer → breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "BRCA1, EGFR",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Central carbon metabolism in cancer",
+            "description": "Cancer cells exhibit a shift towards aerobic glycolysis, known as the Warburg effect, where glucose is converted to lactate even in the presence of oxygen. Key enzymes involved include hexokinase (HK), phosphofructokinase (PFK), and lactate dehydrogenase (LDH). Enhanced activity of c-MYC and HIF-1α promotes this metabolic shift."
+          },
+          {
+            "type": "disease",
+            "label": "breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:38872062",
+          "PMID:39674130"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "chain-1",
+        "title": "TP53 → EGFR tyrosine kinase inhibitor resistance → breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "TP53",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "EGFR tyrosine kinase inhibitor resistance",
+            "description": "Resistance often arises through secondary mutations in EGFR (e.g., T790M), activation of compensatory pathways such as MET, and downstream alterations in the PI3K/AKT pathway. These changes lead to sustained cell proliferation and survival despite EGFR inhibition."
+          },
+          {
+            "type": "disease",
+            "label": "breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:38788968",
+          "PMID:39023171"
+        ],
+        "confidence": "low"
+      },
+      {
+        "id": "chain-2",
+        "title": "TP53 → Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks → breast cancer",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "TP53",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+            "description": "ATM phosphorylates key substrates such as H2AX and p53 at Ser15, facilitating the recruitment of DNA repair proteins to sites of double-strand breaks. This phosphorylation is critical for initiating the homologous recombination repair process."
+          },
+          {
+            "type": "disease",
+            "label": "breast cancer",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:39643918",
+          "PMID:38588696"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "interactions": {
+      "totalInteractions": 30,
+      "avgConfidence": "0.001",
+      "topInteractors": [
+        {
+          "gene": "TP53",
+          "partner": "EP300",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.964,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "CREBBP",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "BCL2L1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.955,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "MDM2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.964,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.983,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "MDM4",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.7,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.983,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "BCL2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.618,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.9,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "TP53BP2",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "TP53BP1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.982,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "HTT",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.307,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.8,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.979,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "TP53",
+          "partner": "PPP1R13L",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.5,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.783,
+              "sources": 1
+            }
+          ]
+        }
+      ],
+      "networkHubs": [
+        {
+          "gene": "TP53",
+          "centrality": 1
+        },
+        {
+          "gene": "BRCA1",
+          "centrality": 0.8333333333333334
+        },
+        {
+          "gene": "ABRAXAS2",
+          "centrality": 0.3333333333333333
+        },
+        {
+          "gene": "FANCC",
+          "centrality": 0.3333333333333333
+        },
+        {
+          "gene": "EGFR",
+          "centrality": 0.3333333333333333
+        }
+      ],
+      "networkImageUrl": "https://string-db.org/api/image/network?identifiers=BRCA1%0AEGFR%0ATP53&species=9606&required_score=700&network_flavor=confidence&hide_disconnected_nodes=1"
+    },
+    "network3DData": {
+      "nodes": [
+        {
+          "id": "BRCA1",
+          "name": "RING-type E3 ubiquitin transferase",
+          "group": 0,
+          "importance": 0.8416666666666668,
+          "val": 12.5,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.8333333333333334
+        },
+        {
+          "id": "EGFR",
+          "name": "Receptor protein-tyrosine kinase",
+          "group": 0,
+          "importance": 0.5166666666666666,
+          "val": 5,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.3333333333333333
+        },
+        {
+          "id": "TP53",
+          "name": "Cellular tumor antigen p53",
+          "group": 0,
+          "importance": 0.95,
+          "val": 15,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 1
+        },
+        {
+          "id": "EP300",
+          "name": "EP300",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CREBBP",
+          "name": "CREBBP",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BCL2L1",
+          "name": "BCL2L1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MDM2",
+          "name": "MDM2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MDM4",
+          "name": "MDM4",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BCL2",
+          "name": "BCL2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TP53BP2",
+          "name": "TP53BP2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TP53BP1",
+          "name": "TP53BP1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HTT",
+          "name": "HTT",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PPP1R13L",
+          "name": "PPP1R13L",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ABRAXAS1",
+          "name": "ABRAXAS1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BABAM2",
+          "name": "BABAM2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BARD1",
+          "name": "BARD1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "UIMC1",
+          "name": "UIMC1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PALB2",
+          "name": "PALB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BRIP1",
+          "name": "BRIP1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BABAM1",
+          "name": "BABAM1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BRCC3",
+          "name": "BRCC3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RBBP8",
+          "name": "RBBP8",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RAD51",
+          "name": "RAD51",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CBL",
+          "name": "CBL",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TGFA",
+          "name": "TGFA",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EREG",
+          "name": "EREG",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "GRB2",
+          "name": "GRB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HBEGF",
+          "name": "HBEGF",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EPGN",
+          "name": "EPGN",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ERBB3",
+          "name": "ERBB3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ERBB2",
+          "name": "ERBB2",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "EGF",
+          "name": "EGF",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "DCN",
+          "name": "DCN",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        }
+      ],
+      "links": [
+        {
+          "source": "TP53",
+          "target": "EP300",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "CREBBP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "BCL2L1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "MDM2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "MDM4",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "BCL2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "TP53BP2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "TP53BP1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "HTT",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "TP53",
+          "target": "PPP1R13L",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "ABRAXAS1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BABAM2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BARD1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "UIMC1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "PALB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BRIP1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BABAM1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "BRCC3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "RBBP8",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "BRCA1",
+          "target": "RAD51",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "CBL",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "TGFA",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "EREG",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "GRB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "HBEGF",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "EPGN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "ERBB3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "ERBB2",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39248702",
+              "title": "Zongertinib (BI 1810631), an Irreversible HER2 TKI, Spares EGFR Signaling and Improves Therapeutic Response in Preclinical Models and Patients with HER2-Driven Cancers.",
+              "year": 2025,
+              "citationCount": 16,
+              "influentialCitationCount": 1,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "support",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 3.65
+            },
+            {
+              "pmid": "38788968",
+              "title": "EGFR and HER2 hyper-activation mediates resistance to endocrine therapy and CDK4/6 inhibitors in ER+ breast cancer.",
+              "year": 2024,
+              "citationCount": 15,
+              "influentialCitationCount": 0,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 2.74
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 3.2
+        },
+        {
+          "source": "EGFR",
+          "target": "EGF",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "EGFR",
+          "target": "DCN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        }
+      ],
+      "stats": {
+        "totalNodes": 33,
+        "totalLinks": 30,
+        "avgConfidence": "0.00",
+        "hubCount": 3
+      }
+    },
+    "clinical": {
+      "totalAssociations": 6,
+      "avgScore": 0.674,
+      "highConfidence": 2,
+      "topAssociations": [
+        {
+          "gene": "BRCA1",
+          "disease": "breast cancer",
+          "diseaseId": "MONDO_0007254",
+          "score": 0.839,
+          "confidenceLevel": "high",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Genetic Association, genetic_literature",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.998,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.981,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.608,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "TP53",
+          "disease": "Hereditary breast cancer",
+          "diseaseId": "Orphanet_227535",
+          "score": 0.743,
+          "confidenceLevel": "high",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "genetic_literature, Literature, Genetic Association, Somatic Mutation, Animal Model",
+          "evidenceBreakdown": [
+            {
+              "type": "Genetic Association",
+              "score": 0.926,
+              "sources": 1
+            },
+            {
+              "type": "Somatic Mutation",
+              "score": 0.874,
+              "sources": 1
+            },
+            {
+              "type": "Animal Model",
+              "score": 0.764,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.608,
+              "sources": 1
+            },
+            {
+              "type": "Literature",
+              "score": 0.112,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "BRCA1",
+          "disease": "Hereditary breast cancer",
+          "diseaseId": "Orphanet_227535",
+          "score": 0.662,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Genetic Association, Somatic Mutation",
+          "evidenceBreakdown": [
+            {
+              "type": "Genetic Association",
+              "score": 0.946,
+              "sources": 1
+            },
+            {
+              "type": "Somatic Mutation",
+              "score": 0.552,
+              "sources": 1
+            },
+            {
+              "type": "Literature",
+              "score": 0.2,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "EGFR",
+          "disease": "breast cancer",
+          "diseaseId": "MONDO_0007254",
+          "score": 0.659,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Known Drug, Literature, Genetic Association",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.988,
+              "sources": 1
+            },
+            {
+              "type": "Known Drug",
+              "score": 0.92,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.57,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "TP53",
+          "disease": "breast cancer",
+          "diseaseId": "MONDO_0007254",
+          "score": 0.656,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Known Drug, genetic_literature, Literature, Genetic Association, Animal Model",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.995,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.851,
+              "sources": 1
+            },
+            {
+              "type": "Animal Model",
+              "score": 0.764,
+              "sources": 1
+            },
+            {
+              "type": "genetic_literature",
+              "score": 0.76,
+              "sources": 1
+            },
+            {
+              "type": "Known Drug",
+              "score": 0.144,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        },
+        {
+          "gene": "BRCA1",
+          "disease": "triple-negative breast cancer",
+          "diseaseId": "EFO_0005537",
+          "score": 0.483,
+          "confidenceLevel": "medium",
+          "sources": [
+            "Open Targets"
+          ],
+          "validated": false,
+          "evidenceTypes": "Literature, Genetic Association",
+          "evidenceBreakdown": [
+            {
+              "type": "Literature",
+              "score": 0.99,
+              "sources": 1
+            },
+            {
+              "type": "Genetic Association",
+              "score": 0.745,
+              "sources": 1
+            }
+          ],
+          "sourceCount": 1
+        }
+      ],
+      "sharedDiseases": [
+        {
+          "disease": "breast cancer",
+          "diseaseId": "MONDO_0007254",
+          "affectedGenes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "geneCount": 3,
+          "coverage": 1,
+          "avgScore": "0.718",
+          "role": "primary"
+        },
+        {
+          "disease": "Hereditary breast cancer",
+          "diseaseId": "Orphanet_227535",
+          "affectedGenes": [
+            "TP53",
+            "BRCA1"
+          ],
+          "geneCount": 2,
+          "coverage": 0.6666666666666666,
+          "avgScore": "0.703",
+          "role": "primary"
+        }
+      ]
+    },
+    "drugs": {
+      "totalCompounds": 725,
+      "totalApproved": 0,
+      "avgPotency": 7.27,
+      "phaseDistribution": {
+        "approved": 209,
+        "phase3": 0,
+        "phase2": 1,
+        "phase1": 497,
+        "preclinical": 0
+      },
+      "topCompounds": [
+        {
+          "chemblId": "CHEMBL2110732",
+          "name": "DACOMITINIB ANHYDROUS",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "469.95",
+          "activityType": "IC50",
+          "activityValue": "5.8",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "8.24",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 11511120,
+            "molecularWeight": "469.9",
+            "xlogp": 4.4,
+            "inchikey": "LVXJQMNHJWSHET-AATRIKPKSA-N",
+            "iupacName": "(E)-N-[4-(3-chloro-4-fluoroanilino)-7-methoxyquinazolin-6-yl]-4-piperidin-1-ylbut-2-enamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL3353410",
+          "name": "OSIMERTINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "499.62",
+          "activityType": "IC50",
+          "activityValue": "0.009",
+          "activityUnits": "uM",
+          "pChEMBL": "8.05",
+          "potency": "high",
+          "assayDescription": "Inhibition of wild type EGFR in mouse BaF3 cells assessed as cell growth inhibition measured after 72 hrs by CellTiter-Glo assay",
+          "pubmedId": "CHEMBL5329204",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 71496458,
+            "molecularWeight": "499.6",
+            "xlogp": 3.7,
+            "inchikey": "DUYJMQONPNNFPI-UHFFFAOYSA-N",
+            "iupacName": "N-[2-[2-(dimethylamino)ethyl-methylamino]-4-methoxy-5-[[4-(1-methylindol-3-yl)pyrimidin-2-yl]amino]phenyl]prop-2-enamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL939",
+          "name": "GEFITINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "446.91",
+          "activityType": "IC50",
+          "activityValue": "14.4",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "7.84",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 123631,
+            "molecularWeight": "446.9",
+            "xlogp": 4.1,
+            "inchikey": "XGALLCVXEZPNRQ-UHFFFAOYSA-N",
+            "iupacName": "N-(3-chloro-4-fluorophenyl)-7-methoxy-6-(3-morpholin-4-ylpropoxy)quinazolin-4-amine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "chemblId": "CHEMBL553",
+          "name": "ERLOTINIB",
+          "maxPhase": "4.0",
+          "phaseLabel": "Unknown",
+          "molecularWeight": "393.44",
+          "activityType": "IC50",
+          "activityValue": "19.3",
+          "activityUnits": "nmol/L",
+          "pChEMBL": "7.71",
+          "potency": "high",
+          "assayDescription": "Inhibition of EGFR expressed in mouse NIH3T3 cells",
+          "pubmedId": "CHEMBL5661976",
+          "gene": "EGFR",
+          "source": "ChEMBL",
+          "targetId": "CHEMBL3608",
+          "genes": [
+            "EGFR"
+          ],
+          "sources": [
+            "ChEMBL"
+          ],
+          "validated": "single-source",
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 176870,
+            "molecularWeight": "393.4",
+            "xlogp": 3.3,
+            "inchikey": "AAKJLRGGTJKAMG-UHFFFAOYSA-N",
+            "iupacName": "N-(3-ethynylphenyl)-6,7-bis(2-methoxyethoxy)quinazolin-4-amine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "CARBOPLATIN",
+          "chemblId": "rxcui:40048",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 10339178,
+            "molecularWeight": "371.25",
+            "inchikey": "OLESAACUTLOWQZ-UHFFFAOYSA-L",
+            "iupacName": "azane;cyclobutane-1,1-dicarboxylate;platinum(2+)",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "PACLITAXEL",
+          "chemblId": "rxcui:56946",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [
+            12684687
+          ],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 36314,
+            "molecularWeight": "853.9",
+            "xlogp": 2.5,
+            "inchikey": "RCINICONZNJXQF-MZXODVADSA-N",
+            "iupacName": "[(1S,2S,3R,4S,7R,9S,10S,12R,15S)-4,12-diacetyloxy-15-[(2R,3S)-3-benzamido-2-hydroxy-3-phenylpropanoyl]oxy-1,9-dihydroxy-10,14,17,17-tetramethyl-11-oxo-6-oxatetracyclo[11.3.1.03,10.04,7]heptadec-13-en-2-yl] benzoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "CISPLATIN",
+          "chemblId": "rxcui:2555",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 4,
+          "pmids": [
+            16982732
+          ],
+          "genes": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 5460033,
+            "molecularWeight": "300.05",
+            "inchikey": "LXZZYRPGZAFOLE-UHFFFAOYSA-L",
+            "iupacName": "azane;dichloroplatinum",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "DOXORUBICIN HYDROCHLORIDE",
+          "chemblId": "rxcui:142433",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [
+            12698198
+          ],
+          "genes": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 443939,
+            "molecularWeight": "580.0",
+            "inchikey": "MWWSFMDVAYGXBV-RUELKSSGSA-N",
+            "iupacName": "(7S,9S)-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-9-(2-hydroxyacetyl)-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione;hydrochloride",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "TALAZOPARIB",
+          "chemblId": "rxcui:2099704",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 4,
+          "pmids": [],
+          "genes": [
+            "BRCA1",
+            "EGFR"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 135565082,
+            "molecularWeight": "380.4",
+            "xlogp": 2.3,
+            "inchikey": "HWGQMRYQVZSGDQ-HZPDHXFCSA-N",
+            "iupacName": "(11S,12R)-7-fluoro-11-(4-fluorophenyl)-12-(2-methyl-1,2,4-triazol-3-yl)-2,3,10-triazatricyclo[7.3.1.05,13]trideca-1,5(13),6,8-tetraen-4-one",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "TAMOXIFEN",
+          "chemblId": "rxcui:10324",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 2,
+          "pmids": [
+            15750629,
+            11130383,
+            16636335,
+            16331614,
+            15197194
+          ],
+          "genes": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targets": [
+            "BRCA1"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "BRCA1",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": true,
+          "pubchem": {
+            "cid": 2733526,
+            "molecularWeight": "371.5",
+            "xlogp": 7.1,
+            "inchikey": "NKANXQFJJICGDU-QPLCGJKRSA-N",
+            "iupacName": "2-[4-[(Z)-1,2-diphenylbut-1-enyl]phenoxy]-N,N-dimethylethanamine",
+            "source": "PubChem"
+          }
+        }
+      ],
+      "approvedDrugs": [],
+      "multiTargetCompounds": [
+        {
+          "name": "CARBOPLATIN",
+          "chemblId": "rxcui:40048",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "PACLITAXEL",
+          "chemblId": "rxcui:56946",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "CISPLATIN",
+          "chemblId": "rxcui:2555",
+          "targets": [
+            "BRCA1",
+            "EGFR",
+            "TP53"
+          ],
+          "targetCount": 3,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "DOXORUBICIN HYDROCHLORIDE",
+          "chemblId": "rxcui:142433",
+          "targets": [
+            "BRCA1",
+            "TP53"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        },
+        {
+          "name": "TALAZOPARIB",
+          "chemblId": "rxcui:2099704",
+          "targets": [
+            "BRCA1",
+            "EGFR"
+          ],
+          "targetCount": 2,
+          "phase": "FDA Approved",
+          "potency": "Interaction: Unknown",
+          "pChEMBL": null,
+          "role": "pan-inhibitor"
+        }
+      ]
+    },
+    "drugRepurposing": {
+      "candidates": [
+        {
+          "drug": "CARBOPLATIN",
+          "drugId": "rxcui:40048",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "PACLITAXEL",
+          "drugId": "rxcui:56946",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "CISPLATIN",
+          "drugId": "rxcui:2555",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "DOXORUBICIN HYDROCHLORIDE",
+          "drugId": "rxcui:142433",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "TALAZOPARIB",
+          "drugId": "rxcui:2099704",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "TAMOXIFEN",
+          "drugId": "rxcui:10324",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "DAUNORUBICIN HYDROCHLORIDE",
+          "drugId": "rxcui:81992",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MITOMYCIN",
+          "drugId": "rxcui:632",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MITOXANTRONE",
+          "drugId": "rxcui:7005",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "RESVERATROL",
+          "drugId": "rxcui:1000492",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "BRCA1"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "breast cancer",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        }
+      ],
+      "stats": {
+        "totalDrugsAnalyzed": 725,
+        "candidatesFound": 10,
+        "avgScore": 45,
+        "analysisTime": "7ms",
+        "minScore": 30,
+        "onlyApproved": false
+      },
+      "summary": {
+        "headline": "10 drug repurposing candidates identified for breast cancer",
+        "summary": "Top candidate: CARBOPLATIN (45% match). 10 FDA-approved drugs found.",
+        "recommendation": "Prioritize CARBOPLATIN for experimental validation. Estimated savings: $1035M - $1535M vs. new drug development.",
+        "commercialValue": "Enterprise feature worth $10K-50K/year. Total potential savings across 10 candidates: $15000M - $25000M."
+      },
+      "enterpriseValue": "$10K-50K/year",
+      "timestamp": "2026-01-15T21:13:30.706Z"
+    },
+    "novelHypotheses": {
+      "hypotheses": [
+        {
+          "type": "drug_repurposing",
+          "statement": "CARBOPLATIN may be repurposed to treat breast cancer",
+          "drug": "CARBOPLATIN",
+          "drugId": "rxcui:40048",
+          "disease": "breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets BRCA1, EGFR, TP53 which are implicated in disease",
+          "score": 1,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.743
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.743
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8999999999999999,
+          "impact": 0.95,
+          "plausibility": 0.8599999999999999,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.743
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "TP53",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.743
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "BRCA1",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.839
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8939999999999999,
+          "scorecard": {
+            "confidence": 0.8999999999999999,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8599999999999999,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 1,
+          "experimentalDesign": {
+            "hypothesis": "CARBOPLATIN may be repurposed to treat breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for breast cancer",
+              "2. Treat with CARBOPLATIN across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "90% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "74bf2d8c950af514",
+          "shareUrl": "http://localhost:8787/hypothesis/74bf2d8c950af514",
+          "reportValidationUrl": "http://localhost:8787/api/validate/74bf2d8c950af514"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "DACOMITINIB ANHYDROUS may be repurposed to treat breast cancer",
+          "drug": "DACOMITINIB ANHYDROUS",
+          "drugId": "CHEMBL2110732",
+          "disease": "breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets EGFR which are implicated in disease",
+          "score": 0.8,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": "4.0",
+          "approved": false,
+          "confidence": 0.86,
+          "impact": 0.8,
+          "plausibility": 0.804,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8341000000000001,
+          "scorecard": {
+            "confidence": 0.86,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.804,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 9,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 2,
+          "experimentalDesign": {
+            "hypothesis": "DACOMITINIB ANHYDROUS may be repurposed to treat breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for breast cancer",
+              "2. Treat with DACOMITINIB ANHYDROUS across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "86% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "44c64012b2f5cf7f",
+          "shareUrl": "http://localhost:8787/hypothesis/44c64012b2f5cf7f",
+          "reportValidationUrl": "http://localhost:8787/api/validate/44c64012b2f5cf7f"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "OSIMERTINIB may be repurposed to treat breast cancer",
+          "drug": "OSIMERTINIB",
+          "drugId": "CHEMBL3353410",
+          "disease": "breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets EGFR which are implicated in disease",
+          "score": 0.8,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": "4.0",
+          "approved": false,
+          "confidence": 0.86,
+          "impact": 0.8,
+          "plausibility": 0.804,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8341000000000001,
+          "scorecard": {
+            "confidence": 0.86,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.804,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 9,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 3,
+          "experimentalDesign": {
+            "hypothesis": "OSIMERTINIB may be repurposed to treat breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for breast cancer",
+              "2. Treat with OSIMERTINIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "86% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "40b7e731c7708052",
+          "shareUrl": "http://localhost:8787/hypothesis/40b7e731c7708052",
+          "reportValidationUrl": "http://localhost:8787/api/validate/40b7e731c7708052"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "GEFITINIB may be repurposed to treat breast cancer",
+          "drug": "GEFITINIB",
+          "drugId": "CHEMBL939",
+          "disease": "breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets EGFR which are implicated in disease",
+          "score": 0.8,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": "4.0",
+          "approved": false,
+          "confidence": 0.86,
+          "impact": 0.8,
+          "plausibility": 0.804,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8341000000000001,
+          "scorecard": {
+            "confidence": 0.86,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.804,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 9,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 4,
+          "experimentalDesign": {
+            "hypothesis": "GEFITINIB may be repurposed to treat breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for breast cancer",
+              "2. Treat with GEFITINIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "86% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "d90420021767237b",
+          "shareUrl": "http://localhost:8787/hypothesis/d90420021767237b",
+          "reportValidationUrl": "http://localhost:8787/api/validate/d90420021767237b"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "ERLOTINIB may be repurposed to treat breast cancer",
+          "drug": "ERLOTINIB",
+          "drugId": "CHEMBL553",
+          "disease": "breast cancer",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets EGFR which are implicated in disease",
+          "score": 0.8,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": "4.0",
+          "approved": false,
+          "confidence": 0.86,
+          "impact": 0.8,
+          "plausibility": 0.804,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            },
+            {
+              "type": "target_overlap",
+              "gene": "EGFR",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.659
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8341000000000001,
+          "scorecard": {
+            "confidence": 0.86,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.804,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 9,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 5,
+          "experimentalDesign": {
+            "hypothesis": "ERLOTINIB may be repurposed to treat breast cancer",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for breast cancer",
+              "2. Treat with ERLOTINIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "86% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "5d6f865e48542087",
+          "shareUrl": "http://localhost:8787/hypothesis/5d6f865e48542087",
+          "reportValidationUrl": "http://localhost:8787/api/validate/5d6f865e48542087"
+        }
+      ],
+      "stats": {
+        "candidatesGenerated": 5,
+        "hypothesesReturned": 5,
+        "avgConfidence": 0.868,
+        "avgNovelty": 0.85,
+        "generationTime": "83ms",
+        "graphSize": {
+          "nodes": 779,
+          "edges": 810
+        }
+      },
+      "metadata": {
+        "timestamp": "2026-01-15T21:13:41.501Z",
+        "diseaseContext": "breast cancer",
+        "geneCount": 3,
+        "minConfidence": 0.65,
+        "noveltyThreshold": 0.7
+      },
+      "accuracyStats": {
+        "overallAccuracy": 0,
+        "totalHypotheses": 307,
+        "totalValidations": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "partial": 0,
+        "pending": 0,
+        "accuracyByType": {},
+        "trustScore": 0,
+        "message": "Building trust - Testing predictions in the lab"
+      },
+      "enterpriseValue": "$100K-500K/year",
+      "patentPotential": "HIGH - Novel predictions can be patented",
+      "revolutionaryNote": "These predictions go BEYOND existing literature - they are NEW knowledge generated by AI",
+      "learningNote": "AI improves with every validation. Current accuracy: 0.0% based on 0 validations"
+    },
+    "citations": [
+      {
+        "pmid": "38759648",
+        "citation": "Agostinetto E, Curigliano G, Piccart M. Emerging treatments in HER2-positive advanced breast cancer: Keep raising the bar.. Cell reports. Medicine. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38759648/"
+      },
+      {
+        "pmid": "39073550",
+        "citation": "Dhillon S. Ivonescimab: First Approval.. Drugs. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39073550/"
+      },
+      {
+        "pmid": "38900236",
+        "citation": "Ganesan K, Xu C, Wu J. Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.. Science China. Life sciences. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38900236/"
+      },
+      {
+        "pmid": "38875362",
+        "citation": "Pan L, Li J, Xu Q. HER2/PI3K/AKT pathway in HER2-positive breast cancer: A review.. Medicine. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38875362/"
+      },
+      {
+        "pmid": "39643918",
+        "citation": "Panagopoulou M, Panou T, Gkountakos A. BRCA1 & BRCA2 methylation as a prognostic and predictive biomarker in cancer: Implementation in liquid biopsy in the era of precision medicine.. Clinical epigenetics. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39643918/"
+      },
+      {
+        "pmid": "38588696",
+        "citation": "Abraham JE, Pinilla K, Dayimu A. The PARTNER trial of neoadjuvant olaparib with chemotherapy in triple-negative breast cancer.. Nature. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38588696/"
+      },
+      {
+        "pmid": "39486153",
+        "citation": "Fusco N, Viale G. The \"lows\": Update on ER-low and HER2-low breast cancer.. Breast (Edinburgh, Scotland). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39486153/"
+      },
+      {
+        "pmid": "38772169",
+        "citation": "Boscolo Bielo L, Trapani D, Nicolò E. The evolving landscape of metastatic HER2-positive, hormone receptor-positive Breast Cancer.. Cancer treatment reviews. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38772169/"
+      },
+      {
+        "pmid": "38566315",
+        "citation": "Luboff AJ, DeRemer DL. Capivasertib: A Novel AKT Inhibitor Approved for Hormone-Receptor-Positive, HER-2-Negative Metastatic Breast Cancer.. The Annals of pharmacotherapy. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38566315/"
+      },
+      {
+        "pmid": "39674130",
+        "citation": "Fanucci K, Giordano A, Erick T. Practical treatment strategies and novel therapies in the phosphoinositide 3-kinase (PI3K)/protein kinase B (AKT)/mammalian target of rapamycin (mTOR) pathway in hormone receptor-positive/human epidermal growth factor receptor 2 (HER2)-negative (HR+/HER2-) advanced breast cancer.. ESMO open. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39674130/"
+      },
+      {
+        "pmid": "39821040",
+        "citation": "Veeraraghavan J, De Angelis C, Gutierrez C. HER2-Positive Breast Cancer Treatment and Resistance.. Advances in experimental medicine and biology. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39821040/"
+      },
+      {
+        "pmid": "40690248",
+        "citation": "Caruso G, Weroha SJ, Cliby W. Ovarian Cancer: A Review.. JAMA. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40690248/"
+      },
+      {
+        "pmid": "38772416",
+        "citation": "Cheung A, Chenoweth AM, Johansson A. Anti-EGFR Antibody-Drug Conjugate Carrying an Inhibitor Targeting CDK Restricts Triple-Negative Breast Cancer Growth.. Clinical cancer research : an official journal of the American Association for Cancer Research. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38772416/"
+      },
+      {
+        "pmid": "38788968",
+        "citation": "Belli S, Esposito D, Ascione CM. EGFR and HER2 hyper-activation mediates resistance to endocrine therapy and CDK4/6 inhibitors in ER+ breast cancer.. Cancer letters. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38788968/"
+      },
+      {
+        "pmid": "39023171",
+        "citation": "Zhang KM, Zhao DC, Li ZY. Inactivated cGAS-STING Signaling Facilitates Endocrine Resistance by Forming a Positive Feedback Loop with AKT Kinase in ER+HER2- Breast Cancer.. Advanced science (Weinheim, Baden-Wurttemberg, Germany). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39023171/"
+      },
+      {
+        "pmid": "39085861",
+        "citation": "Shi HX, Tao HT, He JJ. Targeting DKK1 enhances the antitumor activity of paclitaxel and alleviates chemotherapy-induced peripheral neuropathy in breast cancer.. Molecular cancer. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39085861/"
+      },
+      {
+        "pmid": "38872062",
+        "citation": "Bhave MA, Quintanilha JCF, Tukachinsky H. Comprehensive genomic profiling of ESR1, PIK3CA, AKT1, and PTEN in HR(+)HER2(-) metastatic breast cancer: prevalence along treatment course and predictive value for endocrine therapy resistance in real-world practice.. Breast cancer research and treatment. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38872062/"
+      },
+      {
+        "pmid": "39848244",
+        "citation": "Zhang H, Yang F, Xu Y. Multimodal integration using a machine learning approach facilitates risk stratification in HR+/HER2- breast cancer.. Cell reports. Medicine. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39848244/"
+      },
+      {
+        "pmid": "38513188",
+        "citation": "Mayer EL, Ren Y, Wagle N. PACE: A Randomized Phase II Study of Fulvestrant, Palbociclib, and Avelumab After Progression on Cyclin-Dependent Kinase 4/6 Inhibitor and Aromatase Inhibitor for Hormone Receptor-Positive/Human Epidermal Growth Factor Receptor-Negative Metastatic Breast Cancer.. Journal of clinical oncology : official journal of the American Society of Clinical Oncology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38513188/"
+      },
+      {
+        "pmid": "39248702",
+        "citation": "Wilding B, Woelflingseder L, Baum A. Zongertinib (BI 1810631), an Irreversible HER2 TKI, Spares EGFR Signaling and Improves Therapeutic Response in Preclinical Models and Patients with HER2-Driven Cancers.. Cancer discovery. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39248702/"
+      }
+    ],
+    "citationCounts": {
+      "38513188": 47,
+      "38566315": 22,
+      "38588696": 27,
+      "38759648": 25,
+      "38772169": 15,
+      "38772416": 16,
+      "38788968": 15,
+      "38869741": 17,
+      "38872062": 24,
+      "38875362": 46,
+      "38900236": 83,
+      "39023171": 20,
+      "39073550": 29,
+      "39085861": 14,
+      "39248702": 16,
+      "39486153": 16,
+      "39531335": 7,
+      "39542653": 4,
+      "39627505": 8,
+      "39643918": 12,
+      "39674130": 11,
+      "39821040": 6,
+      "39848244": 11,
+      "39891928": 10,
+      "40017004": 2,
+      "40133264": 14,
+      "40247739": 4,
+      "40614190": 3,
+      "40690248": 0,
+      "40824544": 1
+    },
+    "openAccessMap": {
+      "38588696": "https://doi.org/10.1038/s41586-024-07384-2",
+      "38759648": "https://www.cell.com/article/S2666379124002672/pdf",
+      "38772416": "https://aacrjournals.org/clincancerres/article-pdf/doi/10.1158/1078-0432.CCR-23-3110/3454004/ccr-23-3110.pdf",
+      "38869741": "https://link.springer.com/content/pdf/10.1007/s12094-024-03541-1.pdf",
+      "38872062": "https://link.springer.com/content/pdf/10.1007/s10549-024-07376-w.pdf",
+      "38875362": "https://doi.org/10.1097/md.0000000000038508",
+      "39023171": "https://doi.org/10.1002/advs.202403592",
+      "39085861": "https://molecular-cancer.biomedcentral.com/counter/pdf/10.1186/s12943-024-02067-y",
+      "39248702": "https://doi.org/10.1158/2159-8290.cd-24-0306",
+      "39891928": "https://www.researchsquare.com/article/rs-3857407/latest.pdf",
+      "40133264": "https://doi.org/10.1038/s41392-025-02181-3"
+    },
+    "leadingResearchers": [
+      {
+        "name": "Jianping Chen",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "Kumar Ganesan",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Cong Xu",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Jianming Wu",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Bing Du",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Qingqing Liu",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Yue Sui",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Cailu Song",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Jinhui Zhang",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Hailin Tang",
+        "paperCount": 1,
+        "totalCitations": 83,
+        "avgCitations": 83,
+        "topPaper": {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "year": "2024",
+          "citationCount": 83
+        },
+        "role": "Active Contributor"
+      }
+    ],
+    "recommendedPapers": [],
+    "totalPapersUsed": 8,
+    "evidenceSummary": {
+      "totalItems": 14,
+      "papersWithEvidence": 9,
+      "topItems": [
+        {
+          "pmid": "38588696",
+          "label": "p=0.753",
+          "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p>0.9",
+          "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p=0.8",
+          "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+        },
+        {
+          "pmid": "38588696",
+          "label": "p<0.001",
+          "context": "ths was 90%, and in those with non-pCR it was 70% (log-rank P < 0.001), and OS was 96% and 83% (log-rank P < 0.001), respectively"
+        },
+        {
+          "pmid": "38588696",
+          "label": "n=559",
+          "context": "ld type. Here we report the results of the trial. Patients (n = 559) were randomized on a 1:1 basis to receive neoadjuvant carb"
+        },
+        {
+          "pmid": "39486153",
+          "label": "OR=2",
+          "context": "er, defined by low HER2 protein expression (IHC score of 1+ or 2+ without HER2 gene amplification), has achieved clinical si"
+        },
+        {
+          "pmid": "40690248",
+          "label": "730 patients",
+          "context": "0 890 US women will be diagnosed with ovarian cancer and 12 730 patients will die of ovarian cancer. Approximately 90% of ovarian ca"
+        },
+        {
+          "pmid": "38872062",
+          "label": "n=573",
+          "context": "receiving 1st-line aromatase inhibitor + CDK4/6 inhibitor (n = 573) with ESR1mut had less favorable rwPFS and rwOS versus ESR1"
+        },
+        {
+          "pmid": "38872062",
+          "label": "n=348",
+          "context": "fferences were observed for fulvestrant + CDK4/6 inhibitor (n = 348). Our study suggests obtaining TBx for CGP at time of de no"
+        },
+        {
+          "pmid": "39848244",
+          "label": "200 patients",
+          "context": "ics cohort comprising 579 HR+/HER2- breast cancer patients (200 patients with complete data across 7 modalities) and develop a machi"
+        },
+        {
+          "pmid": "38513188",
+          "label": "220 patients",
+          "context": "val (PFS) in patients treated with F versus F + P. Overall, 220 patients were randomly assigned between September 2017 and February"
+        },
+        {
+          "pmid": "39531335",
+          "label": "n=351",
+          "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+        },
+        {
+          "pmid": "40247739",
+          "label": "52 samples",
+          "context": "n sequencing (NGS) analyses of BRCA genes were evaluated on 52 samples (prostate biopsies or definitive samples) collected at Grav"
+        },
+        {
+          "pmid": "40133264",
+          "label": "211 patients",
+          "context": "ted therapies. We conducted molecular typing on a cohort of 211 patients with HR/HER2 breast cancer and performed a comprehensive an"
+        }
+      ]
+    },
+    "evidenceLedger": {
+      "summary": {
+        "totalItems": 14,
+        "papersWithEvidence": 9,
+        "topItems": [
+          {
+            "pmid": "38588696",
+            "label": "p=0.753",
+            "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p>0.9",
+            "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p=0.8",
+            "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+          },
+          {
+            "pmid": "38588696",
+            "label": "p<0.001",
+            "context": "ths was 90%, and in those with non-pCR it was 70% (log-rank P < 0.001), and OS was 96% and 83% (log-rank P < 0.001), respectively"
+          },
+          {
+            "pmid": "38588696",
+            "label": "n=559",
+            "context": "ld type. Here we report the results of the trial. Patients (n = 559) were randomized on a 1:1 basis to receive neoadjuvant carb"
+          },
+          {
+            "pmid": "39486153",
+            "label": "OR=2",
+            "context": "er, defined by low HER2 protein expression (IHC score of 1+ or 2+ without HER2 gene amplification), has achieved clinical si"
+          },
+          {
+            "pmid": "40690248",
+            "label": "730 patients",
+            "context": "0 890 US women will be diagnosed with ovarian cancer and 12 730 patients will die of ovarian cancer. Approximately 90% of ovarian ca"
+          },
+          {
+            "pmid": "38872062",
+            "label": "n=573",
+            "context": "receiving 1st-line aromatase inhibitor + CDK4/6 inhibitor (n = 573) with ESR1mut had less favorable rwPFS and rwOS versus ESR1"
+          },
+          {
+            "pmid": "38872062",
+            "label": "n=348",
+            "context": "fferences were observed for fulvestrant + CDK4/6 inhibitor (n = 348). Our study suggests obtaining TBx for CGP at time of de no"
+          },
+          {
+            "pmid": "39848244",
+            "label": "200 patients",
+            "context": "ics cohort comprising 579 HR+/HER2- breast cancer patients (200 patients with complete data across 7 modalities) and develop a machi"
+          },
+          {
+            "pmid": "38513188",
+            "label": "220 patients",
+            "context": "val (PFS) in patients treated with F versus F + P. Overall, 220 patients were randomly assigned between September 2017 and February"
+          },
+          {
+            "pmid": "39531335",
+            "label": "n=351",
+            "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+          },
+          {
+            "pmid": "40247739",
+            "label": "52 samples",
+            "context": "n sequencing (NGS) analyses of BRCA genes were evaluated on 52 samples (prostate biopsies or definitive samples) collected at Grav"
+          },
+          {
+            "pmid": "40133264",
+            "label": "211 patients",
+            "context": "ted therapies. We conducted molecular typing on a cohort of 211 patients with HR/HER2 breast cancer and performed a comprehensive an"
+          }
+        ]
+      },
+      "papers": [
+        {
+          "pmid": "38900236",
+          "title": "Ononin inhibits triple-negative breast cancer lung metastasis by targeting the EGFR-mediated PI3K/Akt/mTOR pathway.",
+          "journal": "Science China. Life sciences",
+          "year": "2024",
+          "citationCount": 83,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 5.29,
+          "evidenceScoreComponents": {
+            "citations": 2.31,
+            "influential": 0.43,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39643918",
+          "title": "BRCA1 & BRCA2 methylation as a prognostic and predictive biomarker in cancer: Implementation in liquid biopsy in the era of precision medicine.",
+          "journal": "Clinical epigenetics",
+          "year": "2024",
+          "citationCount": 12,
+          "influentialCitationCount": 1,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.51,
+          "evidenceScoreComponents": {
+            "citations": 1.34,
+            "influential": 0.27,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38588696",
+          "title": "The PARTNER trial of neoadjuvant olaparib with chemotherapy in triple-negative breast cancer.",
+          "journal": "Nature",
+          "year": "2024",
+          "citationCount": 27,
+          "influentialCitationCount": 1,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "randomized",
+          "sampleSize": 559,
+          "sampleSizeText": "n=559",
+          "openAccessUrl": "https://doi.org/10.1038/s41586-024-07384-2",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": "II",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38588696",
+              "label": "p=0.753",
+              "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+            },
+            {
+              "pmid": "38588696",
+              "label": "p>0.9",
+              "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+            },
+            {
+              "pmid": "38588696",
+              "label": "p=0.8",
+              "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+            }
+          ],
+          "evidenceCount": 5,
+          "evidenceScore": 8.67,
+          "evidenceScoreComponents": {
+            "citations": 1.74,
+            "influential": 0.27,
+            "sampleSize": 2.06,
+            "evidenceItems": 1.75,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.75,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0.35,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39486153",
+          "title": "The \"lows\": Update on ER-low and HER2-low breast cancer.",
+          "journal": "Breast (Edinburgh, Scotland)",
+          "year": "2024",
+          "citationCount": 16,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39486153",
+              "label": "OR=2",
+              "context": "er, defined by low HER2 protein expression (IHC score of 1+ or 2+ without HER2 gene amplification), has achieved clinical si"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 3.73,
+          "evidenceScoreComponents": {
+            "citations": 1.48,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39674130",
+          "title": "Practical treatment strategies and novel therapies in the phosphoinositide 3-kinase (PI3K)/protein kinase B (AKT)/mammalian target of rapamycin (mTOR) pathway in hormone receptor-positive/human epidermal growth factor receptor 2 (HER2)-negative (HR+/HER2-) advanced breast cancer.",
+          "journal": "ESMO open",
+          "year": "2024",
+          "citationCount": 11,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.4,
+          "evidenceScoreComponents": {
+            "citations": 1.3,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40690248",
+          "title": "Ovarian Cancer: A Review.",
+          "journal": "JAMA",
+          "year": "2025",
+          "citationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": 730,
+          "sampleSizeText": "730 patients",
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier2",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "40690248",
+              "label": "730 patients",
+              "context": "0 890 US women will be diagnosed with ovarian cancer and 12 730 patients will die of ovarian cancer. Approximately 90% of ovarian ca"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 4.4,
+          "evidenceScoreComponents": {
+            "citations": 0,
+            "influential": 0,
+            "sampleSize": 2.15,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.35,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38788968",
+          "title": "EGFR and HER2 hyper-activation mediates resistance to endocrine therapy and CDK4/6 inhibitors in ER+ breast cancer.",
+          "journal": "Cancer letters",
+          "year": "2024",
+          "citationCount": 15,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.74,
+          "evidenceScoreComponents": {
+            "citations": 1.44,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39023171",
+          "title": "Inactivated cGAS-STING Signaling Facilitates Endocrine Resistance by Forming a Positive Feedback Loop with AKT Kinase in ER+HER2- Breast Cancer.",
+          "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+          "year": "2024",
+          "citationCount": 20,
+          "influentialCitationCount": 1,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://doi.org/10.1002/advs.202403592",
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 4.41,
+          "evidenceScoreComponents": {
+            "citations": 1.59,
+            "influential": 0.27,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38872062",
+          "title": "Comprehensive genomic profiling of ESR1, PIK3CA, AKT1, and PTEN in HR(+)HER2(-) metastatic breast cancer: prevalence along treatment course and predictive value for endocrine therapy resistance in real-world practice.",
+          "journal": "Breast cancer research and treatment",
+          "year": "2024",
+          "citationCount": 24,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": 348,
+          "sampleSizeText": "n=348",
+          "openAccessUrl": "https://link.springer.com/content/pdf/10.1007/s10549-024-07376-w.pdf",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38872062",
+              "label": "n=573",
+              "context": "receiving 1st-line aromatase inhibitor + CDK4/6 inhibitor (n = 573) with ESR1mut had less favorable rwPFS and rwOS versus ESR1"
+            },
+            {
+              "pmid": "38872062",
+              "label": "n=348",
+              "context": "fferences were observed for fulvestrant + CDK4/6 inhibitor (n = 348). Our study suggests obtaining TBx for CGP at time of de no"
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 6.01,
+          "evidenceScoreComponents": {
+            "citations": 1.68,
+            "influential": 0.43,
+            "sampleSize": 1.91,
+            "evidenceItems": 0.7,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39848244",
+          "title": "Multimodal integration using a machine learning approach facilitates risk stratification in HR+/HER2- breast cancer.",
+          "journal": "Cell reports. Medicine",
+          "year": "2025",
+          "citationCount": 11,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "cohort",
+          "sampleSize": 200,
+          "sampleSizeText": "200 patients",
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39848244",
+              "label": "200 patients",
+              "context": "ics cohort comprising 579 HR+/HER2- breast cancer patients (200 patients with complete data across 7 modalities) and develop a machi"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 5.57,
+          "evidenceScoreComponents": {
+            "citations": 1.3,
+            "influential": 0,
+            "sampleSize": 1.73,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.45,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38513188",
+          "title": "PACE: A Randomized Phase II Study of Fulvestrant, Palbociclib, and Avelumab After Progression on Cyclin-Dependent Kinase 4/6 Inhibitor and Aromatase Inhibitor for Hormone Receptor-Positive/Human Epidermal Growth Factor Receptor-Negative Metastatic Breast Cancer.",
+          "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+          "year": "2024",
+          "citationCount": 47,
+          "influentialCitationCount": 4,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "randomized",
+          "sampleSize": 220,
+          "sampleSizeText": "220 patients",
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": "II",
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38513188",
+              "label": "220 patients",
+              "context": "val (PFS) in patients treated with F versus F + P. Overall, 220 patients were randomly assigned between September 2017 and February"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 7.15,
+          "evidenceScoreComponents": {
+            "citations": 2.02,
+            "influential": 0.63,
+            "sampleSize": 1.76,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.75,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0.35,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39531335",
+          "title": "MAP3K1 mutations confer tumor immune heterogeneity in hormone receptor-positive HER2-negative breast cancer.",
+          "journal": "The Journal of clinical investigation",
+          "year": "2024",
+          "citationCount": 7,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "cohort",
+          "sampleSize": 351,
+          "sampleSizeText": "n=351",
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 2,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39531335",
+              "label": "n=351",
+              "context": "of a large cohort of patients with HR+/HER2- breast cancer (n = 351) and revealed that HR+/HER2- breast cancer possessed a high"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 5.89,
+          "evidenceScoreComponents": {
+            "citations": 1.08,
+            "influential": 0,
+            "sampleSize": 1.91,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0.4,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.45,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40247739",
+          "title": "BRCA mutations and prostate cancer: should urologist improve daily clinical practice?",
+          "journal": "Archivio italiano di urologia, andrologia : organo ufficiale [di] Societa italiana di ecografia urologica e nefrologica",
+          "year": "2025",
+          "citationCount": 4,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": 52,
+          "sampleSizeText": "52 samples",
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "40247739",
+              "label": "52 samples",
+              "context": "n sequencing (NGS) analyses of BRCA genes were evaluated on 52 samples (prostate biopsies or definitive samples) collected at Grav"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 3.78,
+          "evidenceScoreComponents": {
+            "citations": 0.84,
+            "influential": 0,
+            "sampleSize": 1.29,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "40133264",
+          "title": "Molecular classification of hormone receptor-positive /HER2-positive breast cancer reveals potential neoadjuvant therapeutic strategies.",
+          "journal": "Signal transduction and targeted therapy",
+          "year": "2025",
+          "citationCount": 14,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "cohort",
+          "sampleSize": 211,
+          "sampleSizeText": "211 patients",
+          "openAccessUrl": "https://doi.org/10.1038/s41392-025-02181-3",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "40133264",
+              "label": "211 patients",
+              "context": "ted therapies. We conducted molecular typing on a cohort of 211 patients with HR/HER2 breast cancer and performed a comprehensive an"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 5.26,
+          "evidenceScoreComponents": {
+            "citations": 1.41,
+            "influential": 0,
+            "sampleSize": 1.74,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.45,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        }
+      ],
+      "insightLinks": {
+        "pathways": [
+          {
+            "id": "pathway-0",
+            "label": "Central carbon metabolism in cancer",
+            "citations": [
+              "PMID:38872062",
+              "PMID:39674130"
+            ],
+            "pmids": [
+              "38872062",
+              "39674130"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "n=573; n=348",
+            "quantEvidence": [
+              {
+                "pmid": "38872062",
+                "label": "n=573",
+                "context": "receiving 1st-line aromatase inhibitor + CDK4/6 inhibitor (n = 573) with ESR1mut had less favorable rwPFS and rwOS versus ESR1"
+              },
+              {
+                "pmid": "38872062",
+                "label": "n=348",
+                "context": "fferences were observed for fulvestrant + CDK4/6 inhibitor (n = 348). Our study suggests obtaining TBx for CGP at time of de no"
+              }
+            ],
+            "trustRationale": "No direct support in 2 cited papers.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            },
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 2 cited papers.",
+              "evidenceBadge": {
+                "label": "Evidence sparse",
+                "level": "sparse",
+                "score": 0,
+                "supportCount": 0,
+                "contradictCount": 0,
+                "detail": "No supporting papers linked"
+              }
+            }
+          },
+          {
+            "id": "pathway-1",
+            "label": "EGFR tyrosine kinase inhibitor resistance",
+            "citations": [
+              "PMID:38788968",
+              "PMID:39023171"
+            ],
+            "pmids": [
+              "38788968",
+              "39023171"
+            ],
+            "supportingPmids": [
+              "39023171"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.73,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39023171"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.73,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "pathway-2",
+            "label": "Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks",
+            "citations": [
+              "PMID:39643918",
+              "PMID:38588696"
+            ],
+            "pmids": [
+              "39643918",
+              "38588696"
+            ],
+            "supportingPmids": [
+              "39643918"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+            "quantEvidence": [
+              {
+                "pmid": "38588696",
+                "label": "p=0.753",
+                "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p>0.9",
+                "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p=0.8",
+                "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39643918 (TIER3, review, score 3.51).",
+            "evidenceBadge": {
+              "label": "Preliminary evidence",
+              "level": "preliminary",
+              "score": 0.52,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39643918"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39643918 (TIER3, review, score 3.51).",
+              "evidenceBadge": {
+                "label": "Preliminary evidence",
+                "level": "preliminary",
+                "score": 0.52,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+              }
+            }
+          }
+        ],
+        "strategies": [
+          {
+            "id": "strategy-0",
+            "label": "Combination therapy targeting EGFR and PI3K/AKT pathways",
+            "citations": [
+              "PMID:38788968",
+              "PMID:39023171"
+            ],
+            "pmids": [
+              "38788968",
+              "39023171"
+            ],
+            "supportingPmids": [
+              "39023171"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.73,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39023171"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.73,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "strategy-1",
+            "label": "PARP inhibitors in BRCA1/2 mutated breast cancer",
+            "citations": [
+              "PMID:39643918",
+              "PMID:38588696"
+            ],
+            "pmids": [
+              "39643918",
+              "38588696"
+            ],
+            "supportingPmids": [
+              "39643918"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]",
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "p=0.753; p>0.9; p=0.8; p<0.001",
+            "quantEvidence": [
+              {
+                "pmid": "38588696",
+                "label": "p=0.753",
+                "context": "of patients in the research arm and 52% in the control arm (P = 0.753). Estimated EFS at 36 months in the research and control ar"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p>0.9",
+                "context": "in the research and control arms was 80% and 79% (log-rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), re"
+              },
+              {
+                "pmid": "38588696",
+                "label": "p=0.8",
+                "context": "rank P > 0.9), respectively; OS was 90% and 87.2% (log-rank P = 0.8), respectively. In patients with pCR, estimated EFS at 36 m"
+              }
+            ],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39643918 (TIER3, review, score 3.51).",
+            "evidenceBadge": {
+              "label": "Preliminary evidence",
+              "level": "preliminary",
+              "score": 0.52,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39643918"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39643918 (TIER3, review, score 3.51).",
+              "evidenceBadge": {
+                "label": "Preliminary evidence",
+                "level": "preliminary",
+                "score": 0.52,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER3 • Preclinical/unknown"
+              }
+            }
+          },
+          {
+            "id": "strategy-2",
+            "label": "Targeting the PI3K/AKT/mTOR pathway",
+            "citations": [
+              "PMID:39674130",
+              "PMID:38513188"
+            ],
+            "pmids": [
+              "39674130",
+              "38513188"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [
+              "[object Object]"
+            ],
+            "evidenceStatus": "grounded",
+            "quantitativeData": "220 patients",
+            "quantEvidence": [
+              {
+                "pmid": "38513188",
+                "label": "220 patients",
+                "context": "val (PFS) in patients treated with F versus F + P. Overall, 220 patients were randomly assigned between September 2017 and February"
+              }
+            ],
+            "trustRationale": "No direct support in 2 cited papers.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            },
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 2 cited papers.",
+              "evidenceBadge": {
+                "label": "Evidence sparse",
+                "level": "sparse",
+                "score": 0,
+                "supportCount": 0,
+                "contradictCount": 0,
+                "detail": "No supporting papers linked"
+              }
+            }
+          },
+          {
+            "id": "hypothesis-0",
+            "label": "Novel hypothesis: The interplay between EGFR and BRCA1/2 pathways may reveal novel therapeutic targets.",
+            "citations": [
+              "PMID:38788968",
+              "PMID:38900236"
+            ],
+            "pmids": [
+              "38788968",
+              "38900236"
+            ],
+            "supportingPmids": [
+              "38900236"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:38900236 (TIER1, mixed, score 5.29).",
+            "evidenceBadge": {
+              "label": "High confidence",
+              "level": "high",
+              "score": 0.77,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "38900236"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:38900236 (TIER1, mixed, score 5.29).",
+              "evidenceBadge": {
+                "label": "High confidence",
+                "level": "high",
+                "score": 0.77,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          }
+        ],
+        "topics": [
+          {
+            "id": "topic-0",
+            "label": "Resistance mechanisms in breast cancer therapies",
+            "citations": [
+              "PMID:38788968",
+              "PMID:39023171"
+            ],
+            "pmids": [
+              "38788968",
+              "39023171"
+            ],
+            "supportingPmids": [
+              "39023171"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+            "evidenceBadge": {
+              "label": "Moderate confidence",
+              "level": "moderate",
+              "score": 0.73,
+              "supportCount": 1,
+              "contradictCount": 0,
+              "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+            },
+            "provenance": {
+              "supportingPmids": [
+                "39023171"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39023171 (TIER1, mixed, score 4.41).",
+              "evidenceBadge": {
+                "label": "Moderate confidence",
+                "level": "moderate",
+                "score": 0.73,
+                "supportCount": 1,
+                "contradictCount": 0,
+                "detail": "Support 1 • Contradict 0 • Top journal TIER1 • Preclinical/unknown"
+              }
+            }
+          }
+        ]
+      },
+      "hypothesisLinks": [
+        {
+          "id": "74bf2d8c950af514",
+          "type": "drug_repurposing",
+          "statement": "CARBOPLATIN may be repurposed to treat breast cancer",
+          "confidence": 0.8999999999999999,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.839,
+              "gene": "BRCA1"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.743,
+              "gene": "TP53"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.839,
+              "gene": "BRCA1"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        },
+        {
+          "id": "44c64012b2f5cf7f",
+          "type": "drug_repurposing",
+          "statement": "DACOMITINIB ANHYDROUS may be repurposed to treat breast cancer",
+          "confidence": 0.86,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        },
+        {
+          "id": "40b7e731c7708052",
+          "type": "drug_repurposing",
+          "statement": "OSIMERTINIB may be repurposed to treat breast cancer",
+          "confidence": 0.86,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        },
+        {
+          "id": "d90420021767237b",
+          "type": "drug_repurposing",
+          "statement": "GEFITINIB may be repurposed to treat breast cancer",
+          "confidence": 0.86,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        },
+        {
+          "id": "5d6f865e48542087",
+          "type": "drug_repurposing",
+          "statement": "ERLOTINIB may be repurposed to treat breast cancer",
+          "confidence": 0.86,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.659,
+              "gene": "EGFR"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "evidenceBadge": {
+            "label": "Evidence sparse",
+            "level": "sparse",
+            "score": 0,
+            "supportCount": 0,
+            "contradictCount": 0,
+            "detail": "No supporting papers linked"
+          },
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim.",
+            "evidenceBadge": {
+              "label": "Evidence sparse",
+              "level": "sparse",
+              "score": 0,
+              "supportCount": 0,
+              "contradictCount": 0,
+              "detail": "No supporting papers linked"
+            }
+          }
+        }
+      ]
+    },
+    "evidenceScorecard": {
+      "papers": {
+        "support": 11,
+        "contradict": 0,
+        "mixed": 0,
+        "neutral": 19
+      },
+      "insights": {
+        "total": 8,
+        "withSupport": 6,
+        "withContradictions": 0,
+        "withMixed": 0,
+        "withoutCitations": 0
+      },
+      "hypotheses": {
+        "total": 5,
+        "withSupport": 0,
+        "withContradictions": 0,
+        "withMixed": 0
+      },
+      "citationWarnings": 0,
+      "consensus": {
+        "supportWeight": 27.23,
+        "contradictWeight": 0,
+        "mixedWeight": 0,
+        "totalWeight": 27.23,
+        "consensusRatio": 1,
+        "contentionRatio": 0,
+        "netConsensus": 1,
+        "consensusLabel": "Strong",
+        "contentionLabel": "Low"
+      }
+    },
+    "qualityMetrics": {
+      "score": 84,
+      "groundedRatio": 0.57,
+      "groundedCount": 4,
+      "insightCount": 7,
+      "pathways": 3,
+      "strategies": 3,
+      "topics": 1,
+      "hypotheses": 5,
+      "papersUsed": 8,
+      "evidenceItems": 14,
+      "evidencePapers": 9,
+      "sourcesAvailable": 14,
+      "sourcesTotal": 16
+    },
+    "learningMemory": {
+      "source": "knowledge-graph-cache",
+      "pathways": [
+        {
+          "pathway": "undefined",
+          "geneOverlap": [
+            "TP53",
+            "BRCA1",
+            "EGFR"
+          ],
+          "confidence": "cached"
+        }
+      ],
+      "message": "Instant results from previous analyses! (No API calls needed)"
+    },
+    "audience": "researcher",
+    "audienceLabel": "Researcher-focused view",
+    "generatedAtIso": "2026-01-15T21:13:30.706Z",
+    "analysisTime": "152715ms",
+    "modelConfig": {
+      "aiModelUsed": "GPT-4o-mini",
+      "modelTimeoutMs": 90000,
+      "providers": {
+        "openai": true,
+        "deepseek": true,
+        "gemini": false,
+        "anthropic": true
+      },
+      "modelIds": {
+        "openai": "gpt-4o-mini",
+        "deepseek": "deepseek-chat",
+        "gemini": "gemini-2.0-flash-exp",
+        "anthropic": "claude-3-5-sonnet-latest"
+      },
+      "includeDrugs": true
+    },
+    "dataSource": {
+      "genes": "Ensembl + ClinVar + UniProt + Gene Ontology",
+      "pathways": "Reactome v95 + KEGG",
+      "literature": "PubMed + Semantic Scholar",
+      "interactions": "STRING",
+      "clinical": "Open Targets",
+      "drugs": "ChEMBL + PubChem + DGIdb + DrugBank",
+      "ai": "GPT-4o-mini",
+      "hypothesisEngine": "GaiaLab AI (Graph Neural Networks + Probabilistic Reasoning)"
+    },
+    "dataAvailability": {
+      "literature": {
+        "pubmed": true,
+        "semanticScholar": true
+      },
+      "pathways": {
+        "kegg": true,
+        "reactome": true
+      },
+      "interactions": {
+        "string": true,
+        "biogrid": false
+      },
+      "clinical": {
+        "openTargets": true,
+        "disgenet": false,
+        "gwasCatalog": true
+      },
+      "drugs": {
+        "chembl": true,
+        "drugbank": false,
+        "drugbankFallback": true,
+        "dgidb": true,
+        "pubchem": true
+      }
+    },
+    "databaseStats": {
+      "totalDatabases": 16,
+      "availableDatabases": [
+        "Ensembl",
+        "ClinVar",
+        "UniProt",
+        "Gene Ontology",
+        "Reactome v95",
+        "KEGG",
+        "PubMed",
+        "Semantic Scholar",
+        "STRING",
+        "Open Targets",
+        "ChEMBL",
+        "PubChem",
+        "DGIdb",
+        "DrugBank"
+      ],
+      "availableCount": 14,
+      "bioactiveCompounds": "2.4M+",
+      "databases": [
+        "UniProt",
+        "KEGG",
+        "Reactome",
+        "PubMed",
+        "STRING",
+        "Open Targets",
+        "BioGRID",
+        "Gene Ontology",
+        "Ensembl",
+        "GWAS Catalog",
+        "DisGeNET",
+        "ClinVar",
+        "ChEMBL",
+        "PubChem",
+        "DrugBank",
+        "Semantic Scholar"
+      ]
+    },
+    "snapshot": null,
+    "disclaimer": "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",
+    "cacheStats": {
+      "cached": false,
+      "timestamp": 1768511763440,
+      "tier": "fresh",
+      "hitRate": 0
+    }
+  },
+  "modelConfig": {
+    "aiModelUsed": "GPT-4o-mini",
+    "modelTimeoutMs": 90000,
+    "providers": {
+      "openai": true,
+      "deepseek": true,
+      "gemini": false,
+      "anthropic": true
+    },
+    "modelIds": {
+      "openai": "gpt-4o-mini",
+      "deepseek": "deepseek-chat",
+      "gemini": "gemini-2.0-flash-exp",
+      "anthropic": "claude-3-5-sonnet-latest"
+    },
+    "includeDrugs": true
+  },
+  "versions": {
+    "app": "0.1.0",
+    "node": "v22.18.0"
+  },
+  "signature": "20eb98bdebdc"
+}

@@ -1,4 +1,5 @@
 import { keggClient } from '../integrations/kegg-client.js';
+import { reactomeClient } from '../integrations/reactome-client.js';
 import * as stats from 'simple-statistics';
 
 /**
@@ -8,8 +9,29 @@ import * as stats from 'simple-statistics';
 export class PathwayAggregator {
   constructor() {
     this.kegg = keggClient;
+    this.reactome = reactomeClient;
     // Approximate human genome: 20,000 protein-coding genes
     this.totalGenesInGenome = 20000;
+    this.canonicalTagRules = [
+      { tag: 'dna repair', patterns: [/dna repair/i, /base excision/i, /nucleotide excision/i, /homologous recombination/i, /double[- ]strand/i, /non[- ]homologous/i, /mismatch repair/i, /fanconi/i] },
+      { tag: 'cell cycle', patterns: [/cell cycle/i, /mitotic/i, /checkpoint/i, /cyclin/i, /\bcdk\b/i] },
+      { tag: 'p53', patterns: [/p53/i] },
+      { tag: 'apoptosis', patterns: [/apoptosis/i, /programmed cell death/i] },
+      { tag: 'immune', patterns: [/immune/i, /t[- ]cell/i, /b[- ]cell/i, /interferon/i, /cytokine/i, /antigen/i, /innate/i, /adaptive/i] },
+      { tag: 'inflammation', patterns: [/inflamm/i, /nf[- ]?kappa/i, /\btnf\b/i, /interleukin/i, /\bil-?\d+/i, /chemokine/i] },
+      { tag: 'metabolic', patterns: [/metabol/i, /glycolysis/i, /gluconeogenesis/i, /glucose/i, /lipid/i, /fatty acid/i, /beta-oxidation/i, /tca/i, /krebs/i, /citric acid/i, /insulin/i, /oxidative phosphorylation/i] },
+      { tag: 'mitochondrial', patterns: [/mitochond/i, /oxidative phosphorylation/i, /electron transport/i, /respiratory chain/i] },
+      { tag: 'autophagy', patterns: [/autophagy/i, /lysosom/i, /mitophagy/i] },
+      { tag: 'synaptic', patterns: [/synapse/i, /synaptic/i, /neurotrans/i] },
+      { tag: 'amyloid', patterns: [/amyloid/i, /secretase/i, /\bapp\b/i] },
+      { tag: 'tau', patterns: [/\btau\b/i, /microtubule/i] },
+      { tag: 'synuclein', patterns: [/synuclein/i] },
+      { tag: 'epigenetic', patterns: [/epigenetic/i, /methylation/i, /chromatin/i, /histone/i, /acetylation/i] },
+      { tag: 'angiogenesis', patterns: [/angiogenesis/i, /\bvegf\b/i] },
+      { tag: 'growth factor', patterns: [/\begfr\b/i, /\bpdgf\b/i, /\bfgf\b/i, /\btgf\b/i, /\berbb\b/i] },
+      { tag: 'pi3k-akt', patterns: [/pi3k/i, /\bakt\b/i, /\bmtor\b/i] },
+      { tag: 'ras-mapk', patterns: [/\bras\b/i, /\bmapk\b/i, /\berk\b/i, /\bmek\b/i] }
+    ];
   }
 
   /**
@@ -23,11 +45,16 @@ export class PathwayAggregator {
     }
 
     try {
-      // Get pathways from KEGG
-      const keggPathways = await this.kegg.getEnrichedPathways(geneList);
+      // Get pathways from KEGG + Reactome in parallel
+      const [keggPathways, reactomePathways] = await Promise.all([
+        this.kegg.getEnrichedPathways(geneList),
+        this.fetchReactomePathways(geneList)
+      ]);
+
+      const combinedPathways = this.mergePathways(keggPathways, reactomePathways);
 
       // Calculate statistical enrichment
-      const enrichedPathways = this.calculateEnrichment(geneList, keggPathways);
+      const enrichedPathways = this.calculateEnrichment(geneList, combinedPathways);
 
       // Sort by p-value (most significant first)
       enrichedPathways.sort((a, b) => a.pvalue - b.pvalue);
@@ -49,8 +76,8 @@ export class PathwayAggregator {
     const inputGeneCount = inputGenes.length;
 
     return pathways.map(pathway => {
-      const pathwayGeneCount = pathway.geneCount || 100; // Default if unknown
-      const overlap = pathway.inputGeneCount || 1;
+      const pathwayGeneCount = pathway.totalPathwayGenes || pathway.geneCount || 100; // Default if unknown
+      const overlap = pathway.inputGeneCount || pathway.inputGenes?.length || 1;
 
       // Hypergeometric test parameters:
       // - Total genes in genome: ~20,000
@@ -76,6 +103,7 @@ export class PathwayAggregator {
         id: pathway.id,
         name: pathway.name,
         category: pathway.category || 'Unknown',
+        canonicalTags: this.deriveCanonicalTags(pathway),
         pvalue,
         foldEnrichment,
         enrichmentScore,
@@ -83,10 +111,83 @@ export class PathwayAggregator {
         geneCount: overlap,
         totalPathwayGenes: pathwayGeneCount,
         description: pathway.description || '',
-        source: 'KEGG',
+        source: pathway.source || 'KEGG',
         significance: pvalue < 0.05 ? 'significant' : 'not significant'
       };
     });
+  }
+
+  deriveCanonicalTags(pathway) {
+    const text = `${pathway?.name || ''} ${pathway?.description || ''} ${pathway?.category || ''}`.toLowerCase();
+    const tags = new Set();
+
+    this.canonicalTagRules.forEach(rule => {
+      if (rule.patterns.some(pattern => pattern.test(text))) {
+        tags.add(rule.tag);
+      }
+    });
+
+    if ((pathway?.category || '').toLowerCase().includes('metabolism')) {
+      tags.add('metabolic');
+    }
+
+    return Array.from(tags);
+  }
+
+  async fetchReactomePathways(geneList) {
+    const pathwayMap = new Map();
+    const results = await Promise.all(
+      geneList.map(gene => this.reactome.getPathwaysForGene(gene, { maxResults: 15 }))
+    );
+
+    for (let i = 0; i < geneList.length; i++) {
+      const gene = geneList[i];
+      const result = results[i];
+      const pathways = result?.pathways || [];
+
+      for (const pathway of pathways) {
+        if (!pathwayMap.has(pathway.id)) {
+          pathwayMap.set(pathway.id, {
+            id: pathway.id,
+            name: pathway.name,
+            category: 'Reactome',
+            description: pathway.name,
+            source: pathway.source,
+            inputGenes: [],
+            inputGeneCount: 0,
+            totalPathwayGenes: 150
+          });
+        }
+
+        const entry = pathwayMap.get(pathway.id);
+        entry.inputGenes.push(gene);
+        entry.inputGeneCount += 1;
+      }
+    }
+
+    return Array.from(pathwayMap.values());
+  }
+
+  mergePathways(keggPathways, reactomePathways) {
+    const combined = new Map();
+
+    for (const pathway of [...(keggPathways || []), ...(reactomePathways || [])]) {
+      const key = pathway.id || pathway.name;
+      if (!combined.has(key)) {
+        combined.set(key, { ...pathway });
+        continue;
+      }
+
+      const existing = combined.get(key);
+      const existingGenes = new Set(existing.inputGenes || []);
+      (pathway.inputGenes || []).forEach(gene => existingGenes.add(gene));
+      existing.inputGenes = Array.from(existingGenes);
+      existing.inputGeneCount = existing.inputGenes.length;
+      existing.source = [existing.source, pathway.source].filter(Boolean).join(' + ');
+      combined.set(key, existing);
+    }
+
+    return Array.from(combined.values());
   }
 
   /**

@@ -28,6 +28,14 @@ export class DisgenetClient {
   }
 
   /**
+   * Check if DisGeNET API key is configured
+   * @returns {boolean}
+   */
+  isConfigured() {
+    return Boolean(this.apiKey);
+  }
+
+  /**
    * Get disease associations for a gene
    * @param {string} geneSymbol - Gene symbol (e.g., "BRCA1")
    * @param {Object} options - Query options

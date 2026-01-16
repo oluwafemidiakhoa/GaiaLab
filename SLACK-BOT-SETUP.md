@@ -226,7 +226,7 @@ In any channel where @gaialab is invited:
 [📊 View Full Report]
 
 ─────────────────────────────────────
-🌟 Developed by Oluwafemi Idiakhoa | Powered by UniProt, KEGG, PubMed & AI | ⚠️ Research use only
+Powered by UniProt, KEGG, PubMed & AI | ⚠️ Research use only
 ```
 
 ---
@@ -394,4 +394,4 @@ const app = new App({
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** | Built with Claude Code | Powered by Slack Bolt API
+Built with Claude Code | Powered by Slack Bolt API

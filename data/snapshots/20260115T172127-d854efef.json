@@ -1,0 +1,124 @@
+{
+  "id": "20260115T172127-d854efef",
+  "createdAt": "2026-01-15T17:21:27.433Z",
+  "query": {
+    "genes": [
+      "BRAF",
+      "KRAS",
+      "NRAS"
+    ],
+    "diseaseContext": "colorectal cancer",
+    "audience": "clinician",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "Reactome v95",
+      "KEGG"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets"
+    ],
+    "drugs": [
+      "ChEMBL",
+      "PubChem",
+      "DGIdb"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 11,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 3,
+    "compounds": 315,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "39000083",
+      "38422896",
+      "39732595",
+      "39365875",
+      "38171240",
+      "39059397",
+      "39388269",
+      "39529955",
+      "38402201",
+      "39047616",
+      "39103541",
+      "40240371",
+      "40829181",
+      "41237766",
+      "39039255",
+      "41286180",
+      "39436710",
+      "39310106",
+      "39121480",
+      "40240366",
+      "38231047",
+      "39799325",
+      "40790272",
+      "38261660",
+      "40882637",
+      "39905540",
+      "39914665",
+      "37815847",
+      "40340861",
+      "39475591"
+    ],
+    "pathways": [
+      "R-HSA-6802946",
+      "R-HSA-8951936",
+      "R-HSA-6798695",
+      "R-HSA-1295596",
+      "R-HSA-6802955",
+      "R-HSA-170984",
+      "R-HSA-187706",
+      "path:hsa04530",
+      "path:hsa04015",
+      "path:hsa04517",
+      "path:hsa04010"
+    ],
+    "clinical": [
+      "BRAF:colorectal cancer",
+      "NRAS:colorectal cancer",
+      "KRAS:colorectal cancer"
+    ],
+    "compounds": [
+      "VEMURAFENIB",
+      "ERLOTINIB HYDROCHLORIDE",
+      "ERLOTINIB",
+      "SORAFENIB",
+      "SORAFENIB",
+      "BINIMETINIB",
+      "DABRAFENIB",
+      "VEMURAFENIB",
+      "TRAMETINIB DIMETHYL SULFOXIDE",
+      "COBIMETINIB",
+      "CETUXIMAB",
+      "REGORAFENIB",
+      "NIVOLUMAB",
+      "PEMBROLIZUMAB",
+      "ABEMACICLIB",
+      "PALBOCICLIB",
+      "EVEROLIMUS",
+      "IRINOTECAN HYDROCHLORIDE",
+      "SELUMETINIB",
+      "GEMCITABINE"
+    ]
+  }
+}

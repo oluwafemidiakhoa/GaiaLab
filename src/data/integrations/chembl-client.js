@@ -15,10 +15,9 @@
  *
  * API Documentation: https://chembl.gitbook.io/chembl-interface-documentation/web-services
  *
- * @author Oluwafemi Idiakhoa
  */
 
-import { fetchWithTimeout } from '../../utils/fetch-with-timeout.js';
+import { fetchWithTimeout, retryWithBackoff } from '../../utils/fetch-with-timeout.js';
 
 const CHEMBL_API_BASE = 'https://www.ebi.ac.uk/chembl/api/data';
 
@@ -30,6 +29,7 @@ export class ChemblClient {
   constructor() {
     this.baseUrl = CHEMBL_API_BASE;
     this.species = 'Homo sapiens'; // Human
+    this.targetCache = new Map(); // Gene symbol → ChEMBL target ID cache
   }
 
   /**
@@ -100,12 +100,76 @@ export class ChemblClient {
   }
 
   /**
-   * Get ChEMBL target ID for a gene symbol
+   * Get ChEMBL target ID for a gene symbol with caching and retry
    * @private
    */
   async getTargetId(geneSymbol) {
+    // Check cache first
+    if (this.targetCache.has(geneSymbol)) {
+      console.log(`[ChEMBL] Cache hit for ${geneSymbol}`);
+      return this.targetCache.get(geneSymbol);
+    }
+
     try {
-      const url = `${this.baseUrl}/target/search.json?q=${encodeURIComponent(geneSymbol)}&target_organism=${encodeURIComponent(this.species)}`;
+      // Try multiple search strategies with retry logic
+      const targetId = await this.findTargetWithStrategies(geneSymbol);
+
+      // Cache the result (even if null)
+      this.targetCache.set(geneSymbol, targetId);
+
+      return targetId;
+    } catch (error) {
+      console.error(`[ChEMBL] Target ID lookup failed for ${geneSymbol}:`, error.message);
+      return null;
+    }
+  }
+
+  /**
+   * Try multiple search strategies to find ChEMBL target ID
+   * @private
+   */
+  async findTargetWithStrategies(geneSymbol) {
+    const strategies = [
+      // Strategy 1: Exact gene symbol with organism
+      () => this.searchTarget(geneSymbol, { target_organism: this.species }),
+
+      // Strategy 2: Gene symbol with target type filter
+      () => this.searchTarget(geneSymbol, { target_type: 'SINGLE PROTEIN' }),
+
+      // Strategy 3: With "human" prefix
+      () => this.searchTarget(`human ${geneSymbol}`),
+
+      // Strategy 4: Simple search (no filters)
+      () => this.searchTarget(geneSymbol)
+    ];
+
+    for (let i = 0; i < strategies.length; i++) {
+      try {
+        console.log(`[ChEMBL] Trying strategy ${i + 1} for ${geneSymbol}...`);
+        const targetId = await strategies[i]();
+        if (targetId) {
+          console.log(`[ChEMBL] Found target ${targetId} for ${geneSymbol} (strategy ${i + 1})`);
+          return targetId;
+        }
+      } catch (error) {
+        console.log(`[ChEMBL] Strategy ${i + 1} failed for ${geneSymbol}, trying next...`);
+        continue;
+      }
+    }
+
+    console.warn(`[ChEMBL] No target found for ${geneSymbol} after trying all strategies`);
+    return null;
+  }
+
+  /**
+   * Search for target with retry logic
+   * @private
+   */
+  async searchTarget(query, filters = {}) {
+    return await retryWithBackoff(async () => {
+      const params = new URLSearchParams({ q: query, ...filters });
+      const url = `${this.baseUrl}/target/search.json?${params}`;
+
       const response = await fetchWithTimeout(url);
 
       if (!response.ok) {
@@ -115,11 +179,13 @@ export class ChemblClient {
       const data = await response.json();
       const targets = data.targets || [];
 
+      if (targets.length === 0) return null;
+
       // Find exact match by gene symbol
       const exactMatch = targets.find(t =>
         t.target_components?.some(comp =>
           comp.target_component_synonyms?.some(syn =>
-            syn.component_synonym?.toUpperCase() === geneSymbol.toUpperCase()
+            syn.component_synonym?.toUpperCase() === query.toUpperCase()
           )
         )
       );
@@ -128,51 +194,50 @@ export class ChemblClient {
         return exactMatch.target_chembl_id;
       }
 
-      // Fallback: take first result if available
+      // Return first result
       return targets[0]?.target_chembl_id || null;
-    } catch (error) {
-      console.error(`[ChEMBL] Target ID lookup failed for ${geneSymbol}:`, error.message);
-      return null;
-    }
+    }, 3); // Max 3 retry attempts
   }
 
   /**
-   * Get bioactivity data for a target
+   * Get bioactivity data for a target with retry logic
    * @private
    */
   async getBioactivities(targetId, maxPotency, minActivity) {
     try {
-      // Query for activities with good potency (pChEMBL >= minActivity)
-      const url = `${this.baseUrl}/activity.json?target_chembl_id=${targetId}&pchembl_value__gte=${minActivity / 10}&limit=100&offset=0`;
-      const response = await fetchWithTimeout(url);
+      return await retryWithBackoff(async () => {
+        // Query for activities with good potency (pChEMBL >= minActivity)
+        const url = `${this.baseUrl}/activity.json?target_chembl_id=${targetId}&pchembl_value__gte=${minActivity / 10}&limit=100&offset=0`;
+        const response = await fetchWithTimeout(url);
 
-      if (!response.ok) {
-        throw new Error(`ChEMBL activity search error: ${response.status}`);
-      }
+        if (!response.ok) {
+          throw new Error(`ChEMBL activity search error: ${response.status}`);
+        }
 
-      const data = await response.json();
-      const activities = data.activities || [];
+        const data = await response.json();
+        const activities = data.activities || [];
 
-      // Filter by max potency (IC50/Ki < maxPotency nM)
-      return activities
-        .filter(act => {
-          const value = parseFloat(act.value);
-          const units = act.units?.toLowerCase();
+        // Filter by max potency (IC50/Ki < maxPotency nM)
+        return activities
+          .filter(act => {
+            const value = parseFloat(act.value);
+            const units = act.units?.toLowerCase();
 
-          // Convert to nM if needed
-          let valueInNM = value;
-          if (units === 'um') valueInNM = value * 1000;
-          else if (units === 'mm') valueInNM = value * 1000000;
-          else if (units === 'pm') valueInNM = value / 1000;
+            // Convert to nM if needed
+            let valueInNM = value;
+            if (units === 'um') valueInNM = value * 1000;
+            else if (units === 'mm') valueInNM = value * 1000000;
+            else if (units === 'pm') valueInNM = value / 1000;
 
-          return valueInNM <= maxPotency;
-        })
-        .sort((a, b) => {
-          // Sort by pChEMBL (higher = more potent)
-          const aVal = parseFloat(a.pchembl_value || 0);
-          const bVal = parseFloat(b.pchembl_value || 0);
-          return bVal - aVal;
-        });
+            return valueInNM <= maxPotency;
+          })
+          .sort((a, b) => {
+            // Sort by pChEMBL (higher = more potent)
+            const aVal = parseFloat(a.pchembl_value || 0);
+            const bVal = parseFloat(b.pchembl_value || 0);
+            return bVal - aVal;
+          });
+      }, 3); // Max 3 retry attempts
     } catch (error) {
       console.error(`[ChEMBL] Bioactivity fetch failed for ${targetId}:`, error.message);
       return [];
@@ -180,7 +245,7 @@ export class ChemblClient {
   }
 
   /**
-   * Enrich compound data with additional details
+   * Enrich compound data with additional details (with retry logic)
    * @private
    */
   async enrichCompoundData(activities) {
@@ -189,27 +254,18 @@ export class ChemblClient {
     for (const activity of activities) {
       try {
         const moleculeId = activity.molecule_chembl_id;
-        const url = `${this.baseUrl}/molecule/${moleculeId}.json`;
-        const response = await fetchWithTimeout(url);
 
-        if (!response.ok) {
-          // If molecule fetch fails, use activity data only
-          enriched.push({
-            molecule_chembl_id: moleculeId,
-            pref_name: null,
-            max_phase: -1,
-            molecule_properties: null,
-            activity_type: activity.standard_type,
-            activity_value: activity.value,
-            activity_units: activity.units,
-            pchembl_value: activity.pchembl_value,
-            assay_description: activity.assay_description,
-            document_chembl_id: activity.document_chembl_id
-          });
-          continue;
-        }
+        // Use retry logic for molecule fetch
+        const moleculeData = await retryWithBackoff(async () => {
+          const url = `${this.baseUrl}/molecule/${moleculeId}.json`;
+          const response = await fetchWithTimeout(url);
 
-        const moleculeData = await response.json();
+          if (!response.ok) {
+            throw new Error(`Molecule fetch error: ${response.status}`);
+          }
+
+          return await response.json();
+        }, 3);
 
         enriched.push({
           ...moleculeData,
@@ -221,7 +277,21 @@ export class ChemblClient {
           document_chembl_id: activity.document_chembl_id
         });
       } catch (error) {
+        // If molecule fetch fails after retries, use activity data only
         console.error(`[ChEMBL] Molecule enrichment failed for ${activity.molecule_chembl_id}:`, error.message);
+
+        enriched.push({
+          molecule_chembl_id: activity.molecule_chembl_id,
+          pref_name: null,
+          max_phase: -1,
+          molecule_properties: null,
+          activity_type: activity.standard_type,
+          activity_value: activity.value,
+          activity_units: activity.units,
+          pchembl_value: activity.pchembl_value,
+          assay_description: activity.assay_description,
+          document_chembl_id: activity.document_chembl_id
+        });
       }
     }
 

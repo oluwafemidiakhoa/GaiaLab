@@ -1,0 +1,12 @@
+{
+  "totalHypothesesGenerated": 488,
+  "totalValidations": 0,
+  "confirmedCount": 0,
+  "rejectedCount": 0,
+  "partiallyConfirmedCount": 0,
+  "pendingCount": 0,
+  "overallAccuracy": 0,
+  "accuracyByType": {},
+  "averageConfidence": 0,
+  "lastUpdated": "2026-01-16T21:46:13.852Z"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "20260114T213839-37250974",
+  "createdAt": "2026-01-14T21:38:39.202Z",
+  "query": {
+    "genes": [
+      "SNCA",
+      "LRRK2",
+      "PARK7"
+    ],
+    "diseaseContext": "Parkinson's disease",
+    "audience": "researcher",
+    "includeDrugs": false
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "KEGG",
+      "Reactome v95"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets",
+      "GWAS Catalog"
+    ],
+    "drugs": []
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 7,
+    "papers": 29,
+    "interactions": 30,
+    "clinicalAssociations": 0,
+    "compounds": 0,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "39153957",
+      "38621236",
+      "39596444",
+      "38391909",
+      "38368937",
+      "39983584",
+      "39029778",
+      "38377788",
+      "38438297",
+      "40121531",
+      "39514635",
+      "38614108",
+      "39945455",
+      "40440058",
+      "39074992",
+      "39167665",
+      "39199337",
+      "38951707",
+      "40185526",
+      "39812709",
+      "38702933",
+      "41083601",
+      "40262613",
+      "39799347",
+      "40737317",
+      "40626361",
+      "39905728",
+      "40321202",
+      "39962078"
+    ],
+    "pathways": [
+      "path:hsa05012",
+      "path:hsa05022",
+      "R-HSA-9833482",
+      "R-HSA-977225",
+      "R-HSA-8857538",
+      "R-HSA-3899300",
+      "path:hsa05010"
+    ],
+    "clinical": [],
+    "compounds": []
+  }
+}

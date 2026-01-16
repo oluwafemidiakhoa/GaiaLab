@@ -16,7 +16,6 @@
  *
  * API Documentation: https://platform-docs.opentargets.org/data-access/graphql-api
  *
- * @author Oluwafemi Idiakhoa
  */
 
 const OPENTARGETS_API = 'https://api.platform.opentargets.org/api/v4/graphql';
@@ -51,7 +50,7 @@ export class OpenTargetsClient {
             id
             approvedSymbol
             approvedName
-            associatedDiseases(page: { size: 50 }) {
+            associatedDiseases(page: { size: 50, index: 0 }) {
               count
               rows {
                 disease {
@@ -166,7 +165,7 @@ export class OpenTargetsClient {
   async getEnsemblId(geneSymbol) {
     const query = `
       query search($queryString: String!) {
-        search(queryString: $queryString, entityNames: ["target"], page: { size: 1 }) {
+        search(queryString: $queryString, entityNames: ["target"], page: { size: 1, index: 0 }) {
           hits {
             id
             entity

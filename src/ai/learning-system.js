@@ -282,14 +282,17 @@ export class LearningSystem {
       return null; // No cached knowledge yet
     }
 
+    const normalizedGenes = new Set(genes.map(gene => String(gene || '').toUpperCase()));
+    const normalizedDisease = String(diseaseContext || '').trim().toLowerCase();
+
     const fs = await import('fs/promises');
     const graph = JSON.parse(await fs.readFile(graphPath, 'utf8'));
 
     // Find relevant pathways
     const relevantPathways = Object.entries(graph.pathways)
       .filter(([pathway, data]) =>
-        genes.some(gene => data.genes.includes(gene)) &&
-        data.diseases.includes(diseaseContext)
+        data.genes?.some(gene => normalizedGenes.has(String(gene || '').toUpperCase())) &&
+        data.diseases?.some(disease => String(disease || '').toLowerCase() === normalizedDisease)
       )
       .map(([pathway, data]) => ({
         pathway,

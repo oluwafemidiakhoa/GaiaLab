@@ -6,7 +6,6 @@ Usage in Jupyter:
     disease: breast cancer
     audience: researcher
 
-Developed by Oluwafemi Idiakhoa
 """
 
 from IPython.core.magic import Magics, magics_class, cell_magic, line_magic
@@ -170,7 +169,7 @@ class GaiaLabMagic(Magics):
                     ⚠️ <strong>Research Use Only:</strong> AI-generated insights require expert validation
                 </p>
                 <p style="color: #999; font-size: 12px; margin: 5px 0;">
-                    🌟 Developed by Oluwafemi Idiakhoa | Powered by UniProt, KEGG, PubMed & AI
+                    Powered by UniProt, KEGG, PubMed & AI
                 </p>
             </div>
         </div>

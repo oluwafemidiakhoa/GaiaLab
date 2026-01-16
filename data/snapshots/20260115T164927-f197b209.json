@@ -1,0 +1,130 @@
+{
+  "id": "20260115T164927-f197b209",
+  "createdAt": "2026-01-15T16:49:27.822Z",
+  "query": {
+    "genes": [
+      "APOE",
+      "APP",
+      "PSEN1"
+    ],
+    "diseaseContext": "Alzheimer's disease",
+    "audience": "clinician",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "KEGG",
+      "Reactome v95"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets",
+      "GWAS Catalog"
+    ],
+    "drugs": [
+      "DGIdb",
+      "PubChem",
+      "DrugBank",
+      "ChEMBL"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 19,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 0,
+    "compounds": 152,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "41224653",
+      "38480892",
+      "40409316",
+      "38710950",
+      "39612989",
+      "39031528",
+      "37995685",
+      "39419029",
+      "39596597",
+      "38417436",
+      "38867189",
+      "39353433",
+      "38569016",
+      "39294490",
+      "39511891",
+      "40050704",
+      "38924431",
+      "38375983",
+      "37791598",
+      "39814008",
+      "40311610",
+      "40665049",
+      "38726879",
+      "39129310",
+      "38185066",
+      "39814010",
+      "40175177",
+      "38902571",
+      "38755521",
+      "40770318"
+    ],
+    "pathways": [
+      "path:hsa05010",
+      "path:hsa04979",
+      "path:hsa04330",
+      "path:hsa04722",
+      "R-HSA-8957275",
+      "R-HSA-381426",
+      "R-HSA-6798695",
+      "R-HSA-1251985",
+      "R-HSA-3000480",
+      "R-HSA-8864260",
+      "R-HSA-8963888",
+      "R-HSA-8964058",
+      "R-HSA-975634",
+      "R-HSA-8963901",
+      "R-HSA-8964026",
+      "R-HSA-9029569",
+      "path:hsa04310",
+      "path:hsa05165",
+      "path:hsa05022"
+    ],
+    "clinical": [],
+    "compounds": [
+      "LECANEMAB",
+      "NIROGACESTAT",
+      "Aducanumab",
+      "TRIAMCINOLONE",
+      "PRAVASTATIN SODIUM",
+      "LUTEIN",
+      "TRETINOIN",
+      "VITAMIN E",
+      "IRBESARTAN",
+      "TROGLITAZONE",
+      "FENOFIBRATE MICRONIZED",
+      "DONEPEZIL",
+      "HUMAN CHORIONIC GONADOTROPIN",
+      "GALANTAMINE",
+      "NICOTINE POLACRILEX",
+      "GANCICLOVIR",
+      "BUPROPION HYDROCHLORIDE",
+      "RIVASTIGMINE",
+      "NORETHINDRONE ACETATE",
+      "PREDNISONE"
+    ]
+  }
+}

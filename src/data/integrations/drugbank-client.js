@@ -39,6 +39,14 @@ export class DrugbankClient {
   }
 
   /**
+   * Check if DrugBank API key is configured (full access).
+   * @returns {boolean}
+   */
+  isConfigured() {
+    return Boolean(this.apiKey);
+  }
+
+  /**
    * Initialize public DrugBank data for common drug targets
    * In production, this would load from a curated JSON file or database
    * @private

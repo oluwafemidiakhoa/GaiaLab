@@ -1,0 +1,4779 @@
+{
+  "id": "20260115T204356-2a3da759",
+  "createdAt": "2026-01-15T20:43:56.355Z",
+  "query": {
+    "genes": [
+      "LRRK2",
+      "PRKN",
+      "SNCA"
+    ],
+    "diseaseContext": "parkinson's disease",
+    "audience": "researcher",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "KEGG",
+      "Reactome v95"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets",
+      "GWAS Catalog"
+    ],
+    "drugs": [
+      "DGIdb",
+      "PubChem",
+      "ChEMBL"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 14,
+    "papers": 30,
+    "interactions": 30,
+    "clinicalAssociations": 0,
+    "compounds": 71,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "39153957",
+      "38621236",
+      "39596444",
+      "39358449",
+      "38368937",
+      "39983584",
+      "39029778",
+      "38377788",
+      "39585446",
+      "40914459",
+      "38438297",
+      "40121531",
+      "39945455",
+      "39514635",
+      "38614108",
+      "40440058",
+      "39074992",
+      "39199337",
+      "38951707",
+      "39812709",
+      "38702933",
+      "40185526",
+      "41083601",
+      "39300082",
+      "40262613",
+      "39799347",
+      "40737317",
+      "40626361",
+      "39905728",
+      "39962078"
+    ],
+    "pathways": [
+      "path:hsa05012",
+      "path:hsa05022",
+      "R-HSA-977225",
+      "path:hsa04137",
+      "path:hsa04120",
+      "R-HSA-8857538",
+      "R-HSA-9833482",
+      "R-HSA-9646399",
+      "R-HSA-5205685",
+      "R-HSA-983168",
+      "R-HSA-5689877",
+      "path:hsa04141",
+      "path:hsa05014",
+      "path:hsa05010"
+    ],
+    "clinical": [],
+    "compounds": [
+      "PALBOCICLIB",
+      "VANDETANIB",
+      "ENTRECTINIB",
+      "GENTIAN VIOLET CATION",
+      "MYCOPHENOLATE",
+      "DOXORUBICIN HYDROCHLORIDE",
+      "KETOCONAZOLE",
+      "ADAVOSERTIB",
+      "AST-487",
+      "PICTILISIB",
+      "DOVITINIB",
+      "PF-562271",
+      "RG-1530",
+      "GNE-0877",
+      "CENISERTIB",
+      "ALISERTIB",
+      "CHEMBL:CHEMBL379975",
+      "CHEMBL:CHEMBL2204495",
+      "PD-0166285",
+      "NVP-TAE684"
+    ]
+  },
+  "analysis": {
+    "diseaseContext": "parkinson's disease",
+    "genes": [
+      {
+        "symbol": "LRRK2",
+        "name": "Unknown protein",
+        "function": "Function not well characterized",
+        "importanceScore": 0.95,
+        "centrality": 1,
+        "uniprotId": "A0A7P0Z4D9",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "PRKN",
+        "name": "Unknown protein",
+        "function": "Function not well characterized",
+        "importanceScore": 0.8571428571428572,
+        "centrality": 0.8571428571428571,
+        "uniprotId": "A0A669KBE3",
+        "tissueExpression": "Expression pattern not well characterized"
+      },
+      {
+        "symbol": "SNCA",
+        "name": "Alpha-synuclein",
+        "function": "Neuronal protein that plays several roles in synaptic activity such as regulation of synaptic vesicle trafficking and subsequent neurotransmitter release. Participates as a monomer in synaptic vesicle exocytosis by enhancing vesicle priming, fusion and dilation of exocytotic fusion pores. Mechani...",
+        "importanceScore": 0.95,
+        "centrality": 1,
+        "uniprotId": "Q4W5L2",
+        "tissueExpression": "Expression pattern not well characterized"
+      }
+    ],
+    "pathways": [
+      {
+        "id": "pathway-0",
+        "name": "Parkinson disease - Homo sapiens (human)",
+        "rationale": "This pathway is critically important as it encompasses the genetic and environmental factors leading to dopaminergic neuron degeneration, a hallmark of Parkinson's disease. Context anchors: autophagy, synuclein.",
+        "significance": "This pathway is critically important as it encompasses the genetic and environmental factors leading to dopaminergic neuron degeneration, a hallmark of Parkinson's disease. Context anchors: autophagy, synuclein.",
+        "molecularMechanism": "Mutations in SNCA, LRRK2, and PRKN disrupt normal synaptic function and mitochondrial dynamics, leading to increased oxidative stress and impaired cellular homeostasis. Specifically, LRRK2 phosphorylates Rab GTPases, which are critical for vesicular trafficking, while PRKN is involved in ubiquitin-mediated proteolysis, targeting damaged proteins for degradation.",
+        "regulation": "LRRK2 is activated by upstream signals such as lysosomal damage, while downstream effectors include Rab GTPases and components of the autophagy machinery. PRKN's activity is regulated by PINK1, which acts as a sensor for mitochondrial dysfunction.",
+        "experimentalEvidence": "Evidence from knockout models of LRRK2 and PRKN demonstrates their roles in PD pathogenesis. Patient cohort studies indicate that mutations in these genes are prevalent in familial PD cases.",
+        "quantitativeData": "Not reported in abstracts",
+        "consensusMetrics": "Strong consensus (18/21 papers, 86% agreement)",
+        "controversies": "Some studies suggest alternative pathways may also contribute to PD, indicating a multifactorial nature of the disease.",
+        "score": 0.9,
+        "pvalue": 0.0000023792703750000005,
+        "genesInPathway": [
+          "LRRK2",
+          "PRKN",
+          "SNCA"
+        ],
+        "citations": [
+          "PMID:39153957",
+          "PMID:38621236"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "pathway-1",
+        "name": "Mitophagy - animal - Homo sapiens (human)",
+        "rationale": "Mitophagy is crucial for maintaining mitochondrial quality control, which is often compromised in neurodegenerative diseases like Parkinson's.",
+        "significance": "Mitophagy is crucial for maintaining mitochondrial quality control, which is often compromised in neurodegenerative diseases like Parkinson's.",
+        "molecularMechanism": "PINK1 accumulates on depolarized mitochondria and recruits PRKN, which ubiquitinates mitochondrial proteins, marking them for degradation. This process is essential for preventing the accumulation of dysfunctional mitochondria.",
+        "regulation": "PINK1 serves as an upstream activator, while PRKN acts as a downstream effector. The pathway is also influenced by mitochondrial dynamics and cellular stress responses.",
+        "experimentalEvidence": "Studies using PINK1 and PRKN knockout models have shown impaired mitophagy and increased susceptibility to neurodegeneration. Evidence from patient-derived cells indicates disrupted mitophagy in PD.",
+        "quantitativeData": "Not reported in abstracts",
+        "consensusMetrics": "Emerging evidence (3 papers)",
+        "controversies": "Debate exists regarding the sufficiency of PINK1/PRKN-mediated mitophagy in the context of PD, with some studies suggesting alternative pathways may compensate.",
+        "score": 0.9,
+        "pvalue": 0.000013737779874999998,
+        "genesInPathway": [
+          "LRRK2",
+          "PRKN",
+          "SNCA"
+        ],
+        "citations": [
+          "PMID:39358449",
+          "PMID:39514635"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      }
+    ],
+    "topics": [
+      {
+        "id": "topic-0",
+        "theme": "Mitochondrial dysfunction in Parkinson's disease",
+        "summary": "Recent literature emphasizes the role of mitochondrial dysfunction in PD, particularly through the PINK1-PRKN pathway.",
+        "keyFindings": [],
+        "citations": [
+          "PMID:39358449",
+          "PMID:39514635"
+        ],
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      }
+    ],
+    "strategies": [
+      {
+        "id": "strategy-0",
+        "label": "LRRK2 kinase inhibition",
+        "rationale": "Inhibition of LRRK2 kinase activity is expected to restore normal vesicular trafficking and reduce oxidative stress associated with PD pathology.",
+        "molecularTarget": "LRRK2, specifically targeting its kinase activity to reduce hyperphosphorylation of Rab GTPases.",
+        "clinicalEvidence": "Currently in preclinical stages with ongoing trials assessing LRRK2 inhibitors in PD models.",
+        "experimentalSupport": "Recent literature highlights LRRK2's role in PD and suggests that its inhibition may reverse some disease phenotypes (PMID:39153957).",
+        "limitations": "Challenges include potential off-target effects and the need for precise dosing to avoid toxicity.",
+        "quantitativeData": "Not reported in abstracts",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "Biomarkers for LRRK2 activity are not specified.",
+        "riskLevel": "medium",
+        "citations": [
+          "PMID:39153957",
+          "PMID:39983584"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "strategy-1",
+        "label": "Targeting α-synuclein aggregation",
+        "rationale": "Reducing α-synuclein levels may alleviate neuroinflammation and neuronal death associated with PD.",
+        "molecularTarget": "α-synuclein aggregates, aiming to reduce their formation and toxicity.",
+        "clinicalEvidence": "Ongoing clinical trials are investigating monoclonal antibodies targeting α-synuclein.",
+        "experimentalSupport": "Studies indicate that reducing α-synuclein aggregation can improve neuronal survival in vitro (PMID:38377788).",
+        "limitations": "The challenge remains in delivering therapeutics effectively across the blood-brain barrier.",
+        "quantitativeData": "Not reported in abstracts",
+        "trialData": "No trial data in abstracts",
+        "biomarkerInfo": "Biomarkers for α-synuclein aggregation are not specified.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:39199337",
+          "PMID:39029778"
+        ],
+        "confidence": "high",
+        "evidenceSnippets": [],
+        "evidenceStatus": "unverified"
+      },
+      {
+        "id": "hypothesis-0",
+        "label": "Novel hypothesis: Exploring the interplay between LRRK2 and α-synuclein in PD pathology.",
+        "riskLevel": "high",
+        "citations": [
+          "PMID:39153957",
+          "PMID:38377788"
+        ],
+        "confidence": "low",
+        "isHypothesis": true
+      }
+    ],
+    "whyItMatters": {
+      "summary": "The interplay between LRRK2, PRKN, and SNCA is central to understanding the pathogenesis of Parkinson's disease, highlighting potential therapeutic targets.",
+      "impact": "Targeting these pathways could lead to novel interventions that modify disease progression.",
+      "nextSteps": [
+        "Investigate the efficacy of LRRK2 inhibitors in clinical trials",
+        "Explore combination therapies targeting both LRRK2 and α-synuclein"
+      ],
+      "citations": [
+        "PMID:39153957",
+        "PMID:39945455"
+      ],
+      "confidence": "high"
+    },
+    "mechanisticChains": [
+      {
+        "id": "chain-0",
+        "title": "LRRK2, PRKN, SNCA → Parkinson disease - Homo sapiens (human) → parkinson's disease",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "LRRK2, PRKN, SNCA",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Parkinson disease - Homo sapiens (human)",
+            "description": "Mutations in SNCA, LRRK2, and PRKN disrupt normal synaptic function and mitochondrial dynamics, leading to increased oxidative stress and impaired cellular homeostasis. Specifically, LRRK2 phosphorylates Rab GTPases, which are critical for vesicular trafficking, while PRKN is involved in ubiquitin-mediated proteolysis, targeting damaged proteins for degradation."
+          },
+          {
+            "type": "disease",
+            "label": "parkinson's disease",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:39153957",
+          "PMID:38621236"
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "chain-1",
+        "title": "LRRK2, PRKN, SNCA → Mitophagy - animal - Homo sapiens (human) → parkinson's disease",
+        "steps": [
+          {
+            "type": "genes",
+            "label": "LRRK2, PRKN, SNCA",
+            "description": "Input genes implicated in the pathway."
+          },
+          {
+            "type": "pathway",
+            "label": "Mitophagy - animal - Homo sapiens (human)",
+            "description": "PINK1 accumulates on depolarized mitochondria and recruits PRKN, which ubiquitinates mitochondrial proteins, marking them for degradation. This process is essential for preventing the accumulation of dysfunctional mitochondria."
+          },
+          {
+            "type": "disease",
+            "label": "parkinson's disease",
+            "description": "Phenotypic impact in the disease context."
+          }
+        ],
+        "citations": [
+          "PMID:39358449",
+          "PMID:39514635"
+        ],
+        "confidence": "high"
+      }
+    ],
+    "interactions": {
+      "totalInteractions": 30,
+      "avgConfidence": "0.001",
+      "topInteractors": [
+        {
+          "gene": "LRRK2",
+          "partner": "RAB29",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.483,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.93,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "SFN",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 1,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.96,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "PTK6",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "databases",
+              "score": 0.8,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.609,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "GAK",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.457,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.827,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "GSK3B",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.457,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.72,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "LRP6",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.457,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.72,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "PARK7",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.292,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.779,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "MFN1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.457,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.665,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "CTNNB1",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 3,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.292,
+              "sources": 1
+            },
+            {
+              "type": "databases",
+              "score": 0.72,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.049,
+              "sources": 1
+            }
+          ]
+        },
+        {
+          "gene": "LRRK2",
+          "partner": "PRKN",
+          "partnerName": "Unknown protein",
+          "confidence": 0.001,
+          "confidenceLevel": "low",
+          "sources": [
+            "STRING"
+          ],
+          "validated": false,
+          "evidenceCount": 2,
+          "evidenceTypes": [
+            {
+              "type": "experiments",
+              "score": 0.292,
+              "sources": 1
+            },
+            {
+              "type": "textmining",
+              "score": 0.714,
+              "sources": 1
+            }
+          ]
+        }
+      ],
+      "networkHubs": [
+        {
+          "gene": "LRRK2",
+          "centrality": 1
+        },
+        {
+          "gene": "SNCA",
+          "centrality": 1
+        },
+        {
+          "gene": "PRKN",
+          "centrality": 0.8571428571428571
+        },
+        {
+          "gene": "SLC6A3",
+          "centrality": 0.7142857142857143
+        },
+        {
+          "gene": "ATP13A2",
+          "centrality": 0.7142857142857143
+        }
+      ],
+      "networkImageUrl": "https://string-db.org/api/image/network?identifiers=LRRK2%0APRKN%0ASNCA&species=9606&required_score=700&network_flavor=confidence&hide_disconnected_nodes=1"
+    },
+    "network3DData": {
+      "nodes": [
+        {
+          "id": "LRRK2",
+          "name": "Unknown protein",
+          "group": 0,
+          "importance": 0.95,
+          "val": 15,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 1
+        },
+        {
+          "id": "PRKN",
+          "name": "Unknown protein",
+          "group": 0,
+          "importance": 0.8571428571428572,
+          "val": 12.857142857142856,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 0.8571428571428571
+        },
+        {
+          "id": "SNCA",
+          "name": "Alpha-synuclein",
+          "group": 0,
+          "importance": 0.95,
+          "val": 15,
+          "isPrimary": true,
+          "isHub": true,
+          "centrality": 1
+        },
+        {
+          "id": "RAB29",
+          "name": "RAB29",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "SFN",
+          "name": "SFN",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PTK6",
+          "name": "PTK6",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "GAK",
+          "name": "GAK",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "GSK3B",
+          "name": "GSK3B",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "LRP6",
+          "name": "LRP6",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PARK7",
+          "name": "PARK7",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "MFN1",
+          "name": "MFN1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CTNNB1",
+          "name": "CTNNB1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "SNCAIP",
+          "name": "SNCAIP",
+          "group": 1,
+          "importance": 0.3,
+          "val": 8.571428571428571,
+          "isPrimary": false,
+          "isHub": true,
+          "centrality": 0.5714285714285714
+        },
+        {
+          "id": "CALM3",
+          "name": "CALM3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "TOMM20",
+          "name": "TOMM20",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "VDAC1",
+          "name": "VDAC1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "CALM1",
+          "name": "CALM1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "APOE",
+          "name": "APOE",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HSPA4",
+          "name": "HSPA4",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "HSPA8",
+          "name": "HSPA8",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "USP9X",
+          "name": "USP9X",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "PINK1",
+          "name": "PINK1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "UBB",
+          "name": "UBB",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "UBC",
+          "name": "UBC",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "RPS27A",
+          "name": "RPS27A",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "ATXN3",
+          "name": "ATXN3",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "UBA52",
+          "name": "UBA52",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        },
+        {
+          "id": "BECN1",
+          "name": "BECN1",
+          "group": 1,
+          "importance": 0.3,
+          "val": 5,
+          "isPrimary": false
+        }
+      ],
+      "links": [
+        {
+          "source": "LRRK2",
+          "target": "RAB29",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [
+            {
+              "pmid": "39799347",
+              "title": "Possible linking and treatment between Parkinson's disease and inflammatory bowel disease: a study of Mendelian randomization based on gut-brain axis.",
+              "year": 2025,
+              "citationCount": 3,
+              "influentialCitationCount": 0,
+              "studyType": "meta-analysis",
+              "studyDesign": "meta-analysis",
+              "sampleSize": null,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 3.02
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 3.02
+        },
+        {
+          "source": "LRRK2",
+          "target": "SFN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "PTK6",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "GAK",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "GSK3B",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "LRP6",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "PARK7",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39074992",
+              "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+              "year": 2024,
+              "citationCount": 58,
+              "influentialCitationCount": 2,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": 510,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 6.24
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 6.24
+        },
+        {
+          "source": "LRRK2",
+          "target": "MFN1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "CTNNB1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "LRRK2",
+          "target": "PRKN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39074992",
+              "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+              "year": 2024,
+              "citationCount": 58,
+              "influentialCitationCount": 2,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": 510,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 6.24
+            },
+            {
+              "pmid": "39945455",
+              "title": "[Parkinson's disease: from genetics to targeted therapies].",
+              "year": 2025,
+              "citationCount": 0,
+              "influentialCitationCount": 0,
+              "studyType": "review",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 1.1
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 3.67
+        },
+        {
+          "source": "SNCA",
+          "target": "SNCAIP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "CALM3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "PRKN",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39074992",
+              "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+              "year": 2024,
+              "citationCount": 58,
+              "influentialCitationCount": 2,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": 510,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 6.24
+            },
+            {
+              "pmid": "39945455",
+              "title": "[Parkinson's disease: from genetics to targeted therapies].",
+              "year": 2025,
+              "citationCount": 0,
+              "influentialCitationCount": 0,
+              "studyType": "review",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 1.1
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 3.67
+        },
+        {
+          "source": "SNCA",
+          "target": "TOMM20",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "VDAC1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "CALM1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "APOE",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "HSPA4",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "HSPA8",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "SNCA",
+          "target": "USP9X",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2023,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "PINK1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39074992",
+              "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+              "year": 2024,
+              "citationCount": 58,
+              "influentialCitationCount": 2,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": 510,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 6.24
+            },
+            {
+              "pmid": "39585446",
+              "title": "Mitochondrial dysfunction in Parkinson's disease.",
+              "year": 2024,
+              "citationCount": 7,
+              "influentialCitationCount": 0,
+              "studyType": "review",
+              "studyDesign": null,
+              "sampleSize": null,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 2.18
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 4.21
+        },
+        {
+          "source": "PRKN",
+          "target": "SNCAIP",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "UBB",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "UBC",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "RPS27A",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "ATXN3",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "UBA52",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        },
+        {
+          "source": "PRKN",
+          "target": "PARK7",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2024,
+          "evidencePapers": [
+            {
+              "pmid": "39074992",
+              "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+              "year": 2024,
+              "citationCount": 58,
+              "influentialCitationCount": 2,
+              "studyType": "mixed",
+              "studyDesign": null,
+              "sampleSize": 510,
+              "evidencePolarity": "neutral",
+              "journalTier": "tier3",
+              "trialPhase": null,
+              "isRetracted": false,
+              "evidenceScore": 6.24
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 6.24
+        },
+        {
+          "source": "PRKN",
+          "target": "BECN1",
+          "value": 0.001,
+          "label": "0% confidence",
+          "discoveryYear": 2025,
+          "evidencePapers": [],
+          "evidenceCount": 0,
+          "evidenceScore": 0
+        }
+      ],
+      "stats": {
+        "totalNodes": 28,
+        "totalLinks": 29,
+        "avgConfidence": "0.00",
+        "hubCount": 4
+      }
+    },
+    "clinical": {
+      "totalAssociations": 0,
+      "avgScore": 0,
+      "highConfidence": 0,
+      "topAssociations": [],
+      "sharedDiseases": []
+    },
+    "drugs": {
+      "totalCompounds": 71,
+      "totalApproved": 0,
+      "avgPotency": 8.14,
+      "phaseDistribution": {
+        "approved": 7,
+        "phase3": 0,
+        "phase2": 0,
+        "phase1": 51,
+        "preclinical": 0
+      },
+      "topCompounds": [
+        {
+          "name": "PALBOCICLIB",
+          "chemblId": "rxcui:1601374",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 5330286,
+            "molecularWeight": "447.5",
+            "xlogp": 1.8,
+            "inchikey": "AHJRHEGDXFFMBM-UHFFFAOYSA-N",
+            "iupacName": "6-acetyl-8-cyclopentyl-5-methyl-2-[(5-piperazin-1-yl-2-pyridinyl)amino]pyrido[2,3-d]pyrimidin-7-one",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "VANDETANIB",
+          "chemblId": "rxcui:1098413",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 3081361,
+            "molecularWeight": "475.4",
+            "xlogp": 4.9,
+            "inchikey": "UHTHHESEBZOYNR-UHFFFAOYSA-N",
+            "iupacName": "N-(4-bromo-2-fluorophenyl)-6-methoxy-7-[(1-methylpiperidin-4-yl)methoxy]quinazolin-4-amine",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "ENTRECTINIB",
+          "chemblId": "rxcui:2197862",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 25141092,
+            "molecularWeight": "560.6",
+            "xlogp": 5.7,
+            "inchikey": "HAYYBYPASCDWEQ-UHFFFAOYSA-N",
+            "iupacName": "N-[5-[(3,5-difluorophenyl)methyl]-1H-indazol-3-yl]-4-(4-methylpiperazin-1-yl)-2-(oxan-4-ylamino)benzamide",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "GENTIAN VIOLET CATION",
+          "chemblId": "rxcui:1546369",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "SNCA"
+          ],
+          "targets": [
+            "SNCA"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "SNCA",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 3468,
+            "molecularWeight": "372.5",
+            "xlogp": 4.9,
+            "inchikey": "LGLFFNDHMLKUMI-UHFFFAOYSA-N",
+            "iupacName": "[4-[bis[4-(dimethylamino)phenyl]methylidene]cyclohexa-2,5-dien-1-ylidene]-dimethylazanium",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "MYCOPHENOLATE",
+          "chemblId": "rxcui:265323",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "SNCA"
+          ],
+          "targets": [
+            "SNCA"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "SNCA",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 6918995,
+            "molecularWeight": "319.3",
+            "xlogp": 3.8,
+            "inchikey": "HPNSFSBZBAHARI-RUDMXATFSA-M",
+            "iupacName": "(E)-6-(4-hydroxy-6-methoxy-7-methyl-3-oxo-1H-2-benzofuran-5-yl)-4-methylhex-4-enoate",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "DOXORUBICIN HYDROCHLORIDE",
+          "chemblId": "rxcui:142433",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "SNCA"
+          ],
+          "targets": [
+            "SNCA"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "SNCA",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 443939,
+            "molecularWeight": "580.0",
+            "inchikey": "MWWSFMDVAYGXBV-RUELKSSGSA-N",
+            "iupacName": "(7S,9S)-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-9-(2-hydroxyacetyl)-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione;hydrochloride",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "KETOCONAZOLE",
+          "chemblId": "rxcui:6135",
+          "maxPhase": 4,
+          "phaseLabel": "FDA Approved",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "SNCA"
+          ],
+          "targets": [
+            "SNCA"
+          ],
+          "approvalStatus": "approved",
+          "isApproved": true,
+          "gene": "SNCA",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 47576,
+            "molecularWeight": "531.4",
+            "xlogp": 4.3,
+            "inchikey": "XMAYWYJOQHXEEK-ZEQKJWHPSA-N",
+            "iupacName": "1-[4-[4-[[(2S,4R)-2-(2,4-dichlorophenyl)-2-(imidazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy]phenyl]piperazin-1-yl]ethanone",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "ADAVOSERTIB",
+          "chemblId": "ncit:C91725",
+          "maxPhase": 1,
+          "phaseLabel": "Phase 1",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "investigational",
+          "isApproved": false,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 24856436,
+            "molecularWeight": "500.6",
+            "xlogp": 3.1,
+            "inchikey": "BKWJAKQVGHWELA-UHFFFAOYSA-N",
+            "iupacName": "1-[6-(2-hydroxypropan-2-yl)-2-pyridinyl]-6-[4-(4-methylpiperazin-1-yl)anilino]-2-prop-2-enylpyrazolo[3,4-d]pyrimidin-3-one",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "AST-487",
+          "chemblId": "iuphar.ligand:5661",
+          "maxPhase": 1,
+          "phaseLabel": "Phase 1",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "investigational",
+          "isApproved": false,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 11409972,
+            "molecularWeight": "529.6",
+            "xlogp": 3.8,
+            "inchikey": "ODPGGGTTYSGTGO-UHFFFAOYSA-N",
+            "iupacName": "1-[4-[(4-ethylpiperazin-1-yl)methyl]-3-(trifluoromethyl)phenyl]-3-[4-[6-(methylamino)pyrimidin-4-yl]oxyphenyl]urea",
+            "source": "PubChem"
+          }
+        },
+        {
+          "name": "PICTILISIB",
+          "chemblId": "ncit:C165479",
+          "maxPhase": 1,
+          "phaseLabel": "Phase 1",
+          "pChEMBL": null,
+          "potency": "Interaction: Unknown",
+          "sources": [
+            "DGIdb"
+          ],
+          "validated": "single-source",
+          "sourceCount": 1,
+          "pmids": [],
+          "genes": [
+            "LRRK2"
+          ],
+          "targets": [
+            "LRRK2"
+          ],
+          "approvalStatus": "investigational",
+          "isApproved": false,
+          "gene": "LRRK2",
+          "source": "DGIdb",
+          "targetId": null,
+          "targetsMultipleGenes": false,
+          "pubchem": {
+            "cid": 17755052,
+            "molecularWeight": "513.6",
+            "xlogp": 1.6,
+            "inchikey": "LHNIIDJUOCFXAP-UHFFFAOYSA-N",
+            "iupacName": "4-[2-(1H-indazol-4-yl)-6-[(4-methylsulfonylpiperazin-1-yl)methyl]thieno[3,2-d]pyrimidin-4-yl]morpholine",
+            "source": "PubChem"
+          }
+        }
+      ],
+      "approvedDrugs": [],
+      "multiTargetCompounds": []
+    },
+    "drugRepurposing": {
+      "candidates": [
+        {
+          "drug": "PALBOCICLIB",
+          "drugId": "rxcui:1601374",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "LRRK2"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "VANDETANIB",
+          "drugId": "rxcui:1098413",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "LRRK2"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "ENTRECTINIB",
+          "drugId": "rxcui:2197862",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "LRRK2"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "GENTIAN VIOLET CATION",
+          "drugId": "rxcui:1546369",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "SNCA"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "MYCOPHENOLATE",
+          "drugId": "rxcui:265323",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "SNCA"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "DOXORUBICIN HYDROCHLORIDE",
+          "drugId": "rxcui:142433",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "SNCA"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        },
+        {
+          "drug": "KETOCONAZOLE",
+          "drugId": "rxcui:6135",
+          "repurposingScore": 45,
+          "confidence": "medium",
+          "breakdown": {
+            "targetMatch": 33.33333333333333,
+            "pathwayOverlap": 0,
+            "clinicalEvidence": 100,
+            "safetyProfile": 100,
+            "mechanismRelevance": 0
+          },
+          "matchedTargets": [
+            "SNCA"
+          ],
+          "currentIndication": "Unknown",
+          "proposedIndication": "parkinson's disease",
+          "mechanism": "Not specified",
+          "phase": "FDA Approved",
+          "estimatedSavings": {
+            "cost": "$1035M - $1535M",
+            "time": "8 - 10 years faster",
+            "confidence": "medium"
+          },
+          "reasoning": [
+            "⚠️ Partial target match (33%)",
+            "✅ FDA approved with proven safety profile"
+          ]
+        }
+      ],
+      "stats": {
+        "totalDrugsAnalyzed": 71,
+        "candidatesFound": 7,
+        "avgScore": 45,
+        "analysisTime": "0ms",
+        "minScore": 30,
+        "onlyApproved": false
+      },
+      "summary": {
+        "headline": "7 drug repurposing candidates identified for parkinson's disease",
+        "summary": "Top candidate: PALBOCICLIB (45% match). 7 FDA-approved drugs found.",
+        "recommendation": "Prioritize PALBOCICLIB for experimental validation. Estimated savings: $1035M - $1535M vs. new drug development.",
+        "commercialValue": "Enterprise feature worth $10K-50K/year. Total potential savings across 7 candidates: $10500M - $17500M."
+      },
+      "enterpriseValue": "$10K-50K/year",
+      "timestamp": "2026-01-15T20:43:11.851Z"
+    },
+    "novelHypotheses": {
+      "hypotheses": [
+        {
+          "type": "drug_repurposing",
+          "statement": "PALBOCICLIB may be repurposed to treat parkinson's disease",
+          "drug": "PALBOCICLIB",
+          "drugId": "rxcui:1601374",
+          "disease": "parkinson's disease",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets LRRK2 which are implicated in disease",
+          "score": 0.9666666666666666,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8933333333333333,
+          "impact": 0.95,
+          "plausibility": 0.8506666666666667,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8902666666666665,
+          "scorecard": {
+            "confidence": 0.8933333333333333,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8506666666666667,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 1,
+          "experimentalDesign": {
+            "hypothesis": "PALBOCICLIB may be repurposed to treat parkinson's disease",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for parkinson's disease",
+              "2. Treat with PALBOCICLIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "0b02818ed1413d6a",
+          "shareUrl": "http://localhost:8787/hypothesis/0b02818ed1413d6a",
+          "reportValidationUrl": "http://localhost:8787/api/validate/0b02818ed1413d6a"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "VANDETANIB may be repurposed to treat parkinson's disease",
+          "drug": "VANDETANIB",
+          "drugId": "rxcui:1098413",
+          "disease": "parkinson's disease",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets LRRK2 which are implicated in disease",
+          "score": 0.9666666666666666,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8933333333333333,
+          "impact": 0.95,
+          "plausibility": 0.8506666666666667,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8902666666666665,
+          "scorecard": {
+            "confidence": 0.8933333333333333,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8506666666666667,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 2,
+          "experimentalDesign": {
+            "hypothesis": "VANDETANIB may be repurposed to treat parkinson's disease",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for parkinson's disease",
+              "2. Treat with VANDETANIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "5b2f572295cc1c01",
+          "shareUrl": "http://localhost:8787/hypothesis/5b2f572295cc1c01",
+          "reportValidationUrl": "http://localhost:8787/api/validate/5b2f572295cc1c01"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "ENTRECTINIB may be repurposed to treat parkinson's disease",
+          "drug": "ENTRECTINIB",
+          "drugId": "rxcui:2197862",
+          "disease": "parkinson's disease",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets LRRK2 which are implicated in disease",
+          "score": 0.9666666666666666,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 4,
+          "approved": true,
+          "confidence": 0.8933333333333333,
+          "impact": 0.95,
+          "plausibility": 0.8506666666666667,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8902666666666665,
+          "scorecard": {
+            "confidence": 0.8933333333333333,
+            "novelty": 0.85,
+            "impact": 0.95,
+            "plausibility": 0.8506666666666667,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 3,
+          "experimentalDesign": {
+            "hypothesis": "ENTRECTINIB may be repurposed to treat parkinson's disease",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for parkinson's disease",
+              "2. Treat with ENTRECTINIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "f357a26ed1ecebf1",
+          "shareUrl": "http://localhost:8787/hypothesis/f357a26ed1ecebf1",
+          "reportValidationUrl": "http://localhost:8787/api/validate/f357a26ed1ecebf1"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "ADAVOSERTIB may be repurposed to treat parkinson's disease",
+          "drug": "ADAVOSERTIB",
+          "drugId": "ncit:C91725",
+          "disease": "parkinson's disease",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets LRRK2 which are implicated in disease",
+          "score": 0.9666666666666666,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 1,
+          "approved": false,
+          "confidence": 0.8933333333333333,
+          "impact": 0.8,
+          "plausibility": 0.8506666666666667,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8527666666666667,
+          "scorecard": {
+            "confidence": 0.8933333333333333,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.8506666666666667,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 4,
+          "experimentalDesign": {
+            "hypothesis": "ADAVOSERTIB may be repurposed to treat parkinson's disease",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for parkinson's disease",
+              "2. Treat with ADAVOSERTIB across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "e77b5d4109248aa2",
+          "shareUrl": "http://localhost:8787/hypothesis/e77b5d4109248aa2",
+          "reportValidationUrl": "http://localhost:8787/api/validate/e77b5d4109248aa2"
+        },
+        {
+          "type": "drug_repurposing",
+          "statement": "AST-487 may be repurposed to treat parkinson's disease",
+          "drug": "AST-487",
+          "drugId": "iuphar.ligand:5661",
+          "disease": "parkinson's disease",
+          "currentIndication": "Unknown",
+          "mechanism": "Targets LRRK2 which are implicated in disease",
+          "score": 0.9666666666666666,
+          "evidence": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingEvidence": 0,
+          "contradictingEvidence": 0,
+          "evidenceBalance": 0,
+          "novelty": 0.85,
+          "testable": true,
+          "clinicalPhase": 1,
+          "approved": false,
+          "confidence": 0.8933333333333333,
+          "impact": 0.8,
+          "plausibility": 0.8506666666666667,
+          "evidenceStrength": 1,
+          "contradictionPenalty": 0,
+          "supportingEvidenceItems": [],
+          "contradictingEvidenceItems": [],
+          "mixedEvidenceItems": [],
+          "neutralEvidenceItems": [
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            },
+            {
+              "type": "target_overlap",
+              "gene": "LRRK2",
+              "description": "Drug targets gene associated with disease",
+              "weight": 0.6
+            }
+          ],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "noveltyRationale": "Highly novel; limited direct literature links, multi-source evidence support.",
+          "noveltySignals": {
+            "directEvidenceScore": 0,
+            "evidenceStrength": 1,
+            "supportingEvidence": 0,
+            "contradictingEvidence": 0
+          },
+          "totalScore": 0.8527666666666667,
+          "scorecard": {
+            "confidence": 0.8933333333333333,
+            "novelty": 0.85,
+            "impact": 0.8,
+            "plausibility": 0.8506666666666667,
+            "evidenceStrength": 1,
+            "contradictionPenalty": 0,
+            "supporting": 0,
+            "contradicting": 0,
+            "mixed": 0,
+            "neutral": 18,
+            "supportWeight": 0,
+            "contradictWeight": 0
+          },
+          "rank": 5,
+          "experimentalDesign": {
+            "hypothesis": "AST-487 may be repurposed to treat parkinson's disease",
+            "experimentType": "In Vitro Efficacy + Mechanism Validation",
+            "protocol": [
+              "1. Select disease-relevant cell lines or organoids for parkinson's disease",
+              "2. Treat with AST-487 across a dose range (8-12 concentrations)",
+              "3. Measure viability, apoptosis, and pathway biomarkers at 24h/72h",
+              "4. Validate on-target engagement with western blot or target-specific assays"
+            ],
+            "controls": [
+              "Vehicle control (DMSO)",
+              "Known standard-of-care drug (positive control)",
+              "Off-target negative control compound"
+            ],
+            "readouts": [
+              "Dose-response curve and IC50",
+              "Biomarker modulation (pathway activation/inhibition)",
+              "Cell cycle profiling (flow cytometry)",
+              "Transcriptomic response signature"
+            ],
+            "timeline": "3-6 weeks",
+            "estimatedCost": "$10,000-20,000",
+            "successCriteria": "Significant efficacy vs control with IC50 < 1 μM and biomarker modulation",
+            "predictedOutcome": "89% probability of efficacy",
+            "expectedOutcome": "Exploratory outcome; limited direct evidence in current graph."
+          },
+          "id": "67335589aa73db07",
+          "shareUrl": "http://localhost:8787/hypothesis/67335589aa73db07",
+          "reportValidationUrl": "http://localhost:8787/api/validate/67335589aa73db07"
+        }
+      ],
+      "stats": {
+        "candidatesGenerated": 8,
+        "hypothesesReturned": 5,
+        "avgConfidence": 0.8933333333333333,
+        "avgNovelty": 0.85,
+        "generationTime": "9ms",
+        "graphSize": {
+          "nodes": 114,
+          "edges": 128
+        }
+      },
+      "metadata": {
+        "timestamp": "2026-01-15T20:43:23.817Z",
+        "diseaseContext": "parkinson's disease",
+        "geneCount": 3,
+        "minConfidence": 0.65,
+        "noveltyThreshold": 0.7
+      },
+      "accuracyStats": {
+        "overallAccuracy": 0,
+        "totalHypotheses": 292,
+        "totalValidations": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "partial": 0,
+        "pending": 0,
+        "accuracyByType": {},
+        "trustScore": 0,
+        "message": "Building trust - Testing predictions in the lab"
+      },
+      "enterpriseValue": "$100K-500K/year",
+      "patentPotential": "HIGH - Novel predictions can be patented",
+      "revolutionaryNote": "These predictions go BEYOND existing literature - they are NEW knowledge generated by AI",
+      "learningNote": "AI improves with every validation. Current accuracy: 0.0% based on 0 validations"
+    },
+    "citations": [
+      {
+        "pmid": "39153957",
+        "citation": "Xiong Y, Yu J. LRRK2 in Parkinson's disease: upstream regulation and therapeutic targeting.. Trends in molecular medicine. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39153957/"
+      },
+      {
+        "pmid": "38621236",
+        "citation": "Alessi DR, Pfeffer SR. Leucine-Rich Repeat Kinases.. Annual review of biochemistry. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38621236/"
+      },
+      {
+        "pmid": "39596444",
+        "citation": "Arya R, Haque AKMA, Shakya H. Parkinson's Disease: Biomarkers for Diagnosis and Disease Progression.. International journal of molecular sciences. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39596444/"
+      },
+      {
+        "pmid": "39358449",
+        "citation": "Narendra DP, Youle RJ. The role of PINK1-Parkin in mitochondrial quality control.. Nature cell biology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39358449/"
+      },
+      {
+        "pmid": "38368937",
+        "citation": "Alessi DR, Cullen PJ, Cookson M. Retromer-dependent lysosomal stress in Parkinson's disease.. Philosophical transactions of the Royal Society of London. Series B, Biological sciences. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38368937/"
+      },
+      {
+        "pmid": "39983584",
+        "citation": "Bentley-DeSousa A, Clegg D, Ferguson SM. LRRK2, lysosome damage, and Parkinson's disease.. Current opinion in cell biology. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39983584/"
+      },
+      {
+        "pmid": "39029778",
+        "citation": "Lal R, Singh A, Watts S. Experimental models of Parkinson's disease: Challenges and Opportunities.. European journal of pharmacology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39029778/"
+      },
+      {
+        "pmid": "38377788",
+        "citation": "Kalyanaraman B, Cheng G, Hardy M. Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.. Redox biology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38377788/"
+      },
+      {
+        "pmid": "39585446",
+        "citation": "Hattori N, Sato S. Mitochondrial dysfunction in Parkinson's disease.. Journal of neural transmission (Vienna, Austria : 1996). 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39585446/"
+      },
+      {
+        "pmid": "40914459",
+        "citation": "Kim TY, Lee BD. Current therapeutic strategies in Parkinson's disease: Future perspectives.. Molecules and cells. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40914459/"
+      },
+      {
+        "pmid": "38438297",
+        "citation": "Maayan Eshed G, Alcalay RN. GBA1-and LRRK2-directed Treatments: The Way Forward.. Parkinsonism & related disorders. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38438297/"
+      },
+      {
+        "pmid": "40121531",
+        "citation": "Szunyogh S, Carroll E, Wade-Martins R. Recent developments in gene therapy for Parkinson's disease.. Molecular therapy : the journal of the American Society of Gene Therapy. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40121531/"
+      },
+      {
+        "pmid": "39945455",
+        "citation": "Cogan G, Brice A. [Parkinson's disease: from genetics to targeted therapies].. Comptes rendus biologies. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39945455/"
+      },
+      {
+        "pmid": "39514635",
+        "citation": "Sun S, Hodel M, Wang X. Macrophage LRRK2 hyperactivity impairs autophagy and induces Paneth cell dysfunction.. Science immunology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39514635/"
+      },
+      {
+        "pmid": "38614108",
+        "citation": "Gustavsson EK, Follett J, Trinh J. RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.. The Lancet. Neurology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38614108/"
+      },
+      {
+        "pmid": "40440058",
+        "citation": "Buck SA, Sanders LH. LRRK2-mediated mitochondrial dysfunction in Parkinson's disease.. The Biochemical journal. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40440058/"
+      },
+      {
+        "pmid": "39074992",
+        "citation": "Cook L, Verbrugge J, Schwantes-An TH. Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.. Brain : a journal of neurology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39074992/"
+      },
+      {
+        "pmid": "39199337",
+        "citation": "Caramiello AM, Pirota V. Novel Therapeutic Horizons:  Targeting in Parkinson's Disease.. Biomolecules. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39199337/"
+      },
+      {
+        "pmid": "38951707",
+        "citation": "Agarwal A, Chandran A, Raza F. VAMP2 regulates phase separation of α-synuclein.. Nature cell biology. 2024.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38951707/"
+      },
+      {
+        "pmid": "39812709",
+        "citation": "Bentley-DeSousa A, Roczniak-Ferguson A, Ferguson SM. A STING-CASM-GABARAP pathway activates LRRK2 at lysosomes.. The Journal of cell biology. 2025.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39812709/"
+      }
+    ],
+    "citationCounts": {
+      "38368937": 5,
+      "38377788": 84,
+      "38438297": 7,
+      "38614108": 67,
+      "38621236": 33,
+      "38702933": 4,
+      "38951707": 29,
+      "39029778": 44,
+      "39074992": 58,
+      "39153957": 19,
+      "39199337": 7,
+      "39300082": 23,
+      "39358449": 175,
+      "39514635": 5,
+      "39585446": 7,
+      "39596444": 0,
+      "39799347": 3,
+      "39812709": 33,
+      "39905728": 6,
+      "39945455": 0,
+      "39962078": 13,
+      "39983584": 12,
+      "40121531": 4,
+      "40185526": 5,
+      "40262613": 5,
+      "40440058": 3,
+      "40626361": 4,
+      "40737317": 1,
+      "40914459": 2,
+      "41083601": 0
+    },
+    "openAccessMap": {
+      "38368937": "https://royalsocietypublishing.org/doi/pdf/10.1098/rstb.2022.0376",
+      "38377788": "https://doi.org/10.1016/j.redox.2024.103092",
+      "38614108": "http://www.thelancet.com/article/S1474442224001212/pdf",
+      "38702933": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11069054",
+      "38951707": "https://www.nature.com/articles/s41556-024-01451-6.pdf",
+      "39074992": "https://academic.oup.com/brain/article-pdf/147/8/2668/58712400/awae142.pdf",
+      "39199337": "https://www.mdpi.com/2218-273X/14/8/949/pdf?version=1722933019",
+      "39300082": "https://doi.org/10.1038/s41467-024-51889-3",
+      "39812709": "https://www.biorxiv.org/content/biorxiv/early/2023/11/01/2023.10.31.564602.full.pdf"
+    },
+    "leadingResearchers": [
+      {
+        "name": "R. Youle",
+        "paperCount": 1,
+        "totalCitations": 175,
+        "avgCitations": 175,
+        "topPaper": {
+          "pmid": "39358449",
+          "title": "The role of PINK1-Parkin in mitochondrial quality control.",
+          "year": "2024",
+          "citationCount": 175
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "Derek P. Narendra",
+        "paperCount": 1,
+        "totalCitations": 175,
+        "avgCitations": 175,
+        "topPaper": {
+          "pmid": "39358449",
+          "title": "The role of PINK1-Parkin in mitochondrial quality control.",
+          "year": "2024",
+          "citationCount": 175
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Micael Hardy",
+        "paperCount": 1,
+        "totalCitations": 84,
+        "avgCitations": 84,
+        "topPaper": {
+          "pmid": "38377788",
+          "title": "Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.",
+          "year": "2024",
+          "citationCount": 84
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "Balaraman Kalyanaraman",
+        "paperCount": 1,
+        "totalCitations": 84,
+        "avgCitations": 84,
+        "topPaper": {
+          "pmid": "38377788",
+          "title": "Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.",
+          "year": "2024",
+          "citationCount": 84
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Gang Cheng",
+        "paperCount": 1,
+        "totalCitations": 84,
+        "avgCitations": 84,
+        "topPaper": {
+          "pmid": "38377788",
+          "title": "Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.",
+          "year": "2024",
+          "citationCount": 84
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Alex Rajput",
+        "paperCount": 2,
+        "totalCitations": 134,
+        "avgCitations": 67,
+        "topPaper": {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "year": "2024",
+          "citationCount": 67
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Matthew J. Farrer",
+        "paperCount": 1,
+        "totalCitations": 67,
+        "avgCitations": 67,
+        "topPaper": {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "year": "2024",
+          "citationCount": 67
+        },
+        "role": "Senior Researcher"
+      },
+      {
+        "name": "E. Gustavsson",
+        "paperCount": 1,
+        "totalCitations": 67,
+        "avgCitations": 67,
+        "topPaper": {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "year": "2024",
+          "citationCount": 67
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "J. Follett",
+        "paperCount": 1,
+        "totalCitations": 67,
+        "avgCitations": 67,
+        "topPaper": {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "year": "2024",
+          "citationCount": 67
+        },
+        "role": "Active Contributor"
+      },
+      {
+        "name": "Joanne Trinh",
+        "paperCount": 1,
+        "totalCitations": 67,
+        "avgCitations": 67,
+        "topPaper": {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "year": "2024",
+          "citationCount": 67
+        },
+        "role": "Active Contributor"
+      }
+    ],
+    "recommendedPapers": [],
+    "totalPapersUsed": 8,
+    "evidenceSummary": {
+      "totalItems": 3,
+      "papersWithEvidence": 2,
+      "topItems": [
+        {
+          "pmid": "38614108",
+          "label": "p=0",
+          "context": "affected individuals; non-parametric linkage Z score=1·95; p=0·03). 2604 unrelated individuals with Parkinson's disease an"
+        },
+        {
+          "pmid": "38614108",
+          "label": "n=16",
+          "context": "disease presented at age 54·6 years (SD 12·75, range 31-81, n=16), and two-thirds had a family history of parkinsonism. RAB3"
+        },
+        {
+          "pmid": "39074992",
+          "label": "510 participants",
+          "context": "Between September 2019 and June 2023, the study enrolled 10 510 participants across >85 centres, with 8301 having received results. Part"
+        }
+      ]
+    },
+    "evidenceLedger": {
+      "summary": {
+        "totalItems": 3,
+        "papersWithEvidence": 2,
+        "topItems": [
+          {
+            "pmid": "38614108",
+            "label": "p=0",
+            "context": "affected individuals; non-parametric linkage Z score=1·95; p=0·03). 2604 unrelated individuals with Parkinson's disease an"
+          },
+          {
+            "pmid": "38614108",
+            "label": "n=16",
+            "context": "disease presented at age 54·6 years (SD 12·75, range 31-81, n=16), and two-thirds had a family history of parkinsonism. RAB3"
+          },
+          {
+            "pmid": "39074992",
+            "label": "510 participants",
+            "context": "Between September 2019 and June 2023, the study enrolled 10 510 participants across >85 centres, with 8301 having received results. Part"
+          }
+        ]
+      },
+      "papers": [
+        {
+          "pmid": "39153957",
+          "title": "LRRK2 in Parkinson's disease: upstream regulation and therapeutic targeting.",
+          "journal": "Trends in molecular medicine",
+          "year": "2024",
+          "citationCount": 19,
+          "influentialCitationCount": 1,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.53,
+          "evidenceScoreComponents": {
+            "citations": 1.56,
+            "influential": 0.27,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38621236",
+          "title": "Leucine-Rich Repeat Kinases.",
+          "journal": "Annual review of biochemistry",
+          "year": "2024",
+          "citationCount": 33,
+          "influentialCitationCount": 3,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.48,
+          "evidenceScoreComponents": {
+            "citations": 1.84,
+            "influential": 0.54,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39358449",
+          "title": "The role of PINK1-Parkin in mitochondrial quality control.",
+          "journal": "Nature cell biology",
+          "year": "2024",
+          "citationCount": 175,
+          "influentialCitationCount": 3,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "support",
+          "evidenceSignals": {
+            "supportHits": 1,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 5.39,
+          "evidenceScoreComponents": {
+            "citations": 2.69,
+            "influential": 0.54,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0.2,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0.4,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39983584",
+          "title": "LRRK2, lysosome damage, and Parkinson's disease.",
+          "journal": "Current opinion in cell biology",
+          "year": "2025",
+          "citationCount": 12,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.89,
+          "evidenceScoreComponents": {
+            "citations": 1.34,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39029778",
+          "title": "Experimental models of Parkinson's disease: Challenges and Opportunities.",
+          "journal": "European journal of pharmacology",
+          "year": "2024",
+          "citationCount": 44,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": "in vitro",
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.23,
+          "evidenceScoreComponents": {
+            "citations": 1.98,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0.15,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38377788",
+          "title": "Gut microbiome, short-chain fatty acids, alpha-synuclein, neuroinflammation, and ROS/RNS: Relevance to Parkinson's disease and therapeutic implications.",
+          "journal": "Redox biology",
+          "year": "2024",
+          "citationCount": 84,
+          "influentialCitationCount": 1,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://doi.org/10.1016/j.redox.2024.103092",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 3.69,
+          "evidenceScoreComponents": {
+            "citations": 2.32,
+            "influential": 0.27,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39945455",
+          "title": "[Parkinson's disease: from genetics to targeted therapies].",
+          "journal": "Comptes rendus biologies",
+          "year": "2025",
+          "citationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 1.1,
+          "evidenceScoreComponents": {
+            "citations": 0,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39514635",
+          "title": "Macrophage LRRK2 hyperactivity impairs autophagy and induces Paneth cell dysfunction.",
+          "journal": "Science immunology",
+          "year": "2024",
+          "citationCount": 5,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": null,
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.68,
+          "evidenceScoreComponents": {
+            "citations": 0.93,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "38614108",
+          "title": "RAB32 Ser71Arg in autosomal dominant Parkinson's disease: linkage, association, and functional analyses.",
+          "journal": "The Lancet. Neurology",
+          "year": "2024",
+          "citationCount": 67,
+          "influentialCitationCount": 0,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": "case-control",
+          "sampleSize": 6043,
+          "sampleSizeText": "6043 individuals",
+          "openAccessUrl": "http://www.thelancet.com/article/S1474442224001212/pdf",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier1",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "38614108",
+              "label": "p=0",
+              "context": "affected individuals; non-parametric linkage Z score=1·95; p=0·03). 2604 unrelated individuals with Parkinson's disease an"
+            },
+            {
+              "pmid": "38614108",
+              "label": "n=16",
+              "context": "disease presented at age 54·6 years (SD 12·75, range 31-81, n=16), and two-thirds had a family history of parkinsonism. RAB3"
+            }
+          ],
+          "evidenceCount": 2,
+          "evidenceScore": 7.84,
+          "evidenceScoreComponents": {
+            "citations": 2.2,
+            "influential": 0,
+            "sampleSize": 2.84,
+            "evidenceItems": 0.7,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0.35,
+            "polarity": 0,
+            "journalTier": 0.6,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39074992",
+          "title": "Parkinson's disease variant detection and disclosure: PD GENEration, a North American study.",
+          "journal": "Brain : a journal of neurology",
+          "year": "2024",
+          "citationCount": 58,
+          "influentialCitationCount": 2,
+          "isReview": false,
+          "studyType": "mixed",
+          "studyDesign": null,
+          "sampleSize": 510,
+          "sampleSizeText": "510 participants",
+          "openAccessUrl": "https://academic.oup.com/brain/article-pdf/147/8/2668/58712400/awae142.pdf",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [
+            {
+              "pmid": "39074992",
+              "label": "510 participants",
+              "context": "Between September 2019 and June 2023, the study enrolled 10 510 participants across >85 centres, with 8301 having received results. Part"
+            }
+          ],
+          "evidenceCount": 1,
+          "evidenceScore": 6.24,
+          "evidenceScoreComponents": {
+            "citations": 2.13,
+            "influential": 0.43,
+            "sampleSize": 2.03,
+            "evidenceItems": 0.35,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.8,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        },
+        {
+          "pmid": "39199337",
+          "title": "Novel Therapeutic Horizons:  Targeting in Parkinson's Disease.",
+          "journal": "Biomolecules",
+          "year": "2024",
+          "citationCount": 7,
+          "influentialCitationCount": 0,
+          "isReview": true,
+          "studyType": "review",
+          "studyDesign": null,
+          "sampleSize": null,
+          "sampleSizeText": null,
+          "openAccessUrl": "https://www.mdpi.com/2218-273X/14/8/949/pdf?version=1722933019",
+          "evidencePolarity": "neutral",
+          "evidenceSignals": {
+            "supportHits": 0,
+            "contradictHits": 0
+          },
+          "contradictionTags": [],
+          "contradictionSummary": null,
+          "journalTier": "tier3",
+          "trialPhase": null,
+          "isRetracted": false,
+          "evidenceItems": [],
+          "evidenceCount": 0,
+          "evidenceScore": 2.18,
+          "evidenceScoreComponents": {
+            "citations": 1.08,
+            "influential": 0,
+            "sampleSize": 0,
+            "evidenceItems": 0,
+            "evidenceSignals": 0,
+            "recency": 0.35,
+            "studyType": 0.6,
+            "studyDesign": 0,
+            "polarity": 0,
+            "journalTier": 0.15,
+            "trialPhase": 0,
+            "retraction": 0
+          }
+        }
+      ],
+      "insightLinks": {
+        "pathways": [
+          {
+            "id": "pathway-0",
+            "label": "Parkinson disease - Homo sapiens (human)",
+            "citations": [
+              "PMID:39153957",
+              "PMID:38621236"
+            ],
+            "pmids": [
+              "39153957",
+              "38621236"
+            ],
+            "supportingPmids": [
+              "39153957"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53).",
+            "provenance": {
+              "supportingPmids": [
+                "39153957"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53)."
+            }
+          },
+          {
+            "id": "pathway-1",
+            "label": "Mitophagy - animal - Homo sapiens (human)",
+            "citations": [
+              "PMID:39358449",
+              "PMID:39514635"
+            ],
+            "pmids": [
+              "39358449",
+              "39514635"
+            ],
+            "supportingPmids": [
+              "39358449"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39358449 (TIER1, review, score 5.39).",
+            "provenance": {
+              "supportingPmids": [
+                "39358449"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39358449 (TIER1, review, score 5.39)."
+            }
+          }
+        ],
+        "strategies": [
+          {
+            "id": "strategy-0",
+            "label": "LRRK2 kinase inhibition",
+            "citations": [
+              "PMID:39153957",
+              "PMID:39983584"
+            ],
+            "pmids": [
+              "39153957",
+              "39983584"
+            ],
+            "supportingPmids": [
+              "39153957"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53).",
+            "provenance": {
+              "supportingPmids": [
+                "39153957"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53)."
+            }
+          },
+          {
+            "id": "strategy-1",
+            "label": "Targeting α-synuclein aggregation",
+            "citations": [
+              "PMID:39199337",
+              "PMID:39029778"
+            ],
+            "pmids": [
+              "39199337",
+              "39029778"
+            ],
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantitativeData": "Not reported in abstracts",
+            "quantEvidence": [],
+            "trustRationale": "No direct support in 2 cited papers.",
+            "provenance": {
+              "supportingPmids": [],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "No direct support in 2 cited papers."
+            }
+          },
+          {
+            "id": "hypothesis-0",
+            "label": "Novel hypothesis: Exploring the interplay between LRRK2 and α-synuclein in PD pathology.",
+            "citations": [
+              "PMID:39153957",
+              "PMID:38377788"
+            ],
+            "pmids": [
+              "39153957",
+              "38377788"
+            ],
+            "supportingPmids": [
+              "39153957"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53).",
+            "provenance": {
+              "supportingPmids": [
+                "39153957"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39153957 (TIER3, review, score 3.53)."
+            }
+          }
+        ],
+        "topics": [
+          {
+            "id": "topic-0",
+            "label": "Mitochondrial dysfunction in Parkinson's disease",
+            "citations": [
+              "PMID:39358449",
+              "PMID:39514635"
+            ],
+            "pmids": [
+              "39358449",
+              "39514635"
+            ],
+            "supportingPmids": [
+              "39358449"
+            ],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "evidenceSnippets": [],
+            "evidenceStatus": "unverified",
+            "quantEvidence": [],
+            "trustRationale": "Supported by 1/2 papers; top support PMID:39358449 (TIER1, review, score 5.39).",
+            "provenance": {
+              "supportingPmids": [
+                "39358449"
+              ],
+              "contradictingPmids": [],
+              "mixedPmids": [],
+              "trustRationale": "Supported by 1/2 papers; top support PMID:39358449 (TIER1, review, score 5.39)."
+            }
+          }
+        ]
+      },
+      "hypothesisLinks": [
+        {
+          "id": "0b02818ed1413d6a",
+          "type": "drug_repurposing",
+          "statement": "PALBOCICLIB may be repurposed to treat parkinson's disease",
+          "confidence": 0.8933333333333333,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "5b2f572295cc1c01",
+          "type": "drug_repurposing",
+          "statement": "VANDETANIB may be repurposed to treat parkinson's disease",
+          "confidence": 0.8933333333333333,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "f357a26ed1ecebf1",
+          "type": "drug_repurposing",
+          "statement": "ENTRECTINIB may be repurposed to treat parkinson's disease",
+          "confidence": 0.8933333333333333,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "e77b5d4109248aa2",
+          "type": "drug_repurposing",
+          "statement": "ADAVOSERTIB may be repurposed to treat parkinson's disease",
+          "confidence": 0.8933333333333333,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        },
+        {
+          "id": "67335589aa73db07",
+          "type": "drug_repurposing",
+          "statement": "AST-487 may be repurposed to treat parkinson's disease",
+          "confidence": 0.8933333333333333,
+          "evidenceStrength": 1,
+          "pmids": [],
+          "supportingPmids": [],
+          "contradictingPmids": [],
+          "mixedPmids": [],
+          "evidenceSummary": [
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            },
+            {
+              "type": "target_overlap",
+              "source": null,
+              "weight": 0.6,
+              "gene": "LRRK2"
+            }
+          ],
+          "quantEvidence": [],
+          "trustRationale": "No linked papers for this claim.",
+          "provenance": {
+            "supportingPmids": [],
+            "contradictingPmids": [],
+            "mixedPmids": [],
+            "trustRationale": "No linked papers for this claim."
+          }
+        }
+      ]
+    },
+    "evidenceScorecard": {
+      "papers": {
+        "support": 8,
+        "contradict": 0,
+        "mixed": 0,
+        "neutral": 22
+      },
+      "insights": {
+        "total": 6,
+        "withSupport": 5,
+        "withContradictions": 0,
+        "withMixed": 0,
+        "withoutCitations": 0
+      },
+      "hypotheses": {
+        "total": 5,
+        "withSupport": 0,
+        "withContradictions": 0,
+        "withMixed": 0
+      },
+      "citationWarnings": 0,
+      "consensus": {
+        "supportWeight": 8.92,
+        "contradictWeight": 0,
+        "mixedWeight": 0,
+        "totalWeight": 8.92,
+        "consensusRatio": 1,
+        "contentionRatio": 0,
+        "netConsensus": 1,
+        "consensusLabel": "Strong",
+        "contentionLabel": "Low"
+      }
+    },
+    "qualityMetrics": {
+      "score": 59,
+      "groundedRatio": 0,
+      "groundedCount": 0,
+      "insightCount": 5,
+      "pathways": 2,
+      "strategies": 2,
+      "topics": 1,
+      "hypotheses": 5,
+      "papersUsed": 8,
+      "evidenceItems": 3,
+      "evidencePapers": 2,
+      "sourcesAvailable": 14,
+      "sourcesTotal": 16
+    },
+    "learningMemory": {
+      "source": "knowledge-graph-cache",
+      "pathways": [
+        {
+          "pathway": "undefined",
+          "geneOverlap": [
+            "LRRK2",
+            "SNCA",
+            "PRKN"
+          ],
+          "confidence": "cached"
+        }
+      ],
+      "message": "Instant results from previous analyses! (No API calls needed)"
+    },
+    "audience": "researcher",
+    "audienceLabel": "Researcher-focused view",
+    "generatedAtIso": "2026-01-15T20:43:11.851Z",
+    "analysisTime": "44493ms",
+    "dataSource": {
+      "genes": "Ensembl + ClinVar + UniProt + Gene Ontology",
+      "pathways": "KEGG + Reactome v95",
+      "literature": "PubMed + Semantic Scholar",
+      "interactions": "STRING",
+      "clinical": "Open Targets + GWAS Catalog",
+      "drugs": "DGIdb + PubChem + ChEMBL",
+      "ai": "GPT-4o-mini",
+      "hypothesisEngine": "GaiaLab AI (Graph Neural Networks + Probabilistic Reasoning)"
+    },
+    "dataAvailability": {
+      "literature": {
+        "pubmed": true,
+        "semanticScholar": true
+      },
+      "pathways": {
+        "kegg": true,
+        "reactome": true
+      },
+      "interactions": {
+        "string": true,
+        "biogrid": false
+      },
+      "clinical": {
+        "openTargets": true,
+        "disgenet": false,
+        "gwasCatalog": true
+      },
+      "drugs": {
+        "chembl": true,
+        "drugbank": false,
+        "drugbankFallback": false,
+        "dgidb": true,
+        "pubchem": true
+      }
+    },
+    "databaseStats": {
+      "totalDatabases": 16,
+      "availableDatabases": [
+        "Ensembl",
+        "ClinVar",
+        "UniProt",
+        "Gene Ontology",
+        "KEGG",
+        "Reactome v95",
+        "PubMed",
+        "Semantic Scholar",
+        "STRING",
+        "Open Targets",
+        "GWAS Catalog",
+        "DGIdb",
+        "PubChem",
+        "ChEMBL"
+      ],
+      "availableCount": 14,
+      "bioactiveCompounds": "2.4M+",
+      "databases": [
+        "UniProt",
+        "KEGG",
+        "Reactome",
+        "PubMed",
+        "STRING",
+        "Open Targets",
+        "BioGRID",
+        "Gene Ontology",
+        "Ensembl",
+        "GWAS Catalog",
+        "DisGeNET",
+        "ClinVar",
+        "ChEMBL",
+        "PubChem",
+        "DrugBank",
+        "Semantic Scholar"
+      ]
+    },
+    "snapshot": null,
+    "disclaimer": "AI-generated insights for research purposes. Requires expert validation. Not medical advice.",
+    "cacheStats": {
+      "cached": false,
+      "timestamp": 1768509836355,
+      "tier": "fresh",
+      "hitRate": 0
+    }
+  },
+  "modelConfig": {
+    "aiModelUsed": "GPT-4o-mini",
+    "modelTimeoutMs": 90000,
+    "providers": {
+      "openai": true,
+      "deepseek": true,
+      "gemini": false,
+      "anthropic": true
+    },
+    "modelIds": {
+      "openai": "gpt-4o-mini",
+      "deepseek": "deepseek-chat",
+      "gemini": "gemini-2.0-flash-exp",
+      "anthropic": "claude-3-5-sonnet-latest"
+    },
+    "includeDrugs": true
+  },
+  "versions": {
+    "app": "0.1.0",
+    "node": "v22.18.0"
+  },
+  "signature": "9a3914e7e2a1"
+}

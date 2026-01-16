@@ -810,6 +810,6 @@ Every time you use GaiaLab, you're:
 
 ---
 
-**GaiaLab v1.0** | 🌟 Developed by **Oluwafemi Idiakhoa** | Built with Claude Code | Powered by UniProt + KEGG + PubMed + AI
+**GaiaLab v1.0** | Built with Claude Code | Powered by UniProt + KEGG + PubMed + AI
 
 *"600x faster than manual research. Publication-quality insights in 60 seconds."*

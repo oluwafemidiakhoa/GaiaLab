@@ -14,6 +14,71 @@ export class PubMedClient {
   }
 
   /**
+   * Build a gene search clause with ambiguity safeguards
+   * @private
+   */
+  buildGeneClause(geneSymbol) {
+    const symbol = this.sanitizeSearchTerm(geneSymbol);
+    if (!symbol) return '';
+
+    const isShortAmbiguous = symbol.length <= 3 && /^[A-Z]+$/.test(symbol);
+    const symbolField = `${symbol}[Gene Symbol]`;
+    const titleAbstract = `${symbol}[Title/Abstract]`;
+
+    if (isShortAmbiguous) {
+      return `(${symbolField} OR (${titleAbstract} AND (gene[Title/Abstract] OR protein[Title/Abstract])))`;
+    }
+
+    return `(${symbolField} OR ${titleAbstract})`;
+  }
+
+  /**
+   * Build a disease context clause with phrase + token matching
+   * @private
+   */
+  buildDiseaseClause(diseaseContext) {
+    const cleaned = this.sanitizeSearchTerm(diseaseContext);
+    if (!cleaned) return '';
+
+    const tokens = cleaned.split(/\s+/).filter(token => token.length > 2);
+    const phrase = `"${cleaned}"[Title/Abstract]`;
+
+    if (tokens.length <= 1) {
+      return `(${phrase})`;
+    }
+
+    const tokenClause = tokens.map(token => `${token}[Title/Abstract]`).join(' AND ');
+    return `(${phrase} OR (${tokenClause}))`;
+  }
+
+  /**
+   * Build a topic relevance clause to focus on mechanistic/therapeutic work
+   * @private
+   */
+  buildTopicClause() {
+    return '(' +
+      [
+        'pathway[Title/Abstract]',
+        'therapeutic[Title/Abstract]',
+        'therapy[Title/Abstract]',
+        'drug[Title/Abstract]',
+        'mechanism[Title/Abstract]',
+        'signaling[Title/Abstract]',
+        'interaction[Title/Abstract]',
+        'clinical[Title/Abstract]'
+      ].join(' OR ') +
+      ')';
+  }
+
+  /**
+   * Sanitize search terms to avoid query errors
+   * @private
+   */
+  sanitizeSearchTerm(term) {
+    return String(term || '').replace(/["']/g, '').trim();
+  }
+
+  /**
    * Search PubMed for papers relevant to a gene
    * @param {string} geneSymbol - Gene symbol (e.g., 'TP53', 'BRCA1')
    * @param {Object} options - Search options
@@ -28,13 +93,17 @@ export class PubMedClient {
 
     try {
       // Build search query targeting gene-disease-therapy connections
-      let query = `${geneSymbol}[Gene Symbol]`;
+      const geneClause = this.buildGeneClause(geneSymbol);
+      let query = geneClause;
 
       if (diseaseContext) {
-        query += ` AND (${diseaseContext}[Title/Abstract])`;
+        const diseaseClause = this.buildDiseaseClause(diseaseContext);
+        if (diseaseClause) {
+          query += ` AND ${diseaseClause}`;
+        }
       }
 
-      query += ` AND (therapy[MeSH] OR pathway[Title/Abstract] OR drug[Title/Abstract] OR therapeutic[Title/Abstract])`;
+      query += ` AND (therapy[MeSH] OR ${this.buildTopicClause()})`;
 
       const params = {
         db: 'pubmed',
@@ -121,12 +190,18 @@ export class PubMedClient {
         if (!articleData) continue;
 
         const pmid = medlineCitation?.PMID?.[0]?._ || medlineCitation?.PMID?.[0];
-        const title = articleData?.ArticleTitle?.[0] || 'No title';
+        const titleNode = articleData?.ArticleTitle?.[0];
+        const title = typeof titleNode === 'string'
+          ? titleNode
+          : (titleNode?._ || titleNode?.['#text'] || 'No title');
 
         // Extract abstract
         const abstractParts = articleData?.Abstract?.[0]?.AbstractText || [];
         const abstractText = abstractParts
-          .map(part => typeof part === 'string' ? part : part._)
+          .map(part => {
+            if (typeof part === 'string') return part;
+            return part?._ || part?.['#text'] || '';
+          })
           .join(' ');
 
         // Extract journal info
@@ -145,6 +220,10 @@ export class PubMedClient {
           return `${lastName} ${initials}`.trim();
         });
 
+        const publicationTypes = (articleData?.PublicationTypeList?.[0]?.PublicationType || [])
+          .map(type => (typeof type === 'string' ? type : type?._))
+          .filter(Boolean);
+
         papers.push({
           pmid,
           title,
@@ -152,6 +231,7 @@ export class PubMedClient {
           journal: journalTitle,
           year,
           authors: authors.join(', '),
+          publicationTypes,
           relevanceScore: 1.0 - (papers.length * 0.01) // Decay by search rank
         });
       }
@@ -199,14 +279,25 @@ export class PubMedClient {
 
     try {
       // Build combined query for all genes
-      const geneQuery = genes.map(g => `${g}[Gene Symbol]`).join(' OR ');
+      const geneQuery = genes
+        .map(gene => this.buildGeneClause(gene))
+        .filter(Boolean)
+        .join(' OR ');
+
+      if (!geneQuery) {
+        return [];
+      }
+
       let query = `(${geneQuery})`;
 
       if (diseaseContext) {
-        query += ` AND (${diseaseContext}[Title/Abstract])`;
+        const diseaseClause = this.buildDiseaseClause(diseaseContext);
+        if (diseaseClause) {
+          query += ` AND ${diseaseClause}`;
+        }
       }
 
-      query += ` AND (pathway[Title/Abstract] OR therapeutic[Title/Abstract])`;
+      query += ` AND ${this.buildTopicClause()}`;
 
       const params = {
         db: 'pubmed',

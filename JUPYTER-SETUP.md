@@ -625,4 +625,4 @@ All outputs are already publication-quality! Use:
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** | Built with Claude Code | Powered by IPython + AI
+Built with Claude Code | Powered by IPython + AI

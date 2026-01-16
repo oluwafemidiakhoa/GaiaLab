@@ -11,11 +11,11 @@
  *
  * Multi-source validation reveals the most reliable disease associations
  *
- * @author Oluwafemi Idiakhoa
  */
 
 import { openTargetsClient } from '../integrations/opentargets-client.js';
 import { disgenetClient } from '../integrations/disgenet-client.js';
+import { gwasCatalogClient } from '../integrations/gwas-catalog-client.js';
 
 /**
  * Clinical Association Aggregator
@@ -25,7 +25,7 @@ import { disgenetClient } from '../integrations/disgenet-client.js';
  */
 export class ClinicalAggregator {
   constructor() {
-    this.sources = ['Open Targets', 'DisGeNET']; // Multi-source validation
+    this.sources = ['Open Targets', 'DisGeNET', 'GWAS Catalog']; // Multi-source validation
     this.confidenceThresholds = {
       high: 0.7,    // 70%+ association score or multi-source validation
       medium: 0.4,  // 40-70% association score
@@ -52,13 +52,26 @@ export class ClinicalAggregator {
     const startTime = Date.now();
 
     try {
+      const disgenetEnabled = typeof disgenetClient.isConfigured === 'function'
+        ? disgenetClient.isConfigured()
+        : false;
+      const sourcesAttempted = ['Open Targets', ...(disgenetEnabled ? ['DisGeNET'] : []), 'GWAS Catalog'];
+
       // PHASE 1: Fetch disease associations from ALL sources in parallel
       const openTargetsPromises = geneSymbols.map(gene =>
         this.fetchOpenTargetsAssociations(gene, diseaseContext, minScore, maxPerGene)
       );
 
-      const disgenetPromises = geneSymbols.map(gene =>
-        this.fetchDisGeNETAssociations(gene, diseaseContext, minScore, maxPerGene)
+      const disgenetPromise = disgenetEnabled
+        ? Promise.all(
+          geneSymbols.map(gene =>
+            this.fetchDisGeNETAssociations(gene, diseaseContext, minScore, maxPerGene)
+          )
+        )
+        : Promise.resolve([]);
+
+      const gwasPromises = geneSymbols.map(gene =>
+        this.fetchGwasAssociations(gene, diseaseContext, minScore, maxPerGene)
       );
 
       // Optionally fetch drug data in parallel
@@ -69,17 +82,22 @@ export class ClinicalAggregator {
         );
       }
 
-      const [openTargetsData, disgenetData, drugs] = await Promise.all([
+      const [openTargetsData, disgenetData, gwasData, drugs] = await Promise.all([
         Promise.all(openTargetsPromises),
-        Promise.all(disgenetPromises),
+        disgenetPromise,
+        Promise.all(gwasPromises),
         includeDrugs ? Promise.all(drugPromises) : Promise.resolve([])
       ]);
 
       // Combine associations from both sources
-      const allAssociations = [...openTargetsData, ...disgenetData];
+      const allAssociations = [...openTargetsData, ...disgenetData, ...gwasData];
 
       // PHASE 2: Merge and cross-validate associations
       const mergedAssociations = this.mergeAssociations(allAssociations);
+      const sourcesUsed = new Set();
+      mergedAssociations.forEach(assoc => {
+        (assoc.sources || []).forEach(source => sourcesUsed.add(source));
+      });
 
       // PHASE 3: Calculate aggregate statistics
       const stats = this.calculateStatistics(mergedAssociations);
@@ -91,11 +109,18 @@ export class ClinicalAggregator {
         genes: geneSymbols,
         associations: mergedAssociations,
         drugs: includeDrugs ? this.mergeDrugs(drugs) : null,
+        sourceAvailability: {
+          openTargets: true,
+          disgenet: disgenetEnabled,
+          gwasCatalog: true
+        },
+        sourcesAttempted,
+        sourcesUsed: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
         stats: {
           totalAssociations: mergedAssociations.length,
           avgScore: stats.avgScore,
           highConfidence: stats.highConfidence,
-          sources: this.sources,
+          sources: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
           fetchTime: `${fetchTime}ms`
         },
         source: 'Clinical Aggregator (Multi-Source Synthesis)'
@@ -159,6 +184,34 @@ export class ClinicalAggregator {
       source: 'DisGeNET',
       associations: formattedAssociations,
       totalDiseases: result.totalAssociations || 0,
+      error: result.error
+    };
+  }
+
+  /**
+   * Fetch associations from GWAS Catalog
+   * @private
+   */
+  async fetchGwasAssociations(gene, diseaseContext, minScore, maxPerGene) {
+    const maxPValue = this.scoreToMaxPValue(minScore);
+    const result = await gwasCatalogClient.getGeneAssociations(gene, {
+      maxResults: maxPerGene,
+      minPValue: maxPValue
+    });
+
+    let associations = result.associations || [];
+    if (diseaseContext) {
+      const contextLower = diseaseContext.toLowerCase();
+      associations = associations.filter(assoc =>
+        String(assoc.disease || '').toLowerCase().includes(contextLower)
+      );
+    }
+
+    return {
+      gene,
+      source: 'GWAS Catalog',
+      associations,
+      totalDiseases: result.totalAssociations || associations.length,
       error: result.error
     };
   }
@@ -330,6 +383,13 @@ export class ClinicalAggregator {
     if (score >= this.confidenceThresholds.high) return 'high';
     if (score >= this.confidenceThresholds.medium) return 'medium';
     return 'low';
+  }
+
+  scoreToMaxPValue(score) {
+    if (!Number.isFinite(score) || score <= 0) {
+      return 1;
+    }
+    return Math.pow(10, -score * 10);
   }
 
   /**

@@ -10,7 +10,6 @@
  *
  * COMMERCIAL VALUE: $10K-50K/year enterprise feature
  *
- * @author Oluwafemi Idiakhoa
  */
 
 /**

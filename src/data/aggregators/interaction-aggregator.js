@@ -11,7 +11,6 @@
  *
  * This is the future of biological intelligence: MULTI-SOURCE VALIDATION
  *
- * @author Oluwafemi Idiakhoa
  */
 
 import { stringClient } from '../integrations/string-client.js';
@@ -49,15 +48,21 @@ export class InteractionAggregator {
     const startTime = Date.now();
 
     try {
+      const biogridEnabled = typeof biogridClient.isConfigured === 'function'
+        ? biogridClient.isConfigured()
+        : false;
+      const sourcesAttempted = ['STRING', ...(biogridEnabled ? ['BioGRID'] : [])];
+
       // PHASE 1: Fetch interactions from all sources in parallel
       const [stringInteractions, stringNetwork, biogridInteractions] = await Promise.all([
         this.fetchStringInteractions(geneSymbols, minConfidence, maxInteractors),
         this.fetchStringNetwork(geneSymbols, minConfidence),
-        this.fetchBioGridInteractions(geneSymbols, maxInteractors)
+        biogridEnabled ? this.fetchBioGridInteractions(geneSymbols, maxInteractors) : Promise.resolve([])
       ]);
 
       // PHASE 2: Merge and validate interactions (CROSS-VALIDATION!)
       const mergedInteractions = this.mergeInteractions([stringInteractions, biogridInteractions]);
+      const sourcesUsed = new Set(mergedInteractions.map(interaction => interaction.source).filter(Boolean));
 
       // PHASE 3: Calculate network topology metrics
       const topology = this.calculateNetworkTopology(stringNetwork);
@@ -89,10 +94,16 @@ export class InteractionAggregator {
         },
         enrichment,
         centrality,
+        sourceAvailability: {
+          string: true,
+          biogrid: biogridEnabled
+        },
+        sourcesAttempted,
+        sourcesUsed: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
         stats: {
           totalInteractions: mergedInteractions.length,
           avgConfidence: this.calculateAvgConfidence(mergedInteractions),
-          sources: this.sources,
+          sources: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
           fetchTime: `${fetchTime}ms`
         },
         source: 'Interaction Aggregator (Multi-Source Synthesis)'

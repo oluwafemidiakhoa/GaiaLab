@@ -1,7 +1,6 @@
 /**
  * GaiaLab Slack Bot
  * Usage: /gaialab TP53, BRCA1, EGFR in breast cancer
- * Developed by Oluwafemi Idiakhoa
  */
 
 import 'dotenv/config'; // Load environment variables
@@ -244,7 +243,7 @@ function formatSlackResults({ genes, pathways, insights, diseaseContext, analysi
     elements: [
       {
         type: 'mrkdwn',
-        text: `🌟 Developed by Oluwafemi Idiakhoa | Powered by UniProt, KEGG, PubMed & AI | ⚠️ Research use only`
+        text: `Powered by UniProt, KEGG, PubMed & AI | ⚠️ Research use only`
       }
     ]
   });

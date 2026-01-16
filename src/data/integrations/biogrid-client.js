@@ -16,7 +16,6 @@
  * API Documentation: https://wiki.thebiogrid.org/doku.php/biogridrest
  * Get API Key: https://webservice.thebiogrid.org/
  *
- * @author Oluwafemi Idiakhoa
  */
 
 const BIOGRID_API_BASE = 'https://webservice.thebiogrid.org';

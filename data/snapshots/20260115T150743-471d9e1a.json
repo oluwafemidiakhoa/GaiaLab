@@ -1,0 +1,116 @@
+{
+  "id": "20260115T150743-471d9e1a",
+  "createdAt": "2026-01-15T15:07:43.500Z",
+  "query": {
+    "genes": [
+      "LRRK2",
+      "PARK7",
+      "SNCA"
+    ],
+    "diseaseContext": "Parkinson's disease",
+    "audience": "researcher",
+    "includeDrugs": true
+  },
+  "sources": {
+    "genes": [
+      "Ensembl",
+      "ClinVar",
+      "UniProt",
+      "Gene Ontology"
+    ],
+    "pathways": [
+      "KEGG",
+      "Reactome v95"
+    ],
+    "literature": [
+      "PubMed",
+      "Semantic Scholar"
+    ],
+    "interactions": [
+      "STRING"
+    ],
+    "clinical": [
+      "Open Targets",
+      "GWAS Catalog"
+    ],
+    "drugs": [
+      "DGIdb",
+      "PubChem",
+      "ChEMBL"
+    ]
+  },
+  "counts": {
+    "genes": 3,
+    "pathways": 7,
+    "papers": 29,
+    "interactions": 30,
+    "clinicalAssociations": 0,
+    "compounds": 79,
+    "approvedDrugs": 0
+  },
+  "identifiers": {
+    "pmids": [
+      "39153957",
+      "38621236",
+      "39596444",
+      "38391909",
+      "38368937",
+      "39983584",
+      "39029778",
+      "38377788",
+      "40914459",
+      "38438297",
+      "40121531",
+      "39514635",
+      "38614108",
+      "39945455",
+      "40440058",
+      "39199337",
+      "39074992",
+      "39167665",
+      "38951707",
+      "40185526",
+      "39812709",
+      "38702933",
+      "41083601",
+      "40262613",
+      "39799347",
+      "40626361",
+      "39905728",
+      "40321202",
+      "39962078"
+    ],
+    "pathways": [
+      "path:hsa05012",
+      "path:hsa05022",
+      "R-HSA-9833482",
+      "R-HSA-977225",
+      "R-HSA-8857538",
+      "R-HSA-3899300",
+      "path:hsa05010"
+    ],
+    "clinical": [],
+    "compounds": [
+      "PALBOCICLIB",
+      "VANDETANIB",
+      "ENTRECTINIB",
+      "GENTIAN VIOLET CATION",
+      "MYCOPHENOLATE",
+      "DOXORUBICIN HYDROCHLORIDE",
+      "KETOCONAZOLE",
+      "ADAVOSERTIB",
+      "AST-487",
+      "PICTILISIB",
+      "DOVITINIB",
+      "PF-562271",
+      "RG-1530",
+      "GNE-0877",
+      "CENISERTIB",
+      "ALISERTIB",
+      "CHEMBL:CHEMBL379975",
+      "CHEMBL:CHEMBL2204495",
+      "PD-0166285",
+      "NVP-TAE684"
+    ]
+  }
+}

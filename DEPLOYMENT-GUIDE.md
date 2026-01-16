@@ -403,7 +403,7 @@ Free beta: https://gaialab.railway.app
 I'd love to hear your thoughts as an expert in [field].
 
 Best,
-Oluwafemi Idiakhoa
+GaiaLab Team
 ```
 
 ### **4. Product Hunt Launch**
@@ -554,4 +554,4 @@ Then:
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** | Built with Claude Code | Ready to change the world 🌍
+Built with Claude Code | Ready to change the world 🌍

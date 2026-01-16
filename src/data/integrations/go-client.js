@@ -14,7 +14,6 @@
  *
  * API Documentation: http://api.geneontology.org/api
  *
- * @author Oluwafemi Idiakhoa
  */
 
 const GO_API_BASE = 'http://api.geneontology.org/api';

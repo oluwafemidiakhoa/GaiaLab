@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "defaults": {
+    "audience": "researcher",
+    "includeDrugs": true,
+    "minPapersUsed": 3,
+    "minPathways": 1,
+    "minStrategies": 1,
+    "minEvidenceItems": 1,
+    "minHypotheses": 1,
+    "minScore": 40
+  },
+  "cases": [
+    {
+      "id": "bc_tp53_brca1_egfr",
+      "genes": ["TP53", "BRCA1", "EGFR"],
+      "diseaseContext": "breast cancer",
+      "audience": "researcher"
+    },
+    {
+      "id": "alz_app_psen1_apoe",
+      "genes": ["APP", "PSEN1", "APOE"],
+      "diseaseContext": "alzheimer's disease",
+      "audience": "clinician"
+    },
+    {
+      "id": "aml_flt3_npm1_dnmt3a",
+      "genes": ["FLT3", "NPM1", "DNMT3A"],
+      "diseaseContext": "acute myeloid leukemia",
+      "audience": "researcher"
+    },
+    {
+      "id": "pd_lrrk2_snca_prkn",
+      "genes": ["LRRK2", "SNCA", "PRKN"],
+      "diseaseContext": "parkinson's disease",
+      "audience": "researcher"
+    },
+    {
+      "id": "glioblastoma_egfr_pten_pdgfra",
+      "genes": ["EGFR", "PTEN", "PDGFRA"],
+      "diseaseContext": "glioblastoma",
+      "audience": "researcher"
+    },
+    {
+      "id": "t2d_tcf7l2_pparg_slc2a4",
+      "genes": ["TCF7L2", "PPARG", "SLC2A4"],
+      "diseaseContext": "type 2 diabetes",
+      "audience": "clinician"
+    }
+  ]
+}

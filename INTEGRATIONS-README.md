@@ -303,4 +303,4 @@ sys.path.insert(0, './jupyter-extension')
 
 ---
 
-**🌟 Developed by Oluwafemi Idiakhoa** | Built with Claude Code | Ready to deploy!
+Built with Claude Code | Ready to deploy!

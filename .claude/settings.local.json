@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nFix Gemini model name: use gemini-1.5-flash (correct v1beta model)\n\nIssue: gemini-pro doesn''t exist in Google''s v1beta API\nSolution: Changed to gemini-1.5-flash (faster, cheaper, correct model)\n\nChanges:\n- Model ID: gemini-pro → gemini-1.5-flash  \n- Display name: Gemini 1.5 Pro → Gemini 1.5 Flash\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npm start)"
     ]
   }
 }

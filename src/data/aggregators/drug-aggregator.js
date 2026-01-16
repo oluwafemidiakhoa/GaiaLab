@@ -11,21 +11,22 @@
  *
  * Multi-source validation reveals the most promising therapeutic targets
  *
- * @author Oluwafemi Idiakhoa
  */
 
 import { chemblClient } from '../integrations/chembl-client.js';
 import { drugbankClient } from '../integrations/drugbank-client.js';
+import { dgidbClient } from '../integrations/dgidb-client.js';
+import { pubchemClient } from '../integrations/pubchem-client.js';
 
 /**
  * Drug & Compound Aggregator
  * Synthesizes bioactive molecules and drug-target data from multiple sources
  *
- * CROSS-VALIDATION: ChEMBL + DrugBank
+ * CROSS-VALIDATION: ChEMBL + DrugBank + DGIdb (40,000+ interactions)
  */
 export class DrugAggregator {
   constructor() {
-    this.sources = ['ChEMBL', 'DrugBank']; // Multi-source validation
+    this.sources = ['ChEMBL', 'DrugBank', 'DGIdb', 'PubChem']; // Multi-source validation
     this.phaseThresholds = {
       approved: 4,       // FDA approved
       lateStage: 3,      // Phase 3 clinical trial
@@ -53,6 +54,11 @@ export class DrugAggregator {
     const startTime = Date.now();
 
     try {
+      const drugbankConfigured = typeof drugbankClient.isConfigured === 'function'
+        ? drugbankClient.isConfigured()
+        : false;
+      const sourcesAttempted = ['ChEMBL', 'DrugBank', 'DGIdb', 'PubChem'];
+
       // PHASE 1: Fetch compounds from ALL sources in parallel
       const chemblPromises = geneSymbols.map(gene =>
         this.fetchChemblCompounds(gene, maxPotency, maxPerGene)
@@ -62,6 +68,9 @@ export class DrugAggregator {
         this.fetchDrugBankTargets(gene, minPhase, maxPerGene)
       );
 
+      // DGIdb: Comprehensive free drug-gene interaction database
+      const dgidbPromise = this.fetchDGIdbInteractions(geneSymbols);
+
       // Optionally fetch approved drugs separately (higher confidence)
       let approvedPromises = [];
       if (includeApproved) {
@@ -70,18 +79,53 @@ export class DrugAggregator {
         );
       }
 
-      const [chemblData, drugbankData, approvedDrugs] = await Promise.all([
+      const [chemblData, drugbankData, dgidbData, approvedDrugs] = await Promise.all([
         Promise.all(chemblPromises),
         Promise.all(drugbankPromises),
+        dgidbPromise,
         includeApproved ? Promise.all(approvedPromises) : Promise.resolve([])
       ]);
 
-      // Combine compounds from both sources
-      const allCompounds = [...chemblData, ...drugbankData];
+      // Combine compounds from ALL sources
+      const allCompounds = [...chemblData, ...drugbankData, ...dgidbData];
+
+      // FALLBACK: If ChEMBL failed but DGIdb succeeded, use DGIdb as primary source
+      const chemblFailed = chemblData.every(d => !d.compounds || d.compounds.length === 0);
+      if (chemblFailed && dgidbData.length > 0) {
+        console.log('[Drug Aggregator] ChEMBL failed, using DGIdb as primary source');
+      }
 
       // PHASE 2: Merge and cross-validate compounds
       const mergedCompounds = this.mergeCompounds(allCompounds, minPhase);
       const mergedApproved = this.mergeApprovedDrugs(approvedDrugs);
+
+      // PHASE 2.5: Enrich top compounds with PubChem properties
+      const pubchemMap = await this.enrichWithPubChem([
+        ...mergedCompounds.slice(0, 20),
+        ...mergedApproved.slice(0, 10)
+      ]);
+      this.attachPubChemData(mergedCompounds, pubchemMap);
+      this.attachPubChemData(mergedApproved, pubchemMap);
+      const sourcesUsed = new Set();
+      mergedCompounds.forEach(compound => {
+        (compound.sources || []).forEach(source => sourcesUsed.add(source));
+        if (compound.source) {
+          sourcesUsed.add(compound.source);
+        }
+        if (compound.pubchem) {
+          sourcesUsed.add('PubChem');
+        }
+      });
+      mergedApproved.forEach(drug => {
+        if (drug.source) {
+          sourcesUsed.add(drug.source);
+        }
+        if (drug.pubchem) {
+          sourcesUsed.add('PubChem');
+        }
+      });
+      const drugbankDataComplete = drugbankData.some(set => set.dataComplete);
+      const drugbankFallbackUsed = drugbankData.some(set => set.dataComplete === false && set.compounds?.length > 0);
 
       // PHASE 3: Calculate aggregate statistics
       const stats = this.calculateStatistics(mergedCompounds, mergedApproved);
@@ -93,12 +137,21 @@ export class DrugAggregator {
         genes: geneSymbols,
         compounds: includeCompounds ? mergedCompounds : [],
         approvedDrugs: mergedApproved,
+        sourceAvailability: {
+          chembl: true,
+          drugbank: drugbankConfigured || drugbankDataComplete,
+          drugbankFallback: drugbankFallbackUsed && !drugbankDataComplete,
+          dgidb: true,
+          pubchem: true
+        },
+        sourcesAttempted,
+        sourcesUsed: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
         stats: {
           totalCompounds: mergedCompounds.length,
           totalApproved: mergedApproved.length,
           avgPotency: stats.avgPotency,
           phaseDistribution: stats.phaseDistribution,
-          sources: this.sources,
+          sources: sourcesUsed.size > 0 ? Array.from(sourcesUsed) : sourcesAttempted,
           fetchTime: `${fetchTime}ms`
         },
         source: 'Drug Aggregator (Multi-Source Synthesis)'
@@ -160,9 +213,69 @@ export class DrugAggregator {
     return {
       gene,
       source: 'DrugBank',
+      sourceDetail: result.source,
+      dataComplete: result.dataComplete,
       compounds: formattedDrugs,
       error: result.error
     };
+  }
+
+  /**
+   * Fetch drug-gene interactions from DGIdb (40,000+ interactions)
+   * @private
+   */
+  async fetchDGIdbInteractions(geneSymbols) {
+    const startTime = Date.now();
+
+    try {
+      const interactions = await dgidbClient.getInteractions(geneSymbols);
+
+      // Group interactions by gene (to match ChEMBL/DrugBank format)
+      const byGene = {};
+      for (const interaction of interactions) {
+        if (!byGene[interaction.gene]) {
+          byGene[interaction.gene] = [];
+        }
+        byGene[interaction.gene].push(interaction);
+      }
+
+      // Convert to compound format matching ChEMBL/DrugBank structure
+      const results = Object.entries(byGene).map(([gene, geneInteractions]) => {
+        const compounds = geneInteractions.map(interaction => ({
+          name: interaction.drug,
+          chemblId: interaction.chemblId || `DGIDB:${interaction.drug}`,
+          maxPhase: interaction.phase,
+          phaseLabel: dgidbClient.getPhaseLabel(interaction.phase),
+          pChEMBL: null, // DGIdb doesn't provide potency data
+          potency: `Interaction: ${interaction.interactionType}`,
+          sources: ['DGIdb', ...interaction.sources],
+          validated: interaction.sourceCount > 1 ? 'multi-source' : 'single-source',
+          sourceCount: interaction.sourceCount,
+          pmids: interaction.pmids,
+          // CRITICAL: Add gene/target info for drug repurposing engine
+          genes: [gene], // Array of gene symbols this drug targets
+          targets: [gene], // Alias for genes (some code uses targets)
+          approvalStatus: interaction.approved ? 'approved' : 'investigational',
+          isApproved: interaction.approved
+        }));
+
+        return {
+          gene,
+          source: 'DGIdb',
+          compounds,
+          targetId: null,
+          error: null
+        };
+      });
+
+      const fetchTime = Date.now() - startTime;
+      console.log(`[DGIdb] Fetched ${interactions.length} interactions for ${results.length} genes in ${fetchTime}ms`);
+
+      return results;
+    } catch (error) {
+      console.error('[DGIdb] Interaction fetch failed:', error.message);
+      return [];
+    }
   }
 
   /**
@@ -250,6 +363,37 @@ export class DrugAggregator {
 
     // Sort by potency (pChEMBL)
     return allApproved.sort((a, b) => (b.pChEMBL || 0) - (a.pChEMBL || 0));
+  }
+
+  /**
+   * Enrich compounds with PubChem properties
+   * @private
+   */
+  async enrichWithPubChem(compounds) {
+    if (!compounds || compounds.length === 0) {
+      return {};
+    }
+
+    try {
+      return await pubchemClient.enrichCompounds(compounds, { maxCompounds: 25 });
+    } catch (error) {
+      console.warn('[PubChem] Enrichment failed:', error.message);
+      return {};
+    }
+  }
+
+  attachPubChemData(compounds, pubchemMap) {
+    if (!compounds || !pubchemMap) {
+      return;
+    }
+
+    compounds.forEach(compound => {
+      const name = String(compound?.name || '').trim();
+      const pubchem = name ? pubchemMap[name] : null;
+      if (pubchem) {
+        compound.pubchem = pubchem;
+      }
+    });
   }
 
   /**

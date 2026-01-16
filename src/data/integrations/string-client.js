@@ -9,7 +9,6 @@
  *
  * API Documentation: https://string-db.org/help/api/
  *
- * @author Oluwafemi Idiakhoa
  */
 
 const STRING_API_BASE = 'https://string-db.org/api';
@@ -114,7 +113,7 @@ export class StringClient {
           numberOfGenes: item.number_of_genes,
           pValue: item.p_value,
           fdr: item.fdr, // False discovery rate
-          inputGenes: item.inputGenes ? item.inputGenes.split(',') : []
+          inputGenes: Array.isArray(item.inputGenes) ? item.inputGenes : (item.inputGenes ? item.inputGenes.split(',') : [])
         })),
         source: 'STRING Enrichment'
       };
